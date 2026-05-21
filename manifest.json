@@ -1,0 +1,15 @@
+{
+  "name": "Apartman Mirakul",
+  "short_name": "Mirakul",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F8F4EE",
+  "theme_color": "#2A1A0C",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

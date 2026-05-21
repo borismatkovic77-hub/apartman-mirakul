@@ -163,18 +163,7 @@ checkin?.addEventListener('change', () => {
 
 checkout?.addEventListener('change', updateNights);
 
-form?.addEventListener('submit', (e) => {
-  const email = document.getElementById('email')?.value.trim();
-  const telefon = document.getElementById('telefon')?.value.trim();
-  if (!email && !telefon) {
-    e.preventDefault();
-    document.getElementById('email').focus();
-    alert(lang === 'en'
-      ? 'Please enter your email address or phone number.'
-      : 'Molimo unesite email adresu ili broj telefona.');
-    return;
-  }
-});
+// Formspree handles submission
 
 // Share button
 const shareBtn = document.getElementById('shareBtn');

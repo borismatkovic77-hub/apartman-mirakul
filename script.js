@@ -6,14 +6,28 @@ const navList = document.querySelector('.nav-list');
 const header = document.querySelector('.site-header');
 
 if (navToggle && navList) {
-  navToggle.addEventListener('click', () => navList.classList.toggle('open'));
+  const updateToggleState = (open) => {
+    navToggle.setAttribute('aria-expanded', open);
+    navToggle.setAttribute('aria-label', open
+      ? (lang === 'en' ? 'Close menu' : 'Zatvori meni')
+      : (lang === 'en' ? 'Open menu' : 'Otvori meni'));
+  };
+
+  navToggle.addEventListener('click', () => {
+    const open = navList.classList.toggle('open');
+    updateToggleState(open);
+  });
   document.addEventListener('click', (e) => {
     if (!navList.contains(e.target) && !navToggle.contains(e.target)) {
       navList.classList.remove('open');
+      updateToggleState(false);
     }
   });
   navList.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => navList.classList.remove('open'));
+    link.addEventListener('click', () => {
+      navList.classList.remove('open');
+      updateToggleState(false);
+    });
   });
 }
 

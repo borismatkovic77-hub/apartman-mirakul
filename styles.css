@@ -1508,7 +1508,8 @@ button, a { font: inherit; }
   }
 
   .hero-actions {
-    margin-top: 1.5rem;
+    margin-top: auto;
+    padding-bottom: 2rem;
   }
 
   .hero-meta {

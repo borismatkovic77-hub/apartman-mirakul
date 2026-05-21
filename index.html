@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apartman Mirakul | Centar Subotice | Smeštaj blizu železničke stanice</title>
-  <meta name="description" content="Apartman Mirakul — elegantno uređen smeštaj u centru Subotice, Prokeš palata na Korzu. Booking ocena 10, pet godina za redom. Rezervišite direktno ili putem Booking.com i Airbnb." />
+  <meta name="description" content="Apartman Mirakul — elegantno uređen smeštaj u centru Subotice, Prokeš palata na Korzu. Booking ocena 10, pet godina za redom. Rezervišite direktno ili putem Booking.com." />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Apartman Mirakul | Centar Subotice" />
   <meta property="og:description" content="Elegantno uređen apartman u srcu Subotice — Prokeš palata, Korzo. Booking ocena 10, 164+ recenzije. Rezervišite odmah." />
-  <meta property="og:image" content="images/apartman-mirakul-dnevni-boravak-panorama.webp" />
+  <meta property="og:image" content="https://apartmanmirakul.rs/images/apartman-mirakul-dnevni-boravak-panorama.webp" />
   <meta property="og:locale" content="sr_RS" />
-  <!-- og:url dodati kada znate tačan domen -->
+  <meta property="og:url" content="https://apartmanmirakul.rs/" />
 
   <!-- hreflang -->
   <link rel="alternate" hreflang="sr" href="index.html" />
@@ -58,6 +58,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="canonical" href="https://apartmanmirakul.rs/" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-title" content="Mirakul" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="image" href="images/apartman-mirakul-dnevni-boravak-panorama.webp" fetchpriority="high" />
   <link rel="stylesheet" href="styles.css" />
@@ -114,7 +117,7 @@
             <span>Gradski parking ispred zgrade</span>
           </div>
           <a href="#booking">
-            <strong>Booking & Airbnb</strong>
+            <strong>Booking.com</strong>
             <span>Proveri dostupnost</span>
           </a>
         </div>
@@ -317,12 +320,11 @@ Bilo da dolazite na vikend odmor, poslovno putovanje ili želite da upoznate ša
         <div>
           <span class="eyebrow">Rezervacija</span>
           <h2>Izaberite termin i rezervišite odmah</h2>
-          <p>Apartman možete rezervisati preko Booking.com i Airbnb platformi, ali i direktno kod nas. Pošaljite upit, a mi vam brzo javljamo dostupnost i najbolju cenu smeštaja.</p>
+          <p>Apartman možete rezervisati preko Booking.com platforme, ali i direktno kod nas. Pošaljite upit, a mi vam brzo javljamo dostupnost i najbolju cenu smeštaja.</p>
         </div>
         <div class="booking-actions">
           <div class="booking-platform-row">
             <a class="btn btn-booking" href="https://www.booking.com/Share-hcrB3Bc" target="_blank" rel="noopener">Booking.com</a>
-            <a class="btn btn-airbnb" href="https://www.airbnb.com/rooms/1218246486942867435" target="_blank" rel="noopener">Airbnb</a>
           </div>
           <a class="btn btn-ghost-dark booking-inquiry-btn" href="#contact">Pošalji upit direktno</a>
         </div>
@@ -365,27 +367,14 @@ Bilo da dolazite na vikend odmor, poslovno putovanje ili želite da upoznate ša
           </div>
         </div>
         <form class="inquiry-form" action="https://formspree.io/f/xaqvrzva" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="ime">Ime</label>
-              <input type="text" id="ime" name="ime" placeholder="Vaše ime" required />
-            </div>
-            <div class="form-group">
-              <label for="prezime">Prezime</label>
-              <input type="text" id="prezime" name="prezime" placeholder="Vaše prezime" required />
-            </div>
+          <div class="form-group">
+            <label for="ime">Ime i prezime</label>
+            <input type="text" id="ime" name="ime" placeholder="Vaše ime i prezime" required />
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="vas@email.com" />
-            </div>
-            <div class="form-group">
-              <label for="telefon">Telefon</label>
-              <input type="tel" id="telefon" name="telefon" placeholder="+381 6X XXX XXXX" />
-            </div>
+          <div class="form-group">
+            <label for="kontakt">Email ili telefon</label>
+            <input type="text" id="kontakt" name="kontakt" placeholder="vas@email.com ili +381 6X XXX XXXX" required />
           </div>
-          <p class="form-hint">e-mail ili telefon</p>
           <div class="form-row">
             <div class="form-group">
               <label for="checkin">Datum dolaska</label>
@@ -479,7 +468,6 @@ Bilo da dolazite na vikend odmor, poslovno putovanje ili želite da upoznate ša
       <div class="footer-booking">
         <h4>Rezervišite</h4>
         <a href="https://www.booking.com/Share-hcrB3Bc" target="_blank" rel="noopener" class="footer-platform-link">Booking.com</a>
-        <a href="https://www.airbnb.com/rooms/1218246486942867435" target="_blank" rel="noopener" class="footer-platform-link">Airbnb</a>
         <p class="footer-address">Apartman Mirakul</p>
         <p class="footer-address">Prokeš palata, Subotica</p>
         <p class="footer-address">Korzo 15 / 20</p>

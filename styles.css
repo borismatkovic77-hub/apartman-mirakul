@@ -1138,19 +1138,11 @@ button, a { font: inherit; }
   border-color: var(--text-muted);
 }
 
-.contact-note {
-  margin-top: 1.5rem;
-  padding: 1rem 1.25rem;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  font-size: 0.9rem;
+.booking-meta {
+  font-size: 0.82rem;
   color: var(--muted);
-  line-height: 1.8;
-}
-
-.contact-note strong {
-  color: var(--text);
+  margin-top: -0.25rem;
+  margin-bottom: 0;
 }
 
 .inquiry-form {

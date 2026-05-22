@@ -53,6 +53,34 @@ galleryToggle?.addEventListener('click', () => {
   }
 });
 
+// Modal
+const inquiryModal = document.getElementById('inquiry-modal');
+const openModalBtn = document.getElementById('openInquiryModal');
+const closeModalBtn = document.querySelector('.modal-close');
+
+function openModal() {
+  inquiryModal.removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
+  closeModalBtn?.focus();
+}
+
+function closeModal() {
+  inquiryModal.setAttribute('hidden', '');
+  document.body.style.overflow = '';
+  openModalBtn?.focus();
+}
+
+openModalBtn?.addEventListener('click', openModal);
+closeModalBtn?.addEventListener('click', closeModal);
+
+inquiryModal?.addEventListener('click', (e) => {
+  if (e.target === inquiryModal) closeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && inquiryModal && !inquiryModal.hasAttribute('hidden')) closeModal();
+});
+
 // Contact form
 const form = document.querySelector('.inquiry-form');
 const odrasli = document.getElementById('odrasli');
@@ -242,6 +270,64 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') navigate(1);
 });
 
+// Reviews carousel
+const reviewsCarousel = document.querySelector('.reviews-carousel');
+const reviewPrev = document.querySelector('.carousel-prev');
+const reviewNext = document.querySelector('.carousel-next');
+const dotsWrap = document.querySelector('.carousel-dots');
+
+if (reviewsCarousel && dotsWrap) {
+  const cards = Array.from(reviewsCarousel.querySelectorAll('.review-card'));
+
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', lang === 'en' ? `Review ${i + 1}` : `Recenzija ${i + 1}`);
+    dot.addEventListener('click', () => scrollToCard(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  function scrollToCard(index) {
+    reviewsCarousel.scrollTo({ left: cards[index].offsetLeft, behavior: 'smooth' });
+  }
+
+  function getVisibleCount() {
+    return window.innerWidth > 640 ? 2 : 1;
+  }
+
+  function getCurrentIndex() {
+    const sl = reviewsCarousel.scrollLeft;
+    let closest = 0, minDist = Infinity;
+    cards.forEach((card, i) => {
+      const dist = Math.abs(card.offsetLeft - sl);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    return closest;
+  }
+
+  function updateCarousel() {
+    const i = getCurrentIndex();
+    const visible = getVisibleCount();
+    dotsWrap.querySelectorAll('.carousel-dot').forEach((dot, j) => {
+      dot.classList.toggle('active', j === i);
+    });
+    if (reviewPrev) reviewPrev.disabled = i === 0;
+    if (reviewNext) reviewNext.disabled = i >= cards.length - visible;
+  }
+
+  reviewPrev?.addEventListener('click', () => {
+    scrollToCard(Math.max(0, getCurrentIndex() - getVisibleCount()));
+  });
+
+  reviewNext?.addEventListener('click', () => {
+    scrollToCard(Math.min(cards.length - 1, getCurrentIndex() + getVisibleCount()));
+  });
+
+  reviewsCarousel.addEventListener('scroll', updateCarousel, { passive: true });
+  window.addEventListener('resize', updateCarousel);
+  updateCarousel();
+}
+
 // Analytics event tracking
 function track(event_name, params) {
   if (typeof gtag === 'function') gtag('event', event_name, params);
@@ -265,6 +351,12 @@ document.getElementById('track-wa-contact')?.addEventListener('click', () =>
 document.getElementById('track-viber-contact')?.addEventListener('click', () =>
   track('viber_click', { location: 'contact' }));
 
+// Social media
+document.getElementById('track-fb')?.addEventListener('click', () =>
+  track('social_click', { platform: 'facebook' }));
+document.getElementById('track-insta')?.addEventListener('click', () =>
+  track('social_click', { platform: 'instagram' }));
+
 // Booking.com clicks
 document.querySelectorAll('a[href*="booking.com"]').forEach(el => {
   el.addEventListener('click', () =>
@@ -284,5 +376,18 @@ galleryLinks.forEach((link, i) => {
 });
 
 // Forma - slanje upita
-document.querySelector('.inquiry-form')?.addEventListener('submit', () =>
-  track('form_submit', { form: 'inquiry' }));
+document.querySelector('.inquiry-form')?.addEventListener('submit', (e) => {
+  track('form_submit', { form: 'inquiry' });
+  const successMsg = document.getElementById('form-success');
+  if (successMsg) {
+    e.preventDefault();
+    fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { Accept: 'application/json' } })
+      .then(r => {
+        if (r.ok) {
+          successMsg.hidden = false;
+          e.target.reset();
+          setTimeout(() => { closeModal(); successMsg.hidden = true; }, 2500);
+        }
+      });
+  }
+});

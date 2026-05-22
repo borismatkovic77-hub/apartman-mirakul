@@ -241,3 +241,48 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') navigate(-1);
   if (e.key === 'ArrowRight') navigate(1);
 });
+
+// Analytics event tracking
+function track(event_name, params) {
+  if (typeof gtag === 'function') gtag('event', event_name, params);
+}
+
+// Phone clicks
+document.getElementById('track-phone-contact')?.addEventListener('click', () =>
+  track('phone_click', { location: 'contact' }));
+document.getElementById('track-phone-footer')?.addEventListener('click', () =>
+  track('phone_click', { location: 'footer' }));
+
+// Email clicks
+document.getElementById('track-email-contact')?.addEventListener('click', () =>
+  track('email_click', { location: 'contact' }));
+document.getElementById('track-email-footer')?.addEventListener('click', () =>
+  track('email_click', { location: 'footer' }));
+
+// WhatsApp & Viber
+document.getElementById('track-wa-contact')?.addEventListener('click', () =>
+  track('whatsapp_click', { location: 'contact' }));
+document.getElementById('track-viber-contact')?.addEventListener('click', () =>
+  track('viber_click', { location: 'contact' }));
+
+// Booking.com clicks
+document.querySelectorAll('a[href*="booking.com"]').forEach(el => {
+  el.addEventListener('click', () =>
+    track('booking_click', { location: el.closest('footer') ? 'footer' : el.classList.contains('review-btn') ? 'reviews' : el.classList.contains('footer-platform-link') ? 'footer' : 'booking_section' }));
+});
+
+// Gallery - prikaži sve fotografije
+document.getElementById('galleryToggle')?.addEventListener('click', () => {
+  const expanded = document.querySelector('.gallery-wrapper')?.classList.contains('expanded');
+  track('gallery_toggle', { action: expanded ? 'expand' : 'collapse' });
+});
+
+// Lightbox otvoren
+galleryLinks.forEach((link, i) => {
+  link.addEventListener('click', () =>
+    track('lightbox_open', { image_index: i }));
+});
+
+// Forma - slanje upita
+document.querySelector('.inquiry-form')?.addEventListener('submit', () =>
+  track('form_submit', { form: 'inquiry' }));

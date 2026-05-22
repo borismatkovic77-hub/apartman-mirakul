@@ -1143,6 +1143,26 @@ button, a { font: inherit; }
   color: var(--muted);
   margin-top: -0.25rem;
   margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+
+.booking-meta span + span::before {
+  content: '\00a0·\00a0';
+}
+
+@media (max-width: 560px) {
+  .booking-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+  }
+
+  .booking-meta span + span::before {
+    content: none;
+  }
 }
 
 .inquiry-form {

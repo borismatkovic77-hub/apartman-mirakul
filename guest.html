@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2A1A0C" />
+  <meta name="robots" content="noindex" />
+  <title>Apartman Mirakul — Vodič za goste</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F8F4EE;
+      --surface: #ffffff;
+      --primary: #2A1A0C;
+      --accent: #C49A4A;
+      --border: #E2D8CC;
+      --muted: #7A6A5A;
+      --green: #1a7a45;
+      --green-bg: #edf7f1;
+      --green-border: #b7ddc8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); }
+    body { min-height: 100vh; }
+    a { color: inherit; }
+
+    /* ── LANG SCREEN ── */
+    #lang-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1.25rem 3rem;
+    }
+    .lang-brand {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+    .lang-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .lang-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 360px;
+    }
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--primary);
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .lang-btn:hover, .lang-btn:active { background: #F5EDE1; border-color: var(--accent); }
+    .lang-flag { font-size: 1.25rem; }
+
+    /* ── GUIDE ── */
+    #guide {
+      display: none;
+      flex-direction: column;
+      min-height: 100vh;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    #guide.visible { display: flex; }
+
+    .guide-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.25rem;
+    }
+    .guide-header-name { font-size: 1rem; font-weight: 700; }
+    .lang-change-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .lang-change-btn:hover { background: rgba(255,255,255,0.25); }
+
+    .guide-content {
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      flex: 1;
+    }
+
+    /* WiFi */
+    .wifi-card {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+      border-radius: 18px;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .wifi-row { display: flex; align-items: center; gap: 0.75rem; }
+    .wifi-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .wifi-info { flex: 1; min-width: 0; }
+    .wifi-label { font-size: 0.72rem; color: var(--green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .wifi-value { font-size: 1rem; font-weight: 700; color: var(--primary); }
+    .copy-btn {
+      display: flex; align-items: center; gap: 0.4rem;
+      background: var(--green); color: #fff; border: none;
+      border-radius: 10px; padding: 0.5rem 0.9rem;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      flex-shrink: 0; font-family: inherit; transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .copy-btn:active { opacity: 0.75; }
+
+    /* Accordion */
+    .acc-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .acc-trigger {
+      width: 100%; display: flex; align-items: center; gap: 0.75rem;
+      padding: 1rem 1.1rem; background: none; border: none;
+      font-family: inherit; font-size: 0.98rem; font-weight: 600;
+      color: var(--primary); cursor: pointer; text-align: left;
+    }
+    .acc-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .acc-arrow { margin-left: auto; font-size: 0.75rem; color: var(--muted); transition: transform 0.25s ease; flex-shrink: 0; }
+    .acc-item.open .acc-arrow { transform: rotate(180deg); }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .acc-item.open .acc-body { max-height: 1400px; }
+    .acc-inner { padding: 0.85rem 1.1rem 1.1rem; border-top: 1px solid var(--border); }
+
+    /* Content inside accordion */
+    .item-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .item-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.93rem; }
+    .item-label { color: var(--muted); font-size: 0.82rem; min-width: 110px; flex-shrink: 0; }
+    .item-list a { color: var(--primary); font-weight: 700; text-decoration: none; font-size: 1.05rem; }
+
+    .bullet-list { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .bullet-list li { font-size: 0.93rem; line-height: 1.55; color: var(--primary); padding-left: 0; }
+
+    .place-card { padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
+    .place-card:last-child { border-bottom: none; padding-bottom: 0; }
+    .place-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .place-dist {
+      display: inline-flex; align-items: center;
+      font-size: 0.72rem; font-weight: 600; color: var(--accent);
+      background: #F5EDE1; border-radius: 999px; padding: 0.1rem 0.5rem;
+      margin-bottom: 0.2rem;
+    }
+    .place-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
+
+    .checkin-row { display: flex; align-items: center; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+    .checkin-row:last-of-type { border-bottom: none; }
+    .checkin-time { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; }
+    .checkin-label { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.1rem; }
+
+    .guide-tip {
+      background: #F5EDE1; border-radius: 10px;
+      padding: 0.65rem 0.9rem; font-size: 0.84rem;
+      color: var(--primary); margin-top: 0.65rem; line-height: 1.55;
+    }
+
+    .guide-item { display: flex; gap: 0.75rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .guide-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .guide-item-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .guide-item-text strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .guide-item-text span { font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
+    .local-group-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 0.9rem 0 0.4rem; border-top: 1px solid var(--border); }
+    .local-group-title:first-child { border-top: none; padding-top: 0; }
+    .subgroup-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1rem; background: #F0EAE0; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 0.5rem; cursor: pointer; font-size: 0.92rem; font-weight: 600; color: var(--primary); text-align: left; transition: background 0.15s; }
+    .subgroup-btn.open { background: #E6DDD0; }
+    .subgroup-arrow { font-size: 0.7rem; transition: transform 0.25s; flex-shrink: 0; color: var(--muted); }
+    .subgroup-btn.open .subgroup-arrow { transform: rotate(180deg); }
+    .subgroup-panel { display: none; margin-bottom: 0.5rem; }
+    .subgroup-panel.open { display: block; }
+    .subgroup-html { padding: 0.1rem 0 0.25rem; }
+    .swipe-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-radius: 12px; margin-bottom: 0.25rem; }
+    .swipe-carousel::-webkit-scrollbar { display: none; }
+    .swipe-card { flex: 0 0 100%; scroll-snap-align: start; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+    .swipe-card-img { width: 100%; height: 210px; background: linear-gradient(135deg, #e8ddd0, #d4c4b0); display: flex; align-items: center; justify-content: center; font-size: 4rem; overflow: hidden; }
+    .swipe-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .swipe-card-body { padding: 1.25rem 1.25rem 1.5rem; }
+    .swipe-card-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .swipe-card-dist { font-size: 0.78rem; color: var(--accent); font-weight: 700; margin-bottom: 0.65rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .swipe-card-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.1rem; }
+    .swipe-card-link { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--primary); color: #fff; padding: 0.6rem 1.1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+
+    /* Footer */
+    .guide-footer { text-align: center; padding: 2rem 1.25rem 2.5rem; }
+    .guide-footer .heart { color: var(--accent); font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
+    .guide-footer span { font-size: 1rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<!-- LANGUAGE SELECTION -->
+<div id="lang-screen">
+  <div style="text-align:center; margin-bottom: 2rem;">
+    <div style="font-size:2rem; margin-bottom:0.5rem;">🏠</div>
+    <div class="lang-brand">Apartman Mirakul</div>
+    <div class="lang-subtitle">Izaberite jezik · Choose language</div>
+  </div>
+  <div class="lang-grid">
+    <button class="lang-btn" onclick="setLang('sr')"><span class="lang-flag">🇷🇸</span> Srpski</button>
+    <button class="lang-btn" onclick="setLang('hr')"><span class="lang-flag">🇭🇷</span> Hrvatski</button>
+    <button class="lang-btn" onclick="setLang('hu')"><span class="lang-flag">🇭🇺</span> Magyar</button>
+    <button class="lang-btn" onclick="setLang('en')"><span class="lang-flag">🇬🇧</span> English</button>
+    <button class="lang-btn" onclick="setLang('de')"><span class="lang-flag">🇩🇪</span> Deutsch</button>
+    <button class="lang-btn" onclick="setLang('ru')"><span class="lang-flag">🇷🇺</span> Русский</button>
+    <button class="lang-btn" onclick="setLang('zh')"><span class="lang-flag">🇨🇳</span> 中文</button>
+    <button class="lang-btn" onclick="setLang('bg')"><span class="lang-flag">🇧🇬</span> Български</button>
+    <button class="lang-btn" onclick="setLang('pl')"><span class="lang-flag">🇵🇱</span> Polski</button>
+    <button class="lang-btn" onclick="setLang('it')"><span class="lang-flag">🇮🇹</span> Italiano</button>
+    <button class="lang-btn" onclick="setLang('es')"><span class="lang-flag">🇪🇸</span> Español</button>
+    <button class="lang-btn" onclick="setLang('mk')"><span class="lang-flag">🇲🇰</span> Македонски</button>
+    <button class="lang-btn" onclick="setLang('sl')"><span class="lang-flag">🇸🇮</span> Slovenščina</button>
+    <button class="lang-btn" onclick="setLang('ro')"><span class="lang-flag">🇷🇴</span> Română</button>
+  </div>
+</div>
+
+<!-- GUIDE -->
+<div id="guide">
+  <div class="guide-header">
+    <div class="guide-header-name">Apartman Mirakul</div>
+    <button class="lang-change-btn" id="lang-btn" onclick="showLangScreen()">🇷🇸 SR</button>
+  </div>
+  <div class="guide-content">
+    <div class="wifi-card">
+      <div class="wifi-row">
+        <span class="wifi-icon">📶</span>
+        <div class="wifi-info">
+          <div class="wifi-label" id="wifi-net-lbl">WiFi</div>
+          <div class="wifi-value">Apartman Mirakul 5G</div>
+        </div>
+      </div>
+      <div class="wifi-row">
+        <span class="wifi-icon">🔑</span>
+        <div class="wifi-info">
+          <div class="wifi-label" id="wifi-pass-lbl">Lozinka</div>
+          <div class="wifi-value">dobrodoali</div>
+        </div>
+        <button class="copy-btn" onclick="copyWifi()">📋 <span id="copy-lbl">Kopiraj</span></button>
+      </div>
+    </div>
+    <div id="sections"></div>
+  </div>
+  <div class="guide-footer">
+    <span class="heart">♥</span>
+    <span id="footer-txt"></span>
+  </div>
+</div>
+
+<script>
+const FLAGS = {sr:'🇷🇸',hr:'🇭🇷',hu:'🇭🇺',en:'🇬🇧',de:'🇩🇪',ru:'🇷🇺',zh:'🇨🇳',bg:'🇧🇬',pl:'🇵🇱',it:'🇮🇹',es:'🇪🇸',mk:'🇲🇰',sl:'🇸🇮',ro:'🇷🇴'};
+const CODES = {sr:'SR',hr:'HR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO'};
+
+const EMERGENCY = (p,a,f,h) => `<ul class="item-list"><li><span class="item-label">🚔 ${p}</span><a href="tel:192">192</a></li><li><span class="item-label">🚑 ${a}</span><a href="tel:194">194</a></li><li><span class="item-label">🚒 ${f}</span><a href="tel:193">193</a></li><li><span class="item-label">📞 ${h}</span><a href="tel:+381631168024">+381 63 116 8024</a></li></ul>`;
+
+const T = {
+  sr: {
+    wn:'Naziv WiFi mreže', wp:'Lozinka', cp:'Kopiraj', cd:'Kopirano!',
+    ft:'Drago nam je što ste izabrali Apartman Mirakul. Ugodan boravak!',
+    s:[
+      {i:'💡',t:'Uputstva za apartman',subs:[
+        {t:'🏠 Kućni red',h:`<ul class="bullet-list"><li>🌙 Tišina od <strong>22:00 do 08:00</strong></li><li>🚭 Pušenje je <strong>strogo zabranjeno</strong> u apartmanu i zgradi</li><li>🐾 Kućni ljubimci <strong>nisu dozvoljeni</strong></li><li>👥 Maksimalan broj gostiju: <strong>4 osobe</strong></li><li>🧹 Molimo ostavite apartman urednim pri odlasku</li><li>🏢 Poštujte mir stanara zgrade</li></ul>`},
+        {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">do 11:00</div></div></div><div class="guide-tip">🔑 Ključeve ostavite u poštansko sanduče pored ulaznih vrata. Ukoliko planirate rani odlazak, obavestite domaćina veče pre.</div>`},
+        {t:'⚙️ Aparati',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Klima uređaj</strong><span>Daljinski upravljač se nalazi na stolu u dnevnoj sobi.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Pritisnite HOME za pristup Netflix, YouTube i ostalim aplikacijama.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Espresso aparat</strong><span>Kapsule se nalaze u fioci ispod aparata.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Podno grejanje</strong><span>Uvek aktivno u sezoni — nema potrebe za podešavanjem.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Veš mašina</strong><span>Nalazi se u kupatilu. Deterdžent u ormaru ispod sudopere.</span></div></div>`},
+        {t:'ℹ️ Dobro je znati',h:`<ul class="bullet-list"><li>🚗 Plaćeni gradski parking <strong>ispred zgrade</strong></li><li>💰 Naplata radnim danima tokom dana</li><li>🎉 <strong>Vikend i praznici — besplatno</strong></li><li>📱 Aplikacija: <strong>Parking Subotica</strong></li></ul>`}
+      ]},
+      {i:'📍',t:'Lokalne preporuke',subs:[
+        {t:'🍽️ Restorani',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Odličan doručak, ručak i kafa. Odmah ispod zgrade.',emoji:'☕',maps:'https://www.google.com/maps/search/?api=1&query=Boss+Caffe+Subotica'},
+          {name:'Korzo',dist:'2 min hoda',desc:'Pešačka zona puna kafića, restorana i slastičarnica.',emoji:'🚶',maps:'https://www.google.com/maps/search/?api=1&query=Korzo+Subotica'},
+          {name:'Pikaso',dist:'200 m',desc:'Restoran u centru, domaća kuhinja i roštilj.',emoji:'🍖',maps:'https://www.google.com/maps/search/?api=1&query=Pikaso+restoran+Subotica'},
+          {name:'Dóm Café',dist:'300 m',desc:'Moderna kafeterija, odlična kafa i kolači.',emoji:'☕',maps:'https://www.google.com/maps/search/?api=1&query=Dom+Cafe+Subotica'}
+        ]},
+        {t:'🏛️ Znamenitosti',cards:[
+          {name:'Gradska kuća',dist:'300 m',desc:'Simbol Subotice — impozantna secesijska zgrada iz 1910.',emoji:'🏛️',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+City+Hall'},
+          {name:'Rajhlova palata',dist:'30 m',desc:'Odmah pored — jedan od bisera subotičke secesije.',emoji:'🏰',maps:'https://www.google.com/maps/search/?api=1&query=Rajhlova+palata+Subotica'},
+          {name:'Sinagoga',dist:'500 m',desc:'Jedna od najlepših sinagoga u Evropi.',emoji:'✡️',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+Synagogue'},
+          {name:'Ulica Starih zanata',dist:'100 m',desc:'Istorijska ulica sa radnjama starih zanata.',emoji:'🛠️',maps:'https://www.google.com/maps/search/?api=1&query=Ulica+Starih+zanata+Subotica'},
+          {name:'Palić jezero',dist:'8 km',desc:'Popularno izletište — jezero, park, zoo, plaža.',emoji:'🌊',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
+        ]}
+      ]},
+      {i:'🚨',t:'Hitni pozivi',h:EMERGENCY('Policija','Hitna pomoć','Vatrogasci','Domaćin Boris')}
+    ]
+  },
+  en: {
+    wn:'WiFi Network', wp:'Password', cp:'Copy', cd:'Copied!',
+    ft:'Thank you for staying with us!',
+    s:[
+      {i:'🚨',t:'Emergency Numbers',h:EMERGENCY('Police','Ambulance','Fire dept.','Host Boris')},
+      {i:'🏠',t:'House Rules',h:`<ul class="bullet-list"><li>🌙 Quiet hours: <strong>22:00–08:00</strong></li><li>🚭 <strong>No smoking</strong> inside the apartment or building</li><li>🐾 <strong>No pets</strong> allowed</li><li>👥 Maximum capacity: <strong>4 guests</strong></li><li>🧹 Please leave the apartment tidy on departure</li><li>🏢 Respect the peace of other residents</li><li>🔑 Leave keys on the table when departing</li></ul>`},
+      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">by 11:00</div></div></div><div class="guide-tip">🔑 Leave keys on the table before departure. For early check-out, please notify the host the evening before.</div>`},
+      {i:'🅿️',t:'Parking',h:`<ul class="bullet-list"><li>🚗 Paid city parking <strong>in front of the building</strong></li><li>💰 Fees apply on weekdays during the day</li><li>🎉 <strong>Weekends & public holidays — FREE</strong></li><li>📱 App: <strong>Parking Subotica</strong></li><li>ℹ️ Parking tickets also available at nearby kiosks</li></ul>`},
+      {i:'📍',t:'Local Recommendations',h:`<div class="local-group-title">🍽️ Restaurants & Cafés</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Excellent breakfast, lunch and coffee. Right below the building.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 min walk</span><div class="place-desc">Pedestrian zone full of cafés, restaurants and patisseries.</div></div><div class="place-card"><div class="place-name">Pikaso</div><span class="place-dist">200 m</span><div class="place-desc">Restaurant in the center, local cuisine and grill.</div></div><div class="place-card"><div class="place-name">Dóm Café</div><span class="place-dist">300 m</span><div class="place-desc">Modern café, excellent coffee and pastries.</div></div><div class="local-group-title">🏛️ Attractions</div><div class="place-card"><div class="place-name">City Hall</div><span class="place-dist">300 m</span><div class="place-desc">Symbol of Subotica — impressive Art Nouveau building from 1910.</div></div><div class="place-card"><div class="place-name">Rajhl Palace</div><span class="place-dist">30 m</span><div class="place-desc">Right next door — one of Subotica's finest Art Nouveau gems.</div></div><div class="place-card"><div class="place-name">Synagogue</div><span class="place-dist">500 m</span><div class="place-desc">One of the most beautiful synagogues in Europe.</div></div><div class="place-card"><div class="place-name">Street of Old Crafts</div><span class="place-dist">100 m</span><div class="place-desc">Historic street with traditional craft workshops.</div></div><div class="place-card"><div class="place-name">Palić Lake</div><span class="place-dist">8 km</span><div class="place-desc">Popular excursion spot — lake, park, zoo, beach.</div></div>`},
+      {i:'💡',t:'Apartment Guide',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Air conditioning</strong><span>Remote control is on the table in the living room.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Press HOME to access Netflix, YouTube and other apps.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Espresso machine</strong><span>Capsules are in the drawer under the machine.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Underfloor heating</strong><span>Always active during the season — no adjustment needed.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Washing machine</strong><span>Located in the bathroom. Detergent in the cabinet under the sink.</span></div></div>`}
+    ]
+  },
+  de: {
+    wn:'WLAN-Name', wp:'Passwort', cp:'Kopieren', cd:'Kopiert!',
+    ft:'Vielen Dank für Ihren Aufenthalt!',
+    s:[
+      {i:'🚨',t:'Notrufnummern',h:EMERGENCY('Polizei','Notruf / Rettung','Feuerwehr','Gastgeber Boris')},
+      {i:'🏠',t:'Hausordnung',h:`<ul class="bullet-list"><li>🌙 Ruhezeit: <strong>22:00–08:00</strong></li><li>🚭 <strong>Rauchen verboten</strong> in der Wohnung und im Gebäude</li><li>🐾 <strong>Keine Haustiere</strong> erlaubt</li><li>👥 Max. Belegung: <strong>4 Personen</strong></li><li>🧹 Bitte Wohnung ordentlich hinterlassen</li><li>🔑 Schlüssel beim Abreisen auf den Tisch legen</li></ul>`},
+      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">bis 11:00</div></div></div><div class="guide-tip">🔑 Schlüssel vor der Abreise auf den Tisch legen. Frühabreise bitte am Vorabend ankündigen.</div>`},
+      {i:'🅿️',t:'Parkplatz',h:`<ul class="bullet-list"><li>🚗 Kostenpflichtiger Stadtparkplatz <strong>vor dem Gebäude</strong></li><li>💰 Gebührenpflichtig werktags tagsüber</li><li>🎉 <strong>Wochenende & Feiertage — KOSTENLOS</strong></li><li>📱 App: <strong>Parking Subotica</strong></li></ul>`},
+      {i:'📍',t:'Lokale Empfehlungen',h:`<div class="local-group-title">🍽️ Restaurants & Cafés</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Ausgezeichnetes Frühstück, Mittagessen und Kaffee. Direkt unter dem Gebäude.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 Min. Fußweg</span><div class="place-desc">Fußgängerzone mit vielen Cafés und Restaurants.</div></div><div class="place-card"><div class="place-name">Pikaso</div><span class="place-dist">200 m</span><div class="place-desc">Restaurant im Zentrum, lokale Küche und Grill.</div></div><div class="local-group-title">🏛️ Sehenswürdigkeiten</div><div class="place-card"><div class="place-name">Rathaus (Gradska kuća)</div><span class="place-dist">300 m</span><div class="place-desc">Wahrzeichen der Stadt — beeindruckendes Jugendstilgebäude von 1910.</div></div><div class="place-card"><div class="place-name">Rajhl-Palast</div><span class="place-dist">30 m</span><div class="place-desc">Direkt nebenan — Jugendstil-Juwel.</div></div><div class="place-card"><div class="place-name">Synagoge</div><span class="place-dist">500 m</span><div class="place-desc">Eine der schönsten Synagogen Europas.</div></div><div class="place-card"><div class="place-name">Palić-See</div><span class="place-dist">8 km</span><div class="place-desc">Beliebtes Ausflugsziel — See, Park, Zoo, Strand.</div></div>`},
+      {i:'💡',t:'Wohnungsanleitung',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Klimaanlage</strong><span>Fernbedienung liegt auf dem Tisch im Wohnzimmer.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>HOME-Taste drücken für Netflix, YouTube usw.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Espressomaschine</strong><span>Kapseln in der Schublade unter der Maschine.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Fußbodenheizung</strong><span>In der Saison immer aktiv — keine Einstellung nötig.</span></div></div>`}
+    ]
+  },
+  hr: {
+    wn:'Naziv WiFi mreže', wp:'Lozinka', cp:'Kopiraj', cd:'Kopirano!',
+    ft:'Hvala vam što ste bili naši gosti!',
+    s:[
+      {i:'🚨',t:'Hitni pozivi',h:EMERGENCY('Policija','Hitna pomoć','Vatrogasci','Domaćin Boris')},
+      {i:'🏠',t:'Kućni red',h:`<ul class="bullet-list"><li>🌙 Tišina od <strong>22:00 do 08:00</strong></li><li>🚭 Pušenje je <strong>strogo zabranjeno</strong></li><li>🐾 Kućni ljubimci <strong>nisu dozvoljeni</strong></li><li>👥 Maksimalan broj gostiju: <strong>4 osobe</strong></li><li>🧹 Molimo ostavite apartman urednim pri odlasku</li><li>🔑 Ključeve ostavite na stolu pri odlasku</li></ul>`},
+      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">do 11:00</div></div></div><div class="guide-tip">🔑 Ključeve ostavite na stolu prije odlaska.</div>`},
+      {i:'🅿️',t:'Parkiranje',h:`<ul class="bullet-list"><li>🚗 Plaćeni gradski parking <strong>ispred zgrade</strong></li><li>💰 Naplata radnim danima</li><li>🎉 <strong>Vikend i praznici — besplatno</strong></li><li>📱 Aplikacija: <strong>Parking Subotica</strong></li></ul>`},
+      {i:'📍',t:'Lokalne preporuke',h:`<div class="local-group-title">🍽️ Restorani i kafići</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Odličan doručak, ručak i kava. Odmah ispod zgrade.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 min hoda</span><div class="place-desc">Pješačka zona puna kafića i restorana.</div></div><div class="place-card"><div class="place-name">Pikaso</div><span class="place-dist">200 m</span><div class="place-desc">Restoran u centru, domaća kuhinja i roštilj.</div></div><div class="local-group-title">🏛️ Znamenitosti</div><div class="place-card"><div class="place-name">Gradska kuća</div><span class="place-dist">300 m</span><div class="place-desc">Simbol Subotice — secesijska zgrada iz 1910. g.</div></div><div class="place-card"><div class="place-name">Rajhlova palača</div><span class="place-dist">30 m</span><div class="place-desc">Odmah pored — biser subotičke secesije.</div></div><div class="place-card"><div class="place-name">Sinagoga</div><span class="place-dist">500 m</span><div class="place-desc">Jedna od najljepših sinagoga u Europi.</div></div><div class="place-card"><div class="place-name">Palićko jezero</div><span class="place-dist">8 km</span><div class="place-desc">Popularno izletište — jezero, park, zoološki vrt, plaža.</div></div>`},
+      {i:'💡',t:'Upute za apartman',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Klima uređaj</strong><span>Daljinski upravljač na stolu u dnevnoj sobi.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Pritisnite HOME za Netflix, YouTube i ostale aplikacije.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Espresso aparat</strong><span>Kapsule u ladici ispod aparata.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Podno grijanje</strong><span>Uvijek aktivno u sezoni.</span></div></div>`}
+    ]
+  },
+  hu: {
+    wn:'WiFi hálózat neve', wp:'Jelszó', cp:'Másolás', cd:'Másolva!',
+    ft:'Köszönjük, hogy nálunk szállt meg!',
+    s:[
+      {i:'🚨',t:'Segélyhívók',h:EMERGENCY('Rendőrség','Mentő','Tűzoltóság','Gazda Boris')},
+      {i:'🏠',t:'Házirend',h:`<ul class="bullet-list"><li>🌙 Csendes óra: <strong>22:00–08:00</strong></li><li>🚭 <strong>Dohányzás tilos</strong> a lakásban és az épületben</li><li>🐾 <strong>Háziállat nem hozható</strong></li><li>👥 Maximális férőhely: <strong>4 fő</strong></li><li>🧹 Kérjük, hagyja rendben a lakást távozáskor</li><li>🔑 A kulcsokat hagyja az asztalon</li></ul>`},
+      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">11:00-ig</div></div></div><div class="guide-tip">🔑 Kérjük, hagyja a kulcsokat az asztalon távozás előtt.</div>`},
+      {i:'🅿️',t:'Parkolás',h:`<ul class="bullet-list"><li>🚗 Fizetős városi parkoló <strong>az épület előtt</strong></li><li>💰 Hétköznapokon nappal díjköteles</li><li>🎉 <strong>Hétvégén és ünnepnapokon — INGYENES</strong></li><li>📱 Alkalmazás: <strong>Parking Subotica</strong></li></ul>`},
+      {i:'📍',t:'Helyi ajánlatok',h:`<div class="local-group-title">🍽️ Éttermek és kávézók</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Kiváló reggeli, ebéd és kávé. Közvetlenül az épület alatt.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 perc séta</span><div class="place-desc">Gyalogos zóna, tele kávézókkal és éttermekkel.</div></div><div class="place-card"><div class="place-name">Pikaso</div><span class="place-dist">200 m</span><div class="place-desc">Étterem a belvárosban, helyi konyha és grillételek.</div></div><div class="local-group-title">🏛️ Látnivalók</div><div class="place-card"><div class="place-name">Városháza (Gradska kuća)</div><span class="place-dist">300 m</span><div class="place-desc">Szabadka jelképe — lenyűgöző szecessziós épület 1910-ből.</div></div><div class="place-card"><div class="place-name">Rajhl-palota</div><span class="place-dist">30 m</span><div class="place-desc">Közvetlenül mellettünk — a szecesszió gyöngyszeme.</div></div><div class="place-card"><div class="place-name">Zsinagóga</div><span class="place-dist">500 m</span><div class="place-desc">Európa egyik legszebb zsinagógája.</div></div><div class="place-card"><div class="place-name">Palicsi-tó</div><span class="place-dist">8 km</span><div class="place-desc">Népszerű kirándulóhely — tó, park, állatkert, strand.</div></div>`},
+      {i:'💡',t:'Lakás útmutató',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Légkondicionáló</strong><span>A távirányító a nappali asztalán van.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>HOME gomb megnyomásával érheti el a Netflix, YouTube alkalmazásokat.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Presszógép</strong><span>A kapszulák a gép alatti fiókban találhatók.</span></div></div>`}
+    ]
+  },
+  ru: {
+    wn:'Название WiFi', wp:'Пароль', cp:'Копировать', cd:'Скопировано!',
+    ft:'Спасибо, что остановились у нас!',
+    s:[
+      {i:'🚨',t:'Экстренные номера',h:EMERGENCY('Полиция','Скорая помощь','Пожарная','Хозяин Борис')},
+      {i:'🏠',t:'Правила проживания',h:`<ul class="bullet-list"><li>🌙 Тишина с <strong>22:00 до 08:00</strong></li><li>🚭 <strong>Курение запрещено</strong> в квартире и здании</li><li>🐾 <strong>Животные запрещены</strong></li><li>👥 Максимум гостей: <strong>4 человека</strong></li><li>🧹 Пожалуйста, оставьте квартиру в чистоте</li><li>🔑 Ключи оставьте на столе при выезде</li></ul>`},
+      {i:'🕐',t:'Заезд / Выезд',h:`<div class="checkin-row"><div><div class="checkin-label">Заезд (Check-in)</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Выезд (Check-out)</div><div class="checkin-time">до 11:00</div></div></div><div class="guide-tip">🔑 Оставьте ключи на столе перед отъездом.</div>`},
+      {i:'🅿️',t:'Парковка',h:`<ul class="bullet-list"><li>🚗 Платная городская парковка <strong>перед зданием</strong></li><li>💰 Оплата в рабочие дни</li><li>🎉 <strong>Выходные и праздники — БЕСПЛАТНО</strong></li><li>📱 Приложение: <strong>Parking Subotica</strong></li></ul>`},
+      {i:'📍',t:'Местные рекомендации',h:`<div class="local-group-title">🍽️ Рестораны и кафе</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 м</span><div class="place-desc">Отличный завтрак, обед и кофе. Прямо под зданием.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 мин пешком</span><div class="place-desc">Пешеходная зона с множеством кафе и ресторанов.</div></div><div class="place-card"><div class="place-name">Pikaso</div><span class="place-dist">200 м</span><div class="place-desc">Ресторан в центре, местная кухня и гриль.</div></div><div class="local-group-title">🏛️ Достопримечательности</div><div class="place-card"><div class="place-name">Городская ратуша</div><span class="place-dist">300 м</span><div class="place-desc">Символ Суботицы — здание в стиле модерн 1910 года.</div></div><div class="place-card"><div class="place-name">Дворец Райхл</div><span class="place-dist">30 м</span><div class="place-desc">Прямо рядом — жемчужина суботицкого модерна.</div></div><div class="place-card"><div class="place-name">Синагога</div><span class="place-dist">500 м</span><div class="place-desc">Одна из красивейших синагог Европы.</div></div><div class="place-card"><div class="place-name">Озеро Палич</div><span class="place-dist">8 км</span><div class="place-desc">Популярное место отдыха — озеро, парк, зоопарк, пляж.</div></div>`},
+      {i:'💡',t:'Инструкция по квартире',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Кондиционер</strong><span>Пульт находится на столике в гостиной.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Нажмите HOME для доступа к Netflix, YouTube.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Кофемашина</strong><span>Капсулы в ящике под машиной.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Тёплый пол</strong><span>Всегда активен в сезон — настройка не нужна.</span></div></div>`}
+    ]
+  },
+  zh: {
+    wn:'WiFi名称', wp:'密码', cp:'复制', cd:'已复制！',
+    ft:'感谢您的入住，欢迎再次光临！',
+    s:[
+      {i:'🚨',t:'紧急电话',h:EMERGENCY('警察','急救','消防','房东Boris')},
+      {i:'🏠',t:'住宿规则',h:`<ul class="bullet-list"><li>🌙 安静时间：<strong>22:00–08:00</strong></li><li>🚭 公寓及楼内<strong>严禁吸烟</strong></li><li>🐾 <strong>不允许携带宠物</strong></li><li>👥 最多入住：<strong>4人</strong></li><li>🧹 离开时请保持公寓整洁</li><li>🔑 离开时请将钥匙放在桌上</li></ul>`},
+      {i:'🕐',t:'入住 / 退房',h:`<div class="checkin-row"><div><div class="checkin-label">入住 Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">退房 Check-out</div><div class="checkin-time">11:00前</div></div></div><div class="guide-tip">🔑 退房时请将钥匙放在桌子上。</div>`},
+      {i:'🅿️',t:'停车',h:`<ul class="bullet-list"><li>🚗 楼前<strong>收费市政停车场</strong></li><li>💰 工作日白天收费</li><li>🎉 <strong>周末及节假日免费</strong></li><li>📱 应用程序：<strong>Parking Subotica</strong></li></ul>`},
+      {i:'📍',t:'本地推荐',h:`<div class="local-group-title">🍽️ 餐厅和咖啡馆</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 米</span><div class="place-desc">出色的早餐、午餐和咖啡，就在楼下。</div></div><div class="place-card"><div class="place-name">Korzo步行街</div><span class="place-dist">步行2分钟</span><div class="place-desc">步行区，有众多咖啡馆和餐厅。</div></div><div class="local-group-title">🏛️ 景点</div><div class="place-card"><div class="place-name">市政厅 (Gradska kuća)</div><span class="place-dist">300 米</span><div class="place-desc">苏博蒂察的象征 — 1910年建造的壮观新艺术风格建筑。</div></div><div class="place-card"><div class="place-name">犹太教堂</div><span class="place-dist">500 米</span><div class="place-desc">欧洲最美丽的犹太教堂之一。</div></div><div class="place-card"><div class="place-name">帕利奇湖</div><span class="place-dist">8 公里</span><div class="place-desc">热门游览地 — 湖泊、公园、动物园、沙滩。</div></div>`},
+      {i:'💡',t:'公寓指南',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>空调</strong><span>遥控器在客厅桌上。</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>50寸智能电视</strong><span>按HOME键访问Netflix、YouTube等应用。</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>意式咖啡机</strong><span>胶囊在机器下方的抽屉里。</span></div></div>`}
+    ]
+  },
+  bg: {
+    wn:'Название на WiFi', wp:'Парола', cp:'Копирай', cd:'Копирано!',
+    ft:'Благодарим ви, че бяхте наши гости!',
+    s:[
+      {i:'🚨',t:'Спешни номера',h:EMERGENCY('Полиция','Бърза помощ','Пожарна','Домакин Борис')},
+      {i:'🏠',t:'Домашен ред',h:`<ul class="bullet-list"><li>🌙 Тишина от <strong>22:00 до 08:00</strong></li><li>🚭 <strong>Забранено пушене</strong> в апартамента</li><li>🐾 <strong>Домашни животни не се допускат</strong></li><li>👥 Максимален капацитет: <strong>4 гости</strong></li><li>🧹 Моля оставете апартамента чист при заминаване</li><li>🔑 Оставете ключовете на масата при заминаване</li></ul>`},
+      {i:'🕐',t:'Настаняване / Напускане',h:`<div class="checkin-row"><div><div class="checkin-label">Настаняване</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Напускане</div><div class="checkin-time">до 11:00</div></div></div><div class="guide-tip">🔑 Оставете ключовете на масата преди заминаване.</div>`},
+      {i:'🅿️',t:'Паркинг',h:`<ul class="bullet-list"><li>🚗 Платен градски паркинг <strong>пред сградата</strong></li><li>💰 Платен в делнични дни</li><li>🎉 <strong>Уикенд и празници — БЕЗПЛАТНО</strong></li></ul>`},
+      {i:'📍',t:'Местни препоръки',h:`<div class="local-group-title">🍽️ Ресторанти и кафета</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 м</span><div class="place-desc">Отлична закуска, обяд и кафе. Точно под сградата.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 мин пешком</span><div class="place-desc">Пешеходна зона с много кафета и ресторанти.</div></div><div class="local-group-title">🏛️ Забележителности</div><div class="place-card"><div class="place-name">Градска Община</div><span class="place-dist">300 м</span><div class="place-desc">Символ на Суботица — великолепна сграда от 1910 г.</div></div><div class="place-card"><div class="place-name">Синагога</div><span class="place-dist">500 м</span><div class="place-desc">Една от най-красивите синагоги в Европа.</div></div><div class="place-card"><div class="place-name">Езеро Палич</div><span class="place-dist">8 км</span><div class="place-desc">Популярно изletище — езеро, парк, зоопарк.</div></div>`},
+      {i:'💡',t:'Наръчник за апартамента',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Климатик</strong><span>Дистанционното е на масата в хола.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Натиснете HOME за Netflix, YouTube.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Еспресо машина</strong><span>Капсулите са в чекмеджето под машината.</span></div></div>`}
+    ]
+  },
+  pl: {
+    wn:'Nazwa sieci WiFi', wp:'Hasło', cp:'Kopiuj', cd:'Skopiowano!',
+    ft:'Dziękujemy za pobyt! Do zobaczenia!',
+    s:[
+      {i:'🚨',t:'Numery alarmowe',h:EMERGENCY('Policja','Pogotowie','Straż pożarna','Gospodarz Boris')},
+      {i:'🏠',t:'Regulamin',h:`<ul class="bullet-list"><li>🌙 Cisza nocna: <strong>22:00–08:00</strong></li><li>🚭 <strong>Zakaz palenia</strong> w mieszkaniu i budynku</li><li>🐾 <strong>Zakaz wprowadzania zwierząt</strong></li><li>👥 Maksymalna liczba gości: <strong>4 osoby</strong></li><li>🧹 Prosimy zostawić mieszkanie w porządku</li><li>🔑 Klucze zostawić na stole przy wyjeździe</li></ul>`},
+      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">do 11:00</div></div></div><div class="guide-tip">🔑 Klucze zostawić na stole przed wyjazdem.</div>`},
+      {i:'🅿️',t:'Parking',h:`<ul class="bullet-list"><li>🚗 Płatny parking miejski <strong>przed budynkiem</strong></li><li>💰 Opłaty w dni robocze w ciągu dnia</li><li>🎉 <strong>Weekendy i święta — BEZPŁATNIE</strong></li><li>📱 Aplikacja: <strong>Parking Subotica</strong></li></ul>`},
+      {i:'📍',t:'Lokalne rekomendacje',h:`<div class="local-group-title">🍽️ Restauracje i kawiarnie</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Doskonałe śniadania, obiady i kawa. Bezpośrednio pod budynkiem.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 min pieszo</span><div class="place-desc">Strefa piesza pełna kawiarni i restauracji.</div></div><div class="local-group-title">🏛️ Atrakcje</div><div class="place-card"><div class="place-name">Ratusz (Gradska kuća)</div><span class="place-dist">300 m</span><div class="place-desc">Symbol Suboticy — imponujący budynek secesyjny z 1910 r.</div></div><div class="place-card"><div class="place-name">Synagoga</div><span class="place-dist">500 m</span><div class="place-desc">Jedna z najpiękniejszych synagog w Europie.</div></div><div class="place-card"><div class="place-name">Jezioro Palić</div><span class="place-dist">8 km</span><div class="place-desc">Popularne miejsce wypoczynku — jezioro, park, zoo, plaża.</div></div>`},
+      {i:'💡',t:'Przewodnik po apartamencie',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Klimatyzacja</strong><span>Pilot leży na stoliku w salonie.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Naciśnij HOME, aby uzyskać dostęp do Netflix, YouTube.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Ekspres do kawy</strong><span>Kapsułki w szufladzie pod ekspresem.</span></div></div>`}
+    ]
+  },
+  it: {
+    wn:'Nome rete WiFi', wp:'Password', cp:'Copia', cd:'Copiato!',
+    ft:'Grazie per aver soggiornato da noi!',
+    s:[
+      {i:'🚨',t:'Numeri di emergenza',h:EMERGENCY('Polizia','Ambulanza','Vigili del fuoco','Host Boris')},
+      {i:'🏠',t:'Regole della casa',h:`<ul class="bullet-list"><li>🌙 Silenzio dalle <strong>22:00 alle 08:00</strong></li><li>🚭 <strong>Vietato fumare</strong> nell'appartamento e nell'edificio</li><li>🐾 <strong>Animali non ammessi</strong></li><li>👥 Capacità massima: <strong>4 persone</strong></li><li>🧹 Si prega di lasciare l'appartamento in ordine</li><li>🔑 Lasciare le chiavi sul tavolo alla partenza</li></ul>`},
+      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">entro le 11:00</div></div></div><div class="guide-tip">🔑 Lasciare le chiavi sul tavolo prima della partenza.</div>`},
+      {i:'🅿️',t:'Parcheggio',h:`<ul class="bullet-list"><li>🚗 Parcheggio a pagamento <strong>davanti all'edificio</strong></li><li>💰 A pagamento nei giorni feriali</li><li>🎉 <strong>Weekend e festivi — GRATUITO</strong></li><li>📱 App: <strong>Parking Subotica</strong></li></ul>`},
+      {i:'📍',t:'Raccomandazioni locali',h:`<div class="local-group-title">🍽️ Ristoranti e caffè</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Ottima colazione, pranzo e caffè. Direttamente sotto l'edificio.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 min a piedi</span><div class="place-desc">Zona pedonale piena di caffè e ristoranti.</div></div><div class="place-card"><div class="place-name">Pikaso</div><span class="place-dist">200 m</span><div class="place-desc">Ristorante nel centro, cucina locale e grill.</div></div><div class="local-group-title">🏛️ Attrazioni</div><div class="place-card"><div class="place-name">Municipio (Gradska kuća)</div><span class="place-dist">300 m</span><div class="place-desc">Simbolo di Subotica — imponente edificio Art Nouveau del 1910.</div></div><div class="place-card"><div class="place-name">Sinagoga</div><span class="place-dist">500 m</span><div class="place-desc">Una delle sinagoghe più belle d'Europa.</div></div><div class="place-card"><div class="place-name">Lago Palić</div><span class="place-dist">8 km</span><div class="place-desc">Meta turistica — lago, parco, zoo, spiaggia.</div></div>`},
+      {i:'💡',t:'Guida all\'appartamento',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Aria condizionata</strong><span>Il telecomando è sul tavolo del soggiorno.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Premere HOME per Netflix, YouTube e altre app.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Macchina per caffè</strong><span>Le capsule sono nel cassetto sotto la macchina.</span></div></div>`}
+    ]
+  },
+  es: {
+    wn:'Nombre de red WiFi', wp:'Contraseña', cp:'Copiar', cd:'¡Copiado!',
+    ft:'¡Gracias por hospedarse con nosotros!',
+    s:[
+      {i:'🚨',t:'Números de emergencia',h:EMERGENCY('Policía','Ambulancia','Bomberos','Anfitrión Boris')},
+      {i:'🏠',t:'Normas de la casa',h:`<ul class="bullet-list"><li>🌙 Silencio de <strong>22:00 a 08:00</strong></li><li>🚭 <strong>Prohibido fumar</strong> en el apartamento y el edificio</li><li>🐾 <strong>No se admiten mascotas</strong></li><li>👥 Capacidad máxima: <strong>4 personas</strong></li><li>🧹 Por favor deje el apartamento ordenado al salir</li><li>🔑 Deje las llaves sobre la mesa al partir</li></ul>`},
+      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">antes de las 11:00</div></div></div><div class="guide-tip">🔑 Deje las llaves sobre la mesa antes de partir.</div>`},
+      {i:'🅿️',t:'Aparcamiento',h:`<ul class="bullet-list"><li>🚗 Aparcamiento de pago <strong>frente al edificio</strong></li><li>💰 De pago en días laborables</li><li>🎉 <strong>Fines de semana y festivos — GRATUITO</strong></li><li>📱 App: <strong>Parking Subotica</strong></li></ul>`},
+      {i:'📍',t:'Recomendaciones locales',h:`<div class="local-group-title">🍽️ Restaurantes y cafés</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Excelente desayuno, almuerzo y café. Justo debajo del edificio.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 min a pie</span><div class="place-desc">Zona peatonal llena de cafés y restaurantes.</div></div><div class="place-card"><div class="place-name">Pikaso</div><span class="place-dist">200 m</span><div class="place-desc">Restaurante en el centro, cocina local y parrilla.</div></div><div class="local-group-title">🏛️ Atracciones</div><div class="place-card"><div class="place-name">Ayuntamiento (Gradska kuća)</div><span class="place-dist">300 m</span><div class="place-desc">Símbolo de Subotica — magnífico edificio Art Nouveau de 1910.</div></div><div class="place-card"><div class="place-name">Sinagoga</div><span class="place-dist">500 m</span><div class="place-desc">Una de las sinagogas más hermosas de Europa.</div></div><div class="place-card"><div class="place-name">Lago Palić</div><span class="place-dist">8 km</span><div class="place-desc">Destino popular — lago, parque, zoo, playa.</div></div>`},
+      {i:'💡',t:'Guía del apartamento',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Aire acondicionado</strong><span>El mando a distancia está en la mesa del salón.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Presione HOME para Netflix, YouTube y otras apps.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Cafetera espresso</strong><span>Las cápsulas están en el cajón bajo la máquina.</span></div></div>`}
+    ]
+  },
+  mk: {
+    wn:'Назив на WiFi мрежа', wp:'Лозинка', cp:'Копирај', cd:'Копирано!',
+    ft:'Благодариме што бевте наши гости!',
+    s:[
+      {i:'🚨',t:'Итни броеви',h:EMERGENCY('Полиција','Итна помош','Пожарни','Домаќин Борис')},
+      {i:'🏠',t:'Куќен ред',h:`<ul class="bullet-list"><li>🌙 Тишина од <strong>22:00 до 08:00</strong></li><li>🚭 <strong>Забранет е пушењето</strong> во апартманот</li><li>🐾 <strong>Миленичиња не се дозволени</strong></li><li>👥 Максимален капацитет: <strong>4 гости</strong></li><li>🧹 Ве молиме оставете го апартманот уреден</li><li>🔑 Клучевите оставете ги на масата при заминување</li></ul>`},
+      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">до 11:00</div></div></div><div class="guide-tip">🔑 Клучевите оставете ги на масата пред заминување.</div>`},
+      {i:'🅿️',t:'Паркинг',h:`<ul class="bullet-list"><li>🚗 Платен градски паркинг <strong>пред зградата</strong></li><li>💰 Наплата во работните денови</li><li>🎉 <strong>Викенд и празници — БЕСПЛАТНО</strong></li></ul>`},
+      {i:'📍',t:'Локални препораки',h:`<div class="local-group-title">🍽️ Ресторани и кафулиња</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 м</span><div class="place-desc">Одличен појадок, ручек и кафе. Веднаш под зградата.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 мин пешки</span><div class="place-desc">Пешачка зона со многу кафулиња и ресторани.</div></div><div class="local-group-title">🏛️ Знаменитости</div><div class="place-card"><div class="place-name">Градска куќа</div><span class="place-dist">300 м</span><div class="place-desc">Симбол на Суботица — сецесиска зграда од 1910 год.</div></div><div class="place-card"><div class="place-name">Синагога</div><span class="place-dist">500 м</span><div class="place-desc">Една од најубавите синагоги во Европа.</div></div><div class="place-card"><div class="place-name">Езерото Палиќ</div><span class="place-dist">8 км</span><div class="place-desc">Популарна дестинација — езеро, парк, зоолошка.</div></div>`},
+      {i:'💡',t:'Упатство за апартманот',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Клима уред</strong><span>Далечинскиот управувач е на масата во дневната.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Притиснете HOME за Netflix, YouTube.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Еспресо апарат</strong><span>Капсулите се во фиоката под апаратот.</span></div></div>`}
+    ]
+  },
+  sl: {
+    wn:'Ime WiFi omrežja', wp:'Geslo', cp:'Kopiraj', cd:'Kopirano!',
+    ft:'Hvala, ker ste bili naši gostje!',
+    s:[
+      {i:'🚨',t:'Nujni klici',h:EMERGENCY('Policija','Reševalci','Gasilci','Gostitelj Boris')},
+      {i:'🏠',t:'Hišni red',h:`<ul class="bullet-list"><li>🌙 Mir od <strong>22:00 do 08:00</strong></li><li>🚭 <strong>Kajenje je prepovedano</strong> v apartmaju in stavbi</li><li>🐾 <strong>Živali niso dovoljene</strong></li><li>👥 Največja zasedenost: <strong>4 osebe</strong></li><li>🧹 Prosimo, pustite apartma urejen ob odhodu</li><li>🔑 Ključe pustite na mizi ob odhodu</li></ul>`},
+      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Prijava (Check-in)</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Odjava (Check-out)</div><div class="checkin-time">do 11:00</div></div></div><div class="guide-tip">🔑 Ključe pustite na mizi pred odhodom.</div>`},
+      {i:'🅿️',t:'Parkiranje',h:`<ul class="bullet-list"><li>🚗 Plačljivo mestno parkirišče <strong>pred stavbo</strong></li><li>💰 Plačljivo ob delavnikih podnevi</li><li>🎉 <strong>Vikendi in prazniki — BREZPLAČNO</strong></li></ul>`},
+      {i:'📍',t:'Lokalna priporočila',h:`<div class="local-group-title">🍽️ Restavracije in kavarne</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Odličen zajtrk, kosilo in kava. Takoj pod stavbo.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 min hoje</span><div class="place-desc">Pešačna cona s številnimi kavarnami in restavracijami.</div></div><div class="local-group-title">🏛️ Znamenitosti</div><div class="place-card"><div class="place-name">Mestna hiša</div><span class="place-dist">300 m</span><div class="place-desc">Simbol Subotice — veličastna secesijska zgradba iz leta 1910.</div></div><div class="place-card"><div class="place-name">Sinagoga</div><span class="place-dist">500 m</span><div class="place-desc">Ena najlepših sinagog v Evropi.</div></div><div class="place-card"><div class="place-name">Jezero Palić</div><span class="place-dist">8 km</span><div class="place-desc">Priljubljen izletniški kraj — jezero, park, živalski vrt, plaža.</div></div>`},
+      {i:'💡',t:'Navodila za apartma',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Klimatska naprava</strong><span>Daljinec je na mizi v dnevni sobi.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Pritisnite HOME za Netflix, YouTube.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Aparat za espresso</strong><span>Kapsule so v predalu pod aparatom.</span></div></div>`}
+    ]
+  },
+  ro: {
+    wn:'Nume rețea WiFi', wp:'Parolă', cp:'Copiază', cd:'Copiat!',
+    ft:'Vă mulțumim că ați fost oaspeții noștri!',
+    s:[
+      {i:'🚨',t:'Numere de urgență',h:EMERGENCY('Poliție','Ambulanță','Pompieri','Gazdă Boris')},
+      {i:'🏠',t:'Regulament intern',h:`<ul class="bullet-list"><li>🌙 Liniște între <strong>22:00–08:00</strong></li><li>🚭 <strong>Fumatul interzis</strong> în apartament și clădire</li><li>🐾 <strong>Animalele de companie nu sunt permise</strong></li><li>👥 Capacitate maximă: <strong>4 persoane</strong></li><li>🧹 Vă rugăm să lăsați apartamentul curat la plecare</li><li>🔑 Lăsați cheile pe masă la plecare</li></ul>`},
+      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">până la 11:00</div></div></div><div class="guide-tip">🔑 Lăsați cheile pe masă înainte de plecare.</div>`},
+      {i:'🅿️',t:'Parcare',h:`<ul class="bullet-list"><li>🚗 Parcare orășenească cu plată <strong>în fața clădirii</strong></li><li>💰 Cu plată în zilele lucrătoare</li><li>🎉 <strong>Weekend și sărbători — GRATUIT</strong></li></ul>`},
+      {i:'📍',t:'Recomandări locale',h:`<div class="local-group-title">🍽️ Restaurante și cafenele</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Mic dejun excelent, prânz și cafea. Chiar sub clădire.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 min mers</span><div class="place-desc">Zonă pietonală plină de cafenele și restaurante.</div></div><div class="local-group-title">🏛️ Atracții</div><div class="place-card"><div class="place-name">Primăria (Gradska kuća)</div><span class="place-dist">300 m</span><div class="place-desc">Simbolul Suboticăi — impozant edificiu Art Nouveau din 1910.</div></div><div class="place-card"><div class="place-name">Sinagoga</div><span class="place-dist">500 m</span><div class="place-desc">Una dintre cele mai frumoase sinagogi din Europa.</div></div><div class="place-card"><div class="place-name">Lacul Palić</div><span class="place-dist">8 km</span><div class="place-desc">Destinație populară — lac, parc, grădină zoologică, plajă.</div></div>`},
+      {i:'💡',t:'Ghid apartament',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Aer condiționat</strong><span>Telecomanda se află pe masa din sufragerie.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Apăsați HOME pentru Netflix, YouTube.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Espressor</strong><span>Capsulele sunt în sertarul de sub aparat.</span></div></div>`}
+    ]
+  }
+};
+
+let currentLang = 'sr';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('mirakul_lang', lang);
+  const t = T[lang];
+  document.getElementById('wifi-net-lbl').textContent = t.wn;
+  document.getElementById('wifi-pass-lbl').textContent = t.wp;
+  document.getElementById('copy-lbl').textContent = t.cp;
+  document.getElementById('footer-txt').textContent = t.ft;
+  document.getElementById('lang-btn').textContent = FLAGS[lang] + ' ' + CODES[lang];
+  document.getElementById('sections').innerHTML = t.s.map((s,i) => {
+    const inner = s.subs
+      ? s.subs.map(sub =>
+          `<button class="subgroup-btn" onclick="togSub(this)"><span>${sub.t}</span><span class="subgroup-arrow">▼</span></button>` +
+          `<div class="subgroup-panel">` +
+          (sub.cards
+            ? `<div class="swipe-carousel">${sub.cards.map(c =>
+                `<div class="swipe-card"><div class="swipe-card-img">${c.img ? `<img src="${c.img}" alt="${c.name}">` : c.emoji}</div><div class="swipe-card-body"><div class="swipe-card-name">${c.name}</div><div class="swipe-card-dist">${c.dist}</div><div class="swipe-card-desc">${c.desc}</div><a href="${c.maps}" target="_blank" rel="noopener" class="swipe-card-link">📍 Google Maps</a></div></div>`
+              ).join('')}</div>`
+            : `<div class="subgroup-html">${sub.h}</div>`) +
+          `</div>`
+        ).join('')
+      : s.h;
+    return `<div class="acc-item" id="a${i}"><button class="acc-trigger" onclick="tog(${i})"><span class="acc-icon">${s.i}</span><span>${s.t}</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-inner">${inner}</div></div></div>`;
+  }).join('');
+  document.getElementById('lang-screen').style.display = 'none';
+  const g = document.getElementById('guide');
+  g.style.display = 'flex';
+}
+
+function showLangScreen() {
+  document.getElementById('lang-screen').style.display = 'flex';
+  document.getElementById('guide').style.display = 'none';
+}
+
+function tog(i) {
+  const el = document.getElementById('a' + i);
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.acc-item.open').forEach(e => e.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
+function togSub(btn) {
+  const panel = btn.nextElementSibling;
+  const wasOpen = btn.classList.contains('open');
+  btn.closest('.acc-inner').querySelectorAll('.subgroup-btn').forEach(b => b.classList.remove('open'));
+  btn.closest('.acc-inner').querySelectorAll('.subgroup-panel').forEach(p => p.classList.remove('open'));
+  if (!wasOpen) { btn.classList.add('open'); panel.classList.add('open'); }
+}
+
+function copyWifi() {
+  const pw = 'dobrodoali';
+  const lbl = document.getElementById('copy-lbl');
+  const done = () => { lbl.textContent = T[currentLang].cd; setTimeout(() => { lbl.textContent = T[currentLang].cp; }, 2000); };
+  if (navigator.clipboard) { navigator.clipboard.writeText(pw).then(done); }
+  else { const el = document.createElement('textarea'); el.value = pw; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); done(); }
+}
+
+const saved = localStorage.getItem('mirakul_lang');
+if (saved && T[saved]) setLang(saved);
+</script>
+</body>
+</html>

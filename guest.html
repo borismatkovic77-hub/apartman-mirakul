@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#2A1A0C" />
+  <meta name="theme-color" content="#3E2723" />
   <meta name="robots" content="noindex" />
   <title>Apartman Mirakul — Vodič za goste</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -12,14 +12,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #F2F8F2;
+      --bg: #FBF6F1;
       --surface: #ffffff;
-      --primary: #3D7A44;
-      --accent: #5AAF62;
-      --accent-light: #E4F2E4;
-      --border: #C8DEC8;
-      --muted: #7A9A7A;
-      --shadow: 0 2px 12px rgba(30,70,30,0.08);
+      --primary: #3E2723;
+      --accent: #8B5E3C;
+      --accent-light: #F5EBE0;
+      --border: #E2D0BF;
+      --muted: #9A7A6A;
+      --shadow: 0 2px 12px rgba(74,44,26,0.08);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     [hidden] { display: none !important; }
@@ -136,7 +136,7 @@
     .wifi-icon { font-size: 1.1rem; flex-shrink: 0; color: var(--primary); }
     .wifi-info { flex: 1; min-width: 0; }
     .wifi-label { font-size: 0.68rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.2rem; }
-    .wifi-value { font-size: 1.05rem; font-weight: 700; color: #1A3020; }
+    .wifi-value { font-size: 1.05rem; font-weight: 700; color: #2A1A0C; }
     .copy-btn {
       display: flex; align-items: center; gap: 0.4rem;
       background: var(--primary); color: #fff; border: none;
@@ -202,7 +202,7 @@
       border-left: 3px solid var(--primary);
       border-radius: 0 8px 8px 0;
       padding: 0.8rem 1rem; font-size: 0.98rem;
-      color: #1A3020; margin-top: 0.85rem; line-height: 1.6;
+      color: #2A1A0C; margin-top: 0.85rem; line-height: 1.6;
     }
 
     .guide-item { display: flex; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
@@ -305,21 +305,30 @@
     <button class="lang-change-btn" id="lang-btn" onclick="showLangScreen()">🇷🇸 SR</button>
   </div>
   <div class="guide-content">
-    <div class="wifi-card">
-      <div class="wifi-row">
-        <span class="wifi-icon">📶</span>
-        <div class="wifi-info">
-          <div class="wifi-label" id="wifi-net-lbl">WiFi</div>
-          <div class="wifi-value">Apartman Mirakul 5G</div>
+    <div class="acc-item" id="wifi-acc">
+      <button class="acc-trigger" onclick="togWifi()">
+        <span class="acc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></span>
+        <span>WiFi</span>
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner" style="display:flex;flex-direction:column;gap:0.85rem;">
+          <div class="wifi-row">
+            <span class="wifi-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></span>
+            <div class="wifi-info">
+              <div class="wifi-label" id="wifi-net-lbl">Naziv mreže</div>
+              <div class="wifi-value">Apartman Mirakul 5G</div>
+            </div>
+          </div>
+          <div class="wifi-row">
+            <span class="wifi-icon">🔑</span>
+            <div class="wifi-info">
+              <div class="wifi-label" id="wifi-pass-lbl">Lozinka</div>
+              <div class="wifi-value">dobrodoali</div>
+            </div>
+            <button class="copy-btn" onclick="copyWifi()">📋 <span id="copy-lbl">Kopiraj</span></button>
+          </div>
         </div>
-      </div>
-      <div class="wifi-row">
-        <span class="wifi-icon">🔑</span>
-        <div class="wifi-info">
-          <div class="wifi-label" id="wifi-pass-lbl">Lozinka</div>
-          <div class="wifi-value">dobrodosli</div>
-        </div>
-        <button class="copy-btn" onclick="copyWifi()">📋 <span id="copy-lbl">Kopiraj</span></button>
       </div>
     </div>
     <div id="sections"></div>
@@ -401,6 +410,19 @@ const T = {
           {name:'Spomenik Caru Jovanu Nenadu',dist:'400 m',desc:'Monumentalni bronzani triptih iz 1927. posvećen samoproglašenom caru koji je kratko vladao Suboticom 1527. godine.',img:'images/Guests/car-jovan-nenad.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
           {name:'Spomenik Kralju Petru I',dist:'350 m',desc:'Skulptura visoka 4.2 metra vajara Zorana Ivanovića, otkrivena 2021. u čast kralja Oslobodioca Petra I Karađorđevića.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
           {name:'Palić jezero',dist:'8 km',desc:'Najveće prirodno jezero u Srbiji — plaže, park, sportski sadržaji i lekoviti mulj. Idealno za porodični izlet.',img:'images/Guests/palic.webp',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
+        ]},
+        {t:'🎭 Zabava i sport',cards:[
+          {name:'EuroCinema',dist:'200 m',desc:'Moderni bioskop u centru — najnoviji filmski naslovi na velikom platnu.',emoji:'🎬',maps:'https://www.google.com/maps/search/?api=1&query=EuroCinema+Subotica'},
+          {name:'Bioskop Lifka',dist:'150 m',desc:'Legendarna kinodvorana otvorena 1913. — arhitektonski dragulj i kulturna ikona Subotice.',emoji:'🎬',maps:'https://www.google.com/maps/search/?api=1&query=Bioskop+Lifka+Subotica'},
+          {name:'Narodno pozorište',dist:'300 m',desc:'Jedno od najstarijih pozorišta u regionu — bogat repertoar drama, opera i mjuzikla.',emoji:'🎭',maps:'https://www.google.com/maps/search/?api=1&query=Narodno+pozoriste+Subotica'},
+          {name:'Dečije pozorište',dist:'400 m',desc:'Pozorište posvećeno najmlađima — predstave na srpskom i mađarskom jeziku.',emoji:'🎭',maps:'https://www.google.com/maps/search/?api=1&query=Decije+pozoriste+Subotica'},
+          {name:'Bazen Prozivka',dist:'1.5 km',desc:'Gradski otvoreni bazen u Dudovoj šumi — idealan za osveženje tokom letnjih dana.',emoji:'🏊',maps:'https://www.google.com/maps/search/?api=1&query=Bazen+Prozivka+Subotica'},
+          {name:'Aqua park Palić',dist:'8 km',desc:'Vodeni park na obali Palićkog jezera — tobogani, bazeni i zabava za celu porodicu.',emoji:'💦',maps:'https://www.google.com/maps/search/?api=1&query=Aqua+park+Palic+Subotica'},
+          {name:'Tertana',dist:'50 m',desc:'Teretana odmah preko puta zgrade — moderna oprema, cardio i sprave.',emoji:'💪',maps:'https://www.google.com/maps/search/?api=1&query=Tertana+teretana+Subotica'},
+          {name:'Hala sportova Dudova šuma',dist:'2 km',desc:'Višenamenska sportska hala — košarka, odbojka, tenis i ostali sportovi.',emoji:'🏀',maps:'https://www.google.com/maps/search/?api=1&query=Hala+sportova+Dudova+suma+Subotica'},
+          {name:'Stadion FK Spartak',dist:'1.2 km',desc:'Domaći teren FK Spartak — pratite utakmice jednog od najstarijih fudbalskih klubova Srbije.',emoji:'⚽',maps:'https://www.google.com/maps/search/?api=1&query=FK+Spartak+stadion+Subotica'},
+          {name:'Hipodrom',dist:'2.5 km',desc:'Hipodrom kod Buvljaka — konjičke trke i sportske priredbe u autentičnom ambijentu.',emoji:'🐴',maps:'https://www.google.com/maps/search/?api=1&query=Hipodrom+Subotica'},
+          {name:'Klizalište',dist:'1.5 km',desc:'Klizalište na Stadionu malih sportova — otvoreno tokom zimske sezone.',emoji:'⛸️',maps:'https://www.google.com/maps/search/?api=1&query=Klizaliste+stadion+malih+sportova+Subotica'}
         ]}
       ]},
       {i:'🚨',t:'Hitni pozivi',h:EMERGENCY('Policija','Hitna pomoć','Vatrogasci','Domaćin Boris')}
@@ -730,6 +752,10 @@ function togSub(btn) {
   btn.closest('.acc-inner').querySelectorAll('.subgroup-btn').forEach(b => b.classList.remove('open'));
   btn.closest('.acc-inner').querySelectorAll('.subgroup-panel').forEach(p => p.classList.remove('open'));
   if (!wasOpen) { btn.classList.add('open'); panel.classList.add('open'); }
+}
+
+function togWifi() {
+  document.getElementById('wifi-acc').classList.toggle('open');
 }
 
 function copyWifi() {

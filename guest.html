@@ -327,14 +327,14 @@
   <button id="feedback-fab" onclick="openFeedback()" hidden style="position:fixed;bottom:1.5rem;right:1.5rem;width:48px;height:48px;background:var(--primary);color:#fff;border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 16px rgba(42,26,12,0.3);display:flex;align-items:center;justify-content:center;z-index:100;transition:transform 0.2s;">💬</button>
   <div id="feedback-modal" hidden style="position:fixed;inset:0;background:rgba(42,26,12,0.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;">
     <div style="background:var(--surface);border-radius:20px 20px 0 0;padding:1.75rem 1.5rem 2.5rem;width:100%;max-width:640px;box-shadow:0 -4px 24px rgba(42,26,12,0.15);">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;"><div style="font-size:1rem;font-weight:700;color:var(--primary);">Predlog za unapređenje</div><button onclick="closeFeedback()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted);padding:0;line-height:1;">✕</button></div>
-      <div style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;line-height:1.55;">Nedostaje vam neka informacija u vodiču? Napišite nam da dodamo.</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;"><div id="fb-title" style="font-size:1rem;font-weight:700;color:var(--primary);">Predlog za unapređenje</div><button onclick="closeFeedback()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted);padding:0;line-height:1;">✕</button></div>
+      <div id="fb-desc" style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;line-height:1.55;">Nedostaje vam neka informacija u vodiču? Napišite nam da dodamo.</div>
       <form id="feedback-form" action="https://formspree.io/f/xaqvrzva" method="POST">
         <input type="hidden" name="_subject" value="Feedback — Mirakul vodič za goste">
-        <textarea name="message" rows="4" required style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.85rem 1rem;font-family:inherit;font-size:0.92rem;color:var(--primary);background:var(--bg);resize:none;outline:none;" placeholder="Vaš predlog ili komentar..."></textarea>
-        <button type="submit" style="margin-top:0.65rem;width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:0.85rem;font-family:inherit;font-size:0.95rem;font-weight:700;cursor:pointer;">Pošalji</button>
+        <textarea id="fb-textarea" name="message" rows="4" required style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.85rem 1rem;font-family:inherit;font-size:0.92rem;color:var(--primary);background:var(--bg);resize:none;outline:none;" placeholder="Vaš predlog ili komentar..."></textarea>
+        <button id="fb-btn" type="submit" style="margin-top:0.65rem;width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:0.85rem;font-family:inherit;font-size:0.95rem;font-weight:700;cursor:pointer;">Pošalji</button>
       </form>
-      <div id="feedback-success" hidden style="text-align:center;padding:0.75rem 0 0;color:var(--accent);font-weight:700;">✓ Hvala! Vaša poruka je primljena.</div>
+      <div id="feedback-success" hidden style="text-align:center;padding:0.75rem 0 0;color:var(--accent);font-weight:700;"></div>
     </div>
   </div>
   <div class="guide-footer">
@@ -348,6 +348,23 @@ const FLAGS = {sr:'🇷🇸',hr:'🇭🇷',hu:'🇭🇺',en:'🇬🇧',de:'🇩�
 const CODES = {sr:'SR',hr:'HR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO'};
 
 const EMERGENCY = (p,a,f,h) => `<ul class="item-list"><li><span class="item-label">🚔 ${p}</span><a href="tel:192">192</a></li><li><span class="item-label">🚑 ${a}</span><a href="tel:194">194</a></li><li><span class="item-label">🚒 ${f}</span><a href="tel:193">193</a></li><li><span class="item-label">📞 ${h}</span><a href="tel:+381631168024">+381 63 116 8024</a></li></ul>`;
+
+const FB = {
+  sr:{title:'Predlog za unapređenje',desc:'Nedostaje vam neka informacija u vodiču? Napišite nam da dodamo.',ph:'Vaš predlog ili komentar...',btn:'Pošalji',ok:'✓ Hvala! Vaša poruka je primljena.'},
+  en:{title:'Suggestions',desc:'Is something missing from the guide? Let us know and we\'ll add it.',ph:'Your suggestion or comment...',btn:'Send',ok:'✓ Thank you! Your message has been received.'},
+  de:{title:'Verbesserungsvorschläge',desc:'Fehlt etwas im Reiseführer? Schreiben Sie uns und wir ergänzen es.',ph:'Ihr Vorschlag oder Kommentar...',btn:'Senden',ok:'✓ Danke! Ihre Nachricht wurde empfangen.'},
+  it:{title:'Suggerimenti',desc:'Manca qualcosa nella guida? Fatemelo sapere e lo aggiungeremo.',ph:'Il tuo suggerimento o commento...',btn:'Invia',ok:'✓ Grazie! Il tuo messaggio è stato ricevuto.'},
+  ru:{title:'Предложения',desc:'Не хватает информации в путеводителе? Напишите нам, и мы добавим.',ph:'Ваше предложение или комментарий...',btn:'Отправить',ok:'✓ Спасибо! Ваше сообщение получено.'},
+  hr:{title:'Prijedlozi za poboljšanje',desc:'Nedostaje li vam neka informacija u vodiču? Napišite nam da dodamo.',ph:'Vaš prijedlog ili komentar...',btn:'Pošalji',ok:'✓ Hvala! Vaša poruka je primljena.'},
+  hu:{title:'Javaslatok',desc:'Hiányzik valami az útmutatóból? Írjon nekünk, és hozzáadjuk.',ph:'Javaslata vagy megjegyzése...',btn:'Küldés',ok:'✓ Köszönöm! Üzenete megérkezett.'},
+  zh:{title:'建议',desc:'指南中缺少什么信息？请告诉我们，我们会添加。',ph:'您的建议或评论...',btn:'发送',ok:'✓ 谢谢！您的消息已收到。'},
+  bg:{title:'Предложения',desc:'Липсва ли нещо в наръчника? Пишете ни и ще добавим.',ph:'Вашето предложение или коментар...',btn:'Изпрати',ok:'✓ Благодарим! Вашето съобщение е получено.'},
+  pl:{title:'Sugestie',desc:'Brakuje czegoś w przewodniku? Napisz do nas, a dodamy.',ph:'Twoja sugestia lub komentarz...',btn:'Wyślij',ok:'✓ Dziękujemy! Twoja wiadomość została odebrana.'},
+  es:{title:'Sugerencias',desc:'¿Falta algo en la guía? Escríbanos y lo añadiremos.',ph:'Su sugerencia o comentario...',btn:'Enviar',ok:'✓ ¡Gracias! Su mensaje ha sido recibido.'},
+  mk:{title:'Предлози',desc:'Недостасува нешто во водичот? Напишете ни да додадеме.',ph:'Вашиот предлог или коментар...',btn:'Испрати',ok:'✓ Благодариме! Вашата порака е примена.'},
+  sl:{title:'Predlogi',desc:'Manjka kaj v vodniku? Pišite nam in dodali bomo.',ph:'Vaš predlog ali komentar...',btn:'Pošlji',ok:'✓ Hvala! Vaše sporočilo je prejeto.'},
+  ro:{title:'Sugestii',desc:'Lipsește ceva din ghid? Scrieți-ne și vom adăuga.',ph:'Sugestia sau comentariul dumneavoastră...',btn:'Trimite',ok:'✓ Mulțumim! Mesajul dvs. a fost primit.'}
+};
 
 const T = {
   sr: {
@@ -685,6 +702,12 @@ function setLang(lang) {
   const g = document.getElementById('guide');
   g.style.display = 'flex';
   document.getElementById('feedback-fab').removeAttribute('hidden');
+  const fb = FB[lang] || FB.sr;
+  document.getElementById('fb-title').textContent = fb.title;
+  document.getElementById('fb-desc').textContent = fb.desc;
+  document.getElementById('fb-textarea').placeholder = fb.ph;
+  document.getElementById('fb-btn').textContent = fb.btn;
+  document.getElementById('feedback-success').textContent = fb.ok;
 }
 
 function showLangScreen() {

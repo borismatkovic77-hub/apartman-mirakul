@@ -12,18 +12,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #F8F4EE;
+      --bg: #F2F8F2;
       --surface: #ffffff;
-      --primary: #2A1A0C;
-      --accent: #C49A4A;
-      --border: #E2D8CC;
-      --muted: #7A6A5A;
-      --green: #1a7a45;
-      --green-bg: #edf7f1;
-      --green-border: #b7ddc8;
+      --primary: #3D7A44;
+      --accent: #5AAF62;
+      --accent-light: #E4F2E4;
+      --border: #C8DEC8;
+      --muted: #7A9A7A;
+      --shadow: 0 2px 12px rgba(30,70,30,0.08);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); }
+    [hidden] { display: none !important; }
+    html { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); font-size: 16px; line-height: 1.5; }
     body { min-height: 100vh; }
     a { color: inherit; }
 
@@ -33,52 +33,53 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2.5rem 1.25rem 3rem;
+      padding: 3rem 1.5rem 3rem;
     }
     .lang-brand {
-      font-size: 1.6rem;
+      font-size: 1.9rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       color: var(--primary);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.25rem;
     }
     .lang-subtitle {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--muted);
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       text-align: center;
     }
     .lang-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
+      gap: 0.75rem;
       width: 100%;
-      max-width: 360px;
+      max-width: 420px;
     }
     .lang-btn {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.85rem 1rem;
+      gap: 0.75rem;
+      padding: 1rem 1.1rem;
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      font-size: 0.92rem;
-      font-weight: 500;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.97rem;
+      font-weight: 600;
       color: var(--primary);
       cursor: pointer;
       font-family: inherit;
-      transition: background 0.15s, border-color 0.15s;
+      transition: all 0.15s;
+      box-shadow: var(--shadow);
     }
-    .lang-btn:hover, .lang-btn:active { background: #F5EDE1; border-color: var(--accent); }
-    .lang-flag { font-size: 1.25rem; }
+    .lang-btn:hover, .lang-btn:active { background: var(--accent-light); border-color: var(--primary); }
+    .lang-flag { font-size: 1.4rem; }
 
     /* ── GUIDE ── */
     #guide {
       display: none;
       flex-direction: column;
       min-height: 100vh;
-      max-width: 520px;
+      max-width: 640px;
       margin: 0 auto;
     }
     #guide.visible { display: flex; }
@@ -92,139 +93,182 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.9rem 1.25rem;
+      padding: 1rem 1.5rem;
     }
-    .guide-header-name { font-size: 1rem; font-weight: 700; }
+    .guide-header-name { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
     .lang-change-btn {
       display: flex;
       align-items: center;
       gap: 0.35rem;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
       color: #fff;
       border-radius: 999px;
-      padding: 0.35rem 0.75rem;
-      font-size: 0.8rem;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
       font-family: inherit;
       transition: background 0.15s;
     }
-    .lang-change-btn:hover { background: rgba(255,255,255,0.25); }
+    .lang-change-btn:hover { background: rgba(255,255,255,0.22); }
 
     .guide-content {
-      padding: 1.1rem;
+      padding: 1.25rem 1.25rem 2rem;
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
+      gap: 0.75rem;
       flex: 1;
     }
 
-    /* WiFi */
+    /* ── WiFi — light card ── */
     .wifi-card {
-      background: var(--green-bg);
-      border: 1px solid var(--green-border);
-      border-radius: 18px;
-      padding: 1.1rem 1.25rem;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 1.4rem 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 1rem;
+      box-shadow: var(--shadow);
     }
-    .wifi-row { display: flex; align-items: center; gap: 0.75rem; }
-    .wifi-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .wifi-row { display: flex; align-items: center; gap: 0.9rem; }
+    .wifi-icon { font-size: 1.1rem; flex-shrink: 0; color: var(--primary); }
     .wifi-info { flex: 1; min-width: 0; }
-    .wifi-label { font-size: 0.72rem; color: var(--green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
-    .wifi-value { font-size: 1rem; font-weight: 700; color: var(--primary); }
+    .wifi-label { font-size: 0.68rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.2rem; }
+    .wifi-value { font-size: 1.05rem; font-weight: 700; color: #1A3020; }
     .copy-btn {
       display: flex; align-items: center; gap: 0.4rem;
-      background: var(--green); color: #fff; border: none;
-      border-radius: 10px; padding: 0.5rem 0.9rem;
-      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      background: var(--primary); color: #fff; border: none;
+      border-radius: 8px; padding: 0.55rem 1rem;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer;
       flex-shrink: 0; font-family: inherit; transition: opacity 0.2s;
       white-space: nowrap;
     }
     .copy-btn:active { opacity: 0.75; }
 
-    /* Accordion */
+    /* ── Accordion ── */
     .acc-item {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
       overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s;
     }
+    .acc-item.open { border-color: var(--primary); }
     .acc-trigger {
       width: 100%; display: flex; align-items: center; gap: 0.75rem;
-      padding: 1rem 1.1rem; background: none; border: none;
-      font-family: inherit; font-size: 0.98rem; font-weight: 600;
+      padding: 1.15rem 1.25rem; background: none; border: none;
+      font-family: inherit; font-size: 1.02rem; font-weight: 700;
       color: var(--primary); cursor: pointer; text-align: left;
+      letter-spacing: -0.01em;
     }
-    .acc-icon { font-size: 1.2rem; flex-shrink: 0; }
-    .acc-arrow { margin-left: auto; font-size: 0.75rem; color: var(--muted); transition: transform 0.25s ease; flex-shrink: 0; }
-    .acc-item.open .acc-arrow { transform: rotate(180deg); }
-    .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-    .acc-item.open .acc-body { max-height: 1400px; }
-    .acc-inner { padding: 0.85rem 1.1rem 1.1rem; border-top: 1px solid var(--border); }
-
-    /* Content inside accordion */
-    .item-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-    .item-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.93rem; }
-    .item-label { color: var(--muted); font-size: 0.82rem; min-width: 110px; flex-shrink: 0; }
-    .item-list a { color: var(--primary); font-weight: 700; text-decoration: none; font-size: 1.05rem; }
-
-    .bullet-list { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
-    .bullet-list li { font-size: 0.93rem; line-height: 1.55; color: var(--primary); padding-left: 0; }
-
-    .place-card { padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
-    .place-card:last-child { border-bottom: none; padding-bottom: 0; }
-    .place-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem; }
-    .place-dist {
-      display: inline-flex; align-items: center;
-      font-size: 0.72rem; font-weight: 600; color: var(--accent);
-      background: #F5EDE1; border-radius: 999px; padding: 0.1rem 0.5rem;
-      margin-bottom: 0.2rem;
+    .acc-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: var(--accent-light); border-radius: 8px; font-size: 1rem;
     }
-    .place-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
+    .acc-arrow {
+      margin-left: auto;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg); border-radius: 50%;
+      font-size: 0.65rem; color: var(--muted);
+      transition: transform 0.25s ease, background 0.2s;
+      flex-shrink: 0;
+    }
+    .acc-item.open .acc-arrow { transform: rotate(180deg); background: var(--accent-light); color: var(--primary); }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .acc-item.open .acc-body { max-height: 5000px; }
+    .acc-inner { padding: 1rem 1.25rem 1.35rem; border-top: 1.5px solid var(--border); }
 
-    .checkin-row { display: flex; align-items: center; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+    /* ── Content inside accordion ── */
+    .item-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .item-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 1rem; }
+    .item-label { color: var(--muted); font-size: 0.85rem; min-width: 120px; flex-shrink: 0; font-weight: 500; }
+    .item-list a { color: var(--primary); font-weight: 800; text-decoration: none; font-size: 1.15rem; }
+
+    .bullet-list { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .bullet-list li { font-size: 1.03rem; line-height: 1.65; color: var(--primary); }
+
+    .checkin-row { display: flex; align-items: center; gap: 1.25rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
     .checkin-row:last-of-type { border-bottom: none; }
-    .checkin-time { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; }
-    .checkin-label { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.1rem; }
+    .checkin-time { font-size: 2rem; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; }
+    .checkin-label { font-size: 0.72rem; color: var(--muted); margin-bottom: 0.15rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
 
     .guide-tip {
-      background: #F5EDE1; border-radius: 10px;
-      padding: 0.65rem 0.9rem; font-size: 0.84rem;
-      color: var(--primary); margin-top: 0.65rem; line-height: 1.55;
+      background: var(--accent-light);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1rem; font-size: 0.98rem;
+      color: #1A3020; margin-top: 0.85rem; line-height: 1.6;
     }
 
-    .guide-item { display: flex; gap: 0.75rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .guide-item { display: flex; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
     .guide-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .guide-item-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .guide-item-text strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; }
-    .guide-item-text span { font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
-    .local-group-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 0.9rem 0 0.4rem; border-top: 1px solid var(--border); }
-    .local-group-title:first-child { border-top: none; padding-top: 0; }
-    .subgroup-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1rem; background: #F0EAE0; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 0.5rem; cursor: pointer; font-size: 0.92rem; font-weight: 600; color: var(--primary); text-align: left; transition: background 0.15s; }
-    .subgroup-btn.open { background: #E6DDD0; }
-    .subgroup-arrow { font-size: 0.7rem; transition: transform 0.25s; flex-shrink: 0; color: var(--muted); }
-    .subgroup-btn.open .subgroup-arrow { transform: rotate(180deg); }
-    .subgroup-panel { display: none; margin-bottom: 0.5rem; }
-    .subgroup-panel.open { display: block; }
-    .subgroup-html { padding: 0.1rem 0 0.25rem; }
-    .swipe-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-radius: 12px; margin-bottom: 0.25rem; }
-    .swipe-carousel::-webkit-scrollbar { display: none; }
-    .swipe-card { flex: 0 0 100%; scroll-snap-align: start; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
-    .swipe-card-img { width: 100%; height: 210px; background: linear-gradient(135deg, #e8ddd0, #d4c4b0); display: flex; align-items: center; justify-content: center; font-size: 4rem; overflow: hidden; }
-    .swipe-card-img img { width: 100%; height: 100%; object-fit: cover; }
-    .swipe-card-body { padding: 1.25rem 1.25rem 1.5rem; }
-    .swipe-card-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .swipe-card-dist { font-size: 0.78rem; color: var(--accent); font-weight: 700; margin-bottom: 0.65rem; text-transform: uppercase; letter-spacing: 0.04em; }
-    .swipe-card-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.1rem; }
-    .swipe-card-link { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--primary); color: #fff; padding: 0.6rem 1.1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+    .guide-item-icon {
+      font-size: 1.1rem; flex-shrink: 0;
+      width: 38px; height: 38px;
+      background: var(--accent-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .guide-item-text strong { display: block; font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .guide-item-text span { font-size: 0.96rem; color: var(--muted); line-height: 1.55; }
 
-    /* Footer */
-    .guide-footer { text-align: center; padding: 2rem 1.25rem 2.5rem; }
-    .guide-footer .heart { color: var(--accent); font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
-    .guide-footer span { font-size: 1rem; color: var(--muted); }
+    .local-group-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); padding: 1rem 0 0.5rem; border-top: 1px solid var(--border); }
+    .local-group-title:first-child { border-top: none; padding-top: 0; }
+
+    /* ── Subgroup buttons — elegant ── */
+    .subgroup-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 1.15rem;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 0.6rem;
+      cursor: pointer; font-size: 0.97rem; font-weight: 600;
+      color: var(--primary); text-align: left;
+      transition: all 0.15s;
+      letter-spacing: -0.01em;
+    }
+    .subgroup-btn:hover { border-color: var(--primary); background: var(--accent-light); }
+    .subgroup-btn.open { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .subgroup-arrow { font-size: 0.65rem; transition: transform 0.25s; flex-shrink: 0; opacity: 0.45; }
+    .subgroup-btn.open .subgroup-arrow { transform: rotate(180deg); opacity: 0.8; }
+    .subgroup-panel { display: none; margin-bottom: 0.75rem; }
+    .subgroup-panel.open { display: block; }
+    .subgroup-html { padding: 0.25rem 0; }
+
+    /* ── Swipe cards — premium ── */
+    .swipe-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-radius: 14px; }
+    .swipe-carousel::-webkit-scrollbar { display: none; }
+    .swipe-card { flex: 0 0 100%; scroll-snap-align: start; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border); background: var(--surface); }
+    .swipe-card-img { width: 100%; height: 250px; background: linear-gradient(135deg, #e8ddd0, #d4c4b0); display: flex; align-items: center; justify-content: center; font-size: 5rem; overflow: hidden; }
+    .swipe-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .swipe-card-body { padding: 1.4rem 1.5rem 1.75rem; }
+    .swipe-card-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+    .swipe-card-dist {
+      display: inline-flex; align-items: center;
+      font-size: 0.72rem; color: var(--accent); font-weight: 700;
+      margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em;
+      background: var(--accent-light); border-radius: 999px; padding: 0.2rem 0.7rem;
+    }
+    .swipe-card-desc { font-size: 1.01rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.35rem; }
+    .swipe-card-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1.5px solid var(--primary); color: var(--primary);
+      padding: 0.65rem 1.3rem; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 700; text-decoration: none;
+      transition: all 0.15s;
+    }
+    .swipe-card-link:hover { background: var(--primary); color: #fff; }
+
+    /* ── Footer ── */
+    .guide-footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--border); margin-top: 0.5rem; }
+    .guide-footer .heart { color: var(--accent); font-size: 1.3rem; display: block; margin-bottom: 0.65rem; }
+    .guide-footer span { font-size: 1rem; color: var(--muted); line-height: 1.6; }
   </style>
 </head>
 <body>
@@ -273,12 +317,25 @@
         <span class="wifi-icon">🔑</span>
         <div class="wifi-info">
           <div class="wifi-label" id="wifi-pass-lbl">Lozinka</div>
-          <div class="wifi-value">dobrodoali</div>
+          <div class="wifi-value">dobrodosli</div>
         </div>
         <button class="copy-btn" onclick="copyWifi()">📋 <span id="copy-lbl">Kopiraj</span></button>
       </div>
     </div>
     <div id="sections"></div>
+  </div>
+  <button id="feedback-fab" onclick="openFeedback()" hidden style="position:fixed;bottom:1.5rem;right:1.5rem;width:48px;height:48px;background:var(--primary);color:#fff;border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 16px rgba(42,26,12,0.3);display:flex;align-items:center;justify-content:center;z-index:100;transition:transform 0.2s;">💬</button>
+  <div id="feedback-modal" hidden style="position:fixed;inset:0;background:rgba(42,26,12,0.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;">
+    <div style="background:var(--surface);border-radius:20px 20px 0 0;padding:1.75rem 1.5rem 2.5rem;width:100%;max-width:640px;box-shadow:0 -4px 24px rgba(42,26,12,0.15);">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;"><div style="font-size:1rem;font-weight:700;color:var(--primary);">Predlog za unapređenje</div><button onclick="closeFeedback()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted);padding:0;line-height:1;">✕</button></div>
+      <div style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;line-height:1.55;">Nedostaje vam neka informacija u vodiču? Napišite nam.</div>
+      <form id="feedback-form" action="https://formspree.io/f/xaqvrzva" method="POST">
+        <input type="hidden" name="_subject" value="Feedback — Mirakul vodič za goste">
+        <textarea name="message" rows="4" required style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.85rem 1rem;font-family:inherit;font-size:0.92rem;color:var(--primary);background:var(--bg);resize:none;outline:none;" placeholder="Vaš predlog ili komentar..."></textarea>
+        <button type="submit" style="margin-top:0.65rem;width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:0.85rem;font-family:inherit;font-size:0.95rem;font-weight:700;cursor:pointer;">Pošalji</button>
+      </form>
+      <div id="feedback-success" hidden style="text-align:center;padding:0.75rem 0 0;color:var(--accent);font-weight:700;">✓ Hvala! Vaša poruka je primljena.</div>
+    </div>
   </div>
   <div class="guide-footer">
     <span class="heart">♥</span>
@@ -298,30 +355,35 @@ const T = {
     ft:'Drago nam je što ste izabrali Apartman Mirakul. Ugodan boravak!',
     s:[
       {i:'💡',t:'Uputstva za apartman',subs:[
-        {t:'🏠 Kućni red',h:`<ul class="bullet-list"><li>🌙 Tišina od <strong>22:00 do 08:00</strong></li><li>🚭 Pušenje je <strong>strogo zabranjeno</strong> u apartmanu i zgradi</li><li>🐾 Kućni ljubimci <strong>nisu dozvoljeni</strong></li><li>👥 Maksimalan broj gostiju: <strong>4 osobe</strong></li><li>🧹 Molimo ostavite apartman urednim pri odlasku</li><li>🏢 Poštujte mir stanara zgrade</li></ul>`},
-        {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">do 11:00</div></div></div><div class="guide-tip">🔑 Ključeve ostavite u poštansko sanduče pored ulaznih vrata. Ukoliko planirate rani odlazak, obavestite domaćina veče pre.</div>`},
+        {t:'🏠 Kućni red',h:`<ul class="bullet-list"><li>🌙 Tišina od <strong>22:00 do 08:00</strong></li><li>🚭 Pušenje je <strong>strogo zabranjeno</strong> u apartmanu i zgradi</li><li>🐾 Kućni ljubimci <strong>nisu dozvoljeni</strong></li><li>👥 Maksimalan broj gostiju: <strong>4 osobe</strong></li><li>🏢 Poštujte mir stanara zgrade</li><li>🚪 Kapija zgrade se zaključava posle <strong>22:00</strong> — ključ za kapiju ste dobili uz ključ od apartmana.</li><li>🧹 Molimo ostavite apartman urednim pri odlasku</li></ul>`},
+        {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">do 11:00</div></div></div><div class="guide-tip">🔑 Prilikom check out-a ključeve ostavite u poštansko sanduče pored ulaznih vrata. Obavestite domaćina o planiranom vremenu check out-a iz apartmana</div>`},
+        {t:'ℹ️ Dobro je znati',h:`<div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Topla voda</strong><span>Bojler je stalno upaljen — topla voda je dostupna odmah.</span></div></div><div class="guide-item"><span class="guide-item-icon">🚿</span><div class="guide-item-text"><strong>Ručni tuš</strong><span>Da bi voda tekla na ručni tuš, slavinu u kupatilu okrenite ka sebi — suprotno od uobičajenog smera otvaranja.</span></div></div><div class="guide-item"><span class="guide-item-icon">🪟</span><div class="guide-item-text"><strong>Zamračivanje</strong><span>Pored tamnih zavesa u svim sobama se nalaze drvene žaluzine za potpuno zamračivanje prostora.</span></div></div><div class="guide-item"><span class="guide-item-icon">🔐</span><div class="guide-item-text"><strong>Zaključavanje vrata</strong><span>Da biste zaključali ulazna vrata, povucite kvaku prema gore pa tek onda okrenite ključ.</span></div></div>`},
         {t:'⚙️ Aparati',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Klima uređaj</strong><span>Daljinski upravljač se nalazi na stolu u dnevnoj sobi.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Pritisnite HOME za pristup Netflix, YouTube i ostalim aplikacijama.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Podno grejanje</strong><span>Uvek aktivno u sezoni — nema potrebe za podešavanjem.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Veš mašina</strong><span>Nalazi se u kupatilu. Deterdžent u ormaru ispod sudopere.</span></div></div>`},
-        {t:'ℹ️ Dobro je znati',h:`<ul class="bullet-list"><li>🚗 Plaćeni gradski parking <strong>ispred zgrade</strong></li><li>💰 Naplata radnim danima tokom dana</li><li>🎉 <strong>Vikend i praznici — besplatno</strong></li><li>📱 Aplikacija: <strong>Parking Subotica</strong></li></ul>`}
+        {t:'🅿️ Parking',h:`<div style="display:inline-flex;align-items:center;gap:0.5rem;background:#fff1f0;border:1.5px solid #e74c3c;border-radius:8px;padding:0.4rem 0.85rem;margin-bottom:1rem;"><span style="color:#e74c3c;font-size:0.9rem;">●</span><span style="font-weight:700;font-size:0.9rem;color:#c0392b;">Crvena zona (1) — ispred zgrade</span></div><div class="checkin-row"><div><div class="checkin-label">Radnim danima</div><div class="checkin-time">07:00 – 21:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Subotom</div><div class="checkin-time">07:00 – 14:00</div></div></div><div class="checkin-row" style="border-bottom:none;"><div><div class="checkin-label">Nedeljom i praznicima</div><div style="font-size:1.55rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em;">Besplatno</div></div></div><div style="margin-top:1.1rem;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:0.6rem;">Plaćanje SMS-om</div><div style="display:flex;flex-direction:column;gap:0.5rem;"><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Po satu</div><div style="font-size:1.1rem;font-weight:800;">9241</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">70 din</div></div><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Dnevna karta</div><div style="font-size:1.1rem;font-weight:800;">9245</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">480 din</div></div></div></div><div class="guide-tip" style="margin-top:0.85rem;">💡 Posle 21:00 možete unapred platiti parking za sutradan — pošaljite SMS i ujutro ste mirni.</div>`}
       ]},
       {i:'📍',t:'Lokalne preporuke',subs:[
         {t:'🍽️ Restorani i kafići',cards:[
-          {name:'Boss Caffe',dist:'50 m',desc:'Odličan doručak, ručak i kafa. Odmah ispod zgrade.',emoji:'☕',maps:'https://www.google.com/maps/search/?api=1&query=Boss+Caffe+Subotica'},
-          {name:'Korzo',dist:'2 min hoda',desc:'Pešačka zona puna kafića, restorana i slastičarnica.',emoji:'🚶',maps:'https://www.google.com/maps/search/?api=1&query=Korzo+Subotica'},
-          {name:'Stara picerija',dist:'100 m',desc:'Tradicionalna picerija u centru grada.',emoji:'🍕',maps:'https://www.google.com/maps/search/?api=1&query=Stara+picerija+Subotica'},
-          {name:'Renesansa',dist:'150 m',desc:'Restoran sa bogatom ponudom domaće kuhinje.',emoji:'🍽️',maps:'https://www.google.com/maps/search/?api=1&query=Renesansa+restoran+Subotica'},
-          {name:'Fabrika',dist:'30 m',desc:'Popularan kafić i restoran u centru.',emoji:'🏭',maps:'https://www.google.com/maps/search/?api=1&query=Fabrika+Subotica'},
-          {name:'Basch House 1887',dist:'800 m',desc:'Istorijska zgrada, kafić i lounge u srcu centra.',emoji:'🏛️',maps:'https://www.google.com/maps/search/?api=1&query=Basch+House+Cara+Lazara+Subotica'},
-          {name:'Bates',dist:'300 m',desc:'Kafić u centru, omiljeno okupljalište.',emoji:'☕',maps:'https://www.google.com/maps/search/?api=1&query=Bates+Subotica'},
-          {name:'Kafe Priča',dist:'200 m',desc:'Prijatan kafić za jutarnju kafu i razgovor.',emoji:'☕',maps:'https://www.google.com/maps/search/?api=1&query=Kafe+Prica+Subotica'},
-          {name:'Music Cafe',dist:'500 m',desc:'Muzički kafić sa živom atmosferom.',emoji:'🎵',maps:'https://www.google.com/maps/search/?api=1&query=Music+Cafe+Subotica'},
-          {name:'Momento',dist:'500 m',desc:'Kafić i restoran u centru grada.',emoji:'🕐',maps:'https://www.google.com/maps/search/?api=1&query=Momento+Subotica'}
+          {name:'Boss Caffe',dist:'50 m',desc:'Moderno zdanje Boss caffe restorana jedan od zaštitnih znakova Subotice, gde rado svraćaju gosti svih generacija.',img:'images/Guests/boss.webp',maps:'https://www.google.com/maps/search/?api=1&query=Boss+Caffe+Subotica'},
+          {name:'Stara picerija',dist:'100 m',desc:'Najstarija picerija u Republici Srbiji osnovana 1977. godine.',img:'images/Guests/stara-picerija.webp',maps:'https://www.google.com/maps/search/?api=1&query=Stara+picerija+Subotica'},
+          {name:'Renaissance',dist:'150 m',desc:'Moderan restoran sa bogatom ponudom Italijanske i domaće kuhinje.',img:'images/Guests/Renaissance.webp',maps:'https://www.google.com/maps/search/?api=1&query=Renesansa+restoran+Subotica'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Burgeri su prava gastronomska kreacija u kojoj koriste vrhunske komade mesa, briocha, najfinije sireve i ručno mućene umake.',img:'images/Guests/fabrika.webp',maps:'https://www.google.com/maps/search/?api=1&query=Fabrika+Subotica'},
+          {name:'Basch House 1887',dist:'800 m',desc:'Mesto gde se tradicija i inovacija susreću — vrhunska kuhinja, autentična pića i nezaboravna atmosfera. Posebno preporučujemo bogatu selekciju craft piva.',img:'images/Guests/basch-house.webp',maps:'https://www.google.com/maps/search/?api=1&query=Basch+House+Cara+Lazara+Subotica'},
+          {name:'Bates',dist:'300 m',desc:'Kafana Bates jedan od retkih koja čuva uspomene na tamburaše i domaću lokalnu kuhinju.',img:'images/Guests/bates.webp',maps:'https://www.google.com/maps/search/?api=1&query=Bates+Subotica'},
+          {name:'Kafe Priča',dist:'200 m',desc:'Zastanite, odvojite malo vremena za sebe i svoje prijatelje i uživajte u momentima razgovora u ovom prelepom lokalu.',img:'images/Guests/kafe-prica.webp',maps:'https://www.google.com/maps/search/?api=1&query=Kafe+Prica+Subotica'},
+          {name:'Mali trg',dist:'400 m',desc:'Simpatičan restoran fine dining koncepta smešten u srcu subotičkog centra — savršeno mesto za posebne trenutke uz odličnu hranu i toplu atmosferu.',img:'images/Guests/mali-trg.webp',maps:'https://www.google.com/maps/search/?api=1&query=Mali+trg+Subotica'},
+          {name:'Vinarija Zvonko Bogdan',dist:'10 km',desc:'Vinarija na obali Palića u stilu secesije — degustacija vina uz stručnog vodiča i pogled na uređene vinograde. Preporučuje se rezervacija.',img:'images/Guests/vinarija-zvonko-bogdan.webp',maps:'https://www.google.com/maps/search/?api=1&query=Vinarija+Zvonko+Bogdan+Subotica'},
+          {name:'Salaš Zvonko Bogdan',dist:'15 km',desc:'Autentični vojvođanski salaš na obali jezera Ludaš — domaća supa, jela ispod peke i štrudle uz mir i spokoj daleko od gradske buke.',img:'images/Guests/salas-zvonko-bogdan.webp',maps:'https://www.google.com/maps/search/?api=1&query=Salas+Zvonko+Bogdan+Subotica'}
         ]},
         {t:'🏛️ Znamenitosti',cards:[
-          {name:'Gradska kuća',dist:'300 m',desc:'Simbol Subotice — impozantna secesijska zgrada iz 1910.',emoji:'🏛️',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+City+Hall'},
-          {name:'Rajhlova palata',dist:'30 m',desc:'Odmah pored — jedan od bisera subotičke secesije.',emoji:'🏰',maps:'https://www.google.com/maps/search/?api=1&query=Rajhlova+palata+Subotica'},
-          {name:'Sinagoga',dist:'500 m',desc:'Jedna od najlepših sinagoga u Evropi.',emoji:'✡️',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+Synagogue'},
-          {name:'Ulica Starih zanata',dist:'100 m',desc:'Istorijska ulica sa radnjama starih zanata.',emoji:'🛠️',maps:'https://www.google.com/maps/search/?api=1&query=Ulica+Starih+zanata+Subotica'},
-          {name:'Palić jezero',dist:'8 km',desc:'Popularno izletište — jezero, park, zoo, plaža.',emoji:'🌊',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
+          {name:'Gradska kuća',dist:'300 m',desc:'Simbol Subotice — impozantna secesijska zgrada iz 1910. i remek-delo subotičke secesije.',img:'images/Guests/gradska-kuca.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+City+Hall'},
+          {name:'Rajhlova palata',dist:'30 m',desc:'Odmah pored apartmana — jedan od najlepših bisera subotičke secesijske arhitekture.',img:'images/Guests/rajhlova-palata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Rajhlova+palata+Subotica'},
+          {name:'Gradski muzej',dist:'600 m',desc:'Osnovan 1892. u raskošnoj secesijskoj palati braće Vago — čuva arheološke, istorijske i etnološke zbirke grada.',img:'images/Guests/gradski-muzej.webp',maps:'https://www.google.com/maps/search/?api=1&query=Gradski+muzej+Subotica'},
+          {name:'Muzej porcelana',dist:'150 m',desc:'Jedinstveni muzej u Srbiji sa više od 2000 eksponata starih do 200 godina — od bečkog i ruskog do jugoslovenskog porcelana.',img:'images/Guests/muzej-porcelana.webp',maps:'https://www.google.com/maps/search/?api=1&query=Muzej+porcelana+Subotica'},
+          {name:'Sinagoga',dist:'500 m',desc:'Jedna od najlepših sinagoga u Evropi, izgrađena 1902. u secesijskom stilu — pravo arhitektonsko čudo.',img:'images/Guests/sinagoga.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+Synagogue'},
+          {name:'Ulica Starih zanata',dist:'100 m',desc:'Otvorena 2025. — šarmantni prolaz koji oživljava duh nekadašnje Subotice sa izlozima krojača, časovničara i skulpturom Zvonka Bogdana.',img:'images/Guests/ulica-starih-zanata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Ulica+Starih+zanata+Subotica'},
+          {name:'Spomenik Caru Jovanu Nenadu',dist:'400 m',desc:'Monumentalni bronzani triptih iz 1927. posvećen samoproglašenom caru koji je kratko vladao Suboticom 1527. godine.',img:'images/Guests/car-jovan-nenad.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
+          {name:'Spomenik Kralju Petru I',dist:'350 m',desc:'Skulptura visoka 4.2 metra vajara Zorana Ivanovića, otkrivena 2021. u čast kralja Oslobodioca Petra I Karađorđevića.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Palić jezero',dist:'8 km',desc:'Najveće prirodno jezero u Srbiji — plaže, park, sportski sadržaji i lekoviti mulj. Idealno za porodični izlet.',img:'images/Guests/palic.webp',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
         ]}
       ]},
       {i:'🚨',t:'Hitni pozivi',h:EMERGENCY('Policija','Hitna pomoć','Vatrogasci','Domaćin Boris')}
@@ -329,14 +391,41 @@ const T = {
   },
   en: {
     wn:'WiFi Network', wp:'Password', cp:'Copy', cd:'Copied!',
-    ft:'Thank you for staying with us!',
+    ft:'We\'re glad you chose Apartman Mirakul. Enjoy your stay!',
     s:[
-      {i:'🚨',t:'Emergency Numbers',h:EMERGENCY('Police','Ambulance','Fire dept.','Host Boris')},
-      {i:'🏠',t:'House Rules',h:`<ul class="bullet-list"><li>🌙 Quiet hours: <strong>22:00–08:00</strong></li><li>🚭 <strong>No smoking</strong> inside the apartment or building</li><li>🐾 <strong>No pets</strong> allowed</li><li>👥 Maximum capacity: <strong>4 guests</strong></li><li>🧹 Please leave the apartment tidy on departure</li><li>🏢 Respect the peace of other residents</li><li>🔑 Leave keys on the table when departing</li></ul>`},
-      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">by 11:00</div></div></div><div class="guide-tip">🔑 Leave keys on the table before departure. For early check-out, please notify the host the evening before.</div>`},
-      {i:'🅿️',t:'Parking',h:`<ul class="bullet-list"><li>🚗 Paid city parking <strong>in front of the building</strong></li><li>💰 Fees apply on weekdays during the day</li><li>🎉 <strong>Weekends & public holidays — FREE</strong></li><li>📱 App: <strong>Parking Subotica</strong></li><li>ℹ️ Parking tickets also available at nearby kiosks</li></ul>`},
-      {i:'📍',t:'Local Recommendations',h:`<div class="local-group-title">🍽️ Restaurants & Cafés</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Excellent breakfast, lunch and coffee. Right below the building.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 min walk</span><div class="place-desc">Pedestrian zone full of cafés, restaurants and patisseries.</div></div><div class="place-card"><div class="place-name">Pikaso</div><span class="place-dist">200 m</span><div class="place-desc">Restaurant in the center, local cuisine and grill.</div></div><div class="place-card"><div class="place-name">Dóm Café</div><span class="place-dist">300 m</span><div class="place-desc">Modern café, excellent coffee and pastries.</div></div><div class="local-group-title">🏛️ Attractions</div><div class="place-card"><div class="place-name">City Hall</div><span class="place-dist">300 m</span><div class="place-desc">Symbol of Subotica — impressive Art Nouveau building from 1910.</div></div><div class="place-card"><div class="place-name">Rajhl Palace</div><span class="place-dist">30 m</span><div class="place-desc">Right next door — one of Subotica's finest Art Nouveau gems.</div></div><div class="place-card"><div class="place-name">Synagogue</div><span class="place-dist">500 m</span><div class="place-desc">One of the most beautiful synagogues in Europe.</div></div><div class="place-card"><div class="place-name">Street of Old Crafts</div><span class="place-dist">100 m</span><div class="place-desc">Historic street with traditional craft workshops.</div></div><div class="place-card"><div class="place-name">Palić Lake</div><span class="place-dist">8 km</span><div class="place-desc">Popular excursion spot — lake, park, zoo, beach.</div></div>`},
-      {i:'💡',t:'Apartment Guide',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Air conditioning</strong><span>Remote control is on the table in the living room.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Press HOME to access Netflix, YouTube and other apps.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Espresso machine</strong><span>Capsules are in the drawer under the machine.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Underfloor heating</strong><span>Always active during the season — no adjustment needed.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Washing machine</strong><span>Located in the bathroom. Detergent in the cabinet under the sink.</span></div></div>`}
+      {i:'💡',t:'Apartment Guide',subs:[
+        {t:'🏠 House Rules',h:`<ul class="bullet-list"><li>🌙 Quiet hours: <strong>22:00–08:00</strong></li><li>🚭 <strong>No smoking</strong> inside the apartment or building</li><li>🐾 <strong>No pets</strong> allowed</li><li>👥 Maximum capacity: <strong>4 guests</strong></li><li>🏢 Please respect the other residents of the building</li><li>🚪 The building gate locks after <strong>22:00</strong> — the gate key is included with your apartment key</li><li>🧹 Please leave the apartment tidy on departure</li></ul>`},
+        {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">by 11:00</div></div></div><div class="guide-tip">🔑 On check-out, leave the keys in the mailbox next to the entrance door. Please let the host know your estimated departure time.</div>`},
+        {t:'ℹ️ Good to know',h:`<div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Hot water</strong><span>The boiler is always on — hot water is available immediately.</span></div></div><div class="guide-item"><span class="guide-item-icon">🚿</span><div class="guide-item-text"><strong>Hand shower</strong><span>To direct water to the hand shower, turn the faucet towards you — opposite to the usual direction.</span></div></div><div class="guide-item"><span class="guide-item-icon">🪟</span><div class="guide-item-text"><strong>Blackout blinds</strong><span>Wooden blinds are available in all rooms for complete blackout.</span></div></div><div class="guide-item"><span class="guide-item-icon">🔐</span><div class="guide-item-text"><strong>Door lock</strong><span>To lock the front door, pull the handle up first, then turn the key.</span></div></div>`},
+        {t:'⚙️ Appliances',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Air conditioning</strong><span>Remote control is on the table in the living room.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Press HOME to access Netflix, YouTube and other apps.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Underfloor heating</strong><span>Always active during the season — no adjustment needed.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Washing machine</strong><span>Located in the bathroom. Detergent in the cabinet under the sink.</span></div></div>`},
+        {t:'🅿️ Parking',h:`<div style="display:inline-flex;align-items:center;gap:0.5rem;background:#fff1f0;border:1.5px solid #e74c3c;border-radius:8px;padding:0.4rem 0.85rem;margin-bottom:1rem;"><span style="color:#e74c3c;font-size:0.9rem;">●</span><span style="font-weight:700;font-size:0.9rem;color:#c0392b;">Red zone (1) — in front of the building</span></div><div class="checkin-row"><div><div class="checkin-label">Weekdays</div><div class="checkin-time">07:00 – 21:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Saturday</div><div class="checkin-time">07:00 – 14:00</div></div></div><div class="checkin-row" style="border-bottom:none;"><div><div class="checkin-label">Sunday & holidays</div><div style="font-size:1.55rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em;">Free</div></div></div><div style="margin-top:1.1rem;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:0.6rem;">Pay by SMS</div><div style="display:flex;flex-direction:column;gap:0.5rem;"><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Hourly</div><div style="font-size:1.1rem;font-weight:800;">9241</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">70 RSD</div></div><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Day pass</div><div style="font-size:1.1rem;font-weight:800;">9245</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">480 RSD</div></div></div></div><div class="guide-tip" style="margin-top:0.85rem;">💡 After 21:00 you can pre-pay parking for the next day — send SMS to <strong>9245</strong> and your morning is sorted.</div>`}
+      ]},
+      {i:'📍',t:'Local Recommendations',subs:[
+        {t:'🍽️ Restaurants & Cafés',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'A modern landmark of Subotica, loved by guests of all generations — great for breakfast, coffee and lunch.',img:'images/Guests/boss.webp',maps:'https://www.google.com/maps/search/?api=1&query=Boss+Caffe+Subotica'},
+          {name:'Stara picerija',dist:'100 m',desc:'The oldest pizzeria in Serbia, founded in 1977.',img:'images/Guests/stara-picerija.webp',maps:'https://www.google.com/maps/search/?api=1&query=Stara+picerija+Subotica'},
+          {name:'Renaissance',dist:'150 m',desc:'Modern restaurant with a rich selection of Italian and local cuisine.',img:'images/Guests/Renaissance.webp',maps:'https://www.google.com/maps/search/?api=1&query=Renesansa+restoran+Subotica'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Premium burgers with top-quality meat, brioche buns, fine cheeses and house-made sauces.',img:'images/Guests/fabrika.webp',maps:'https://www.google.com/maps/search/?api=1&query=Fabrika+Subotica'},
+          {name:'Basch House 1887',dist:'800 m',desc:'Where tradition meets innovation — excellent food, authentic drinks and a great craft beer selection.',img:'images/Guests/basch-house.webp',maps:'https://www.google.com/maps/search/?api=1&query=Basch+House+Cara+Lazara+Subotica'},
+          {name:'Bates',dist:'300 m',desc:'A traditional kafana preserving the spirit of tamburica music and homestyle local cooking.',img:'images/Guests/bates.webp',maps:'https://www.google.com/maps/search/?api=1&query=Bates+Subotica'},
+          {name:'Kafe Priča',dist:'200 m',desc:'Pause, take time for yourself and your friends — conversations flow easily in this lovely café.',img:'images/Guests/kafe-prica.webp',maps:'https://www.google.com/maps/search/?api=1&query=Kafe+Prica+Subotica'},
+          {name:'Mali trg',dist:'400 m',desc:'A charming fine dining restaurant in the heart of the city — perfect for special moments.',img:'images/Guests/mali-trg.webp',maps:'https://www.google.com/maps/search/?api=1&query=Mali+trg+Subotica'},
+          {name:'Vinarija Zvonko Bogdan',dist:'10 km',desc:'Art Nouveau winery on the shores of Palić — guided wine tasting with views over the vineyards. Reservation recommended.',img:'images/Guests/vinarija-zvonko-bogdan.webp',maps:'https://www.google.com/maps/search/?api=1&query=Vinarija+Zvonko+Bogdan+Subotica'},
+          {name:'Salaš Zvonko Bogdan',dist:'15 km',desc:'Authentic Vojvodina farmstead on Lake Ludaš — homemade soup, slow-cooked dishes and strudel in rural tranquility.',img:'images/Guests/salas-zvonko-bogdan.webp',maps:'https://www.google.com/maps/search/?api=1&query=Salas+Zvonko+Bogdan+Subotica'}
+        ]},
+        {t:'🏛️ Attractions',cards:[
+          {name:'City Hall',dist:'300 m',desc:'Symbol of Subotica — an imposing Art Nouveau building from 1910, a masterpiece of local architecture.',img:'images/Guests/gradska-kuca.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+City+Hall'},
+          {name:'Rajhl Palace',dist:'30 m',desc:'Right next to the apartment — one of the finest gems of Subotica\'s Art Nouveau heritage.',img:'images/Guests/rajhlova-palata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Rajhlova+palata+Subotica'},
+          {name:'City Museum',dist:'600 m',desc:'Founded in 1892 in a lavish Art Nouveau palace — housing archaeological, historical and ethnological collections.',img:'images/Guests/gradski-muzej.webp',maps:'https://www.google.com/maps/search/?api=1&query=Gradski+muzej+Subotica'},
+          {name:'Porcelain Museum',dist:'150 m',desc:'Unique museum in Serbia with over 2,000 exhibits up to 200 years old — from Vienna and Russian to Yugoslav porcelain.',img:'images/Guests/muzej-porcelana.webp',maps:'https://www.google.com/maps/search/?api=1&query=Muzej+porcelana+Subotica'},
+          {name:'Synagogue',dist:'500 m',desc:'One of the most beautiful synagogues in Europe, built in 1902 in Art Nouveau style — a true architectural wonder.',img:'images/Guests/sinagoga.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+Synagogue'},
+          {name:'Street of Old Crafts',dist:'100 m',desc:'Opened in 2025 — a charming passage reviving the spirit of old Subotica with tailors, watchmakers and a Zvonko Bogdan sculpture.',img:'images/Guests/ulica-starih-zanata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Ulica+Starih+zanata+Subotica'},
+          {name:'Monument to Tsar Jovan Nenad',dist:'400 m',desc:'A monumental bronze triptych from 1927, dedicated to the self-proclaimed tsar who briefly ruled Subotica in 1527.',img:'images/Guests/car-jovan-nenad.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
+          {name:'Monument to King Petar I',dist:'350 m',desc:'A 4.2-metre sculpture by Zoran Ivanović, unveiled in 2021 in honour of King Petar I Karađorđević.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Palić Lake',dist:'8 km',desc:'The largest natural lake in Serbia — beaches, park, sports facilities and therapeutic mud. Perfect for a family day out.',img:'images/Guests/palic.webp',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
+        ]}
+      ]},
+      {i:'🚨',t:'Emergency Numbers',h:EMERGENCY('Police','Ambulance','Fire dept.','Host Boris')}
     ]
   },
   de: {
@@ -425,14 +514,41 @@ const T = {
   },
   it: {
     wn:'Nome rete WiFi', wp:'Password', cp:'Copia', cd:'Copiato!',
-    ft:'Grazie per aver soggiornato da noi!',
+    ft:'Siamo felici che abbiate scelto Apartman Mirakul. Buon soggiorno!',
     s:[
-      {i:'🚨',t:'Numeri di emergenza',h:EMERGENCY('Polizia','Ambulanza','Vigili del fuoco','Host Boris')},
-      {i:'🏠',t:'Regole della casa',h:`<ul class="bullet-list"><li>🌙 Silenzio dalle <strong>22:00 alle 08:00</strong></li><li>🚭 <strong>Vietato fumare</strong> nell'appartamento e nell'edificio</li><li>🐾 <strong>Animali non ammessi</strong></li><li>👥 Capacità massima: <strong>4 persone</strong></li><li>🧹 Si prega di lasciare l'appartamento in ordine</li><li>🔑 Lasciare le chiavi sul tavolo alla partenza</li></ul>`},
-      {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">entro le 11:00</div></div></div><div class="guide-tip">🔑 Lasciare le chiavi sul tavolo prima della partenza.</div>`},
-      {i:'🅿️',t:'Parcheggio',h:`<ul class="bullet-list"><li>🚗 Parcheggio a pagamento <strong>davanti all'edificio</strong></li><li>💰 A pagamento nei giorni feriali</li><li>🎉 <strong>Weekend e festivi — GRATUITO</strong></li><li>📱 App: <strong>Parking Subotica</strong></li></ul>`},
-      {i:'📍',t:'Raccomandazioni locali',h:`<div class="local-group-title">🍽️ Ristoranti e caffè</div><div class="place-card"><div class="place-name">Boss Caffe</div><span class="place-dist">50 m</span><div class="place-desc">Ottima colazione, pranzo e caffè. Direttamente sotto l'edificio.</div></div><div class="place-card"><div class="place-name">Korzo</div><span class="place-dist">2 min a piedi</span><div class="place-desc">Zona pedonale piena di caffè e ristoranti.</div></div><div class="place-card"><div class="place-name">Pikaso</div><span class="place-dist">200 m</span><div class="place-desc">Ristorante nel centro, cucina locale e grill.</div></div><div class="local-group-title">🏛️ Attrazioni</div><div class="place-card"><div class="place-name">Municipio (Gradska kuća)</div><span class="place-dist">300 m</span><div class="place-desc">Simbolo di Subotica — imponente edificio Art Nouveau del 1910.</div></div><div class="place-card"><div class="place-name">Sinagoga</div><span class="place-dist">500 m</span><div class="place-desc">Una delle sinagoghe più belle d'Europa.</div></div><div class="place-card"><div class="place-name">Lago Palić</div><span class="place-dist">8 km</span><div class="place-desc">Meta turistica — lago, parco, zoo, spiaggia.</div></div>`},
-      {i:'💡',t:'Guida all\'appartamento',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Aria condizionata</strong><span>Il telecomando è sul tavolo del soggiorno.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Premere HOME per Netflix, YouTube e altre app.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Macchina per caffè</strong><span>Le capsule sono nel cassetto sotto la macchina.</span></div></div>`}
+      {i:'💡',t:'Guida all\'appartamento',subs:[
+        {t:'🏠 Regole della casa',h:`<ul class="bullet-list"><li>🌙 Silenzio dalle <strong>22:00 alle 08:00</strong></li><li>🚭 <strong>Vietato fumare</strong> nell'appartamento e nell'edificio</li><li>🐾 <strong>Animali non ammessi</strong></li><li>👥 Capacità massima: <strong>4 persone</strong></li><li>🏢 Si prega di rispettare gli altri residenti dell'edificio</li><li>🚪 Il cancello dell'edificio si chiude dopo le <strong>22:00</strong> — la chiave del cancello è inclusa con quella dell'appartamento</li><li>🧹 Si prega di lasciare l'appartamento in ordine alla partenza</li></ul>`},
+        {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">entro le 11:00</div></div></div><div class="guide-tip">🔑 Al momento del check-out, lasciare le chiavi nella cassetta delle lettere accanto alla porta d'ingresso. Si prega di comunicare all'host l'orario previsto di partenza.</div>`},
+        {t:'ℹ️ Utile sapere',h:`<div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Acqua calda</strong><span>Il boiler è sempre acceso — l'acqua calda è disponibile immediatamente.</span></div></div><div class="guide-item"><span class="guide-item-icon">🚿</span><div class="guide-item-text"><strong>Doccia a mano</strong><span>Per dirigere l'acqua verso la doccia a mano, ruotare il rubinetto verso di sé — in direzione opposta al solito.</span></div></div><div class="guide-item"><span class="guide-item-icon">🪟</span><div class="guide-item-text"><strong>Veneziane oscuranti</strong><span>Veneziane in legno in tutte le stanze per un oscuramento completo.</span></div></div><div class="guide-item"><span class="guide-item-icon">🔐</span><div class="guide-item-text"><strong>Serratura della porta</strong><span>Per chiudere la porta d'ingresso, sollevare prima la maniglia, poi girare la chiave.</span></div></div>`},
+        {t:'⚙️ Elettrodomestici',h:`<div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Aria condizionata</strong><span>Il telecomando è sul tavolo del soggiorno.</span></div></div><div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Smart TV 50"</strong><span>Premere HOME per accedere a Netflix, YouTube e altre app.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Riscaldamento a pavimento</strong><span>Sempre attivo durante la stagione — nessuna regolazione necessaria.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Lavatrice</strong><span>Si trova in bagno. Detersivo nell'armadietto sotto il lavandino.</span></div></div>`},
+        {t:'🅿️ Parcheggio',h:`<div style="display:inline-flex;align-items:center;gap:0.5rem;background:#fff1f0;border:1.5px solid #e74c3c;border-radius:8px;padding:0.4rem 0.85rem;margin-bottom:1rem;"><span style="color:#e74c3c;font-size:0.9rem;">●</span><span style="font-weight:700;font-size:0.9rem;color:#c0392b;">Zona rossa (1) — davanti all'edificio</span></div><div class="checkin-row"><div><div class="checkin-label">Giorni feriali</div><div class="checkin-time">07:00 – 21:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Sabato</div><div class="checkin-time">07:00 – 14:00</div></div></div><div class="checkin-row" style="border-bottom:none;"><div><div class="checkin-label">Domenica e festivi</div><div style="font-size:1.55rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em;">Gratuito</div></div></div><div style="margin-top:1.1rem;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:0.6rem;">Pagamento tramite SMS</div><div style="display:flex;flex-direction:column;gap:0.5rem;"><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">All'ora</div><div style="font-size:1.1rem;font-weight:800;">9241</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">70 RSD</div></div><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Giornaliero</div><div style="font-size:1.1rem;font-weight:800;">9245</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">480 RSD</div></div></div></div><div class="guide-tip" style="margin-top:0.85rem;">💡 Dopo le 21:00 è possibile pagare in anticipo il parcheggio per il giorno successivo — inviare un SMS al <strong>9245</strong> e la mattina è tranquilla.</div>`}
+      ]},
+      {i:'📍',t:'Raccomandazioni locali',subs:[
+        {t:'🍽️ Ristoranti e caffè',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Un punto di riferimento moderno di Subotica, amato da ospiti di tutte le generazioni — ottimo per colazione, caffè e pranzo.',img:'images/Guests/boss.webp',maps:'https://www.google.com/maps/search/?api=1&query=Boss+Caffe+Subotica'},
+          {name:'Stara picerija',dist:'100 m',desc:'La pizzeria più antica della Serbia, fondata nel 1977.',img:'images/Guests/stara-picerija.webp',maps:'https://www.google.com/maps/search/?api=1&query=Stara+picerija+Subotica'},
+          {name:'Renaissance',dist:'150 m',desc:'Ristorante moderno con ampia scelta di cucina italiana e locale.',img:'images/Guests/Renaissance.webp',maps:'https://www.google.com/maps/search/?api=1&query=Renesansa+restoran+Subotica'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Burger premium con carne di qualità, panini brioche, formaggi raffinati e salse artigianali.',img:'images/Guests/fabrika.webp',maps:'https://www.google.com/maps/search/?api=1&query=Fabrika+Subotica'},
+          {name:'Basch House 1887',dist:'800 m',desc:'Dove la tradizione incontra l\'innovazione — ottimo cibo, bevande autentiche e una grande selezione di birre artigianali.',img:'images/Guests/basch-house.webp',maps:'https://www.google.com/maps/search/?api=1&query=Basch+House+Cara+Lazara+Subotica'},
+          {name:'Bates',dist:'300 m',desc:'Una kafana tradizionale che preserva lo spirito della musica tambura e la cucina casalinga locale.',img:'images/Guests/bates.webp',maps:'https://www.google.com/maps/search/?api=1&query=Bates+Subotica'},
+          {name:'Kafe Priča',dist:'200 m',desc:'Prenditi una pausa, goditi il tempo per te e i tuoi amici — le conversazioni scorrono facilmente in questo delizioso caffè.',img:'images/Guests/kafe-prica.webp',maps:'https://www.google.com/maps/search/?api=1&query=Kafe+Prica+Subotica'},
+          {name:'Mali trg',dist:'400 m',desc:'Un elegante ristorante fine dining nel cuore della città — perfetto per momenti speciali.',img:'images/Guests/mali-trg.webp',maps:'https://www.google.com/maps/search/?api=1&query=Mali+trg+Subotica'},
+          {name:'Vinarija Zvonko Bogdan',dist:'10 km',desc:'Cantina Art Nouveau sulle rive del Palić — degustazione guidata di vini con vista sui vigneti. Prenotazione consigliata.',img:'images/Guests/vinarija-zvonko-bogdan.webp',maps:'https://www.google.com/maps/search/?api=1&query=Vinarija+Zvonko+Bogdan+Subotica'},
+          {name:'Salaš Zvonko Bogdan',dist:'15 km',desc:'Autentica fattoria della Vojvodina sul lago Ludaš — zuppa casalinga, piatti a cottura lenta e strudel nella tranquillità rurale.',img:'images/Guests/salas-zvonko-bogdan.webp',maps:'https://www.google.com/maps/search/?api=1&query=Salas+Zvonko+Bogdan+Subotica'}
+        ]},
+        {t:'🏛️ Attrazioni',cards:[
+          {name:'Municipio',dist:'300 m',desc:'Simbolo di Subotica — imponente edificio Art Nouveau del 1910, capolavoro dell\'architettura locale.',img:'images/Guests/gradska-kuca.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+City+Hall'},
+          {name:'Palazzo Rajhl',dist:'30 m',desc:'Proprio accanto all\'appartamento — uno dei gioielli più pregiati del patrimonio Art Nouveau di Subotica.',img:'images/Guests/rajhlova-palata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Rajhlova+palata+Subotica'},
+          {name:'Museo della Città',dist:'600 m',desc:'Fondato nel 1892 in un sontuoso palazzo Art Nouveau — collezioni archeologiche, storiche ed etnologiche.',img:'images/Guests/gradski-muzej.webp',maps:'https://www.google.com/maps/search/?api=1&query=Gradski+muzej+Subotica'},
+          {name:'Museo della Porcellana',dist:'150 m',desc:'Museo unico in Serbia con oltre 2.000 pezzi fino a 200 anni fa — dalla porcellana viennese e russa a quella jugoslava.',img:'images/Guests/muzej-porcelana.webp',maps:'https://www.google.com/maps/search/?api=1&query=Muzej+porcelana+Subotica'},
+          {name:'Sinagoga',dist:'500 m',desc:'Una delle sinagoghe più belle d\'Europa, costruita nel 1902 in stile Art Nouveau — una vera meraviglia architettonica.',img:'images/Guests/sinagoga.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+Synagogue'},
+          {name:'Via dei Vecchi Mestieri',dist:'100 m',desc:'Aperta nel 2025 — un incantevole passaggio che rievoca lo spirito della vecchia Subotica con sarti, orologiai e una scultura di Zvonko Bogdan.',img:'images/Guests/ulica-starih-zanata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Ulica+Starih+zanata+Subotica'},
+          {name:'Monumento allo Zar Jovan Nenad',dist:'400 m',desc:'Un monumentale trittico in bronzo del 1927, dedicato allo zar autoproclamato che governò brevemente Subotica nel 1527.',img:'images/Guests/car-jovan-nenad.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
+          {name:'Monumento al Re Petar I',dist:'350 m',desc:'Una scultura di 4,2 metri di Zoran Ivanović, inaugurata nel 2021 in onore del Re Petar I Karađorđević.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Lago di Palić',dist:'8 km',desc:'Il lago naturale più grande della Serbia — spiagge, parco, strutture sportive e fango terapeutico. Ideale per una gita in famiglia.',img:'images/Guests/palic.webp',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
+        ]}
+      ]},
+      {i:'🚨',t:'Numeri di emergenza',h:EMERGENCY('Polizia','Ambulanza','Vigili del fuoco','Host Boris')}
     ]
   },
   es: {
@@ -514,11 +630,14 @@ function setLang(lang) {
   document.getElementById('lang-screen').style.display = 'none';
   const g = document.getElementById('guide');
   g.style.display = 'flex';
+  document.getElementById('feedback-fab').removeAttribute('hidden');
 }
 
 function showLangScreen() {
   document.getElementById('lang-screen').style.display = 'flex';
   document.getElementById('guide').style.display = 'none';
+  document.getElementById('feedback-fab').setAttribute('hidden', '');
+  closeFeedback();
 }
 
 function tog(i) {
@@ -543,6 +662,29 @@ function copyWifi() {
   if (navigator.clipboard) { navigator.clipboard.writeText(pw).then(done); }
   else { const el = document.createElement('textarea'); el.value = pw; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); done(); }
 }
+
+function openFeedback() {
+  document.getElementById('feedback-modal').removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
+}
+function closeFeedback() {
+  document.getElementById('feedback-modal').setAttribute('hidden', '');
+  document.body.style.overflow = '';
+}
+document.getElementById('feedback-modal')?.addEventListener('click', e => {
+  if (e.target === document.getElementById('feedback-modal')) closeFeedback();
+});
+document.getElementById('feedback-form')?.addEventListener('submit', e => {
+  e.preventDefault();
+  fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { Accept: 'application/json' } })
+    .then(r => {
+      if (r.ok) {
+        e.target.style.display = 'none';
+        document.getElementById('feedback-success').hidden = false;
+        setTimeout(() => { closeFeedback(); e.target.style.display = ''; document.getElementById('feedback-success').hidden = true; e.target.reset(); }, 2500);
+      }
+    });
+});
 
 const saved = localStorage.getItem('mirakul_lang');
 if (saved && T[saved]) setLang(saved);

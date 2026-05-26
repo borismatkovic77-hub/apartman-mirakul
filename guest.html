@@ -356,7 +356,7 @@
 const FLAGS = {sr:'🇷🇸',hr:'🇭🇷',hu:'🇭🇺',en:'🇬🇧',de:'🇩🇪',ru:'🇷🇺',zh:'🇨🇳',bg:'🇧🇬',pl:'🇵🇱',it:'🇮🇹',es:'🇪🇸',mk:'🇲🇰',sl:'🇸🇮',ro:'🇷🇴'};
 const CODES = {sr:'SR',hr:'HR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO'};
 
-const EMERGENCY = (p,a,f,h) => `<ul class="item-list"><li><span class="item-label">🚔 ${p}</span><a href="tel:192">192</a></li><li><span class="item-label">🚑 ${a}</span><a href="tel:194">194</a></li><li><span class="item-label">🚒 ${f}</span><a href="tel:193">193</a></li><li><span class="item-label">📞 ${h}</span><a href="tel:+381631168024">+381 63 116 8024</a></li></ul>`;
+const EMERGENCY = (p,a,f,h) => `<ul class="item-list"><li><span class="item-label">🚔 ${p}</span><a href="tel:192">192</a></li><li><span class="item-label">🚑 ${a}</span><a href="tel:194">194</a></li><li><span class="item-label">🚒 ${f}</span><a href="tel:193">193</a></li><li><span class="item-label">🚕 Alfa Taxi</span><a href="tel:19788">19788</a></li><li><span class="item-label">📞 ${h}</span><a href="tel:+381631168024">+381 63 116 8024</a></li></ul>`;
 
 const FB = {
   sr:{title:'Predlog za unapređenje',desc:'Nedostaje vam neka informacija u vodiču? Napišite nam da dodamo.',ph:'Vaš predlog ili komentar...',btn:'Pošalji',ok:'✓ Hvala! Vaša poruka je primljena.'},
@@ -408,15 +408,16 @@ const T = {
           {name:'Sinagoga',dist:'500 m',desc:'Jedna od najlepših sinagoga u Evropi, izgrađena 1902. u secesijskom stilu — pravo arhitektonsko čudo.',img:'images/Guests/sinagoga.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+Synagogue'},
           {name:'Ulica Starih zanata',dist:'100 m',desc:'Otvorena 2025. — šarmantni prolaz koji oživljava duh nekadašnje Subotice sa izlozima krojača, časovničara i skulpturom Zvonka Bogdana.',img:'images/Guests/ulica-starih-zanata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Ulica+Starih+zanata+Subotica'},
           {name:'Spomenik Caru Jovanu Nenadu',dist:'400 m',desc:'Monumentalni bronzani triptih iz 1927. posvećen samoproglašenom caru koji je kratko vladao Suboticom 1527. godine.',img:'images/Guests/car-jovan-nenad.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
-          {name:'Spomenik Kralju Petru I',dist:'350 m',desc:'Skulptura visoka 4.2 metra vajara Zorana Ivanovića, otkrivena 2021. u čast kralja Oslobodioca Petra I Karađorđevića.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Spomenik Kralju Petru I',dist:'30 m',desc:'Skulptura visoka 4.2 metra vajara Zorana Ivanovića, otkrivena 2021. u čast kralja Oslobodioca Petra I Karađorđevića.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
           {name:'Palić jezero',dist:'8 km',desc:'Najveće prirodno jezero u Srbiji — plaže, park, sportski sadržaji i lekoviti mulj. Idealno za porodični izlet.',img:'images/Guests/palic.webp',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
         ]},
         {t:'🎭 Zabava i sport',cards:[
-          {name:'EuroCinema',dist:'200 m',desc:'Moderni bioskop u centru — najnoviji filmski naslovi na velikom platnu.',emoji:'🎬',maps:'https://www.google.com/maps/search/?api=1&query=EuroCinema+Subotica'},
-          {name:'Bioskop Lifka',dist:'150 m',desc:'Legendarna kinodvorana otvorena 1913. — arhitektonski dragulj i kulturna ikona Subotice.',emoji:'🎬',maps:'https://www.google.com/maps/search/?api=1&query=Bioskop+Lifka+Subotica'},
           {name:'Narodno pozorište',dist:'300 m',desc:'Jedno od najstarijih pozorišta u regionu — bogat repertoar drama, opera i mjuzikla.',emoji:'🎭',maps:'https://www.google.com/maps/search/?api=1&query=Narodno+pozoriste+Subotica'},
           {name:'Dečije pozorište',dist:'400 m',desc:'Pozorište posvećeno najmlađima — predstave na srpskom i mađarskom jeziku.',emoji:'🎭',maps:'https://www.google.com/maps/search/?api=1&query=Decije+pozoriste+Subotica'},
-          {name:'Bazen Prozivka',dist:'1.5 km',desc:'Gradski otvoreni bazen u Dudovoj šumi — idealan za osveženje tokom letnjih dana.',emoji:'🏊',maps:'https://www.google.com/maps/search/?api=1&query=Bazen+Prozivka+Subotica'},
+          {name:'EuroCinema',dist:'200 m',desc:'Moderni bioskop u centru — najnoviji filmski naslovi na velikom platnu.',emoji:'🎬',maps:'https://www.google.com/maps/search/?api=1&query=EuroCinema+Subotica'},
+          {name:'Bioskop Lifka',dist:'150 m',desc:'Legendarna kinodvorana otvorena 1913. — arhitektonski dragulj i kulturna ikona Subotice.',emoji:'🎬',maps:'https://www.google.com/maps/search/?api=1&query=Bioskop+Lifka+Subotica'},
+          {name:'Bazen Prozivka',dist:'1.5 km',desc:'Sportsko-rekreativni centar sa velikim i malim bazenom — ocena 4.5 na Google-u. Radno vreme se menja po danima, preporučujemo proveru pre posete.',emoji:'🏊',maps:'https://www.google.com/maps/search/?api=1&query=Bazen+Prozivka+Subotica'},
+          {name:'Bazen Dudova šuma',dist:'2 km',desc:'Otvoreni bazen u okviru rekreativnog parka Dudova šuma.',emoji:'🏊',maps:'https://www.google.com/maps/search/?api=1&query=Bazen+Dudova+suma+Subotica'},
           {name:'Aqua park Palić',dist:'8 km',desc:'Vodeni park na obali Palićkog jezera — tobogani, bazeni i zabava za celu porodicu.',emoji:'💦',maps:'https://www.google.com/maps/search/?api=1&query=Aqua+park+Palic+Subotica'},
           {name:'Tertana',dist:'50 m',desc:'Teretana odmah preko puta zgrade — moderna oprema, cardio i sprave.',emoji:'💪',maps:'https://www.google.com/maps/search/?api=1&query=Tertana+teretana+Subotica'},
           {name:'Hala sportova Dudova šuma',dist:'2 km',desc:'Višenamenska sportska hala — košarka, odbojka, tenis i ostali sportovi.',emoji:'🏀',maps:'https://www.google.com/maps/search/?api=1&query=Hala+sportova+Dudova+suma+Subotica'},
@@ -425,7 +426,7 @@ const T = {
           {name:'Klizalište',dist:'1.5 km',desc:'Klizalište na Stadionu malih sportova — otvoreno tokom zimske sezone.',emoji:'⛸️',maps:'https://www.google.com/maps/search/?api=1&query=Klizaliste+stadion+malih+sportova+Subotica'}
         ]}
       ]},
-      {i:'🚨',t:'Hitni pozivi',h:EMERGENCY('Policija','Hitna pomoć','Vatrogasci','Domaćin Boris')}
+      {i:'📞',t:'Bitni telefoni',h:EMERGENCY('Policija','Hitna pomoć','Vatrogasci','Domaćin Boris')}
     ]
   },
   en: {
@@ -460,7 +461,7 @@ const T = {
           {name:'Synagogue',dist:'500 m',desc:'One of the most beautiful synagogues in Europe, built in 1902 in Art Nouveau style — a true architectural wonder.',img:'images/Guests/sinagoga.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+Synagogue'},
           {name:'Street of Old Crafts',dist:'100 m',desc:'Opened in 2025 — a charming passage reviving the spirit of old Subotica with tailors, watchmakers and a Zvonko Bogdan sculpture.',img:'images/Guests/ulica-starih-zanata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Ulica+Starih+zanata+Subotica'},
           {name:'Monument to Tsar Jovan Nenad',dist:'400 m',desc:'A monumental bronze triptych from 1927, dedicated to the self-proclaimed tsar who briefly ruled Subotica in 1527.',img:'images/Guests/car-jovan-nenad.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
-          {name:'Monument to King Petar I',dist:'350 m',desc:'A 4.2-metre sculpture by Zoran Ivanović, unveiled in 2021 in honour of King Petar I Karađorđević.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Monument to King Petar I',dist:'30 m',desc:'A 4.2-metre sculpture by Zoran Ivanović, unveiled in 2021 in honour of King Petar I Karađorđević.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
           {name:'Palić Lake',dist:'8 km',desc:'The largest natural lake in Serbia — beaches, park, sports facilities and therapeutic mud. Perfect for a family day out.',img:'images/Guests/palic.webp',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
         ]}
       ]},
@@ -499,7 +500,7 @@ const T = {
           {name:'Synagoge',dist:'500 m',desc:'Eine der schönsten Synagogen Europas, erbaut 1902 im Jugendstil — ein wahres architektonisches Wunder.',img:'images/Guests/sinagoga.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+Synagogue'},
           {name:'Gasse der alten Handwerke',dist:'100 m',desc:'Eröffnet 2025 — eine charmante Passage, die den Geist des alten Subotica mit Schneidern, Uhrmachern und einer Zvonko-Bogdan-Skulptur wiederbelebt.',img:'images/Guests/ulica-starih-zanata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Ulica+Starih+zanata+Subotica'},
           {name:'Denkmal Zar Jovan Nenad',dist:'400 m',desc:'Ein monumentales Bronzetriptychon von 1927, gewidmet dem Selbsternannten Zaren, der 1527 kurzzeitig über Subotica herrschte.',img:'images/Guests/car-jovan-nenad.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
-          {name:'Denkmal König Petar I.',dist:'350 m',desc:'Eine 4,2 Meter hohe Skulptur von Zoran Ivanović, 2021 eingeweiht zu Ehren von König Petar I. Karađorđević.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Denkmal König Petar I.',dist:'30 m',desc:'Eine 4,2 Meter hohe Skulptur von Zoran Ivanović, 2021 eingeweiht zu Ehren von König Petar I. Karađorđević.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
           {name:'Palić-See',dist:'8 km',desc:'Der größte Natursee Serbiens — Strände, Park, Sportanlagen und Heilschlamm. Perfekt für einen Familienausflug.',img:'images/Guests/palic.webp',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
         ]}
       ]},
@@ -510,7 +511,7 @@ const T = {
     wn:'Naziv WiFi mreže', wp:'Lozinka', cp:'Kopiraj', cd:'Kopirano!',
     ft:'Hvala vam što ste bili naši gosti!',
     s:[
-      {i:'🚨',t:'Hitni pozivi',h:EMERGENCY('Policija','Hitna pomoć','Vatrogasci','Domaćin Boris')},
+      {i:'📞',t:'Bitni telefoni',h:EMERGENCY('Policija','Hitna pomoć','Vatrogasci','Domaćin Boris')},
       {i:'🏠',t:'Kućni red',h:`<ul class="bullet-list"><li>🌙 Tišina od <strong>22:00 do 08:00</strong></li><li>🚭 Pušenje je <strong>strogo zabranjeno</strong></li><li>🐾 Kućni ljubimci <strong>nisu dozvoljeni</strong></li><li>👥 Maksimalan broj gostiju: <strong>4 osobe</strong></li><li>🧹 Molimo ostavite apartman urednim pri odlasku</li><li>🔑 Ključeve ostavite na stolu pri odlasku</li></ul>`},
       {i:'🕐',t:'Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">do 11:00</div></div></div><div class="guide-tip">🔑 Ključeve ostavite na stolu prije odlaska.</div>`},
       {i:'🅿️',t:'Parkiranje',h:`<ul class="bullet-list"><li>🚗 Plaćeni gradski parking <strong>ispred zgrade</strong></li><li>💰 Naplata radnim danima</li><li>🎉 <strong>Vikend i praznici — besplatno</strong></li><li>📱 Aplikacija: <strong>Parking Subotica</strong></li></ul>`},
@@ -562,7 +563,7 @@ const T = {
           {name:'Синагога',dist:'500 м',desc:'Одна из красивейших синагог Европы, построенная в 1902 году в стиле модерн — настоящее архитектурное чудо.',img:'images/Guests/sinagoga.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+Synagogue'},
           {name:'Улица старых ремёсел',dist:'100 м',desc:'Открыта в 2025 году — очаровательный пассаж, воссоздающий дух старой Суботицы с портными, часовщиками и скульптурой Звонко Богдана.',img:'images/Guests/ulica-starih-zanata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Ulica+Starih+zanata+Subotica'},
           {name:'Памятник царю Йовану Ненаду',dist:'400 м',desc:'Монументальный бронзовый триптих 1927 года, посвящённый самопровозглашённому царю, недолго правившему Суботицей в 1527 году.',img:'images/Guests/car-jovan-nenad.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
-          {name:'Памятник королю Петару I',dist:'350 м',desc:'Скульптура высотой 4,2 метра работы Зорана Ивановича, открытая в 2021 году в честь короля Петара I Карađорđевича.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Памятник королю Петару I',dist:'30 м',desc:'Скульптура высотой 4,2 метра работы Зорана Ивановича, открытая в 2021 году в честь короля Петара I Карađорđевича.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
           {name:'Озеро Палич',dist:'8 км',desc:'Крупнейшее природное озеро Сербии — пляжи, парк, спортивные площадки и лечебная грязь. Идеально для семейного отдыха.',img:'images/Guests/palic.webp',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
         ]}
       ]},
@@ -637,7 +638,7 @@ const T = {
           {name:'Sinagoga',dist:'500 m',desc:'Una delle sinagoghe più belle d\'Europa, costruita nel 1902 in stile Art Nouveau — una vera meraviglia architettonica.',img:'images/Guests/sinagoga.webp',maps:'https://www.google.com/maps/search/?api=1&query=Subotica+Synagogue'},
           {name:'Via dei Vecchi Mestieri',dist:'100 m',desc:'Aperta nel 2025 — un incantevole passaggio che rievoca lo spirito della vecchia Subotica con sarti, orologiai e una scultura di Zvonko Bogdan.',img:'images/Guests/ulica-starih-zanata.webp',maps:'https://www.google.com/maps/search/?api=1&query=Ulica+Starih+zanata+Subotica'},
           {name:'Monumento allo Zar Jovan Nenad',dist:'400 m',desc:'Un monumentale trittico in bronzo del 1927, dedicato allo zar autoproclamato che governò brevemente Subotica nel 1527.',img:'images/Guests/car-jovan-nenad.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
-          {name:'Monumento al Re Petar I',dist:'350 m',desc:'Una scultura di 4,2 metri di Zoran Ivanović, inaugurata nel 2021 in onore del Re Petar I Karađorđević.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Monumento al Re Petar I',dist:'30 m',desc:'Una scultura di 4,2 metri di Zoran Ivanović, inaugurata nel 2021 in onore del Re Petar I Karađorđević.',img:'images/Guests/spomenik-kralj-petru.webp',maps:'https://www.google.com/maps/search/?api=1&query=Spomenik+Kralju+Petru+I+Subotica'},
           {name:'Lago di Palić',dist:'8 km',desc:'Il lago naturale più grande della Serbia — spiagge, parco, strutture sportive e fango terapeutico. Ideale per una gita in famiglia.',img:'images/Guests/palic.webp',maps:'https://www.google.com/maps/search/?api=1&query=Palic+Lake+Subotica'}
         ]}
       ]},
@@ -696,18 +697,28 @@ const T = {
 
 let currentLang = 'sr';
 
+function wifiSubGroup(t) {
+  const svgW = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>`;
+  const inner = `<div style="display:flex;flex-direction:column;gap:0.85rem;"><div class="wifi-row"><span class="wifi-icon">${svgW}</span><div class="wifi-info"><div class="wifi-label">${t.wn}</div><div class="wifi-value">Apartman Mirakul 5G</div></div></div><div class="wifi-row"><span class="wifi-icon">🔑</span><div class="wifi-info"><div class="wifi-label">${t.wp}</div><div class="wifi-value">dobrodoali</div></div><button class="copy-btn" onclick="copyWifi(this)">📋 <span>${t.cp}</span></button></div></div>`;
+  return `<button class="subgroup-btn" onclick="togSub(this)"><span>📶 WiFi</span><span class="subgroup-arrow">▼</span></button><div class="subgroup-panel"><div class="subgroup-html">${inner}</div></div>`;
+}
+
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('mirakul_lang', lang);
   const t = T[lang];
-  document.getElementById('wifi-net-lbl').textContent = t.wn;
-  document.getElementById('wifi-pass-lbl').textContent = t.wp;
-  document.getElementById('copy-lbl').textContent = t.cp;
+  const hasNewWifi = !!t.s[0]?.subs;
+  document.getElementById('wifi-acc').style.display = hasNewWifi ? 'none' : '';
+  if (!hasNewWifi) {
+    document.getElementById('wifi-net-lbl').textContent = t.wn;
+    document.getElementById('wifi-pass-lbl').textContent = t.wp;
+    document.getElementById('copy-lbl').textContent = t.cp;
+  }
   document.getElementById('footer-txt').textContent = t.ft;
   document.getElementById('lang-btn').textContent = FLAGS[lang] + ' ' + CODES[lang];
   document.getElementById('sections').innerHTML = t.s.map((s,i) => {
     const inner = s.subs
-      ? s.subs.map(sub =>
+      ? (i === 0 ? wifiSubGroup(t) : '') + s.subs.map(sub =>
           `<button class="subgroup-btn" onclick="togSub(this)"><span>${sub.t}</span><span class="subgroup-arrow">▼</span></button>` +
           `<div class="subgroup-panel">` +
           (sub.cards
@@ -758,10 +769,10 @@ function togWifi() {
   document.getElementById('wifi-acc').classList.toggle('open');
 }
 
-function copyWifi() {
+function copyWifi(btn) {
   const pw = 'dobrodoali';
-  const lbl = document.getElementById('copy-lbl');
-  const done = () => { lbl.textContent = T[currentLang].cd; setTimeout(() => { lbl.textContent = T[currentLang].cp; }, 2000); };
+  const lbl = btn ? btn.querySelector('span') : document.getElementById('copy-lbl');
+  const done = () => { if(lbl){lbl.textContent=T[currentLang].cd; setTimeout(()=>{ if(lbl) lbl.textContent=T[currentLang].cp; },2000);} };
   if (navigator.clipboard) { navigator.clipboard.writeText(pw).then(done); }
   else { const el = document.createElement('textarea'); el.value = pw; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); done(); }
 }
@@ -791,6 +802,11 @@ document.getElementById('feedback-form')?.addEventListener('submit', e => {
 
 const saved = localStorage.getItem('mirakul_lang');
 if (saved && T[saved]) setLang(saved);
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js');
+}
 </script>
 </body>
 </html>

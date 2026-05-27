@@ -1,4 +1,4 @@
-const CACHE = 'mirakul-v1';
+const CACHE = 'mirakul-v2';
 const ASSETS = [
   './guest.html',
   './favicon.svg',
@@ -21,6 +21,11 @@ const ASSETS = [
   './images/Guests/car-jovan-nenad.webp',
   './images/Guests/spomenik-kralj-petru.webp',
   './images/Guests/sinagoga.webp',
+  './images/Guests/Zabava i sport/Subotica Narodno pozoriste.jpg',
+  './images/Guests/Zabava i sport/Decije-pozoriste-4-1170x781.jpg',
+  './images/Guests/Zabava i sport/Zoo vrt Palić.jpg',
+  './images/Guests/Zabava i sport/Aqua park Palić.jpg',
+  './images/Guests/Zabava i sport/Hala Sportova.jpg',
 ];
 
 self.addEventListener('install', e => {

@@ -937,7 +937,8 @@ if (saved && T[saved]) setLang(saved);
 </script>
 <script>
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js');
+  navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
+    .then(reg => reg.update());
 }
 </script>
 </body>

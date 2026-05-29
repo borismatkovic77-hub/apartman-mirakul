@@ -1,4 +1,4 @@
-const CACHE = 'mirakul-v5';
+const CACHE = 'mirakul-v6';
 const ASSETS = [
   './guest.html',
   './favicon.svg',
@@ -48,29 +48,15 @@ self.addEventListener('activate', e => {
   );
 });
 
+// Network-first za sve — uvek svježa verzija kad je online, keš kao fallback offline
 self.addEventListener('fetch', e => {
-  const url = new URL(e.request.url);
-
-  // Network-first za HTML — uvek svježa verzija kad je online
-  if (url.pathname.endsWith('.html') || url.pathname === '/' || url.pathname.endsWith('/guest')) {
-    e.respondWith(
-      fetch(e.request)
-        .then(res => {
-          const copy = res.clone();
-          caches.open(CACHE).then(c => c.put(e.request, copy));
-          return res;
-        })
-        .catch(() => caches.match(e.request))
-    );
-    return;
-  }
-
-  // Cache-first za slike i ostale statične resurse
   e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request).then(res => {
-      const copy = res.clone();
-      caches.open(CACHE).then(c => c.put(e.request, copy));
-      return res;
-    }))
+    fetch(e.request)
+      .then(res => {
+        const copy = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, copy));
+        return res;
+      })
+      .catch(() => caches.match(e.request))
   );
 });

@@ -1,4 +1,4 @@
-const CACHE = 'mirakul-v4';
+const CACHE = 'mirakul-v5';
 const ASSETS = [
   './guest.html',
   './favicon.svg',

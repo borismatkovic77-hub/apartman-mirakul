@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apartman Mirakul — QR A5 (EN)</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page { size: A5 portrait; margin: 0; }
+
+  body {
+    width: 148mm;
+    height: 210mm;
+    background: #FDFAF7;
+    font-family: 'Lato', sans-serif;
+    color: #2C1810;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 148mm;
+    height: 210mm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 9mm 10mm 8mm;
+    position: relative;
+  }
+
+  .border-outer {
+    position: absolute;
+    inset: 5mm;
+    border: 1px solid #C9A882;
+    pointer-events: none;
+  }
+  .border-inner {
+    position: absolute;
+    inset: 6.5mm;
+    border: 0.5px solid #E8D5BC;
+    pointer-events: none;
+  }
+
+  .corner {
+    position: absolute;
+    width: 7mm;
+    height: 7mm;
+    pointer-events: none;
+  }
+  .corner svg { width: 100%; height: 100%; }
+  .corner-tl { top: 3.8mm; left: 3.8mm; }
+  .corner-tr { top: 3.8mm; right: 3.8mm; transform: scaleX(-1); }
+  .corner-bl { bottom: 3.8mm; left: 3.8mm; transform: scaleY(-1); }
+  .corner-br { bottom: 3.8mm; right: 3.8mm; transform: scale(-1); }
+
+  .header {
+    text-align: center;
+    margin-top: 4mm;
+    margin-bottom: 3mm;
+  }
+
+  .logo-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4mm;
+    margin-bottom: 2mm;
+  }
+  .logo-line::before,
+  .logo-line::after {
+    content: '';
+    flex: 1;
+    max-width: 18mm;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, #C9A882);
+  }
+  .logo-line::after {
+    background: linear-gradient(to left, transparent, #C9A882);
+  }
+
+  .apartment-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20pt;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: #4A2E1A;
+    white-space: nowrap;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.5pt;
+    font-style: italic;
+    font-weight: 300;
+    color: #8B6045;
+    letter-spacing: 0.06em;
+    margin-top: 1mm;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    margin: 3mm 0;
+    width: 100%;
+  }
+  .divider-line {
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, #C9A882, transparent);
+  }
+  .divider-gem {
+    width: 3mm;
+    height: 3mm;
+    background: #C9A882;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .intro {
+    text-align: center;
+    margin-bottom: 4mm;
+    max-width: 116mm;
+  }
+  .intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10.5pt;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #5C3D2A;
+  }
+
+  .qr-section {
+    display: flex;
+    gap: 7mm;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    flex: 1;
+    margin-bottom: 3mm;
+  }
+
+  .qr-card {
+    flex: 1;
+    max-width: 52mm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFF8F2;
+    border: 1px solid #E8D5BC;
+    border-radius: 1.5mm;
+    padding: 5mm 4mm 4mm;
+  }
+
+  .qr-icon {
+    font-size: 13pt;
+    margin-bottom: 2mm;
+  }
+
+  .qr-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12.5pt;
+    font-weight: 600;
+    color: #4A2E1A;
+    text-align: center;
+    letter-spacing: 0.04em;
+    margin-bottom: 1mm;
+  }
+
+  .qr-subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 6.5pt;
+    font-weight: 300;
+    color: #8B6045;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 3.5mm;
+  }
+
+  .qr-code-wrap {
+    background: white;
+    padding: 2.5mm;
+    border: 1px solid #E8D5BC;
+    border-radius: 1mm;
+    margin-bottom: 3.5mm;
+  }
+
+  .qr-code-wrap canvas,
+  .qr-code-wrap img {
+    display: block;
+    width: 30mm !important;
+    height: 30mm !important;
+  }
+
+  .qr-desc {
+    font-family: 'Lato', sans-serif;
+    font-size: 7pt;
+    font-weight: 300;
+    color: #6B4E3D;
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 3mm;
+    flex: 1;
+  }
+
+  .qr-url {
+    font-family: 'Lato', sans-serif;
+    font-size: 5.5pt;
+    color: #B08860;
+    letter-spacing: 0.03em;
+    text-align: center;
+    word-break: break-all;
+  }
+
+  .qr-separator {
+    width: 6mm;
+    height: 0.5px;
+    background: #C9A882;
+    margin: 2mm auto;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 1mm;
+  }
+
+  .footer-divider {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    margin-bottom: 2.5mm;
+  }
+  .footer-divider-line {
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, #C9A882, transparent);
+  }
+  .footer-gem {
+    width: 2.5mm;
+    height: 2.5mm;
+    background: #C9A882;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .footer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9pt;
+    font-style: italic;
+    color: #8B6045;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-url {
+    font-family: 'Lato', sans-serif;
+    font-size: 7pt;
+    font-weight: 300;
+    color: #B08860;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 1mm;
+  }
+
+  .location {
+    font-family: 'Lato', sans-serif;
+    font-size: 6.5pt;
+    font-weight: 300;
+    color: #C9A882;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2mm;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="border-outer"></div>
+  <div class="border-inner"></div>
+
+  <div class="corner corner-tl">
+    <svg viewBox="0 0 40 40" fill="none">
+      <path d="M2 38 L2 2 L38 2" stroke="#C9A882" stroke-width="1.5"/>
+      <circle cx="2" cy="2" r="2.5" fill="#C9A882"/>
+    </svg>
+  </div>
+  <div class="corner corner-tr">
+    <svg viewBox="0 0 40 40" fill="none">
+      <path d="M2 38 L2 2 L38 2" stroke="#C9A882" stroke-width="1.5"/>
+      <circle cx="2" cy="2" r="2.5" fill="#C9A882"/>
+    </svg>
+  </div>
+  <div class="corner corner-bl">
+    <svg viewBox="0 0 40 40" fill="none">
+      <path d="M2 38 L2 2 L38 2" stroke="#C9A882" stroke-width="1.5"/>
+      <circle cx="2" cy="2" r="2.5" fill="#C9A882"/>
+    </svg>
+  </div>
+  <div class="corner corner-br">
+    <svg viewBox="0 0 40 40" fill="none">
+      <path d="M2 38 L2 2 L38 2" stroke="#C9A882" stroke-width="1.5"/>
+      <circle cx="2" cy="2" r="2.5" fill="#C9A882"/>
+    </svg>
+  </div>
+
+  <div class="header">
+    <div class="location">Subotica · Serbia</div>
+    <div class="logo-line">
+      <div class="apartment-name">Apartman Mirakul</div>
+    </div>
+    <div class="tagline">Every stay is a story that stays in our hearts</div>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-gem"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="intro">
+    <p>Thank you for choosing to stay in our apartment.<br>
+    We believe we will meet your expectations and invite you<br>
+    to share that on Google reviews.<br>
+    We have also created a digital apartment guide where you<br>
+    will find answers to most questions and local recommendations.</p>
+  </div>
+
+  <div class="qr-section">
+
+    <div class="qr-card">
+      <div class="qr-icon">⭐</div>
+      <div class="qr-title">Leave a review</div>
+      <div class="qr-subtitle">Google · 30 seconds</div>
+      <div class="qr-code-wrap">
+        <div id="qr-review"></div>
+      </div>
+      <div class="qr-separator"></div>
+      <div class="qr-desc">
+        Your experience helps future guests<br>
+        find the right place to stay.<br>
+        Thank you for being with us.
+      </div>
+      <div class="qr-url">g.page/r/CQmP1BHaaBSgEAE/review</div>
+    </div>
+
+    <div class="qr-card">
+      <div class="qr-icon">🏠</div>
+      <div class="qr-title">Apartment guide</div>
+      <div class="qr-subtitle">WiFi · Info · Recommendations</div>
+      <div class="qr-code-wrap">
+        <div id="qr-guide"></div>
+      </div>
+      <div class="qr-separator"></div>
+      <div class="qr-desc">
+        All instructions, WiFi password, restaurant<br>
+        recommendations and local attractions —<br>
+        in one place, in 14 languages.
+      </div>
+      <div class="qr-url">apartmanmirakul.rs/guest.html</div>
+    </div>
+
+  </div>
+
+  <div class="footer" style="width:100%">
+    <div class="footer-divider">
+      <div class="footer-divider-line"></div>
+      <div class="footer-gem"></div>
+      <div class="footer-divider-line"></div>
+    </div>
+    <div class="footer-text">We hope to welcome you again</div>
+    <div class="footer-url">apartmanmirakul.rs</div>
+  </div>
+
+</div>
+
+<script>
+  new QRCode(document.getElementById('qr-review'), {
+    text: 'https://g.page/r/CQmP1BHaaBSgEAE/review',
+    width: 115,
+    height: 115,
+    colorDark: '#2C1810',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+
+  new QRCode(document.getElementById('qr-guide'), {
+    text: 'https://apartmanmirakul.rs/guest.html',
+    width: 115,
+    height: 115,
+    colorDark: '#2C1810',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+</script>
+</body>
+</html>

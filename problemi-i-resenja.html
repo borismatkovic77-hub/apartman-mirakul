@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apartman Mirakul — Problemi i rešenja</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #F8F4EE;
+      color: #2A1A0C;
+      line-height: 1.7;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1a0e06 0%, #3a1a1a 60%, #8B2020 100%);
+      color: #fff;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+
+    .hero .icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 24px;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: normal;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      opacity: 0.7;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Stats bar */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1px;
+      background: #d4c4a8;
+      border-top: 1px solid #d4c4a8;
+    }
+
+    .stat {
+      background: #fff;
+      padding: 28px 16px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: bold;
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-number.red { color: #c0392b; }
+    .stat-number.green { color: #27ae60; }
+    .stat-number.gold { color: #C49A4A; }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: #7a6a58;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Problem cards */
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 64px 24px;
+    }
+
+    .section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #c0392b;
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: normal;
+      margin-bottom: 40px;
+    }
+
+    .problem-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .problem-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e8dfd0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+
+    .problem-card .severity {
+      width: 8px;
+      background: #e8dfd0;
+    }
+
+    .problem-card.high .severity { background: #c0392b; }
+    .problem-card.medium .severity { background: #e67e22; }
+    .problem-card.low .severity { background: #C49A4A; }
+
+    .problem-body {
+      padding: 24px 28px;
+    }
+
+    .problem-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .problem-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .problem-title {
+      font-size: 1.05rem;
+      font-weight: bold;
+      flex: 1;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-family: sans-serif;
+    }
+
+    .badge.high { background: #fdecea; color: #c0392b; }
+    .badge.medium { background: #fef3e2; color: #e67e22; }
+    .badge.low { background: #fdf8ec; color: #a07820; }
+
+    .problem-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 560px) {
+      .problem-cols { grid-template-columns: 1fr; }
+      .problem-card { grid-template-columns: auto 1fr; }
+    }
+
+    .col-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+      font-family: sans-serif;
+    }
+
+    .col-label.problem-lbl { color: #c0392b; }
+    .col-label.solution-lbl { color: #27ae60; }
+
+    .col-text {
+      font-size: 0.9rem;
+      color: #4a3a28;
+      line-height: 1.6;
+    }
+
+    .code {
+      display: inline-block;
+      background: #f0ebe3;
+      border: 1px solid #d4c4a8;
+      border-radius: 6px;
+      padding: 1px 7px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82em;
+      color: #3a2010;
+    }
+
+    /* Lessons section */
+    .lessons {
+      background: #2A1A0C;
+      color: #F8F4EE;
+      padding: 64px 24px;
+    }
+
+    .lessons .section-title {
+      color: #C49A4A;
+    }
+
+    .lessons h2 {
+      color: #F8F4EE;
+      margin-bottom: 40px;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .lesson-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .lesson-card .lesson-icon {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .lesson-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      color: #C49A4A;
+    }
+
+    .lesson-card p {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background: #1a0e06;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.82rem;
+    }
+
+    footer a {
+      color: #C49A4A;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="icon">🔧</div>
+    <h1>Problemi i rešenja</h1>
+    <p>Svaki sajt nosi svoje bitke. Ovo je iskrena lista svega što nije radilo — i kako smo to popravili.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-number red">14</span>
+      <span class="stat-label">Problema</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number green">14</span>
+      <span class="stat-label">Rešenih</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number gold">0</span>
+      <span class="stat-label">Nerešenih</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number gold">3</span>
+      <span class="stat-label">Dana rada</span>
+    </div>
+  </div>
+
+  <!-- Problems -->
+  <div class="section">
+    <div class="container">
+      <p class="section-title">Šta je pošlo po krivu</p>
+      <h2>Problemi i kako smo ih savladali</h2>
+
+      <div class="problem-list">
+
+        <div class="problem-card high">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">🌐</span>
+              <span class="problem-title">Domen nije radio — vraćao na Loopia</span>
+              <span class="badge high">Kritično</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Loopia ne dozvoljava upravljanje DNS-om na besplatnom planu. Kupljen domen, ali nije moguće postaviti A records i CNAME ka GitHub Pages.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Cloudflare dodan kao DNS provider. Loopia nameserveri zamijenjeni Cloudflare nameserverima. DNS records postavljeni u Cloudflare panelu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card high">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">🔄</span>
+              <span class="problem-title">GitHub preusmjeravao na Loopia stranicu</span>
+              <span class="badge high">Kritično</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">GitHub Pages custom domain je aktivno preusmjeravao <span class="code">github.io</span> URL direktno na Loopiu dok DNS nije bio riješen.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Privremeno uklonjen custom domain iz GitHub Pages podešavanja dok se DNS nije u potpunosti propagirao. Zatim ponovo dodan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card high">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">📜</span>
+              <span class="problem-title">script.js i styles.css nisu bili na GitHubu</span>
+              <span class="badge high">Kritično</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Header ostajao transparentan pri skrolovanju. Galerija prikazivala sve slike odjednom. Vizualno haos na live sajtu.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Uploadovana sva 4 fajla: <span class="code">index.html</span>, <span class="code">index-en.html</span>, <span class="code">styles.css</span>, <span class="code">script.js</span>. Ne samo HTML.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card medium">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">📱</span>
+              <span class="problem-title">SR|EN prelazio u novi red na mobilnom</span>
+              <span class="badge medium">Srednje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Header switcher za jezik prelazio u novi red na manjim ekranima. CSS grid nije imao dovoljno kolona za sve elemente.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Mobile grid promijenjen na <span class="code">1fr auto auto</span> (3 kolone). CSS <span class="code">order</span> properti iskorišten za pravilan redoslijed elemenata.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card medium">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">🖼️</span>
+              <span class="problem-title">Galerija na mobilnom nije swipovala</span>
+              <span class="badge medium">Srednje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Masonry grid na mobilnom bio neupotreljiv — slike sitne, raspored haotičan, nema intuitivne navigacije.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Na <span class="code">max-width: 640px</span> galeriaja postaje horizontalni flex sa <span class="code">scroll-snap-type: x mandatory</span>. Svaka slika zauzima 80vw.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card medium">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">🗺️</span>
+              <span class="problem-title">Sitemap odbijen u Search Consoleu</span>
+              <span class="badge medium">Srednje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Google Search Console vraćao grešku "Invalid sitemap address" pri pokušaju podnošenja sitemapa.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Unesen pun apsolutni URL: <span class="code">https://apartmanmirakul.rs/sitemap.xml</span> umjesto samo <span class="code">sitemap.xml</span>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card medium">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">📊</span>
+              <span class="problem-title">Neusklađen broj recenzija na tri mjesta</span>
+              <span class="badge medium">Srednje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">JSON-LD imao <span class="code">reviewCount: "164"</span>, og:description "164+", a vidljivi tekst "165 recenzije". Trostruka neusklađenost.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Sve usklađeno na 165 — JSON-LD, og:description i vidljivi tekst u oba HTML fajla.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card medium">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">🏠</span>
+              <span class="problem-title">Home screen ikona pokazivala pun SEO naslov</span>
+              <span class="badge medium">Srednje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Pri dodavanju sajta na home screen mobilnog, prikazivao se cijeli <span class="code">&lt;title&gt;</span> tag sa svim ključnim riječima.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text"><span class="code">manifest.json</span> sa <span class="code">short_name: "Mirakul"</span> i <span class="code">apple-mobile-web-app-title</span> meta tag.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card low">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">🔗</span>
+              <span class="problem-title">hreflang tagovi imali relativne URL-ove</span>
+              <span class="badge low">Manje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">hreflang linkovi koristili <span class="code">href="index.html"</span> i <span class="code">href="index-en.html"</span> — Google to može ignorisati.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Zamijenjeno apsolutnim URL-ovima. Dodan i <span class="code">hreflang="x-default"</span> koji pokazuje na srpsku verziju kao default.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card low">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">🖋️</span>
+              <span class="problem-title">SVG namespace koristio https:// umjesto http://</span>
+              <span class="badge low">Manje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Više SVG ikona imalo <span class="code">xmlns="https://www.w3.org/2000/svg"</span> — pogrešan protokol, W3C namespace je uvijek <span class="code">http://</span>.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Replace all u oba HTML fajla. Browseri tolerišu oboje, ali ispravak eliminiše potencijalnu nevalidnost koda.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card low">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">♿</span>
+              <span class="problem-title">aria-expanded nije se mijenjao na meniju</span>
+              <span class="badge low">Manje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Mobilni hamburger meni nije imao <span class="code">aria-expanded</span> atribut niti ga je JS mijenjao. Screen readeri nisu znali je li meni otvoren.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Dodan <span class="code">aria-expanded="false"</span> i <span class="code">aria-controls="nav-list"</span> na button. JS ažurira vrijednost i aria-label pri svakom klik-u.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card low">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">🃏</span>
+              <span class="problem-title">Hero kartica duplirala Booking dugme</span>
+              <span class="badge low">Manje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Treća hero kartica vodila na Booking.com — isto kao dugme iznad. Redundantno i bez marketinške vrijednosti.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Zamijenjeno karticom "66 m² komfora / Prostran i udoban za duži boravak" — suptilna poruka koja potiče duže rezervacije.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card low">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">⚖️</span>
+              <span class="problem-title">Citati gostiju bez atribucije Bookingu</span>
+              <span class="badge low">Manje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Recenzije gostiju prikazane kao da su vlasništvo sajta. Booking recenzije su sadržaj njihove platforme sa pravilima prikaza.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text">Dodan stilizovan "via Booking.com" link ispod svake recenzije — sitan, italik, prigušen. Klikabilan, pojačava kredibilitet.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-card low">
+          <div class="severity"></div>
+          <div class="problem-body">
+            <div class="problem-header">
+              <span class="problem-icon">💾</span>
+              <span class="problem-title">GitHub Pages cache — izmjene nisu bile vidljive</span>
+              <span class="badge low">Manje</span>
+            </div>
+            <div class="problem-cols">
+              <div>
+                <div class="col-label problem-lbl">Problem</div>
+                <p class="col-text">Nakon uploada novih fajlova, live sajt i dalje prikazivao staru verziju. Izgledalo kao da ništa nije promijenjeno.</p>
+              </div>
+              <div>
+                <div class="col-label solution-lbl">Rešenje</div>
+                <p class="col-text"><span class="code">Ctrl + Shift + R</span> (hard refresh) prisiljava browser da ignoriše cache i učita svježe fajlove sa servera.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Lessons learned -->
+  <div class="lessons">
+    <div class="container">
+      <p class="section-title">Naučene lekcije</p>
+      <h2>Šta pamtimo iz svega ovoga</h2>
+      <div class="lesson-grid">
+        <div class="lesson-card">
+          <div class="lesson-icon">📦</div>
+          <h3>Upload SVE fajlove</h3>
+          <p>HTML sam po sebi ništa ne radi. CSS i JS moraju biti na serveru da bi sajt funkcionisao.</p>
+        </div>
+        <div class="lesson-card">
+          <div class="lesson-icon">🌍</div>
+          <h3>DNS treba vremena</h3>
+          <p>Propagacija DNS promjena može trajati i do 48h. Strpljenje je dio procesa.</p>
+        </div>
+        <div class="lesson-card">
+          <div class="lesson-icon">🔢</div>
+          <h3>Konzistentnost podataka</h3>
+          <p>Isti podatak (broj recenzija) mora biti identičan na svim mjestima — JSON-LD, meta tagovi i vidljivi tekst.</p>
+        </div>
+        <div class="lesson-card">
+          <div class="lesson-icon">📐</div>
+          <h3>Apsolutni URL-ovi za SEO</h3>
+          <p>Canonical, og:url, og:image i hreflang moraju imati pune https:// URL-ove, ne relativne putanje.</p>
+        </div>
+        <div class="lesson-card">
+          <div class="lesson-icon">🔄</div>
+          <h3>Hard refresh je tvoj prijatelj</h3>
+          <p>Browser cache je čest krivac za "ovo ne radi". Ctrl+Shift+R rješava 80% konfuzije.</p>
+        </div>
+        <div class="lesson-card">
+          <div class="lesson-icon">🎯</div>
+          <h3>Svaki element mora imati svrhu</h3>
+          <p>Duplirana dugmad i kartice zbunjuju korisnika. Manje, ali sa jasnom namjerom — uvijek bolje.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Apartman Mirakul · <a href="https://apartmanmirakul.rs" target="_blank">apartmanmirakul.rs</a> · 2025.
+  </footer>
+
+</body>
+</html>

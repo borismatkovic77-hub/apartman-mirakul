@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apartman Mirakul — Priča o sajtu</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #F8F4EE;
+      color: #2A1A0C;
+      line-height: 1.7;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #2A1A0C 0%, #4a2e14 60%, #C49A4A 100%);
+      color: #fff;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+
+    .hero .monogram {
+      width: 72px;
+      height: 72px;
+      background: #C49A4A;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #2A1A0C;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: normal;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.75;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px;
+      background: #d4c4a8;
+      border-top: 1px solid #d4c4a8;
+    }
+
+    .stat {
+      background: #fff;
+      padding: 32px 20px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: #C49A4A;
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: #7a6a58;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 64px 24px;
+    }
+
+    .section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #C49A4A;
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: normal;
+      margin-bottom: 32px;
+      color: #2A1A0C;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #C49A4A, #d4c4a8);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      flex-shrink: 0;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #C49A4A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-content {
+      padding-top: 10px;
+      flex: 1;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.05rem;
+      font-weight: bold;
+      margin-bottom: 4px;
+      color: #2A1A0C;
+    }
+
+    .timeline-content p {
+      font-size: 0.9rem;
+      color: #6a5a48;
+    }
+
+    /* Features grid */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #e8dfd0;
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h3 {
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: #7a6a58;
+    }
+
+    /* Quote */
+    .quote-section {
+      background: #2A1A0C;
+      color: #F8F4EE;
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .quote-section blockquote {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      max-width: 640px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+      opacity: 0.92;
+    }
+
+    .quote-author {
+      font-size: 0.85rem;
+      opacity: 0.55;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Stack */
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .tag {
+      background: #fff;
+      border: 1px solid #d4c4a8;
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.82rem;
+      color: #4a3a28;
+    }
+
+    .tag.gold {
+      background: #C49A4A;
+      border-color: #C49A4A;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      background: #1a0e06;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.82rem;
+    }
+
+    footer a {
+      color: #C49A4A;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .timeline::before { left: 22px; }
+      .timeline-dot { width: 46px; height: 46px; font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="monogram">M</div>
+    <h1>Apartman Mirakul<br>Od ideje do sajta</h1>
+    <p>Priča o tome kako smo izgradili profesionalan web prisustvo za mali porodični apartman u centru Subotice.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-number">2</span>
+      <span class="stat-label">Stranice (SR + EN)</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">16</span>
+      <span class="stat-label">Fotografija</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">10.0</span>
+      <span class="stat-label">Booking ocena</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">165</span>
+      <span class="stat-label">Recenzija</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">66m²</span>
+      <span class="stat-label">Prostora</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">0€</span>
+      <span class="stat-label">Hosting</span>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="section" style="background:#fff;">
+    <div class="container">
+      <p class="section-title">Kako smo stigli ovde</p>
+      <h2>Koraci koje smo prošli zajedno</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🏗️</div>
+          <div class="timeline-content">
+            <h3>Struktura i dizajn</h3>
+            <p>HTML, CSS i JavaScript od nule. Hero sekcija sa panoramskom fotografijom, galerija, recenzije, kontakt forma i footer.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🖼️</div>
+          <div class="timeline-content">
+            <h3>Optimizacija slika</h3>
+            <p>Sve fotografije konvertovane u WebP format za brže učitavanje. Preload za hero sliku kao LCP element.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🔍</div>
+          <div class="timeline-content">
+            <h3>SEO osnove</h3>
+            <p>Canonical tag, og:url i og:image sa apsolutnim URL-ovima, hreflang tagovi sa x-default, favicon, font-display: swap.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🌍</div>
+          <div class="timeline-content">
+            <h3>Engleski prijevod</h3>
+            <p>Kompletna EN verzija (index-en.html) sa SR/EN switcherom u headeru — i na mobilnom i na desktopu.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🚀</div>
+          <div class="timeline-content">
+            <h3>GitHub Pages deployment</h3>
+            <p>Besplatan hosting na GitHub Pages. Domen apartmanmirakul.rs kupljen na Loopia, DNS prebačen na Cloudflare.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🔒</div>
+          <div class="timeline-content">
+            <h3>HTTPS i custom domen</h3>
+            <p>Cloudflare DNS records (A + CNAME), GitHub Pages custom domain, Enforce HTTPS uključen.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">📱</div>
+          <div class="timeline-content">
+            <h3>Mobilni UX</h3>
+            <p>Galerija postala swipe carousel na mobilnom. Kartice sakrivene na malim ekranima. Dugmad pomjerena pri dno hero sekcije.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">📋</div>
+          <div class="timeline-content">
+            <h3>Forma i detalji</h3>
+            <p>Ime i prezime spojeni u jedno polje. Email ili telefon u jedno polje. Airbnb uklonjen. Manifest.json za home screen ikonu.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🗺️</div>
+          <div class="timeline-content">
+            <h3>Google Search Console</h3>
+            <p>DNS verifikacija vlasništva. Sitemap.xml sa hreflang alternativama podnesen na indeksiranje.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">📊</div>
+          <div class="timeline-content">
+            <h3>Google Analytics GA4</h3>
+            <p>Measurement ID G-V2HG1VDQZF dodan u oba HTML fajla. Praćenje posjeta aktivno.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">✨</div>
+          <div class="timeline-content">
+            <h3>Finalni polishing</h3>
+            <p>Recenzije atribuirane "via Booking.com". SVG namespace ispravljen. aria-expanded za navigaciju. Hero kartica sa porukom o dužem boravku.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="section">
+    <div class="container">
+      <p class="section-title">Što je sajt dobio</p>
+      <h2>Ključne funkcionalnosti</h2>
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>Dvojezičnost</h3>
+          <p>Potpuna srpska i engleska verzija sa hreflang SEO tagovima i x-default.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📸</div>
+          <h3>Galerija s lightboxom</h3>
+          <p>Desktop masonry grid sa "Prikaži sve" dugmetom. Mobilni swipe carousel. Lightbox s tipkovnicom.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📅</div>
+          <h3>Pametna kontakt forma</h3>
+          <p>Datum picker, noći se računaju automatski, limit gostiju, opcije ležajeva.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <h3>Sekcija recenzija</h3>
+          <p>Agregatna ocena 10.0, score barovi, citati gostiju s atribucijom Booking.com.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏎️</div>
+          <h3>Performanse</h3>
+          <p>WebP slike, preload za LCP, font-display swap, lazy loading, bez eksternih zavisnosti.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔎</div>
+          <h3>SEO spreman</h3>
+          <p>JSON-LD structured data, canonical, OG tagovi, sitemap, Google Search Console.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tech stack -->
+  <div class="section" style="background:#fff; padding-top: 0;">
+    <div class="container">
+      <p class="section-title">Tehnologije</p>
+      <h2>Stack koji stoji iza svega</h2>
+      <div class="stack-list">
+        <span class="tag gold">HTML5</span>
+        <span class="tag gold">CSS3</span>
+        <span class="tag gold">Vanilla JS</span>
+        <span class="tag">GitHub Pages</span>
+        <span class="tag">Cloudflare DNS</span>
+        <span class="tag">Formspree</span>
+        <span class="tag">Google Analytics GA4</span>
+        <span class="tag">Google Search Console</span>
+        <span class="tag">WebP</span>
+        <span class="tag">SVG favicon</span>
+        <span class="tag">manifest.json (PWA)</span>
+        <span class="tag">JSON-LD Schema</span>
+        <span class="tag">hreflang</span>
+        <span class="tag">Open Graph</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quote -->
+  <div class="quote-section">
+    <blockquote>
+      "Sajt koji košta 0€ godišnje, izgleda profesionalno, učitava se brzo, prikazuje se na Googleu i prati posjetioce — sve iz čistog HTML-a, CSS-a i malo JavaScripta."
+    </blockquote>
+    <p class="quote-author">Apartman Mirakul · apartmanmirakul.rs · 2025.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    Izrađeno u saradnji s Claude (Anthropic) ·
+    <a href="https://apartmanmirakul.rs" target="_blank">apartmanmirakul.rs</a>
+  </footer>
+
+</body>
+</html>

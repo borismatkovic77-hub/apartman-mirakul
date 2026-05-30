@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview — Terracotta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FBF4EE;
+      --surface: #ffffff;
+      --primary: #B85C42;
+      --accent: #6A9470;
+      --accent-light: #EAF2EA;
+      --border: #E4D0C4;
+      --muted: #9A7A6A;
+      --shadow: 0 2px 12px rgba(90,30,15,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
+    html { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #2A1A0C; font-size: 16px; line-height: 1.5; }
+
+    #guide {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .guide-header {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--primary);
+      color: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+    .guide-header-name { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
+    .lang-change-btn {
+      display: flex; align-items: center; gap: 0.35rem;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff; border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      font-family: inherit;
+    }
+
+    .guide-content {
+      padding: 1.25rem 1.25rem 2rem;
+      display: flex; flex-direction: column; gap: 0.75rem; flex: 1;
+    }
+
+    /* WiFi card — terracotta */
+    .wifi-card {
+      background: linear-gradient(135deg, #C85C3A 0%, #A84828 100%);
+      border-radius: 16px; padding: 1.4rem 1.5rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .wifi-row { display: flex; align-items: center; gap: 0.9rem; }
+    .wifi-icon { font-size: 1.1rem; flex-shrink: 0; opacity: 0.6; }
+    .wifi-info { flex: 1; min-width: 0; }
+    .wifi-label { font-size: 0.68rem; color: rgba(255,255,255,0.7); font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.2rem; }
+    .wifi-value { font-size: 1.05rem; font-weight: 700; color: #fff; }
+    .copy-btn {
+      display: flex; align-items: center; gap: 0.4rem;
+      background: rgba(255,255,255,0.22); color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 8px; padding: 0.55rem 1rem;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer;
+      flex-shrink: 0; font-family: inherit;
+      white-space: nowrap;
+    }
+
+    /* Accordion */
+    .acc-item {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s;
+    }
+    .acc-item.open { border-color: var(--primary); }
+    .acc-trigger {
+      width: 100%; display: flex; align-items: center; gap: 0.75rem;
+      padding: 1.15rem 1.25rem; background: none; border: none;
+      font-family: inherit; font-size: 1.02rem; font-weight: 700;
+      color: #2A1A0C; cursor: pointer; text-align: left;
+      letter-spacing: -0.01em;
+    }
+    .acc-arrow {
+      margin-left: auto; width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg); border-radius: 50%;
+      font-size: 0.65rem; color: var(--muted);
+      transition: transform 0.25s ease, background 0.2s;
+      flex-shrink: 0;
+    }
+    .acc-item.open .acc-arrow { transform: rotate(180deg); background: var(--accent-light); color: var(--accent); }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .acc-item.open .acc-body { max-height: 5000px; }
+    .acc-inner { padding: 1rem 1.25rem 1.35rem; border-top: 1.5px solid var(--border); }
+
+    /* Subgroup buttons */
+    .subgroup-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 1.15rem;
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: 10px; margin-bottom: 0.6rem;
+      cursor: pointer; font-size: 0.97rem; font-weight: 600;
+      color: #2A1A0C; text-align: left; font-family: inherit;
+      transition: all 0.15s;
+    }
+    .subgroup-btn:hover { border-color: var(--primary); background: #FDF0EC; }
+    .subgroup-btn.open { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .subgroup-arrow { font-size: 0.65rem; opacity: 0.45; }
+
+    /* checkin rows */
+    .checkin-row { display: flex; align-items: center; gap: 1.25rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
+    .checkin-row:last-of-type { border-bottom: none; }
+    .checkin-time { font-size: 2rem; font-weight: 800; color: #2A1A0C; letter-spacing: -0.03em; }
+    .checkin-label { font-size: 0.72rem; color: var(--muted); margin-bottom: 0.15rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+    .guide-tip { background: #FDF0EC; border-left: 3px solid var(--primary); border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; font-size: 0.92rem; color: #2A1A0C; margin-top: 0.85rem; line-height: 1.6; }
+
+    /* Guide items */
+    .guide-item { display: flex; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .guide-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .guide-item-icon { font-size: 1.1rem; flex-shrink: 0; width: 38px; height: 38px; background: #FDF0EC; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .guide-item-text strong { display: block; font-size: 0.97rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .guide-item-text span { font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
+
+    .bullet-list { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .bullet-list li { font-size: 0.97rem; line-height: 1.65; }
+
+    /* Footer */
+    .guide-footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--border); margin-top: 0.5rem; }
+    .guide-footer .heart { color: var(--accent); font-size: 1.3rem; display: block; margin-bottom: 0.65rem; }
+    .guide-footer span { font-size: 1rem; color: var(--muted); line-height: 1.6; }
+
+    /* FAB */
+    #feedback-fab {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      width: 48px; height: 48px; background: var(--accent); color: #fff;
+      border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(30,70,40,0.25);
+      display: flex; align-items: center; justify-content: center; z-index: 100;
+    }
+  </style>
+</head>
+<body>
+<div id="guide">
+  <div class="guide-header">
+    <div class="guide-header-name">Apartman Mirakul</div>
+    <button class="lang-change-btn">🇷🇸 SR</button>
+  </div>
+  <div class="guide-content">
+
+    <!-- WiFi -->
+    <div class="wifi-card">
+      <div class="wifi-row">
+        <span class="wifi-icon">📶</span>
+        <div class="wifi-info">
+          <div class="wifi-label">Naziv WiFi mreže</div>
+          <div class="wifi-value">Apartman Mirakul 5G</div>
+        </div>
+      </div>
+      <div class="wifi-row">
+        <span class="wifi-icon">🔑</span>
+        <div class="wifi-info">
+          <div class="wifi-label">Lozinka</div>
+          <div class="wifi-value">dobrodoali</div>
+        </div>
+        <button class="copy-btn">📋 Kopiraj</button>
+      </div>
+    </div>
+
+    <!-- Accordion 1 — open with subgroups -->
+    <div class="acc-item open">
+      <button class="acc-trigger">
+        <span>Uputstva za apartman</span>
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <button class="subgroup-btn open"><span>🏠 Kućni red</span><span class="subgroup-arrow">▼</span></button>
+          <div style="padding: 0.25rem 0 0.75rem; display:flex; flex-direction:column; gap:0.6rem;">
+            <ul class="bullet-list">
+              <li>🌙 Tišina od <strong>22:00 do 08:00</strong></li>
+              <li>🚭 Pušenje je <strong>strogo zabranjeno</strong></li>
+              <li>🚪 Kapija zgrade se zaključava posle <strong>22:00</strong> — ključ u apartmanu</li>
+            </ul>
+          </div>
+          <button class="subgroup-btn"><span>🕐 Check-in / Check-out</span><span class="subgroup-arrow">▼</span></button>
+          <button class="subgroup-btn"><span>ℹ️ Dobro je znati</span><span class="subgroup-arrow">▼</span></button>
+          <button class="subgroup-btn"><span>⚙️ Aparati</span><span class="subgroup-arrow">▼</span></button>
+          <button class="subgroup-btn" style="margin-bottom:0;"><span>🅿️ Parking</span><span class="subgroup-arrow">▼</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accordion 2 -->
+    <div class="acc-item">
+      <button class="acc-trigger">
+        <span>Lokalne preporuke</span>
+        <span class="acc-arrow">▼</span>
+      </button>
+    </div>
+
+    <!-- Accordion 3 -->
+    <div class="acc-item">
+      <button class="acc-trigger">
+        <span>Hitni pozivi</span>
+        <span class="acc-arrow">▼</span>
+      </button>
+    </div>
+
+  </div>
+  <div class="guide-footer">
+    <span class="heart">♥</span>
+    <span>Drago nam je što ste izabrali Apartman Mirakul. Ugodan boravak!</span>
+  </div>
+</div>
+
+<button id="feedback-fab">💬</button>
+</body>
+</html>

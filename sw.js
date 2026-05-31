@@ -1,4 +1,4 @@
-const CACHE = 'mirakul-v7';
+const CACHE = 'mirakul-v8';
 const ASSETS = [
   './guest.html',
   './favicon.svg',
@@ -30,6 +30,22 @@ const ASSETS = [
   './images/Guests/Zabava/bioskop lifka.webp',
   './images/Guests/Sport/Bazen Prozivka.webp',
   './images/Guests/Sport/Bazen Dudovasuma.webp',
+  './images/Guests/Dostava/Street pica.webp',
+  './images/Guests/Dostava/Walter.webp',
+  './images/Guests/Dostava/fabrika.webp',
+  './images/Guests/Prodavnica/Idea.png',
+  './images/Guests/Prodavnica/lidl.avif',
+  './images/Guests/Prodavnica/Maxi.jpg',
+  './images/Guests/Prodavnica/DM.webp',
+  './images/Guests/Apoteka/benu.webp',
+  './images/Guests/Menjacnica/Box.jpg',
+  './images/Guests/Bankomat/Addiko.webp',
+  './images/Guests/Bankomat/otpbanka.webp',
+  './images/Guests/Bankomat/nlb.webp',
+  './images/Guests/Benzinska/NIS_Petrol_station.webp',
+  './images/Guests/Benzinska/MOL-BS.webp',
+  './images/Guests/Benzinska/OMV-logo.webp',
+  './images/Guests/Stanice/Autobuska-stanica.jpg',
 ];
 
 self.addEventListener('install', e => {

@@ -1285,7 +1285,7 @@ function setLang(lang) {
           `<div class="subgroup-panel">` +
           (sub.cards
             ? `<div class="swipe-carousel">${sub.cards.map(c =>
-                `<div class="swipe-card"><div class="swipe-card-img">${c.img ? `<img src="${c.img}" alt="${c.name}">` : c.emoji}</div><div class="swipe-card-body"><div class="swipe-card-name">${c.name}</div><div class="swipe-card-dist">${c.dist}</div><div class="swipe-card-desc">${c.desc}</div><div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center">${c.maps ? `<a href="${c.maps}" target="_blank" rel="noopener" class="swipe-card-link">📍 Google Maps</a>` : ''}${c.phone ? `<a href="tel:${c.phone}" class="swipe-card-link">📞 Pozovi</a>` : ''}</div></div></div>`
+                `<div class="swipe-card"><div class="swipe-card-img">${c.img ? `<img src="${c.img}" alt="${c.name}">` : c.emoji}</div><div class="swipe-card-body"><div class="swipe-card-name">${c.name}</div><div class="swipe-card-dist">${c.dist}</div><div class="swipe-card-desc">${c.desc}</div><div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center">${c.maps ? `<a href="${c.maps}" target="_blank" rel="noopener" class="swipe-card-link">📍 Google Maps</a>` : ''}${c.phone ? `<a href="tel:${c.phone}" class="swipe-card-link">📞 ${t.call || 'Pozovi'}</a>` : ''}</div></div></div>`
               ).join('')}</div>`
             : `<div class="subgroup-html">${sub.h}</div>`) +
           `</div>`

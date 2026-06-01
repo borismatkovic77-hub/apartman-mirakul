@@ -1,4 +1,4 @@
-const CACHE = 'mirakul-v12';
+const CACHE = 'mirakul-v13';
 const ASSETS = [
   './guest.html',
   './favicon.svg',
@@ -50,6 +50,9 @@ const ASSETS = [
   './images/Guests/Stanice/Zeleznicka stanica.webp',
   './images/Guests/Menjacnica/Euro menjačnica.webp',
   './images/Guests/Apoteka/Apoteka subotica.webp',
+  './images/Guests/Restorani/Plaža bar.webp',
+  './images/Guests/Restorani/Vinarija Petra.webp',
+  './images/Guests/Restorani/Terasa.webp',
 ];
 
 self.addEventListener('install', e => {

@@ -432,7 +432,7 @@ const T = {
           {name:'EURO Petrol',dist:'',desc:'Benzinska stanica — gorivo i prateći sadržaji. Segedinski put 76.',img:'images/Guests/Benzinska/Euro petrol.webp',maps:'https://maps.google.com/?q=EURO+Petrol+Segedinski+put+76+Subotica'}
         ]},
         {t:'🚂 Železnička stanica',cards:[
-          {name:'Železnička stanica Subotica',dist:'100 m',desc:'Železnička stanica — veze za Beograd, Novi Sad i međunarodne linije.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA'}
+          {name:'Železnička stanica Subotica',dist:'100 m',desc:'Železnička stanica — veze za Beograd, Novi Sad i međunarodne linije.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA',link:'https://w3.srbvoz.rs/redvoznje',linkLabel:'Red vožnje'}
         ]},
         {t:'🚌 Autobuska stanica',cards:[
           {name:'Glavna Autobuska stanica Subotica',dist:'850 m',desc:'Autobuska stanica — linije za celu Srbiju i međunarodne destinacije.',img:'images/Guests/Stanice/Autobuska-stanica.jpg',maps:'https://maps.google.com/?q=Autobuska+stanica+Subotica'}
@@ -534,7 +534,7 @@ const T = {
           {name:'EURO Petrol',dist:'',desc:'Gas station — fuel and amenities. Segedinski put 76.',img:'images/Guests/Benzinska/Euro petrol.webp',maps:'https://maps.google.com/?q=EURO+Petrol+Segedinski+put+76+Subotica'}
         ]},
         {t:'🚂 Railway station',cards:[
-          {name:'Railway Station Subotica',dist:'100 m',desc:'Railway station — connections to Belgrade, Novi Sad and international lines.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA'}
+          {name:'Railway Station Subotica',dist:'100 m',desc:'Railway station — connections to Belgrade, Novi Sad and international lines.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA',link:'https://w3.srbvoz.rs/redvoznje',linkLabel:'Timetable'}
         ]},
         {t:'🚌 Bus station',cards:[
           {name:'Main Bus Station Subotica',dist:'850 m',desc:'Bus station — lines to all of Serbia and international destinations.',img:'images/Guests/Stanice/Autobuska-stanica.jpg',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA'}
@@ -1000,7 +1000,7 @@ const T = {
           {name:'EURO Petrol',dist:'',desc:'Stazione di servizio — carburante e servizi annessi. Segedinski put 76.',img:'images/Guests/Benzinska/Euro petrol.webp',maps:'https://maps.google.com/?q=EURO+Petrol+Segedinski+put+76+Subotica'}
         ]},
         {t:'🚂 Stazione ferroviaria',cards:[
-          {name:'Stazione ferroviaria Subotica',dist:'100 m',desc:'Stazione ferroviaria — collegamenti per Belgrado, Novi Sad e linee internazionali.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA'}
+          {name:'Stazione ferroviaria Subotica',dist:'100 m',desc:'Stazione ferroviaria — collegamenti per Belgrado, Novi Sad e linee internazionali.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA',link:'https://w3.srbvoz.rs/redvoznje',linkLabel:'Orari treni'}
         ]},
         {t:'🚌 Stazione degli autobus',cards:[
           {name:'Stazione centrale degli autobus Subotica',dist:'850 m',desc:'Stazione degli autobus — linee per tutta la Serbia e destinazioni internazionali.',img:'images/Guests/Stanice/Autobuska-stanica.jpg',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA'}
@@ -1286,7 +1286,7 @@ function setLang(lang) {
           `<div class="subgroup-panel">` +
           (sub.cards
             ? `<div class="swipe-carousel">${sub.cards.map(c =>
-                `<div class="swipe-card"><div class="swipe-card-img">${c.img ? `<img src="${c.img}" alt="${c.name}">` : c.emoji}</div><div class="swipe-card-body"><div class="swipe-card-name">${c.name}</div><div class="swipe-card-dist">${c.dist}</div><div class="swipe-card-desc">${c.desc}</div><div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center">${c.maps ? `<a href="${c.maps}" target="_blank" rel="noopener" class="swipe-card-link">📍 Google Maps</a>` : ''}${c.phone ? `<a href="tel:${c.phone}" class="swipe-card-link">📞 ${t.call || 'Pozovi'}</a>` : ''}</div></div></div>`
+                `<div class="swipe-card"><div class="swipe-card-img">${c.img ? `<img src="${c.img}" alt="${c.name}">` : c.emoji}</div><div class="swipe-card-body"><div class="swipe-card-name">${c.name}</div><div class="swipe-card-dist">${c.dist}</div><div class="swipe-card-desc">${c.desc}</div><div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center">${c.maps ? `<a href="${c.maps}" target="_blank" rel="noopener" class="swipe-card-link">📍 Google Maps</a>` : ''}${c.phone ? `<a href="tel:${c.phone}" class="swipe-card-link">📞 ${t.call || 'Pozovi'}</a>` : ''}${c.link ? `<a href="${c.link}" target="_blank" rel="noopener" class="swipe-card-link">🗓️ ${c.linkLabel || 'Red vožnje'}</a>` : ''}</div></div></div>`
               ).join('')}</div>`
             : `<div class="subgroup-html">${sub.h}</div>`) +
           `</div>`

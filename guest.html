@@ -339,6 +339,7 @@
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;"><div id="fb-title" style="font-size:1rem;font-weight:700;color:var(--primary);">Predlog za unapređenje</div><button onclick="closeFeedback()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted);padding:0;line-height:1;">✕</button></div>
       <div id="fb-desc" style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;line-height:1.55;">Nedostaje vam neka informacija u vodiču? Napišite nam da dodamo.</div>
       <form id="feedback-form" action="https://formspree.io/f/xaqvrzva" method="POST">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true" />
         <input type="hidden" name="_subject" value="Feedback — Mirakul vodič za goste">
         <textarea id="fb-textarea" name="message" rows="4" required style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.85rem 1rem;font-family:inherit;font-size:0.92rem;color:var(--primary);background:var(--bg);resize:none;outline:none;" placeholder="Vaš predlog ili komentar..."></textarea>
         <button id="fb-btn" type="submit" style="margin-top:0.65rem;width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:0.85rem;font-family:inherit;font-size:0.95rem;font-weight:700;cursor:pointer;">Pošalji</button>

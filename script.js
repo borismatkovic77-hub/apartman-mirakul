@@ -377,6 +377,17 @@ galleryLinks.forEach((link, i) => {
 
 // Forma - slanje upita
 document.querySelector('.inquiry-form')?.addEventListener('submit', (e) => {
+  // Validacija: mora biti izabran bar jedan glavni ležaj (ne samo dečiji krevetić)
+  const mainBeds = Array.from(document.querySelectorAll('input[name="lezajevi[]"]:checked'))
+    .filter(cb => cb.value !== 'Dečiji krevetić' && cb.value !== 'Baby cot');
+  const bedWarning = document.getElementById('bed-warning');
+  if (mainBeds.length === 0) {
+    e.preventDefault();
+    if (bedWarning) bedWarning.hidden = false;
+    return;
+  }
+  if (bedWarning) bedWarning.hidden = true;
+
   track('form_submit', { form: 'inquiry' });
   const successMsg = document.getElementById('form-success');
   if (successMsg) {

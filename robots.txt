@@ -1,0 +1,8 @@
+# Apartman Mirakul — robots.txt
+# Svi pretraživači i AI alati su dobrodošli da indeksiraju i koriste sadržaj sajta.
+# All search engines and AI tools are welcome to crawl and use the site content.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://apartmanmirakul.rs/sitemap.xml

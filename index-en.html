@@ -140,11 +140,24 @@
         <div class="grid-two">
           <div>
             <span class="eyebrow">About the apartment</span>
-            <h2>Elegance and comfort in the heart of Subotica</h2>
-            <p>Apartman Mirakul is located in the iconic Prokeš Palace — one of the most beautiful buildings in the center of Subotica, dating back to the era when Art Nouveau shaped the city's unique character. The blend of historic charm and modern comfort creates a special atmosphere from the very first moment.</p>
-            <p>What guests appreciate most is the location — nearly everything worth experiencing in Subotica is just a short walk away. City Hall, the Korzo promenade, restaurants, cafés, the synagogue, and many of the city's landmarks are all within easy reach, with no need for a car.</p>
-            <p>The apartment has been carefully designed to make you feel relaxed and comfortable throughout your stay. A fully equipped kitchen, air conditioning, Smart TV, high-speed Wi-Fi, and thoughtful details that make you feel at home are all at your disposal.</p>
-            <p>Whether you are visiting for a weekend getaway, a business trip, or simply to experience the charm of Subotica from one of its finest locations — Mirakul is a place where comfort, atmosphere, and the city come together in one memorable stay.</p>
+            <div class="about-tabs">
+              <button class="about-tab active" onclick="switchAboutTab('apartman', this)">Apartment</button>
+              <button class="about-tab" onclick="switchAboutTab('prokes', this)">Prokeš Palace</button>
+            </div>
+
+            <div class="about-panel" id="about-apartman">
+              <h2>Elegance and comfort in the heart of Subotica</h2>
+              <p>Apartman Mirakul is located in the iconic Prokeš Palace — one of the most beautiful buildings in the center of Subotica, dating back to the era when Art Nouveau shaped the city's unique character. The blend of historic charm and modern comfort creates a special atmosphere from the very first moment.</p>
+              <p>What guests appreciate most is the location — nearly everything worth experiencing in Subotica is just a short walk away. City Hall, the Korzo promenade, restaurants, cafés, the synagogue, and many of the city's landmarks are all within easy reach, with no need for a car.</p>
+              <p>The apartment has been carefully designed to make you feel relaxed and comfortable throughout your stay. A fully equipped kitchen, air conditioning, Smart TV, high-speed Wi-Fi, and thoughtful details that make you feel at home are all at your disposal. Whether you are visiting for a weekend getaway, a business trip, or simply to explore Subotica from its finest location — Mirakul is where comfort, atmosphere, and the city come together.</p>
+            </div>
+
+            <div class="about-panel" id="about-prokes" hidden>
+              <h2>Prokeš Palace — heart of the Korzo since 1887</h2>
+              <p>Prokeš Palace was built in 1887, designed by local architect Géza Koczka. It spans three streets — the Korzo promenade, Engelsova Street and Đure Đakovića Street — and was the largest rental building in Subotica at the time of its construction.</p>
+              <p>Built in the spirit of Italian Renaissance, with a massive ground floor, rusticated facade treatment and arched portals, the palace remains one of the most recognizable buildings in central Subotica. As the natural endpoint of the Korzo, it has shaped the look and identity of the city's core for over a century.</p>
+              <p>Apartman Mirakul is located right inside Prokeš Palace, at the very heart of Subotica. City Hall, the Synagogue, Rajhl Palace and other landmarks are just a few minutes' walk away — your stay begins inside one of the most significant historic buildings in the city.</p>
+            </div>
           </div>
           <div class="feature-cards">
             <article class="card">

@@ -140,11 +140,24 @@
         <div class="grid-two">
           <div>
             <span class="eyebrow">O apartmanu</span>
-            <h2>Elegancija i udobnost u centru Subotice</h2>
-            <p>Apartman Mirakul smešten je u prepoznatljivoj Prokeš palati — jednoj od najlepših zgrada u centru Subotice, nastaloj u vreme kada je secesija oblikovala izgled grada. Spoj istorijskog ambijenta i modernog komfora pruža poseban osećaj boravka već od prvog trenutka.</p>
-            <p>Lokacija je ono što gosti najviše izdvajaju — gotovo sve najlepše što Subotica nudi nalazi se na nekoliko minuta lagane šetnje. Gradska kuća, korzo, restorani, kafići, sinagoga i brojne znamenitosti biće vam praktično na dohvat ruke, bez potrebe za automobilom.</p>
-            <p>Apartman je pažljivo uređen kako biste se osećali prijatno i opušteno tokom celog boravka. Na raspolaganju su potpuno opremljena kuhinja, klima, Smart TV, brz internet i sve sitnice koje čine da se osećate kao kod kuće.
-Bilo da dolazite na vikend odmor, poslovno putovanje ili želite da upoznate šarm Subotice iz njene najbolje lokacije — Mirakul je mesto gde udobnost, atmosfera i grad postaju jedno iskustvo.</p>
+            <div class="about-tabs">
+              <button class="about-tab active" onclick="switchAboutTab('apartman', this)">Apartman</button>
+              <button class="about-tab" onclick="switchAboutTab('prokes', this)">Prokeš palata</button>
+            </div>
+
+            <div class="about-panel" id="about-apartman">
+              <h2>Elegancija i udobnost u centru Subotice</h2>
+              <p>Apartman Mirakul smešten je u prepoznatljivoj Prokeš palati — jednoj od najlepših zgrada u centru Subotice, nastaloj u vreme kada je secesija oblikovala izgled grada. Spoj istorijskog ambijenta i modernog komfora pruža poseban osećaj boravka već od prvog trenutka.</p>
+              <p>Lokacija je ono što gosti najviše izdvajaju — gotovo sve najlepše što Subotica nudi nalazi se na nekoliko minuta lagane šetnje. Gradska kuća, korzo, restorani, kafići, sinagoga i brojne znamenitosti biće vam praktično na dohvat ruke, bez potrebe za automobilom.</p>
+              <p>Apartman je pažljivo uređen kako biste se osećali prijatno i opušteno tokom celog boravka. Na raspolaganju su potpuno opremljena kuhinja, klima, Smart TV, brz internet i sve sitnice koje čine da se osećate kao kod kuće. Bilo da dolazite na vikend odmor, poslovno putovanje ili želite da upoznate šarm Subotice iz njene najbolje lokacije — Mirakul je mesto gde udobnost, atmosfera i grad postaju jedno iskustvo.</p>
+            </div>
+
+            <div class="about-panel" id="about-prokes" hidden>
+              <h2>Prokeš palata — srce subotičkog Korzoa</h2>
+              <p>Prokeš palata podignuta je 1887. godine prema projektu subotičkog arhitekte Géze Koczke. Prostire se između Korzoa, Engelsove ulice i ulice Đure Đakovića, a u vreme izgradnje bila je najveća najamna zgrada u Subotici.</p>
+              <p>Građena u duhu italijanske renesanse, sa masivnim prizemljem, rustičnom obradom fasade i lučnim portalima, palata i danas predstavlja jedno od prepoznatljivih zdanja u centru Subotice. Kao prirodan završetak Korzoa, više od jednog veka oblikuje izgled i identitet gradskog jezgra.</p>
+              <p>Apartman Mirakul smešten je upravo u Prokeš palati, u samom centru Subotice. Odatle su Gradska kuća, Sinagoga, Rajhlova palata i druge znamenitosti udaljene svega nekoliko minuta hoda, pa vaš boravak počinje u jednom od najznačajnijih istorijskih objekata grada.</p>
+            </div>
           </div>
           <div class="feature-cards">
             <article class="card">

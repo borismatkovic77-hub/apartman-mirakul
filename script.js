@@ -345,6 +345,14 @@ document.getElementById('track-email-contact')?.addEventListener('click', () =>
 document.getElementById('track-email-footer')?.addEventListener('click', () =>
   track('email_click', { location: 'footer' }));
 
+// About section tabs
+function switchAboutTab(id, btn) {
+  document.querySelectorAll('.about-panel').forEach(p => { p.hidden = true; });
+  document.querySelectorAll('.about-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('about-' + id).hidden = false;
+  btn.classList.add('active');
+}
+
 // WhatsApp & Viber
 document.getElementById('track-wa-contact')?.addEventListener('click', () =>
   track('whatsapp_click', { location: 'contact' }));

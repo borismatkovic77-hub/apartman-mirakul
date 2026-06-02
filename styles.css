@@ -1919,3 +1919,62 @@ button, a { font: inherit; }
   .section { padding: 2.75rem 0; }
   .section-about { padding-bottom: 2rem; }
 }
+
+/* ── FAQ ─────────────────────────────────────── */
+
+.section-faq { background: var(--bg); padding-top: 2.75rem; padding-bottom: 3.25rem; }
+
+.section-faq .faq-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0 0 1.1rem;
+  color: var(--primary);
+}
+
+.faq-list {
+  max-width: 760px;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0 1.25rem;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 0;
+  font-weight: 600;
+  color: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.faq-item[open] summary::after { content: '\2212'; }
+
+.faq-item p {
+  margin: 0 0 1.1rem;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}

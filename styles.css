@@ -869,7 +869,7 @@ button, a { font: inherit; }
 }
 
 .carousel-dots {
-  display: flex;
+  display: none;
   justify-content: center;
   gap: 0.5rem;
 }
@@ -897,6 +897,10 @@ button, a { font: inherit; }
 
   .carousel-btn {
     display: none;
+  }
+
+  .carousel-dots {
+    display: flex;
   }
 }
 

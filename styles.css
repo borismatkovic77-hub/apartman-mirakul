@@ -1978,3 +1978,10 @@ button, a { font: inherit; }
   line-height: 1.65;
   font-size: 0.95rem;
 }
+
+.footer-credit {
+  opacity: 0.5;
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+  margin-left: 0.35rem;
+}

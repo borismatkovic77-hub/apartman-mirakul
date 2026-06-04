@@ -325,7 +325,7 @@
             <span class="wifi-icon">🔑</span>
             <div class="wifi-info">
               <div class="wifi-label" id="wifi-pass-lbl">Lozinka</div>
-              <div class="wifi-value">dobrodoali</div>
+              <div class="wifi-value">dobrodosli</div>
             </div>
             <button class="copy-btn" onclick="copyWifi()">📋 <span id="copy-lbl">Kopiraj</span></button>
           </div>
@@ -1870,7 +1870,7 @@ let currentLang = 'sr';
 function wifiSubGroup(t) {
   const svgW = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>`;
   const svgBtn = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:0.4em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>`;
-  const inner = `<div style="display:flex;flex-direction:column;gap:0.85rem;"><div class="wifi-row"><span class="wifi-icon">${svgW}</span><div class="wifi-info"><div class="wifi-label">${t.wn}</div><div class="wifi-value">Apartman Mirakul 5G</div></div></div><div class="wifi-row"><span class="wifi-icon">🔑</span><div class="wifi-info"><div class="wifi-label">${t.wp}</div><div class="wifi-value">dobrodoali</div></div><button class="copy-btn" onclick="copyWifi(this)">📋 <span>${t.cp}</span></button></div></div>`;
+  const inner = `<div style="display:flex;flex-direction:column;gap:0.85rem;"><div class="wifi-row"><span class="wifi-icon">${svgW}</span><div class="wifi-info"><div class="wifi-label">${t.wn}</div><div class="wifi-value">Apartman Mirakul 5G</div></div></div><div class="wifi-row"><span class="wifi-icon">🔑</span><div class="wifi-info"><div class="wifi-label">${t.wp}</div><div class="wifi-value">dobrodosli</div></div><button class="copy-btn" onclick="copyWifi(this)">📋 <span>${t.cp}</span></button></div></div>`;
   return `<button class="subgroup-btn" onclick="togSub(this)"><span>${svgBtn}WiFi</span><span class="subgroup-arrow">▼</span></button><div class="subgroup-panel"><div class="subgroup-html">${inner}</div></div>`;
 }
 
@@ -1941,7 +1941,7 @@ function togWifi() {
 }
 
 function copyWifi(btn) {
-  const pw = 'dobrodoali';
+  const pw = 'dobrodosli';
   const lbl = btn ? btn.querySelector('span') : document.getElementById('copy-lbl');
   const done = () => { if(lbl){lbl.textContent=T[currentLang].cd; setTimeout(()=>{ if(lbl) lbl.textContent=T[currentLang].cp; },2000);} };
   if (navigator.clipboard) { navigator.clipboard.writeText(pw).then(done); }

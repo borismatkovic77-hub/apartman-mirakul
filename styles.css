@@ -334,9 +334,9 @@ button, a { font: inherit; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 18%),
-    linear-gradient(160deg, rgba(6, 14, 30, 0.2) 0%, rgba(6, 14, 30, 0.82) 100%),
-    url('images/apartman-mirakul-dnevni-boravak-panorama.webp');
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0) 16%),
+    linear-gradient(160deg, rgba(6, 14, 30, 0.10) 0%, rgba(6, 14, 30, 0.40) 100%),
+    url('images/DV778820-Pano.webp');
   background-size: cover;
   background-position: center;
   filter: saturate(1.08);
@@ -347,7 +347,7 @@ button, a { font: inherit; }
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 6rem 0 1rem;
+  padding: 4rem 0 1rem;
   z-index: 1;
   overflow: hidden;
 }
@@ -355,6 +355,16 @@ button, a { font: inherit; }
 .hero-content > * {
   max-width: 100%;
   min-width: 0;
+}
+
+.hero-content .eyebrow { margin-bottom: 0.5rem; }
+
+.hero-content .eyebrow,
+.hero-brand,
+.hero-section h1,
+.hero-meta strong,
+.hero-meta span {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.65), 0 1px 4px rgba(0, 0, 0, 0.55);
 }
 
 .eyebrow {
@@ -1780,7 +1790,7 @@ button, a { font: inherit; }
 
   .hero-content {
     min-height: 100svh;
-    padding: 5rem 0 2rem;
+    padding: 4.25rem 0 2rem;
   }
 
   .hero-actions {

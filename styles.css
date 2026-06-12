@@ -1995,3 +1995,11 @@ button, a { font: inherit; }
   letter-spacing: 0.02em;
   margin-left: 0.35rem;
 }
+
+.reviews-intro {
+  max-width: 640px;
+  margin: 0 0 1.75rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}

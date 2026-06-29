@@ -297,6 +297,7 @@
     <button class="lang-btn" onclick="setLang('mk')"><img class="lang-flag" src="https://flagcdn.com/w40/mk.png" alt=""> Македонски</button>
     <button class="lang-btn" onclick="setLang('sl')"><img class="lang-flag" src="https://flagcdn.com/w40/si.png" alt=""> Slovenščina</button>
     <button class="lang-btn" onclick="setLang('zh')"><img class="lang-flag" src="https://flagcdn.com/w40/cn.png" alt=""> 中文</button>
+    <button class="lang-btn" onclick="setLang('el')"><img class="lang-flag" src="https://flagcdn.com/w40/gr.png" alt=""> Ελληνικά</button>
   </div>
 </div>
 
@@ -370,9 +371,10 @@ const FLAGS = {
   es:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/es.png" alt="">',
   mk:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/mk.png" alt="">',
   sl:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/si.png" alt="">',
-  ro:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/ro.png" alt="">'
+  ro:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/ro.png" alt="">',
+  el:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/gr.png" alt="">'
 };
-const CODES = {sr:'SR',hr:'HR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO'};
+const CODES = {sr:'SR',hr:'HR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO',el:'EL'};
 
 const EMERGENCY = (p,a,f,h) => `<ul class="item-list"><li><span class="item-label">🚔 ${p}</span><a href="tel:192">192</a></li><li><span class="item-label">🚑 ${a}</span><a href="tel:194">194</a></li><li><span class="item-label">🚒 ${f}</span><a href="tel:193">193</a></li><li><span class="item-label">🚕 Alfa Taxi</span><a href="tel:19788">19788</a></li><li><span class="item-label">📞 ${h}</span><a href="tel:+381631168024">+381 63 116 8024</a></li></ul>`;
 
@@ -390,7 +392,8 @@ const FB = {
   es:{title:'Sugerencias',desc:'¿Falta algo en la guía? Escríbanos y lo añadiremos.',ph:'Su sugerencia o comentario...',btn:'Enviar',ok:'✓ ¡Gracias! Su mensaje ha sido recibido.'},
   mk:{title:'Предлози',desc:'Недостасува нешто во водичот? Напишете ни да додадеме.',ph:'Вашиот предлог или коментар...',btn:'Испрати',ok:'✓ Благодариме! Вашата порака е примена.'},
   sl:{title:'Predlogi',desc:'Manjka kaj v vodniku? Pišite nam in dodali bomo.',ph:'Vaš predlog ali komentar...',btn:'Pošlji',ok:'✓ Hvala! Vaše sporočilo je prejeto.'},
-  ro:{title:'Sugestii',desc:'Lipsește ceva din ghid? Scrieți-ne și vom adăuga.',ph:'Sugestia sau comentariul dumneavoastră...',btn:'Trimite',ok:'✓ Mulțumim! Mesajul dvs. a fost primit.'}
+  ro:{title:'Sugestii',desc:'Lipsește ceva din ghid? Scrieți-ne și vom adăuga.',ph:'Sugestia sau comentariul dumneavoastră...',btn:'Trimite',ok:'✓ Mulțumim! Mesajul dvs. a fost primit.'},
+  el:{title:'Προτάσεις',desc:'Λείπει κάτι από τον οδηγό; Ενημερώστε μας και θα το προσθέσουμε.',ph:'Η πρότασή ή το σχόλιό σας...',btn:'Αποστολή',ok:'✓ Ευχαριστούμε! Το μήνυμά σας ελήφθη.'}
 };
 
 const T = {
@@ -1862,6 +1865,111 @@ const T = {
         ]}
       ]},
       {i:'📞',t:'Numere importante',h:EMERGENCY('Poliție','Ambulanță','Pompieri','Gazdă Boris')}
+    ]
+  },
+  el: {
+    wn:'Δίκτυο WiFi', wp:'Κωδικός', cp:'Αντιγραφή', cd:'Αντιγράφηκε!', call:'Κλήση',
+    ft:'Χαρούμενοι που επιλέξατε το Apartman Mirakul. Καλή διαμονή!',
+    s:[
+      {i:'💡',t:'Οδηγός διαμερίσματος',subs:[
+        {t:'🏠 Κανόνες διαμονής',h:`<ul class="bullet-list"><li>🏢 Παρακαλούμε σεβαστείτε τους άλλους ενοίκους του κτιρίου</li><li>🌙 Ώρες ησυχίας: <strong>22:00–08:00</strong></li><li>🥿 Για λόγους υγιεινής, παρακαλούμε μην περπατάτε στο διαμέρισμα με παπούτσια εξωτερικού χώρου — συνιστούμε να φοράτε παντόφλες</li><li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px;flex-shrink:0"><circle cx="12" cy="12" r="10" fill="none" stroke="#e74c3c" stroke-width="2"/><rect x="4" y="10.5" width="13" height="3" rx="1.5" fill="#666"/><rect x="17" y="10.5" width="3.5" height="3" rx="1" fill="#d4b896"/><line x1="4" y1="4" x2="20" y2="20" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/></svg> Το κάπνισμα <strong>απαγορεύεται αυστηρά</strong> εντός του διαμερίσματος και του κτιρίου</li><li>🐾 <strong>Δεν επιτρέπονται κατοικίδια</strong></li><li>👥 Μέγιστη χωρητικότητα: <strong>4 άτομα</strong></li><li>🚪 Η πύλη του κτιρίου κλειδώνει μετά τις <strong>22:00</strong> — το κλειδί της πύλης περιλαμβάνεται μαζί με το κλειδί του διαμερίσματος</li><li>🧹 Παρακαλούμε αφήστε το διαμέρισμα τακτοποιημένο κατά την αναχώρηση</li></ul>`},
+        {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">έως 11:00</div></div></div><div class="guide-tip">🔑 Κατά την αναχώρηση, αφήστε τα κλειδιά στο γραμματοκιβώτιο δίπλα στην εξώπορτα. Παρακαλούμε ενημερώστε τον οικοδεσπότη για την εκτιμώμενη ώρα αναχώρησής σας.</div>`},
+        {t:'ℹ️ Καλό να γνωρίζετε',h:`<div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Ζεστό νερό</strong><span>Ο θερμοσίφωνας είναι πάντα αναμμένος — ζεστό νερό διαθέσιμο αμέσως.</span></div></div><div class="guide-item"><span class="guide-item-icon">🚿</span><div class="guide-item-text"><strong>Βρύση μπανιέρας & ντους</strong><span>Για το κανονικό ντους, σύρετε την έξοδο νερού προς τα δεξιά. Για το ντους κεφαλής, τραβήξτε τον μοχλό στη βρύση.</span></div></div><div class="guide-item"><span class="guide-item-icon">🪟</span><div class="guide-item-text"><strong>Συσκότιση</strong><span>Ξύλινα στόρια είναι διαθέσιμα σε όλα τα δωμάτια για συσκότιση.</span></div></div><div class="guide-item"><span class="guide-item-icon">🔐</span><div class="guide-item-text"><strong>Κλείδωμα πόρτας</strong><span>Για να κλειδώσετε την εξώπορτα, τραβήξτε πρώτα το χερούλι προς τα πάνω και μετά γυρίστε το κλειδί.</span></div></div>`},
+        {t:'⚙️ Συσκευές',h:`<div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Philips TV 50"</strong><span>Πατήστε <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M3 12L12 3l9 9"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg> HOME για να επιλέξετε εφαρμογή — Netflix, YouTube, Iris, Stremio, TiVimate.</span></div></div><div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Κλιματισμός</strong><span>Το τηλεχειριστήριο βρίσκεται στο ράφι κοντά στον πάγκο μπαρ.<br>⚠️ Απαγορεύεται αυστηρά να κρατάτε τα παράθυρα ανοιχτά όταν λειτουργεί ο κλιματισμός.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Ενδοδαπέδια θέρμανση</strong><span>Ρυθμισμένη στους 23°C κατά τη σεζόν — επικοινωνήστε με τον οικοδεσπότη εάν χρειάζεται ρύθμιση.<br>⚠️ Απαγορεύεται αυστηρά να κρατάτε τα παράθυρα ανοιχτά κατά την περίοδο θέρμανσης.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Πλυντήριο & στεγνωτήριο</strong><span>Οδηγίες στο συρτάρι του μπάνιου. Το απορρυπαντικό δεν παρέχεται από το διαμέρισμα.</span></div></div><div class="guide-item"><span class="guide-item-icon">💧</span><div class="guide-item-text"><strong>Βραστήρας</strong><span>Τυπικός ηλεκτρικός βραστήρας νερού.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Καφετιέρα Gorenje</strong><span>Αποκλειστικά για την παρασκευή καφέ.<br>⚠️ Μην τοποθετείτε μεταλλικό κουταλάκι ή μεταλλικά αντικείμενα μέσα ενώ η συσκευή λειτουργεί.</span></div></div><div class="guide-item"><span class="guide-item-icon">📡</span><div class="guide-item-text"><strong>Φούρνος μικροκυμάτων</strong><span>Μέγιστη ισχύς 900W.<br>⚠️ Ποτέ μην τοποθετείτε μεταλλικά αντικείμενα μέσα.</span></div></div>`},
+        {t:'🅿️ Πάρκινγκ',h:`<div style="display:inline-flex;align-items:center;gap:0.5rem;background:#fff1f0;border:1.5px solid #e74c3c;border-radius:8px;padding:0.4rem 0.85rem;margin-bottom:1rem;"><span style="color:#e74c3c;font-size:0.9rem;">●</span><span style="font-weight:700;font-size:0.9rem;color:#c0392b;">Κόκκινη ζώνη (1) — μπροστά από το κτίριο</span></div><div class="checkin-row"><div><div class="checkin-label">Καθημερινές</div><div class="checkin-time">07:00 – 21:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Σάββατο</div><div class="checkin-time">07:00 – 14:00</div></div></div><div class="checkin-row" style="border-bottom:none;"><div><div class="checkin-label">Κυριακή & αργίες</div><div style="font-size:1.55rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em;">Δωρεάν</div></div></div><div style="margin-top:1.1rem;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:0.6rem;">Πληρωμή με SMS</div><div style="display:flex;flex-direction:column;gap:0.5rem;"><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Ανά ώρα</div><div style="font-size:1.1rem;font-weight:800;">9241</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">70 RSD</div></div><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Ημερήσιο εισιτήριο</div><div style="font-size:1.1rem;font-weight:800;">9245</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">480 RSD</div></div></div></div><div class="guide-tip" style="margin-top:0.85rem;">💡 Μετά τις 21:00 μπορείτε να προπληρώσετε το πάρκινγκ για την επόμενη ημέρα — στείλτε SMS στο <strong>9245</strong> και το πρωί σας είναι τακτοποιημένο.</div>`}
+      ]},
+      {i:'🛎️',t:'Αν χρειαστείτε...',subs:[
+        {t:'🚕 Ταξί',cards:[
+          {name:'Alfa Taxi',dist:'⭐ 4.1',desc:'Αξιόπιστη υπηρεσία ταξί — διαθέσιμη 24/7. Đure Đakovića.',emoji:'🚕',phone:'0642015800'},
+          {name:'Pink Taxi',dist:'⭐ 5.0',desc:'Υπηρεσία ταξί — Branislava Nušića bb.',emoji:'🚕',phone:'0644685329'},
+          {name:'Meče Taxi',dist:'⭐ 4.5',desc:'Υπηρεσία ταξί — Lajoša Joaneša.',emoji:'🚕',phone:'0656806700'},
+          {name:'Taxi 9',dist:'⭐ 4.3',desc:'Υπηρεσία ταξί — Vatroslava Lisinskog.',emoji:'🚕',phone:'0659999560'},
+          {name:'Prozivka Taxi',dist:'⭐ 4.2',desc:'Υπηρεσία ταξί — Nade Dimić.',emoji:'🚕',phone:'0659765000'},
+          {name:'Ekonomik Taxi',dist:'⭐ 4.2',desc:'Υπηρεσία ταξί — Matije Gupca 2.',emoji:'🚕',phone:'0637440004'},
+          {name:'Yu Taxi',dist:'⭐ 3.8',desc:'Υπηρεσία ταξί — ανοιχτά 24ω, Štrosmajerova.',emoji:'🚕',phone:'0655559761'},
+          {name:'Omega Taxi',dist:'⭐ 3.1',desc:'Υπηρεσία ταξί Σούμποτιτσα.',emoji:'🚕',phone:'024559911'}
+        ]},
+        {t:'🛵 Παράδοση φαγητού',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Παράδοση φαγητού και ποτών — επικοινωνήστε απευθείας για παραγγελία.',img:'images/Guests/Restorani/boss.webp',phone:'024551111'},
+          {name:'Renaissance',dist:'150 m',desc:'Παράδοση ιταλικής και τοπικής κουζίνας.',img:'images/Guests/Restorani/Renaissance.webp',phone:'024555001'},
+          {name:'Street Pica',dist:'',desc:'Παράδοση πίτσας — γρήγορα και νόστιμα.',img:'images/Guests/Dostava/Street pica.webp',phone:'0640907040'},
+          {name:'Walter',dist:'',desc:'Παράδοση φαγητού — μεγάλη ποικιλία πιάτων.',img:'images/Guests/Dostava/Walter.webp',phone:'0631011000'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Παράδοση premium μπέργκερ — ποιοτικό κρέας, ψωμάκια brioche και σπιτικές σάλτσες.',img:'images/Guests/Dostava/fabrika.webp',phone:'0649593674'}
+        ]},
+        {t:'🛒 Παντοπωλείο',cards:[
+          {name:'Idea',dist:'',desc:'Σούπερ μάρκετ — μεγάλη ποικιλία τροφίμων και ειδών οικιακής χρήσης.',img:'images/Guests/Prodavnica/Idea.png',maps:'https://maps.google.com/?q=Idea+Korzo+13+Subotica'},
+          {name:'Lidl',dist:'',desc:'Σούπερ μάρκετ — ποιοτικά προϊόντα σε προσιτές τιμές.',img:'images/Guests/Prodavnica/lidl.avif',maps:'https://maps.google.com/?q=Lidl+Pala+Papa+1+Subotica'},
+          {name:'Maxi',dist:'',desc:'Σούπερ μάρκετ — καθημερινά ψώνια.',img:'images/Guests/Prodavnica/Maxi.jpg',maps:'https://maps.google.com/?q=Maxi+Trg+Cara+Jovana+Nenada+2+Subotica'},
+          {name:'DM',dist:'',desc:'Κατάστημα καλλυντικών — καλλυντικά, είδη υγιεινής και περιποίησης.',img:'images/Guests/Prodavnica/DM.webp',maps:'https://maps.google.com/?q=DM+Korzo+10C+Subotica'}
+        ]},
+        {t:'💊 Φαρμακείο',cards:[
+          {name:'Benu Apoteka',dist:'',desc:'Φαρμακείο — φάρμακα, συμπληρώματα, καλλυντικά. Korzo 15.',img:'images/Guests/Apoteka/benu.webp',maps:'https://maps.google.com/?q=Benu+apoteka+Korzo+15+Subotica',phone:'+38124533121'},
+          {name:'Apoteka Subotica No.1 — Centar',dist:'',desc:'Φαρμακείο — φάρμακα και προϊόντα υγείας.',img:'images/Guests/Apoteka/Apoteka subotica.webp',maps:'https://maps.app.goo.gl/CdQUTjdNhviAKTww8'}
+        ]},
+        {t:'💱 Ανταλλακτήριο συναλλάγματος',cards:[
+          {name:'Box',dist:'',desc:'Ανταλλαγή συναλλάγματος — ευρώ, δολάρια και άλλα νομίσματα.',img:'images/Guests/Menjacnica/Box.jpg',maps:'https://maps.google.com/?q=Box+menjacnica+Branislava+Nusica+Subotica'},
+          {name:'Euro',dist:'',desc:'Ανταλλαγή συναλλάγματος — ευρώ, δολάρια και άλλα νομίσματα. Korzo 10b.',img:'images/Guests/Menjacnica/Euro menjačnica.webp',maps:'https://maps.google.com/?q=Euro+menjacnica+Korzo+10b+Subotica'}
+        ]},
+        {t:'🏧 ΑΤΜ',cards:[
+          {name:'Addiko Bank',dist:'',desc:'ΑΤΜ — δωρεάν αναλήψεις για κάρτες Addiko.',img:'images/Guests/Bankomat/Addiko.webp',maps:'https://maps.google.com/?q=Addiko+bank+Korzo+15+Subotica'},
+          {name:'OTP Banka',dist:'',desc:'ΑΤΜ — διαθέσιμο 24/7.',img:'images/Guests/Bankomat/otpbanka.webp',maps:'https://maps.google.com/?q=OTP+banka+Korzo+12+Subotica'},
+          {name:'NLB Banka',dist:'',desc:'ΑΤΜ — διαθέσιμο 24/7.',img:'images/Guests/Bankomat/nlb.webp',maps:'https://maps.google.com/?q=NLB+banka+Korzo+10+Subotica'}
+        ]},
+        {t:'⛽ Βενζινάδικο',cards:[
+          {name:'NIS Petrol',dist:'',desc:'Βενζινάδικο — καύσιμα, κατάστημα και καφέ.',img:'images/Guests/Benzinska/NIS_Petrol_station.webp',maps:'https://maps.google.com/?q=NIS+Petrol+Puskinov+Trg+Subotica'},
+          {name:'MOL',dist:'',desc:'Βενζινάδικο — καύσιμα και παροχές.',img:'images/Guests/Benzinska/MOL-BS.webp',maps:'https://maps.google.com/?q=MOL+Jovana+Mikica+Subotica'},
+          {name:'OMV',dist:'',desc:'Βενζινάδικο — καύσιμα, κατάστημα και αναψυκτικά.',img:'images/Guests/Benzinska/OMV-logo.webp',maps:'https://maps.google.com/?q=OMV+Beogradski+put+88+Subotica'},
+          {name:'EURO Petrol',dist:'',desc:'Βενζινάδικο — καύσιμα και παροχές. Segedinski put 76.',img:'images/Guests/Benzinska/Euro petrol.webp',maps:'https://maps.google.com/?q=EURO+Petrol+Segedinski+put+76+Subotica'}
+        ]},
+        {t:'🚂 Σιδηροδρομικός σταθμός',cards:[
+          {name:'Σιδηροδρομικός Σταθμός Σούμποτιτσα',dist:'100 m',desc:'Σιδηροδρομικός σταθμός — συνδέσεις προς Βελιγράδι, Νόβι Σαντ και διεθνείς γραμμές.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA',link:'https://w3.srbvoz.rs/redvoznje',linkLabel:'Δρομολόγια'}
+        ]},
+        {t:'🚌 Σταθμός λεωφορείων',cards:[
+          {name:'Κεντρικός Σταθμός Λεωφορείων Σούμποτιτσα',dist:'850 m',desc:'Σταθμός λεωφορείων — γραμμές προς όλη τη Σερβία και διεθνείς προορισμούς.',img:'images/Guests/Stanice/Autobuska-stanica.jpg',maps:'https://maps.google.com/?q=Autobuska+stanica+Subotica',link:'https://sutrans.rs/Polasci-i-dolasci.html',linkLabel:'Δρομολόγια'}
+        ]}
+      ]},
+      {i:'📍',t:'Τοπικές προτάσεις',subs:[
+        {t:'🍽️ Εστιατόρια & καφέ',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Σύγχρονο ορόσημο της Σούμποτιτσα, αγαπημένο από επισκέπτες όλων των γενεών — ιδανικό για πρωινό, καφέ και μεσημεριανό.',img:'images/Guests/Restorani/boss.webp',maps:'https://maps.google.com/?q=Boss+Caffe+Subotica'},
+          {name:'Stara picerija',dist:'100 m',desc:'Η παλαιότερη πιτσαρία στη Σερβία, ιδρύθηκε το 1977. Διαθέτει υπέροχη παιδική χαρά — ιδανική για οικογένειες με παιδιά.',img:'images/Guests/Restorani/stara-picerija.webp',maps:'https://maps.google.com/?q=Stara+picerija+Subotica'},
+          {name:'Renaissance',dist:'150 m',desc:'Σύγχρονο εστιατόριο με πλούσια επιλογή ιταλικής και τοπικής κουζίνας.',img:'images/Guests/Restorani/Renaissance.webp',maps:'https://maps.google.com/?q=Renesansa+restoran+Subotica'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Premium μπέργκερ με κρέας κορυφαίας ποιότητας, ψωμάκια brioche, εκλεκτά τυριά και σπιτικές σάλτσες.',img:'images/Guests/Restorani/fabrika.webp',maps:'https://maps.google.com/?q=Fabrika+Subotica'},
+          {name:'Basch House 1887',dist:'800 m',desc:'Εκεί όπου η παράδοση συναντά την καινοτομία — εξαιρετικό φαγητό, αυθεντικά ποτά και μεγάλη επιλογή craft μπύρας.',img:'images/Guests/Restorani/basch-house.webp',maps:'https://maps.google.com/?q=Basch+House+Cara+Lazara+Subotica'},
+          {name:'Bates',dist:'300 m',desc:'Παραδοσιακή kafana που διατηρεί το πνεύμα της μουσικής tamburica και της σπιτικής τοπικής κουζίνας.',img:'images/Guests/Restorani/bates.webp',maps:'https://maps.google.com/?q=Bates+Subotica'},
+          {name:'Kafe Priča',dist:'200 m',desc:'Κάντε μια παύση, αφιερώστε χρόνο στον εαυτό σας και στους φίλους σας — οι συζητήσεις ρέουν εύκολα σε αυτό το όμορφο καφέ.',img:'images/Guests/Restorani/kafe-prica.webp',maps:'https://maps.google.com/?q=Kafe+Prica+Subotica'},
+          {name:'Mali trg',dist:'400 m',desc:'Ένα γοητευτικό εστιατόριο fine dining στην καρδιά της πόλης — ιδανικό για ξεχωριστές στιγμές.',img:'images/Guests/Restorani/mali-trg.webp',maps:'https://maps.google.com/?q=Mali+trg+Subotica'},
+          {name:'Vinarija Zvonko Bogdan',dist:'10 km',desc:'Οινοποιείο σε στιλ Αρ Νουβό στις όχθες της λίμνης Πάλιτς — καθοδηγούμενη γευσιγνωσία κρασιού με θέα στους αμπελώνες. Συνιστάται κράτηση.',img:'images/Guests/Restorani/vinarija-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Vinarija+Zvonko+Bogdan+Subotica'},
+          {name:'Salaš Zvonko Bogdan',dist:'15 km',desc:'Αυθεντικό αγρόκτημα της Βοϊβοντίνα στη λίμνη Λούντας — σπιτική σούπα, πιάτα αργής μαγειρικής και στρούντελ σε αγροτική ηρεμία.',img:'images/Guests/Restorani/salas-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Salas+Zvonko+Bogdan+Subotica'},
+          {name:'Plaža Bar',dist:'8 km',desc:'Χαλαρό μπαρ στο Πάλιτς — το ιδανικό σημείο για ένα ποτό και ξεκούραση δίπλα στη λίμνη.',img:'images/Guests/Restorani/Plaža bar.webp',maps:'https://maps.app.goo.gl/VtGVUF8ceWY4r6xBA'},
+          {name:'Vinarija Petra',dist:'8 km',desc:'Οινοποιείο στο Πάλιτς — γευσιγνωσία κρασιού σε ευχάριστο περιβάλλον. 💡 Ένα όμορφο μονοπάτι οδηγεί από την παραλία Peščana στο οινοποιείο, ιδανικό για περπάτημα.',img:'images/Guests/Restorani/Vinarija Petra.webp',maps:'https://maps.app.goo.gl/tnoKDWVaCCbiKByQ8'},
+          {name:'Terasa Muški Štrand',dist:'8 km',desc:'Βεράντα στο Πάλιτς κοντά στο Muški štrand — φαγητό και ποτά με θέα στη λίμνη.',img:'images/Guests/Restorani/Terasa.webp',maps:'https://maps.app.goo.gl/XmGSrZ8D3xkEmt5M9'}
+        ]},
+        {t:'🏛️ Αξιοθέατα',cards:[
+          {name:'Δημαρχείο',dist:'300 m',desc:'Σύμβολο της Σούμποτιτσα — ένα επιβλητικό κτίριο Αρ Νουβό του 1910, αριστούργημα της τοπικής αρχιτεκτονικής.',img:'images/Guests/Znamenitosti/gradska-kuca.webp',maps:'https://maps.google.com/?q=Subotica+City+Hall'},
+          {name:'Παλάτι Ράιχλ',dist:'30 m',desc:'Ακριβώς δίπλα στο διαμέρισμα — ένα από τα ωραιότερα στολίδια της κληρονομιάς Αρ Νουβό της Σούμποτιτσα.',img:'images/Guests/Znamenitosti/rajhlova-palata.webp',maps:'https://maps.google.com/?q=Rajhlova+palata+Subotica'},
+          {name:'Δημοτικό Μουσείο',dist:'600 m',desc:'Ιδρύθηκε το 1892 σε ένα πολυτελές παλάτι Αρ Νουβό — φιλοξενεί αρχαιολογικές, ιστορικές και εθνολογικές συλλογές.',img:'images/Guests/Znamenitosti/gradski-muzej.webp',maps:'https://maps.google.com/?q=Gradski+muzej+Subotica'},
+          {name:'Μουσείο Πορσελάνης',dist:'150 m',desc:'Μοναδικό μουσείο στη Σερβία με πάνω από 2.000 εκθέματα ηλικίας έως 200 ετών — από βιεννέζικη και ρωσική έως γιουγκοσλαβική πορσελάνη.',img:'images/Guests/Znamenitosti/muzej-porcelana.webp',maps:'https://maps.google.com/?q=Muzej+porcelana+Subotica'},
+          {name:'Συναγωγή',dist:'500 m',desc:'Μία από τις ωραιότερες συναγωγές στην Ευρώπη, χτισμένη το 1902 σε στιλ Αρ Νουβό — ένα πραγματικό αρχιτεκτονικό θαύμα.',img:'images/Guests/Znamenitosti/sinagoga.webp',maps:'https://maps.google.com/?q=Subotica+Synagogue'},
+          {name:'Οδός Παλαιών Τεχνών',dist:'100 m',desc:'Άνοιξε το 2025 — ένα γοητευτικό πέρασμα που αναβιώνει το πνεύμα της παλιάς Σούμποτιτσα με ράφτες, ωρολογοποιούς και ένα γλυπτό του Zvonko Bogdan.',img:'images/Guests/Znamenitosti/ulica-starih-zanata.webp',maps:'https://maps.google.com/?q=Ulica+Starih+zanata+Subotica'},
+          {name:'Μνημείο του Τσάρου Γιόβαν Νένα',dist:'400 m',desc:'Ένα μνημειώδες χάλκινο τρίπτυχο του 1927, αφιερωμένο στον αυτοανακηρυχθέντα τσάρο που κυβέρνησε για λίγο τη Σούμποτιτσα το 1527.',img:'images/Guests/Znamenitosti/car-jovan-nenad.webp',maps:'https://maps.google.com/?q=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
+          {name:'Μνημείο του Βασιλιά Πέταρ Α΄',dist:'30 m',desc:'Γλυπτό ύψους 4,2 μέτρων του Zoran Ivanović, αποκαλύφθηκε το 2021 προς τιμήν του Βασιλιά Πέταρ Α΄ Karađorđević.',img:'images/Guests/Znamenitosti/spomenik-kralj-petru.webp',maps:'https://maps.google.com/?q=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Λίμνη Πάλιτς',dist:'8 km',desc:'Η μεγαλύτερη φυσική λίμνη στη Σερβία — παραλίες, πάρκο, αθλητικές εγκαταστάσεις και θεραπευτική λάσπη. Ιδανική για οικογενειακή εκδρομή.',img:'images/Guests/Znamenitosti/palic.webp',maps:'https://maps.google.com/?q=Palic+Lake+Subotica'}
+        ]},
+        {t:'🎭 Ψυχαγωγία',cards:[
+          {name:'Εθνικό Θέατρο',dist:'300 m',desc:'Ανακαινίστηκε το 2013, με παράδοση που χρονολογείται από το 1854 — το μοναδικό θέατρο στη Σερβία με σερβικό και ουγγρικό θίασο κάτω από την ίδια στέγη. Πολιτιστικό ορόσημο της Σούμποτιτσα.',img:'images/Guests/Zabava/Subotica Narodno pozoriste.webp',maps:'https://maps.google.com/?q=Narodno+pozoriste+Subotica'},
+          {name:'Παιδικό Θέατρο',dist:'400 m',desc:'Θέατρο αφιερωμένο στους μικρότερους — παραστάσεις στα σερβικά και ουγγρικά.',img:'images/Guests/Zabava/Decije-pozoriste-4-1170x781.webp',maps:'https://maps.google.com/?q=Decije+pozoriste+Subotica'},
+          {name:'EuroCinema',dist:'200 m',desc:'Σύγχρονος κινηματογράφος στο κέντρο — οι τελευταίες ταινίες στη μεγάλη οθόνη.',img:'images/Guests/Zabava/EuroCinema.webp',maps:'https://maps.google.com/?q=EuroCinema+Subotica'},
+          {name:'Κινηματογράφος Lifka',dist:'150 m',desc:'Θρυλικός κινηματογράφος που άνοιξε το 1913 — αρχιτεκτονικό στολίδι και πολιτιστικό σύμβολο της Σούμποτιτσα.',img:'images/Guests/Zabava/bioskop lifka.webp',maps:'https://maps.google.com/?q=Bioskop+Lifka+Subotica'},
+          {name:'Ζωολογικός Κήπος Πάλιτς',dist:'8 km',desc:'Ζωολογικός κήπος στο Πάλιτς — φιλοξενεί πολλά είδη ζώων, ιδανικός για οικογενειακή εκδρομή.',img:'images/Guests/Zabava/Zoo vrt Palić.webp',maps:'https://maps.google.com/?q=Zooloski+vrt+Palic'}
+        ]},
+        {t:'⚽ Αθλητισμός',cards:[
+          {name:'Πισίνα Prozivka',dist:'1.5 km',desc:'Κέντρο αθλητισμού και αναψυχής με μεγάλη και μικρή πισίνα — βαθμολογία 4.5 στο Google. Οι ώρες λειτουργίας διαφέρουν ανά ημέρα, συνιστούμε έλεγχο πριν την επίσκεψη.',img:'images/Guests/Sport/Bazen Prozivka.webp',maps:'https://maps.google.com/?q=Bazen+Prozivka+Subotica'},
+          {name:'Πισίνα Dudova šuma',dist:'2 km',desc:'Υπαίθρια πισίνα στο πάρκο αναψυχής Dudova šuma.',img:'images/Guests/Sport/Bazen Dudovasuma.webp',maps:'https://maps.google.com/?q=Bazen+Dudova+suma+Subotica'},
+          {name:'Aqua Park Πάλιτς',dist:'8 km',desc:'Υδάτινο πάρκο στις όχθες της λίμνης Πάλιτς — νεροτσουλήθρες, πισίνες και διασκέδαση για όλη την οικογένεια.',img:'images/Guests/Sport/Aqua park Palić.webp',maps:'https://maps.google.com/?q=Aqua+park+Palic+Subotica'},
+          {name:'Αθλητικό Κέντρο Dudova šuma',dist:'2 km',desc:'Πολυχώρος αθλημάτων — μπάσκετ, βόλεϊ, τένις και άλλα αθλήματα.',img:'images/Guests/Sport/Hala Sportova.webp',maps:'https://maps.google.com/?q=Hala+sportova+Dudova+suma+Subotica'}
+        ]}
+      ]},
+      {i:'📞',t:'Σημαντικά τηλέφωνα',h:EMERGENCY('Αστυνομία','Ασθενοφόρο','Πυροσβεστική','Οικοδεσπότης Μπόρις')}
     ]
   }
 };

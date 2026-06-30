@@ -298,6 +298,7 @@
     <button class="lang-btn" onclick="setLang('sl')"><img class="lang-flag" src="https://flagcdn.com/w40/si.png" alt=""> Slovenščina</button>
     <button class="lang-btn" onclick="setLang('zh')"><img class="lang-flag" src="https://flagcdn.com/w40/cn.png" alt=""> 中文</button>
     <button class="lang-btn" onclick="setLang('el')"><img class="lang-flag" src="https://flagcdn.com/w40/gr.png" alt=""> Ελληνικά</button>
+    <button class="lang-btn" onclick="setLang('fr')"><img class="lang-flag" src="https://flagcdn.com/w40/fr.png" alt=""> Français</button>
   </div>
 </div>
 
@@ -372,9 +373,10 @@ const FLAGS = {
   mk:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/mk.png" alt="">',
   sl:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/si.png" alt="">',
   ro:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/ro.png" alt="">',
-  el:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/gr.png" alt="">'
+  el:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/gr.png" alt="">',
+  fr:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/fr.png" alt="">'
 };
-const CODES = {sr:'SR',hr:'HR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO',el:'EL'};
+const CODES = {sr:'SR',hr:'HR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO',el:'EL',fr:'FR'};
 
 const EMERGENCY = (p,a,f,h) => `<ul class="item-list"><li><span class="item-label">🚔 ${p}</span><a href="tel:192">192</a></li><li><span class="item-label">🚑 ${a}</span><a href="tel:194">194</a></li><li><span class="item-label">🚒 ${f}</span><a href="tel:193">193</a></li><li><span class="item-label">🚕 Alfa Taxi</span><a href="tel:19788">19788</a></li><li><span class="item-label">📞 ${h}</span><a href="tel:+381631168024">+381 63 116 8024</a></li></ul>`;
 
@@ -393,7 +395,8 @@ const FB = {
   mk:{title:'Предлози',desc:'Недостасува нешто во водичот? Напишете ни да додадеме.',ph:'Вашиот предлог или коментар...',btn:'Испрати',ok:'✓ Благодариме! Вашата порака е примена.'},
   sl:{title:'Predlogi',desc:'Manjka kaj v vodniku? Pišite nam in dodali bomo.',ph:'Vaš predlog ali komentar...',btn:'Pošlji',ok:'✓ Hvala! Vaše sporočilo je prejeto.'},
   ro:{title:'Sugestii',desc:'Lipsește ceva din ghid? Scrieți-ne și vom adăuga.',ph:'Sugestia sau comentariul dumneavoastră...',btn:'Trimite',ok:'✓ Mulțumim! Mesajul dvs. a fost primit.'},
-  el:{title:'Προτάσεις',desc:'Λείπει κάτι από τον οδηγό; Ενημερώστε μας και θα το προσθέσουμε.',ph:'Η πρότασή ή το σχόλιό σας...',btn:'Αποστολή',ok:'✓ Ευχαριστούμε! Το μήνυμά σας ελήφθη.'}
+  el:{title:'Προτάσεις',desc:'Λείπει κάτι από τον οδηγό; Ενημερώστε μας και θα το προσθέσουμε.',ph:'Η πρότασή ή το σχόλιό σας...',btn:'Αποστολή',ok:'✓ Ευχαριστούμε! Το μήνυμά σας ελήφθη.'},
+  fr:{title:'Suggestions',desc:'Une information manque dans le guide ? Faites-le-nous savoir et nous l\'ajouterons.',ph:'Votre suggestion ou commentaire...',btn:'Envoyer',ok:'✓ Merci ! Votre message a bien été reçu.'}
 };
 
 const T = {
@@ -1970,6 +1973,111 @@ const T = {
         ]}
       ]},
       {i:'📞',t:'Σημαντικά τηλέφωνα',h:EMERGENCY('Αστυνομία','Ασθενοφόρο','Πυροσβεστική','Οικοδεσπότης Μπόρις')}
+    ]
+  },
+  fr: {
+    wn:'Réseau WiFi', wp:'Mot de passe', cp:'Copier', cd:'Copié !', call:'Appeler',
+    ft:'Nous sommes ravis que vous ayez choisi l\'Apartman Mirakul. Bon séjour !',
+    s:[
+      {i:'💡',t:'Guide de l\'appartement',subs:[
+        {t:'🏠 Règlement intérieur',h:`<ul class="bullet-list"><li>🏢 Veuillez respecter les autres résidents de l\'immeuble</li><li>🌙 Heures de silence : <strong>22:00–08:00</strong></li><li>🥿 Pour des raisons d\'hygiène, veuillez ne pas circuler dans l\'appartement avec des chaussures d\'extérieur — nous recommandons de porter des chaussons</li><li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px;flex-shrink:0"><circle cx="12" cy="12" r="10" fill="none" stroke="#e74c3c" stroke-width="2"/><rect x="4" y="10.5" width="13" height="3" rx="1.5" fill="#666"/><rect x="17" y="10.5" width="3.5" height="3" rx="1" fill="#d4b896"/><line x1="4" y1="4" x2="20" y2="20" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/></svg> Il est <strong>strictement interdit de fumer</strong> dans l\'appartement et l\'immeuble</li><li>🐾 Les <strong>animaux ne sont pas admis</strong></li><li>👥 Capacité maximale : <strong>4 personnes</strong></li><li>🚪 Le portail de l\'immeuble se verrouille après <strong>22:00</strong> — la clé du portail est fournie avec la clé de l\'appartement</li><li>🧹 Merci de laisser l\'appartement en ordre à votre départ</li></ul>`},
+        {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">jusqu\'à 11:00</div></div></div><div class="guide-tip">🔑 Au départ, laissez les clés dans la boîte aux lettres à côté de la porte d\'entrée. Merci d\'informer l\'hôte de votre heure de départ estimée.</div>`},
+        {t:'ℹ️ Bon à savoir',h:`<div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Eau chaude</strong><span>Le chauffe-eau est toujours allumé — l\'eau chaude est disponible immédiatement.</span></div></div><div class="guide-item"><span class="guide-item-icon">🚿</span><div class="guide-item-text"><strong>Robinet de baignoire & douche</strong><span>Pour la douche normale, glissez la sortie d\'eau vers la droite. Pour la douche de tête, tirez le levier du robinet.</span></div></div><div class="guide-item"><span class="guide-item-icon">🪟</span><div class="guide-item-text"><strong>Occultation</strong><span>Des stores en bois sont disponibles dans toutes les pièces pour l\'obscurité.</span></div></div><div class="guide-item"><span class="guide-item-icon">🔐</span><div class="guide-item-text"><strong>Verrouillage de la porte</strong><span>Pour verrouiller la porte d\'entrée, tirez d\'abord la poignée vers le haut, puis tournez la clé.</span></div></div>`},
+        {t:'⚙️ Appareils',h:`<div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Philips TV 50"</strong><span>Appuyez sur <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M3 12L12 3l9 9"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg> HOME pour choisir une application — Netflix, YouTube, Iris, Stremio, TiVimate.</span></div></div><div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Climatisation</strong><span>La télécommande se trouve sur l\'étagère près du comptoir bar.<br>⚠️ Il est strictement interdit de laisser les fenêtres ouvertes lorsque la climatisation fonctionne.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Chauffage au sol</strong><span>Réglé à 23°C pendant la saison — contactez l\'hôte si un réglage est nécessaire.<br>⚠️ Il est strictement interdit de laisser les fenêtres ouvertes pendant la saison de chauffage.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Lave-linge & sèche-linge</strong><span>Instructions dans le tiroir de la salle de bain. La lessive n\'est pas fournie par l\'appartement.</span></div></div><div class="guide-item"><span class="guide-item-icon">💧</span><div class="guide-item-text"><strong>Bouilloire</strong><span>Bouilloire électrique standard.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Cafetière Gorenje</strong><span>Exclusivement pour préparer le café.<br>⚠️ Ne placez pas de cuillère métallique ni d\'objets métalliques à l\'intérieur lorsque l\'appareil est en marche.</span></div></div><div class="guide-item"><span class="guide-item-icon">📡</span><div class="guide-item-text"><strong>Micro-ondes</strong><span>Puissance maximale 900W.<br>⚠️ Ne placez jamais d\'objets métalliques à l\'intérieur.</span></div></div>`},
+        {t:'🅿️ Parking',h:`<div style="display:inline-flex;align-items:center;gap:0.5rem;background:#fff1f0;border:1.5px solid #e74c3c;border-radius:8px;padding:0.4rem 0.85rem;margin-bottom:1rem;"><span style="color:#e74c3c;font-size:0.9rem;">●</span><span style="font-weight:700;font-size:0.9rem;color:#c0392b;">Zone rouge (1) — devant l\'immeuble</span></div><div class="checkin-row"><div><div class="checkin-label">En semaine</div><div class="checkin-time">07:00 – 21:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Samedi</div><div class="checkin-time">07:00 – 14:00</div></div></div><div class="checkin-row" style="border-bottom:none;"><div><div class="checkin-label">Dimanche & jours fériés</div><div style="font-size:1.55rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em;">Gratuit</div></div></div><div style="margin-top:1.1rem;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:0.6rem;">Paiement par SMS</div><div style="display:flex;flex-direction:column;gap:0.5rem;"><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Par heure</div><div style="font-size:1.1rem;font-weight:800;">9241</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">70 RSD</div></div><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Forfait journalier</div><div style="font-size:1.1rem;font-weight:800;">9245</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">480 RSD</div></div></div></div><div class="guide-tip" style="margin-top:0.85rem;">💡 Après 21:00, vous pouvez prépayer le parking pour le lendemain — envoyez un SMS au <strong>9245</strong> et votre matinée est réglée.</div>`}
+      ]},
+      {i:'🛎️',t:'Si vous avez besoin...',subs:[
+        {t:'🚕 Taxi',cards:[
+          {name:'Alfa Taxi',dist:'⭐ 4.1',desc:'Service de taxi fiable — disponible 24/7. Đure Đakovića.',emoji:'🚕',phone:'0642015800'},
+          {name:'Pink Taxi',dist:'⭐ 5.0',desc:'Service de taxi — Branislava Nušića bb.',emoji:'🚕',phone:'0644685329'},
+          {name:'Meče Taxi',dist:'⭐ 4.5',desc:'Service de taxi — Lajoša Joaneša.',emoji:'🚕',phone:'0656806700'},
+          {name:'Taxi 9',dist:'⭐ 4.3',desc:'Service de taxi — Vatroslava Lisinskog.',emoji:'🚕',phone:'0659999560'},
+          {name:'Prozivka Taxi',dist:'⭐ 4.2',desc:'Service de taxi — Nade Dimić.',emoji:'🚕',phone:'0659765000'},
+          {name:'Ekonomik Taxi',dist:'⭐ 4.2',desc:'Service de taxi — Matije Gupca 2.',emoji:'🚕',phone:'0637440004'},
+          {name:'Yu Taxi',dist:'⭐ 3.8',desc:'Service de taxi — ouvert 24h, Štrosmajerova.',emoji:'🚕',phone:'0655559761'},
+          {name:'Omega Taxi',dist:'⭐ 3.1',desc:'Service de taxi Subotica.',emoji:'🚕',phone:'024559911'}
+        ]},
+        {t:'🛵 Livraison de repas',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Livraison de plats et boissons — contactez directement pour commander.',img:'images/Guests/Restorani/boss.webp',phone:'024551111'},
+          {name:'Renaissance',dist:'150 m',desc:'Livraison de cuisine italienne et locale.',img:'images/Guests/Restorani/Renaissance.webp',phone:'024555001'},
+          {name:'Street Pica',dist:'',desc:'Livraison de pizzas — rapide et savoureux.',img:'images/Guests/Dostava/Street pica.webp',phone:'0640907040'},
+          {name:'Walter',dist:'',desc:'Livraison de repas — grande variété de plats.',img:'images/Guests/Dostava/Walter.webp',phone:'0631011000'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Livraison de burgers premium — viande de qualité, pains brioche et sauces maison.',img:'images/Guests/Dostava/fabrika.webp',phone:'0649593674'}
+        ]},
+        {t:'🛒 Épicerie',cards:[
+          {name:'Idea',dist:'',desc:'Supermarché — large choix de produits alimentaires et ménagers.',img:'images/Guests/Prodavnica/Idea.png',maps:'https://maps.google.com/?q=Idea+Korzo+13+Subotica'},
+          {name:'Lidl',dist:'',desc:'Supermarché — produits de qualité à prix abordables.',img:'images/Guests/Prodavnica/lidl.avif',maps:'https://maps.google.com/?q=Lidl+Pala+Papa+1+Subotica'},
+          {name:'Maxi',dist:'',desc:'Supermarché — courses quotidiennes.',img:'images/Guests/Prodavnica/Maxi.jpg',maps:'https://maps.google.com/?q=Maxi+Trg+Cara+Jovana+Nenada+2+Subotica'},
+          {name:'DM',dist:'',desc:'Droguerie — cosmétiques, hygiène et produits de soin.',img:'images/Guests/Prodavnica/DM.webp',maps:'https://maps.google.com/?q=DM+Korzo+10C+Subotica'}
+        ]},
+        {t:'💊 Pharmacie',cards:[
+          {name:'Benu Apoteka',dist:'',desc:'Pharmacie — médicaments, compléments, cosmétiques. Korzo 15.',img:'images/Guests/Apoteka/benu.webp',maps:'https://maps.google.com/?q=Benu+apoteka+Korzo+15+Subotica',phone:'+38124533121'},
+          {name:'Apoteka Subotica No.1 — Centar',dist:'',desc:'Pharmacie — médicaments et produits de santé.',img:'images/Guests/Apoteka/Apoteka subotica.webp',maps:'https://maps.app.goo.gl/CdQUTjdNhviAKTww8'}
+        ]},
+        {t:'💱 Bureau de change',cards:[
+          {name:'Box',dist:'',desc:'Change de devises — euros, dollars et autres devises.',img:'images/Guests/Menjacnica/Box.jpg',maps:'https://maps.google.com/?q=Box+menjacnica+Branislava+Nusica+Subotica'},
+          {name:'Euro',dist:'',desc:'Change de devises — euros, dollars et autres devises. Korzo 10b.',img:'images/Guests/Menjacnica/Euro menjačnica.webp',maps:'https://maps.google.com/?q=Euro+menjacnica+Korzo+10b+Subotica'}
+        ]},
+        {t:'🏧 Distributeur',cards:[
+          {name:'Addiko Bank',dist:'',desc:'Distributeur — retraits gratuits pour les cartes Addiko.',img:'images/Guests/Bankomat/Addiko.webp',maps:'https://maps.google.com/?q=Addiko+bank+Korzo+15+Subotica'},
+          {name:'OTP Banka',dist:'',desc:'Distributeur — disponible 24/7.',img:'images/Guests/Bankomat/otpbanka.webp',maps:'https://maps.google.com/?q=OTP+banka+Korzo+12+Subotica'},
+          {name:'NLB Banka',dist:'',desc:'Distributeur — disponible 24/7.',img:'images/Guests/Bankomat/nlb.webp',maps:'https://maps.google.com/?q=NLB+banka+Korzo+10+Subotica'}
+        ]},
+        {t:'⛽ Station-service',cards:[
+          {name:'NIS Petrol',dist:'',desc:'Station-service — carburant, boutique et café.',img:'images/Guests/Benzinska/NIS_Petrol_station.webp',maps:'https://maps.google.com/?q=NIS+Petrol+Puskinov+Trg+Subotica'},
+          {name:'MOL',dist:'',desc:'Station-service — carburant et commodités.',img:'images/Guests/Benzinska/MOL-BS.webp',maps:'https://maps.google.com/?q=MOL+Jovana+Mikica+Subotica'},
+          {name:'OMV',dist:'',desc:'Station-service — carburant, boutique et rafraîchissements.',img:'images/Guests/Benzinska/OMV-logo.webp',maps:'https://maps.google.com/?q=OMV+Beogradski+put+88+Subotica'},
+          {name:'EURO Petrol',dist:'',desc:'Station-service — carburant et commodités. Segedinski put 76.',img:'images/Guests/Benzinska/Euro petrol.webp',maps:'https://maps.google.com/?q=EURO+Petrol+Segedinski+put+76+Subotica'}
+        ]},
+        {t:'🚂 Gare ferroviaire',cards:[
+          {name:'Gare ferroviaire de Subotica',dist:'100 m',desc:'Gare ferroviaire — liaisons vers Belgrade, Novi Sad et lignes internationales.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA',link:'https://w3.srbvoz.rs/redvoznje',linkLabel:'Horaires'}
+        ]},
+        {t:'🚌 Gare routière',cards:[
+          {name:'Gare routière principale de Subotica',dist:'850 m',desc:'Gare routière — lignes vers toute la Serbie et destinations internationales.',img:'images/Guests/Stanice/Autobuska-stanica.jpg',maps:'https://maps.google.com/?q=Autobuska+stanica+Subotica',link:'https://sutrans.rs/Polasci-i-dolasci.html',linkLabel:'Horaires'}
+        ]}
+      ]},
+      {i:'📍',t:'Recommandations locales',subs:[
+        {t:'🍽️ Restaurants & cafés',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Un lieu emblématique moderne de Subotica, apprécié de toutes les générations — idéal pour le petit-déjeuner, le café et le déjeuner.',img:'images/Guests/Restorani/boss.webp',maps:'https://maps.google.com/?q=Boss+Caffe+Subotica'},
+          {name:'Stara picerija',dist:'100 m',desc:'La plus ancienne pizzeria de Serbie, fondée en 1977. Dispose d\'une belle aire de jeux — parfaite pour les familles avec enfants.',img:'images/Guests/Restorani/stara-picerija.webp',maps:'https://maps.google.com/?q=Stara+picerija+Subotica'},
+          {name:'Renaissance',dist:'150 m',desc:'Restaurant moderne avec un riche choix de cuisine italienne et locale.',img:'images/Guests/Restorani/Renaissance.webp',maps:'https://maps.google.com/?q=Renesansa+restoran+Subotica'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Burgers premium avec viande de qualité supérieure, pains brioche, fromages fins et sauces maison.',img:'images/Guests/Restorani/fabrika.webp',maps:'https://maps.google.com/?q=Fabrika+Subotica'},
+          {name:'Basch House 1887',dist:'800 m',desc:'Là où la tradition rencontre l\'innovation — excellente cuisine, boissons authentiques et grand choix de bières artisanales.',img:'images/Guests/Restorani/basch-house.webp',maps:'https://maps.google.com/?q=Basch+House+Cara+Lazara+Subotica'},
+          {name:'Bates',dist:'300 m',desc:'Une kafana traditionnelle qui préserve l\'esprit de la musique tamburica et de la cuisine locale.',img:'images/Guests/Restorani/bates.webp',maps:'https://maps.google.com/?q=Bates+Subotica'},
+          {name:'Kafe Priča',dist:'200 m',desc:'Faites une pause, prenez du temps pour vous et vos amis — les conversations coulent facilement dans ce charmant café.',img:'images/Guests/Restorani/kafe-prica.webp',maps:'https://maps.google.com/?q=Kafe+Prica+Subotica'},
+          {name:'Mali trg',dist:'400 m',desc:'Un charmant restaurant gastronomique au cœur de la ville — parfait pour les moments spéciaux.',img:'images/Guests/Restorani/mali-trg.webp',maps:'https://maps.google.com/?q=Mali+trg+Subotica'},
+          {name:'Vinarija Zvonko Bogdan',dist:'10 km',desc:'Cave de style Art nouveau au bord du lac Palić — dégustation guidée avec vue sur les vignobles. Réservation recommandée.',img:'images/Guests/Restorani/vinarija-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Vinarija+Zvonko+Bogdan+Subotica'},
+          {name:'Salaš Zvonko Bogdan',dist:'15 km',desc:'Ferme authentique de Voïvodine au bord du lac Ludaš — soupe maison, plats mijotés et strudel dans une tranquillité rurale.',img:'images/Guests/Restorani/salas-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Salas+Zvonko+Bogdan+Subotica'},
+          {name:'Plaža Bar',dist:'8 km',desc:'Bar décontracté à Palić — l\'endroit idéal pour boire un verre et se reposer au bord du lac.',img:'images/Guests/Restorani/Plaža bar.webp',maps:'https://maps.app.goo.gl/VtGVUF8ceWY4r6xBA'},
+          {name:'Vinarija Petra',dist:'8 km',desc:'Cave à Palić — dégustation de vin dans un cadre agréable. 💡 Un joli sentier mène de la plage de Peščana à la cave, idéal pour une promenade.',img:'images/Guests/Restorani/Vinarija Petra.webp',maps:'https://maps.app.goo.gl/tnoKDWVaCCbiKByQ8'},
+          {name:'Terasa Muški Štrand',dist:'8 km',desc:'Terrasse à Palić près de Muški štrand — repas et boissons avec vue sur le lac.',img:'images/Guests/Restorani/Terasa.webp',maps:'https://maps.app.goo.gl/XmGSrZ8D3xkEmt5M9'}
+        ]},
+        {t:'🏛️ Sites touristiques',cards:[
+          {name:'Hôtel de ville',dist:'300 m',desc:'Symbole de Subotica — un imposant bâtiment Art nouveau de 1910, chef-d\'œuvre de l\'architecture locale.',img:'images/Guests/Znamenitosti/gradska-kuca.webp',maps:'https://maps.google.com/?q=Subotica+City+Hall'},
+          {name:'Palais Rajhl',dist:'30 m',desc:'Juste à côté de l\'appartement — l\'un des plus beaux joyaux du patrimoine Art nouveau de Subotica.',img:'images/Guests/Znamenitosti/rajhlova-palata.webp',maps:'https://maps.google.com/?q=Rajhlova+palata+Subotica'},
+          {name:'Musée municipal',dist:'600 m',desc:'Fondé en 1892 dans un somptueux palais Art nouveau — abrite des collections archéologiques, historiques et ethnologiques.',img:'images/Guests/Znamenitosti/gradski-muzej.webp',maps:'https://maps.google.com/?q=Gradski+muzej+Subotica'},
+          {name:'Musée de la porcelaine',dist:'150 m',desc:'Musée unique en Serbie avec plus de 2 000 pièces vieilles de jusqu\'à 200 ans — de la porcelaine viennoise et russe à la porcelaine yougoslave.',img:'images/Guests/Znamenitosti/muzej-porcelana.webp',maps:'https://maps.google.com/?q=Muzej+porcelana+Subotica'},
+          {name:'Synagogue',dist:'500 m',desc:'L\'une des plus belles synagogues d\'Europe, construite en 1902 en style Art nouveau — une véritable merveille architecturale.',img:'images/Guests/Znamenitosti/sinagoga.webp',maps:'https://maps.google.com/?q=Subotica+Synagogue'},
+          {name:'Rue des anciens métiers',dist:'100 m',desc:'Ouverte en 2025 — un passage charmant qui ravive l\'esprit de l\'ancienne Subotica avec tailleurs, horlogers et une sculpture de Zvonko Bogdan.',img:'images/Guests/Znamenitosti/ulica-starih-zanata.webp',maps:'https://maps.google.com/?q=Ulica+Starih+zanata+Subotica'},
+          {name:'Monument au tsar Jovan Nenad',dist:'400 m',desc:'Un triptyque monumental en bronze de 1927, dédié au tsar autoproclamé qui régna brièvement sur Subotica en 1527.',img:'images/Guests/Znamenitosti/car-jovan-nenad.webp',maps:'https://maps.google.com/?q=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
+          {name:'Monument au roi Pierre Ier',dist:'30 m',desc:'Une sculpture de 4,2 mètres de Zoran Ivanović, inaugurée en 2021 en l\'honneur du roi Pierre Ier Karađorđević.',img:'images/Guests/Znamenitosti/spomenik-kralj-petru.webp',maps:'https://maps.google.com/?q=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Lac de Palić',dist:'8 km',desc:'Le plus grand lac naturel de Serbie — plages, parc, installations sportives et boue thérapeutique. Parfait pour une sortie en famille.',img:'images/Guests/Znamenitosti/palic.webp',maps:'https://maps.google.com/?q=Palic+Lake+Subotica'}
+        ]},
+        {t:'🎭 Divertissement',cards:[
+          {name:'Théâtre national',dist:'300 m',desc:'Rénové en 2013, avec une tradition remontant à 1854 — le seul théâtre de Serbie réunissant des troupes serbe et hongroise sous le même toit. Un emblème culturel de Subotica.',img:'images/Guests/Zabava/Subotica Narodno pozoriste.webp',maps:'https://maps.google.com/?q=Narodno+pozoriste+Subotica'},
+          {name:'Théâtre pour enfants',dist:'400 m',desc:'Théâtre dédié aux plus jeunes — spectacles en serbe et en hongrois.',img:'images/Guests/Zabava/Decije-pozoriste-4-1170x781.webp',maps:'https://maps.google.com/?q=Decije+pozoriste+Subotica'},
+          {name:'EuroCinema',dist:'200 m',desc:'Cinéma moderne au centre — les derniers films sur grand écran.',img:'images/Guests/Zabava/EuroCinema.webp',maps:'https://maps.google.com/?q=EuroCinema+Subotica'},
+          {name:'Cinéma Lifka',dist:'150 m',desc:'Cinéma légendaire ouvert en 1913 — joyau architectural et icône culturelle de Subotica.',img:'images/Guests/Zabava/bioskop lifka.webp',maps:'https://maps.google.com/?q=Bioskop+Lifka+Subotica'},
+          {name:'Zoo de Palić',dist:'8 km',desc:'Zoo à Palić — abrite de nombreuses espèces animales, idéal pour une sortie en famille.',img:'images/Guests/Zabava/Zoo vrt Palić.webp',maps:'https://maps.google.com/?q=Zooloski+vrt+Palic'}
+        ]},
+        {t:'⚽ Sport',cards:[
+          {name:'Piscine Prozivka',dist:'1.5 km',desc:'Centre sportif et de loisirs avec grand et petit bassin — noté 4.5 sur Google. Les horaires varient selon les jours, nous recommandons de vérifier avant votre visite.',img:'images/Guests/Sport/Bazen Prozivka.webp',maps:'https://maps.google.com/?q=Bazen+Prozivka+Subotica'},
+          {name:'Piscine Dudova šuma',dist:'2 km',desc:'Piscine en plein air dans le parc de loisirs Dudova šuma.',img:'images/Guests/Sport/Bazen Dudovasuma.webp',maps:'https://maps.google.com/?q=Bazen+Dudova+suma+Subotica'},
+          {name:'Aqua Park de Palić',dist:'8 km',desc:'Parc aquatique au bord du lac de Palić — toboggans, bassins et amusement pour toute la famille.',img:'images/Guests/Sport/Aqua park Palić.webp',maps:'https://maps.google.com/?q=Aqua+park+Palic+Subotica'},
+          {name:'Salle de sport Dudova šuma',dist:'2 km',desc:'Salle de sport polyvalente — basket, volley, tennis et autres sports.',img:'images/Guests/Sport/Hala Sportova.webp',maps:'https://maps.google.com/?q=Hala+sportova+Dudova+suma+Subotica'}
+        ]}
+      ]},
+      {i:'📞',t:'Numéros importants',h:EMERGENCY('Police','Ambulance','Pompiers','Hôte Boris')}
     ]
   }
 };

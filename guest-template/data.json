@@ -1,0 +1,160 @@
+{
+  "_comment": "Podaci JEDNOG apartmana na osnovnom jeziku (sr). Template + generator koriste ovo da naprave guest.html na svih 16 jezika. Za novi apartman: kopiraj fajl i popuni svoja polja.",
+
+  "meta": {
+    "apartmentName": "Apartman Mirakul",
+    "baseLang": "sr",
+    "wifiName": "Apartman Mirakul 5G",
+    "wifiPassword": "dobrodosli",
+    "host": { "name": "Boris", "phone": "+381631168024" },
+    "brand": { "accentColor": "#C49A4A", "favicon": "favicon.svg", "appleTouchIcon": "apple-touch-icon.png" },
+    "footer": "Drago nam je što ste izabrali Apartman Mirakul. Ugodan boravak!"
+  },
+
+  "houseRules": [
+    "🏢 Poštujte mir stanara zgrade",
+    "🌙 Budite što tiši u periodu od 22:00 do 08:00",
+    "🥿 Zbog higijene vas molimo da se po apartmanu ne krećete u obući — preporučujemo nošenje papuča",
+    "🚭 Pušenje je strogo zabranjeno u apartmanu i zgradi",
+    "🐾 Kućni ljubimci nisu dozvoljeni",
+    "👥 Maksimalan broj gostiju: 4 osobe",
+    "🚪 Kapija zgrade se zaključava posle 22:00 — ključ za kapiju ste dobili uz ključ od apartmana.",
+    "🧹 Molimo ostavite apartman urednim pri odlasku"
+  ],
+
+  "checkin": {
+    "checkIn": "15:00–23:00",
+    "checkOut": "do 11:00",
+    "tip": "🔑 Prilikom check out-a ključeve ostavite u poštansko sanduče pored ulaznih vrata. Obavestite domaćina o planiranom vremenu odlaska."
+  },
+
+  "goodToKnow": [
+    { "icon": "🌡️", "title": "Topla voda", "text": "Bojler je stalno upaljen — topla voda je dostupna odmah." },
+    { "icon": "🚿", "title": "Slavina i tuš u kadi", "text": "Za običan tuš pomerite izlaz za vodu u desnu stranu, a za veliku ružu povucite ručicu na slavini." },
+    { "icon": "🪟", "title": "Zamračivanje", "text": "Pored tamnih zavesa u svim prostorijama se nalaze drvene žaluzine za zamračivanje prostora." },
+    { "icon": "🔐", "title": "Zaključavanje vrata", "text": "Da biste zaključali ulazna vrata, povucite kvaku prema gore pa tek tada okrenite ključ." }
+  ],
+
+  "appliances": [
+    { "icon": "📺", "title": "Philips TV 50\"", "text": "Pritisnite taster HOME za odabir aplikacija — Netflix, YouTube, Iris, Stremio, TiVimate." },
+    { "icon": "❄️", "title": "Klima uređaj", "text": "Daljinski upravljač se nalazi na polici kod šank stola. ⚠️ Strogo je zabranjeno da se prozori drže otvoreni dok je klima uređaj uključen." },
+    { "icon": "🌡️", "title": "Podno grejanje", "text": "U sezoni uvek podešeno na 23°C — javljate domaćinu ukoliko je potrebna korekcija. ⚠️ Strogo je zabranjeno da se prozori drže otvoreni dok je grejna sezona aktuelna." },
+    { "icon": "🧺", "title": "Veš mašina i sušilica", "text": "Uputstvo se nalazi u fioci umivaonika. Deterdžent nije obezbeđen od strane apartmana." },
+    { "icon": "💧", "title": "Ketler", "text": "Standardno kuvalo za zagrevanje vode." },
+    { "icon": "☕", "title": "Kuvalo za kafu Gorenje", "text": "Isključivo namenjeno za kuvanje kafe. ⚠️ Nemojte stavljati metalnu kašičicu ili metalne predmete unutra dok je uređaj uključen." },
+    { "icon": "📡", "title": "Mikrotalasna", "text": "Maksimalna snaga 900W. ⚠️ Nikada ne stavljajte metalne predmete unutra." }
+  ],
+
+  "parking": {
+    "zoneLabel": "Crvena zona (1) — ispred zgrade",
+    "weekdays": "07:00 – 21:00",
+    "saturday": "07:00 – 14:00",
+    "sundayHolidays": "Besplatno",
+    "sms": [
+      { "label": "Po satu", "code": "9241", "price": "70 din" },
+      { "label": "Dnevna karta", "code": "9245", "price": "480 din" }
+    ],
+    "tip": "💡 Posle 21:00 možete unapred platiti parking za sutradan — pošaljite SMS i ujutro ste mirni."
+  },
+
+  "services": {
+    "taxi": [
+      { "name": "Alfa Taxi", "dist": "⭐ 4.1", "desc": "Pouzdana taxi služba — dostupna 24/7. Đure Đakovića.", "emoji": "🚕", "phone": "0642015800" },
+      { "name": "Pink Taxi", "dist": "⭐ 5.0", "desc": "Taxi služba — Branislava Nušića bb.", "emoji": "🚕", "phone": "0644685329" },
+      { "name": "Meče Taxi", "dist": "⭐ 4.5", "desc": "Taxi služba — Lajoša Joaneša.", "emoji": "🚕", "phone": "0656806700" },
+      { "name": "Taxi 9", "dist": "⭐ 4.3", "desc": "Taxi služba — Vatroslava Lisinskog.", "emoji": "🚕", "phone": "0659999560" },
+      { "name": "Prozivka Taxi", "dist": "⭐ 4.2", "desc": "Taxi služba — Nade Dimić.", "emoji": "🚕", "phone": "0659765000" },
+      { "name": "Ekonomik Taxi", "dist": "⭐ 4.2", "desc": "Taxi služba — Matije Gupca 2.", "emoji": "🚕", "phone": "0637440004" },
+      { "name": "Yu Taxi", "dist": "⭐ 3.8", "desc": "Taxi služba — radi 24h, Štrosmajerova.", "emoji": "🚕", "phone": "0655559761" },
+      { "name": "Omega Taxi", "dist": "⭐ 3.1", "desc": "Taxi služba Subotica.", "emoji": "🚕", "phone": "024559911" }
+    ],
+    "delivery": [
+      { "name": "Boss Caffe", "dist": "50 m", "desc": "Dostava hrane i pića — kontaktirajte direktno za narudžbu.", "img": "images/Guests/Restorani/boss.webp", "phone": "024551111" },
+      { "name": "Renaissance", "dist": "150 m", "desc": "Dostava italijanske i domaće kuhinje.", "img": "images/Guests/Restorani/Renaissance.webp", "phone": "024555001" },
+      { "name": "Street Pica", "dist": "", "desc": "Dostava pice — brzo i ukusno.", "img": "images/Guests/Dostava/Street pica.webp", "phone": "0640907040" },
+      { "name": "Walter", "dist": "", "desc": "Dostava hrane — raznovrsna ponuda jela.", "img": "images/Guests/Dostava/Walter.webp", "phone": "0631011000" },
+      { "name": "Fabrika Burger Bar", "dist": "30 m", "desc": "Dostava vrhunskih burgera — premium meso, brioche pecivo i domaći umaci.", "img": "images/Guests/Dostava/fabrika.webp", "phone": "0649593674" }
+    ],
+    "grocery": [
+      { "name": "Idea", "dist": "", "desc": "Supermarket — bogata ponuda prehrambenih i neprehrambenih proizvoda.", "img": "images/Guests/Prodavnica/Idea.png", "maps": "https://maps.google.com/?q=Idea+Korzo+13+Subotica" },
+      { "name": "Lidl", "dist": "", "desc": "Supermarket — kvalitetni proizvodi po pristupačnim cenama.", "img": "images/Guests/Prodavnica/lidl.avif", "maps": "https://maps.google.com/?q=Lidl+Pala+Papa+1+Subotica" },
+      { "name": "Maxi", "dist": "", "desc": "Supermarket — svakodnevna nabavka namirnica.", "img": "images/Guests/Prodavnica/Maxi.jpg", "maps": "https://maps.google.com/?q=Maxi+Trg+Cara+Jovana+Nenada+2+Subotica" },
+      { "name": "DM", "dist": "", "desc": "Drogerija — kozmetika, higijena i proizvodi za negu.", "img": "images/Guests/Prodavnica/DM.webp", "maps": "https://maps.google.com/?q=DM+Korzo+10C+Subotica" }
+    ],
+    "pharmacy": [
+      { "name": "Benu Apoteka", "dist": "", "desc": "Apoteka — lekovi, suplementi, kozmetika. Korzo 15.", "img": "images/Guests/Apoteka/benu.webp", "maps": "https://maps.google.com/?q=Benu+apoteka+Korzo+15+Subotica", "phone": "+38124533121" },
+      { "name": "Apoteka Subotica No.1 — Centar", "dist": "", "desc": "Apoteka — lekovi i zdravstveni proizvodi.", "img": "images/Guests/Apoteka/Apoteka subotica.webp", "maps": "https://maps.app.goo.gl/CdQUTjdNhviAKTww8" }
+    ],
+    "exchange": [
+      { "name": "Box", "dist": "", "desc": "Menjanje valuta — evri, dolar i ostale valute.", "img": "images/Guests/Menjacnica/Box.jpg", "maps": "https://maps.google.com/?q=Box+menjacnica+Branislava+Nusica+Subotica" },
+      { "name": "Euro", "dist": "", "desc": "Menjanje valuta — evri, dolar i ostale valute. Korzo 10b.", "img": "images/Guests/Menjacnica/Euro menjačnica.webp", "maps": "https://maps.google.com/?q=Euro+menjacnica+Korzo+10b+Subotica" }
+    ],
+    "atm": [
+      { "name": "Addiko Bank", "dist": "", "desc": "Bankomat — podizanje gotovine bez naknade za Addiko kartice.", "img": "images/Guests/Bankomat/Addiko.webp", "maps": "https://maps.google.com/?q=Addiko+bank+Korzo+15+Subotica" },
+      { "name": "OTP Banka", "dist": "", "desc": "Bankomat — dostupan 24/7.", "img": "images/Guests/Bankomat/otpbanka.webp", "maps": "https://maps.google.com/?q=OTP+banka+Korzo+12+Subotica" },
+      { "name": "NLB Banka", "dist": "", "desc": "Bankomat — dostupan 24/7.", "img": "images/Guests/Bankomat/nlb.webp", "maps": "https://maps.google.com/?q=NLB+banka+Korzo+10+Subotica" }
+    ],
+    "gas": [
+      { "name": "NIS Petrol", "dist": "", "desc": "Benzinska stanica — gorivo, prodavnica i kafe.", "img": "images/Guests/Benzinska/NIS_Petrol_station.webp", "maps": "https://maps.google.com/?q=NIS+Petrol+Puskinov+Trg+Subotica" },
+      { "name": "MOL", "dist": "", "desc": "Benzinska stanica — gorivo i prateći sadržaji.", "img": "images/Guests/Benzinska/MOL-BS.webp", "maps": "https://maps.google.com/?q=MOL+Jovana+Mikica+Subotica" },
+      { "name": "OMV", "dist": "", "desc": "Benzinska stanica — gorivo, shop i okrepa.", "img": "images/Guests/Benzinska/OMV-logo.webp", "maps": "https://maps.google.com/?q=OMV+Beogradski+put+88+Subotica" },
+      { "name": "EURO Petrol", "dist": "", "desc": "Benzinska stanica — gorivo i prateći sadržaji. Segedinski put 76.", "img": "images/Guests/Benzinska/Euro petrol.webp", "maps": "https://maps.google.com/?q=EURO+Petrol+Segedinski+put+76+Subotica" }
+    ],
+    "railway": [
+      { "name": "Železnička stanica Subotica", "dist": "100 m", "desc": "Železnička stanica — veze za Beograd, Novi Sad i međunarodne linije.", "img": "images/Guests/Stanice/Zeleznicka stanica.webp", "maps": "https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA", "link": "https://w3.srbvoz.rs/redvoznje", "linkLabel": "Red vožnje" }
+    ],
+    "bus": [
+      { "name": "Glavna Autobuska stanica Subotica", "dist": "850 m", "desc": "Autobuska stanica — linije za celu Srbiju i međunarodne destinacije.", "img": "images/Guests/Stanice/Autobuska-stanica.jpg", "maps": "https://maps.google.com/?q=Autobuska+stanica+Subotica", "link": "https://sutrans.rs/Polasci-i-dolasci.html", "linkLabel": "Red vožnje" }
+    ]
+  },
+
+  "recommendations": {
+    "restaurants": [
+      { "name": "Boss Caffe", "dist": "50 m", "desc": "Moderno zdanje Boss caffe restorana jedan od zaštitnih znakova Subotice, gde rado svraćaju gosti svih generacija.", "img": "images/Guests/Restorani/boss.webp", "maps": "https://maps.google.com/?q=Boss+Caffe+Subotica" },
+      { "name": "Stara picerija", "dist": "100 m", "desc": "Najstarija picerija u Republici Srbiji osnovana 1977. godine. Ima prelepo dečije igralište — savršeno za porodice sa decom.", "img": "images/Guests/Restorani/stara-picerija.webp", "maps": "https://maps.google.com/?q=Stara+picerija+Subotica" },
+      { "name": "Renaissance", "dist": "150 m", "desc": "Moderan restoran sa bogatom ponudom Italijanske i domaće kuhinje.", "img": "images/Guests/Restorani/Renaissance.webp", "maps": "https://maps.google.com/?q=Renesansa+restoran+Subotica" },
+      { "name": "Fabrika Burger Bar", "dist": "30 m", "desc": "Burgeri su prava gastronomska kreacija u kojoj koriste vrhunske komade mesa, briocha, najfinije sireve i ručno mućene umake.", "img": "images/Guests/Restorani/fabrika.webp", "maps": "https://maps.google.com/?q=Fabrika+Subotica" },
+      { "name": "Basch House 1887", "dist": "800 m", "desc": "Mesto gde se tradicija i inovacija susreću — vrhunska kuhinja, autentična pića i nezaboravna atmosfera. Posebno preporučujemo bogatu selekciju craft piva.", "img": "images/Guests/Restorani/basch-house.webp", "maps": "https://maps.google.com/?q=Basch+House+Cara+Lazara+Subotica" },
+      { "name": "Bates", "dist": "300 m", "desc": "Kafana Bates jedan od retkih koja čuva uspomene na tamburaše i domaću lokalnu kuhinju.", "img": "images/Guests/Restorani/bates.webp", "maps": "https://maps.google.com/?q=Bates+Subotica" },
+      { "name": "Kafe Priča", "dist": "200 m", "desc": "Zastanite, odvojite malo vremena za sebe i svoje prijatelje i uživajte u momentima razgovora u ovom prelepom lokalu.", "img": "images/Guests/Restorani/kafe-prica.webp", "maps": "https://maps.google.com/?q=Kafe+Prica+Subotica" },
+      { "name": "Mali trg", "dist": "400 m", "desc": "Simpatičan restoran fine dining koncepta smešten u srcu subotičkog centra — savršeno mesto za posebne trenutke uz odličnu hranu i toplu atmosferu.", "img": "images/Guests/Restorani/mali-trg.webp", "maps": "https://maps.google.com/?q=Mali+trg+Subotica" },
+      { "name": "Vinarija Zvonko Bogdan", "dist": "10 km", "desc": "Vinarija na obali Palića u stilu secesije — degustacija vina uz stručnog vodiča i pogled na uređene vinograde. Preporučuje se rezervacija.", "img": "images/Guests/Restorani/vinarija-zvonko-bogdan.webp", "maps": "https://maps.google.com/?q=Vinarija+Zvonko+Bogdan+Subotica" },
+      { "name": "Salaš Zvonko Bogdan", "dist": "15 km", "desc": "Autentični vojvođanski salaš na obali jezera Ludaš — domaća supa, jela ispod peke i štrudle uz mir i spokoj daleko od gradske buke.", "img": "images/Guests/Restorani/salas-zvonko-bogdan.webp", "maps": "https://maps.google.com/?q=Salas+Zvonko+Bogdan+Subotica" },
+      { "name": "Plaža Bar", "dist": "8 km", "desc": "Opušten bar na Paliću — savršeno mesto za piće i odmor uz jezero.", "img": "images/Guests/Restorani/Plaža bar.webp", "maps": "https://maps.app.goo.gl/VtGVUF8ceWY4r6xBA" },
+      { "name": "Vinarija Petra", "dist": "8 km", "desc": "Vinarija na Paliću — degustacija vina u prijatnom ambijentu. 💡 Od Peščane plaže do vinarije vodi lepa pešačka staza, idealna za šetnju.", "img": "images/Guests/Restorani/Vinarija Petra.webp", "maps": "https://maps.app.goo.gl/tnoKDWVaCCbiKByQ8" },
+      { "name": "Terasa Muški Štrand", "dist": "8 km", "desc": "Terasa na Paliću kod Muškog štranda — hrana i piće uz pogled na jezero.", "img": "images/Guests/Restorani/Terasa.webp", "maps": "https://maps.app.goo.gl/XmGSrZ8D3xkEmt5M9" }
+    ],
+    "attractions": [
+      { "name": "Gradska kuća", "dist": "300 m", "desc": "Simbol Subotice — impozantna secesijska zgrada iz 1910. i remek-delo subotičke secesije.", "img": "images/Guests/Znamenitosti/gradska-kuca.webp", "maps": "https://maps.google.com/?q=Subotica+City+Hall" },
+      { "name": "Rajhlova palata", "dist": "30 m", "desc": "Odmah pored apartmana — jedan od najlepših bisera subotičke secesijske arhitekture.", "img": "images/Guests/Znamenitosti/rajhlova-palata.webp", "maps": "https://maps.google.com/?q=Rajhlova+palata+Subotica" },
+      { "name": "Gradski muzej", "dist": "600 m", "desc": "Osnovan 1892. u raskošnoj secesijskoj palati braće Vago — čuva arheološke, istorijske i etnološke zbirke grada.", "img": "images/Guests/Znamenitosti/gradski-muzej.webp", "maps": "https://maps.google.com/?q=Gradski+muzej+Subotica" },
+      { "name": "Muzej porcelana", "dist": "150 m", "desc": "Jedinstveni muzej u Srbiji sa više od 2000 eksponata starih do 200 godina — od bečkog i ruskog do jugoslovenskog porcelana.", "img": "images/Guests/Znamenitosti/muzej-porcelana.webp", "maps": "https://maps.google.com/?q=Muzej+porcelana+Subotica" },
+      { "name": "Sinagoga", "dist": "500 m", "desc": "Jedna od najlepših sinagoga u Evropi, izgrađena 1902. u secesijskom stilu — pravo arhitektonsko čudo.", "img": "images/Guests/Znamenitosti/sinagoga.webp", "maps": "https://maps.google.com/?q=Subotica+Synagogue" },
+      { "name": "Ulica Starih zanata", "dist": "100 m", "desc": "Otvorena 2025. — šarmantni prolaz koji oživljava duh nekadašnje Subotice sa izlozima krojača, časovničara i skulpturom Zvonka Bogdana.", "img": "images/Guests/Znamenitosti/ulica-starih-zanata.webp", "maps": "https://maps.google.com/?q=Ulica+Starih+zanata+Subotica" },
+      { "name": "Spomenik Caru Jovanu Nenadu", "dist": "400 m", "desc": "Monumentalni bronzani triptih iz 1927. posvećen samoproglašenom caru koji je kratko vladao Suboticom 1527. godine.", "img": "images/Guests/Znamenitosti/car-jovan-nenad.webp", "maps": "https://maps.google.com/?q=Spomenik+Caru+Jovanu+Nenadu+Subotica" },
+      { "name": "Spomenik Kralju Petru I", "dist": "30 m", "desc": "Skulptura visoka 4.2 metra vajara Zorana Ivanovića, otkrivena 2021. u čast kralja Oslobodioca Petra I Karađorđevića.", "img": "images/Guests/Znamenitosti/spomenik-kralj-petru.webp", "maps": "https://maps.google.com/?q=Spomenik+Kralju+Petru+I+Subotica" },
+      { "name": "Palić jezero", "dist": "8 km", "desc": "Najveće prirodno jezero u Srbiji — plaže, park, sportski sadržaji i lekoviti mulj. Idealno za porodični izlet.", "img": "images/Guests/Znamenitosti/palic.webp", "maps": "https://maps.google.com/?q=Palic+Lake+Subotica" }
+    ],
+    "entertainment": [
+      { "name": "Narodno pozorište", "dist": "300 m", "desc": "Obnovljeno 2013., sa tradicijom od 1854. — jedino pozorište u Srbiji sa srpskim i mađarskim ansamblom pod istim krovom. Kulturni simbol Subotice.", "img": "images/Guests/Zabava/Subotica Narodno pozoriste.webp", "maps": "https://maps.google.com/?q=Narodno+pozoriste+Subotica" },
+      { "name": "Dečije pozorište", "dist": "400 m", "desc": "Pozorište posvećeno najmlađima — predstave na srpskom i mađarskom jeziku.", "img": "images/Guests/Zabava/Decije-pozoriste-4-1170x781.webp", "maps": "https://maps.google.com/?q=Decije+pozoriste+Subotica" },
+      { "name": "EuroCinema", "dist": "200 m", "desc": "Moderni bioskop u centru — najnoviji filmski naslovi na velikom platnu.", "img": "images/Guests/Zabava/EuroCinema.webp", "maps": "https://maps.google.com/?q=EuroCinema+Subotica" },
+      { "name": "Bioskop Lifka", "dist": "150 m", "desc": "Legendarna kinodvorana otvorena 1913. — arhitektonski dragulj i kulturna ikona Subotice.", "img": "images/Guests/Zabava/bioskop lifka.webp", "maps": "https://maps.google.com/?q=Bioskop+Lifka+Subotica" },
+      { "name": "Zoološki vrt Palić", "dist": "8 km", "desc": "Zoološki vrt na Paliću — dom brojnih životinjskih vrsta, idealan za porodičan izlet.", "img": "images/Guests/Zabava/Zoo vrt Palić.webp", "maps": "https://maps.google.com/?q=Zooloski+vrt+Palic" }
+    ],
+    "sport": [
+      { "name": "Bazen Prozivka", "dist": "1.5 km", "desc": "Sportsko-rekreativni centar sa velikim i malim bazenom — ocena 4.5 na Google-u. Radno vreme se menja po danima, preporučujemo proveru pre posete.", "img": "images/Guests/Sport/Bazen Prozivka.webp", "maps": "https://maps.google.com/?q=Bazen+Prozivka+Subotica" },
+      { "name": "Bazen Dudova šuma", "dist": "2 km", "desc": "Otvoreni bazen u okviru rekreativnog parka Dudova šuma.", "img": "images/Guests/Sport/Bazen Dudovasuma.webp", "maps": "https://maps.google.com/?q=Bazen+Dudova+suma+Subotica" },
+      { "name": "Aqua park Palić", "dist": "8 km", "desc": "Vodeni park na obali Palićkog jezera — tobogani, bazeni i zabava za celu porodicu.", "img": "images/Guests/Sport/Aqua park Palić.webp", "maps": "https://maps.google.com/?q=Aqua+park+Palic+Subotica" },
+      { "name": "Hala sportova Dudova šuma", "dist": "2 km", "desc": "Višenamenska sportska hala — košarka, odbojka, tenis i ostali sportovi.", "img": "images/Guests/Sport/Hala Sportova.webp", "maps": "https://maps.google.com/?q=Hala+sportova+Dudova+suma+Subotica" }
+    ]
+  },
+
+  "emergency": {
+    "police": { "label": "Policija", "number": "192" },
+    "ambulance": { "label": "Hitna pomoć", "number": "194" },
+    "fire": { "label": "Vatrogasci", "number": "193" },
+    "taxi": { "label": "Alfa Taxi", "number": "19788" },
+    "host": { "label": "Domaćin Boris", "number": "+381631168024" }
+  }
+}

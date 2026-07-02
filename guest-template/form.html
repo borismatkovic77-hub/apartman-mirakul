@@ -26,6 +26,14 @@
   .row .del { position:absolute; top:0.5rem; right:0.5rem; background:#fff0ef; color:#c0392b; border:1px solid #f0c9c4; border-radius:6px; padding:0.15rem 0.5rem; font-size:0.72rem; cursor:pointer; }
   .add-btn { background:var(--accent); color:#fff; border:none; border-radius:8px; padding:0.5rem 0.9rem; font-size:0.85rem; font-weight:600; cursor:pointer; margin-top:0.35rem; }
   .add-btn:hover { filter:brightness(1.05); }
+  .card-head { display:flex; gap:0.6rem; align-items:flex-end; flex-wrap:wrap; }
+  .card-head .ch-name { flex:1 1 220px; }
+  .card-head .ch-dist { flex:0 1 150px; }
+  .card-head label { margin-top:0; }
+  .card .del { position:static; top:auto; right:auto; align-self:center; white-space:nowrap; }
+  .expand-btn { background:#fff; border:1.5px solid var(--border); color:var(--muted); border-radius:8px; padding:0.5rem 0.75rem; font-size:0.78rem; font-weight:600; cursor:pointer; white-space:nowrap; }
+  .expand-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .card-body { margin-top:0.7rem; }
   .sub { margin-top:0.5rem; }
   .sub > .subtitle { font-size:0.9rem; font-weight:700; margin:1rem 0 0.4rem; padding-top:0.6rem; border-top:1px solid var(--border); }
   .adv-note { font-size:0.72rem; color:var(--muted); margin-top:0.4rem; }
@@ -189,18 +197,30 @@ function addSms(d={}){
   r.appendChild(delBtn()); $('parkingSms').appendChild(r);
 }
 function addCard(container, d={}){
-  const r=document.createElement('div'); r.className='row';
-  r.innerHTML=`<div class="grid2"><div><label>Naziv *</label><input class="c-name"></div>
-    <div><label>Udaljenost</label><input class="c-dist" placeholder="50 m / ⭐ 4.5"></div></div>
-    <label>Opis</label><textarea class="c-desc"></textarea>
-    <div class="grid3"><div><label>Slika (fajl)</label><input class="c-img" placeholder="boss.webp"></div>
-    <div><label>Google Maps link</label><input class="c-maps" placeholder="https://maps.google.com/?q=…"></div>
-    <div><label>Telefon</label><input class="c-phone" placeholder="0642015800"></div></div>
-    <div class="grid3"><div><label>Emoji (umesto slike)</label><input class="c-emoji" placeholder="🚕"></div>
-    <div><label>Link (red vožnje)</label><input class="c-link"></div>
-    <div><label>Naziv linka</label><input class="c-linkLabel" placeholder="Red vožnje"></div></div>`;
+  const r=document.createElement('div'); r.className='row card';
+  const isNew=!d.name; // nova prazna kartica -> otvorena; iz baze -> skupljena
+  r.innerHTML=`<div class="card-head">
+      <div class="ch-name"><label>Naziv *</label><input class="c-name"></div>
+      <div class="ch-dist"><label>Udaljenost</label><input class="c-dist" placeholder="50 m / ⭐ 4.5"></div>
+      <button type="button" class="expand-btn">detalji ▾</button>
+      <button type="button" class="del">✕ obriši</button>
+    </div>
+    <div class="card-body">
+      <label>Opis</label><textarea class="c-desc"></textarea>
+      <div class="grid3"><div><label>Slika (fajl)</label><input class="c-img" placeholder="boss.webp"></div>
+      <div><label>Google Maps link</label><input class="c-maps" placeholder="https://maps.google.com/?q=…"></div>
+      <div><label>Telefon</label><input class="c-phone" placeholder="0642015800"></div></div>
+      <div class="grid3"><div><label>Emoji (umesto slike)</label><input class="c-emoji" placeholder="🚕"></div>
+      <div><label>Link (red vožnje)</label><input class="c-link"></div>
+      <div><label>Naziv linka</label><input class="c-linkLabel" placeholder="Red vožnje"></div></div>
+    </div>`;
   ['name','dist','desc','img','maps','phone','emoji','link','linkLabel'].forEach(k=>{ const el=r.querySelector('.c-'+k); if(el&&d[k]!=null) el.value=d[k]; });
-  r.appendChild(delBtn()); container.appendChild(r);
+  const body=r.querySelector('.card-body'), exp=r.querySelector('.expand-btn');
+  const setOpen=o=>{ body.style.display=o?'block':'none'; exp.textContent=o?'sakrij ▴':'detalji ▾'; };
+  setOpen(isNew);
+  exp.onclick=()=>setOpen(body.style.display==='none');
+  r.querySelector('.del').onclick=()=>r.remove();
+  container.appendChild(r);
 }
 
 // izgradnja sekcija sa kategorijama

@@ -60,10 +60,7 @@
 <div class="wrap">
   <p class="legend">Opisne tekstove piši na <b>jednom</b> jeziku (srpski ili engleski) — prevod radimo mi. Prazna polja se preskaču.</p>
 
-  <div style="margin:0 0 1.25rem;text-align:center;">
-    <button class="add-btn" style="padding:0.65rem 1.2rem;font-size:0.9rem;" onclick="loadLibrary(false)">📚 Ponovo učitaj bazu lokala (Subotica)</button>
-    <div style="font-size:0.75rem;color:var(--muted);margin-top:0.4rem;">Lokali i znamenitosti su već popunjeni iz baze. Izmeni <b>udaljenosti</b> za svoj stan i izbaci šta ne treba.</div>
-  </div>
+  <p class="legend" style="margin-top:-0.4rem;">📚 Lokali i znamenitosti (sekcije 7 i 8) su <b>već popunjeni</b> iz baze — samo izmeni <b>udaljenosti</b> za svoj stan i izbaci šta ne treba.</p>
 
   <!-- 1. Osnovno -->
   <section class="block">
@@ -150,6 +147,10 @@
     <h2>9. Hitni telefoni</h2>
     <div id="emergency"></div>
   </section>
+
+  <p style="text-align:center;margin:1.5rem 0 0;">
+    <a href="#" onclick="loadLibrary(false);return false;" style="font-size:0.78rem;color:var(--muted);text-decoration:underline;">↺ Vrati originalnu bazu lokala (poništava izmene u sekcijama 7 i 8)</a>
+  </p>
 </div>
 
 <footer class="bar">

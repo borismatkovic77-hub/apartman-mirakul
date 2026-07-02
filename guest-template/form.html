@@ -34,6 +34,12 @@
   .expand-btn { background:#fff; border:1.5px solid var(--border); color:var(--muted); border-radius:8px; padding:0.5rem 0.75rem; font-size:0.78rem; font-weight:600; cursor:pointer; white-space:nowrap; }
   .expand-btn:hover { border-color:var(--accent); color:var(--accent); }
   .card-body { margin-top:0.7rem; }
+  .cat-head { width:100%; display:flex; justify-content:space-between; align-items:center; gap:0.5rem; background:#faf8f4; border:1px solid var(--border); border-radius:10px; padding:0.7rem 0.9rem; margin-top:0.6rem; cursor:pointer; font-size:0.92rem; font-weight:700; color:var(--ink); text-align:left; }
+  .cat-head:hover { border-color:var(--accent); }
+  .cat-meta { display:flex; align-items:center; gap:0.55rem; }
+  .cat-count { background:var(--accent); color:#fff; border-radius:20px; padding:0.05rem 0.55rem; font-size:0.75rem; font-weight:700; min-width:1.4rem; text-align:center; }
+  .cat-arrow { color:var(--muted); font-size:0.8rem; }
+  .cat-body { padding:0.6rem 0 0.2rem; }
   .sub { margin-top:0.5rem; }
   .sub > .subtitle { font-size:0.9rem; font-weight:700; margin:1rem 0 0.4rem; padding-top:0.6rem; border-top:1px solid var(--border); }
   .adv-note { font-size:0.72rem; color:var(--muted); margin-top:0.4rem; }
@@ -219,20 +225,31 @@ function addCard(container, d={}){
   const setOpen=o=>{ body.style.display=o?'block':'none'; exp.textContent=o?'sakrij ▴':'detalji ▾'; };
   setOpen(isNew);
   exp.onclick=()=>setOpen(body.style.display==='none');
-  r.querySelector('.del').onclick=()=>r.remove();
+  r.querySelector('.del').onclick=()=>{ const cont=r.parentElement; r.remove(); updateCatCount(cont); };
   container.appendChild(r);
 }
 
-// izgradnja sekcija sa kategorijama
+// izgradnja sekcija sa kategorijama (skupljive)
+function updateCatCount(cardsDiv){
+  const sub=cardsDiv && cardsDiv.closest('.sub'); if(!sub) return;
+  const cc=sub.querySelector('.cat-count'); if(cc) cc.textContent=cardsDiv.querySelectorAll('.row').length;
+}
+function refreshAllCounts(){ document.querySelectorAll('#services .cards, #recommendations .cards').forEach(updateCatCount); }
 function buildCatSections(hostId, cats){
   const host=$(hostId);
   cats.forEach(([key,label])=>{
     const wrap=document.createElement('div'); wrap.className='sub';
-    wrap.innerHTML=`<div class="subtitle">${label}</div><div class="cards" data-cat="${key}"></div>`;
-    const btn=document.createElement('button'); btn.className='add-btn'; btn.textContent='+ Dodaj';
-    const cardsDiv=wrap.querySelector('.cards');
-    btn.onclick=()=>addCard(cardsDiv, key==='taxi'?{emoji:'🚕'}:{});
-    wrap.appendChild(btn); host.appendChild(wrap);
+    wrap.innerHTML=`<button type="button" class="cat-head"><span class="cat-label">${label}</span><span class="cat-meta"><span class="cat-count">0</span><span class="cat-arrow">▾</span></span></button>`
+      + `<div class="cat-body"><div class="cards" data-cat="${key}"></div></div>`;
+    const body=wrap.querySelector('.cat-body'), cardsDiv=wrap.querySelector('.cards');
+    const addB=document.createElement('button'); addB.className='add-btn'; addB.textContent='+ Dodaj';
+    addB.onclick=()=>{ addCard(cardsDiv, key==='taxi'?{emoji:'🚕'}:{}); updateCatCount(cardsDiv); };
+    body.appendChild(addB);
+    const arrow=wrap.querySelector('.cat-arrow');
+    const setOpen=o=>{ body.style.display=o?'block':'none'; arrow.textContent=o?'▴':'▾'; };
+    setOpen(false);
+    wrap.querySelector('.cat-head').onclick=()=>setOpen(body.style.display==='none');
+    host.appendChild(wrap);
   });
 }
 function buildEmergency(){
@@ -316,12 +333,14 @@ function populate(d){
   document.querySelectorAll('#services .cards').forEach(cd=>{ cd.innerHTML=''; ((d.services||{})[cd.dataset.cat]||[]).forEach(x=>addCard(cd,x)); });
   document.querySelectorAll('#recommendations .cards').forEach(cd=>{ cd.innerHTML=''; ((d.recommendations||{})[cd.dataset.cat]||[]).forEach(x=>addCard(cd,x)); });
   $('emergency').querySelectorAll('.row').forEach(r=>{ const e=(d.emergency||{})[r.dataset.key]; if(e){ r.querySelector('.e-label').value=e.label||''; r.querySelector('.e-number').value=e.number||''; } });
+  refreshAllCounts();
 }
 
 function loadLibrary(silent){
   if(!silent && !confirm('Učitati bazu lokala za Suboticu? Postojeći lokali i preporuke biće zamenjeni (podaci apartmana ostaju netaknuti).')) return;
   document.querySelectorAll('#services .cards').forEach(cd=>{ cd.innerHTML=''; (CITY_LIBRARY.services[cd.dataset.cat]||[]).forEach(x=>addCard(cd,x)); });
   document.querySelectorAll('#recommendations .cards').forEach(cd=>{ cd.innerHTML=''; (CITY_LIBRARY.recommendations[cd.dataset.cat]||[]).forEach(x=>addCard(cd,x)); });
+  refreshAllCounts();
 }
 // ---- init ----
 buildCatSections('services', SERVICE_CATS);

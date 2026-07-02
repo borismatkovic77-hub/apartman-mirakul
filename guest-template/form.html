@@ -155,8 +155,8 @@
 
 <footer class="bar">
   <input type="file" id="loadFile" accept=".json" style="display:none" onchange="loadData(event)">
-  <button class="btn-ghost" onclick="document.getElementById('loadFile').click()">📂 Učitaj postojeći</button>
-  <button class="btn-main" onclick="download()">⬇️ Preuzmi data.json</button>
+  <button class="btn-ghost" onclick="document.getElementById('loadFile').click()">📂 Otvori ranije sačuvano</button>
+  <button class="btn-main" onclick="download()">✅ Sačuvaj i pošalji</button>
 </footer>
 
 <script>
@@ -309,6 +309,7 @@ function download(){
   if(!d.meta.apartmentName){ alert('Unesi bar naziv apartmana.'); return; }
   const blob=new Blob([JSON.stringify(d,null,2)], {type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
+  setTimeout(()=>alert('Fajl „data.json" je preuzet (obično u folder Preuzimanja).\n\nPošaljite nam ga na WhatsApp ili email i mi pravimo vaš vodič. Hvala!'), 300);
 }
 
 // ---- učitavanje postojećeg ----

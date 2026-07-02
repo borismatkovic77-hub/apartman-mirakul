@@ -21,12 +21,16 @@ napravi za **bilo koji apartman** — bez pisanja koda i bez ručnog prevoda.
 
 ## Radni tok za novi apartman
 
-1. Klijent popuni **`FORMULAR.md`** i pošalje slike.
-2. Podaci se prebace u kopiju **`data.json`**.
+1. Klijent otvori **`form.html`** u browseru, popuni polja i klikne
+   „Preuzmi data.json" (+ pošalje slike).
+2. `data.json` se ubaci u folder (bez ručnog prepisivanja).
 3. Pokrene se generator → dobije se gotova stranica na 16 jezika.
 4. Objavi se (GitHub Pages ili bilo koji hosting) + QR kod za goste.
 
 Rezultat: novi apartman = **1–2 sata popunjavanja**, bez diranja koda.
+
+> `form.html` može i da **učita postojeći `data.json`** („Učitaj postojeći") —
+> zgodno za kasnije izmene apartmana. `FORMULAR.md` ostaje interna čeklista.
 
 ## Šta se prevodi, a šta ne
 
@@ -60,7 +64,8 @@ Pročita `data.json` + `labels.json` (+ `template.html`) i napiše gotov
 | `labels.json` | Generički natpisi po jeziku — **isti za sve apartmane** |
 | `template.html` | HTML kalup (dizajn) sa tokenima — ne dira se |
 | `generate.js` | Generator: podaci + kalup → `guest.html` |
-| `FORMULAR.md` | Obrazac za klijenta |
+| `form.html` | **Forma za klijenta** — popuni u browseru → preuzme `data.json` |
+| `FORMULAR.md` | Interna čeklista polja (za referencu) |
 
 ## Status
 - [x] `data.json` — struktura podataka + popunjen primer (Mirakul, 61 kartica)

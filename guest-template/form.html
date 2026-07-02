@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vodič za goste — unos podataka</title>
+<style>
+  :root { --accent:#C49A4A; --bg:#f7f6f3; --card:#fff; --border:#e3e0d8; --muted:#8a857c; --ink:#2a2620; }
+  * { box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--ink); margin:0; padding:0 0 6rem; line-height:1.5; }
+  header { background:var(--ink); color:#fff; padding:1.5rem 1rem; text-align:center; position:sticky; top:0; z-index:10; }
+  header h1 { margin:0; font-size:1.25rem; }
+  header p { margin:0.35rem 0 0; font-size:0.85rem; opacity:0.8; }
+  .wrap { max-width:820px; margin:1.5rem auto; padding:0 1rem; }
+  section.block { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.25rem; margin-bottom:1.25rem; }
+  section.block > h2 { margin:0 0 0.25rem; font-size:1.05rem; color:var(--accent); }
+  section.block > .hint { margin:0 0 1rem; font-size:0.8rem; color:var(--muted); }
+  label { display:block; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.03em; color:var(--muted); margin:0.6rem 0 0.25rem; }
+  input, textarea, select { width:100%; padding:0.55rem 0.7rem; border:1.5px solid var(--border); border-radius:8px; font-size:0.9rem; font-family:inherit; background:#fff; }
+  input:focus, textarea:focus, select:focus { outline:none; border-color:var(--accent); }
+  textarea { min-height:3rem; resize:vertical; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:0 0.75rem; }
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0 0.75rem; }
+  @media(max-width:560px){ .grid2,.grid3 { grid-template-columns:1fr; } }
+  .row { border:1px dashed var(--border); border-radius:10px; padding:0.85rem; margin-bottom:0.75rem; position:relative; background:#fcfbf9; }
+  .row .del { position:absolute; top:0.5rem; right:0.5rem; background:#fff0ef; color:#c0392b; border:1px solid #f0c9c4; border-radius:6px; padding:0.15rem 0.5rem; font-size:0.72rem; cursor:pointer; }
+  .add-btn { background:var(--accent); color:#fff; border:none; border-radius:8px; padding:0.5rem 0.9rem; font-size:0.85rem; font-weight:600; cursor:pointer; margin-top:0.35rem; }
+  .add-btn:hover { filter:brightness(1.05); }
+  .sub { margin-top:0.5rem; }
+  .sub > .subtitle { font-size:0.9rem; font-weight:700; margin:1rem 0 0.4rem; padding-top:0.6rem; border-top:1px solid var(--border); }
+  .adv-note { font-size:0.72rem; color:var(--muted); margin-top:0.4rem; }
+  footer.bar { position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid var(--border); padding:0.85rem 1rem; display:flex; gap:0.75rem; justify-content:center; align-items:center; flex-wrap:wrap; box-shadow:0 -2px 12px rgba(0,0,0,0.06); }
+  .btn-main { background:var(--ink); color:#fff; border:none; border-radius:9px; padding:0.7rem 1.5rem; font-size:0.95rem; font-weight:700; cursor:pointer; }
+  .btn-main:hover { background:#000; }
+  .btn-ghost { background:#fff; color:var(--ink); border:1.5px solid var(--border); border-radius:9px; padding:0.7rem 1.1rem; font-size:0.9rem; font-weight:600; cursor:pointer; }
+  .legend { font-size:0.8rem; color:var(--muted); }
+  .legend b { color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>🏠 Vodič za goste — unos podataka</h1>
+  <p>Popuni polja i klikni „Preuzmi data.json" na dnu. Sve ostalo (dizajn, prevod na 16 jezika) ide automatski.</p>
+</header>
+
+<div class="wrap">
+  <p class="legend">Opisne tekstove piši na <b>jednom</b> jeziku (srpski ili engleski) — prevod radimo mi. Prazna polja se preskaču.</p>
+
+  <!-- 1. Osnovno -->
+  <section class="block">
+    <h2>1. Osnovno o apartmanu</h2>
+    <p class="hint">Naziv, kontakt domaćina i WiFi.</p>
+    <div class="grid2">
+      <div><label>Naziv apartmana *</label><input id="apartmentName" placeholder="Apartman Mirakul"></div>
+      <div><label>Osnovni jezik unosa</label><select id="baseLang"><option value="sr">Srpski</option><option value="en">Engleski</option></select></div>
+      <div><label>Ime domaćina *</label><input id="hostName" placeholder="Boris"></div>
+      <div><label>Telefon domaćina *</label><input id="hostPhone" placeholder="+381631168024"></div>
+      <div><label>Naziv WiFi mreže</label><input id="wifiName" placeholder="Apartman Mirakul 5G"></div>
+      <div><label>WiFi lozinka</label><input id="wifiPassword" placeholder="dobrodosli"></div>
+      <div><label>Boja brenda (hex) — opciono</label><input id="accentColor" placeholder="#C49A4A"></div>
+    </div>
+  </section>
+
+  <!-- 2. Kućni red -->
+  <section class="block">
+    <h2>2. Kućni red</h2>
+    <p class="hint">Jedno pravilo po redu. Možeš početi emoji-jem (npr. 🌙, 🚭, 🐾).</p>
+    <div id="houseRules"></div>
+    <button class="add-btn" onclick="addRule()">+ Dodaj pravilo</button>
+  </section>
+
+  <!-- 3. Check-in -->
+  <section class="block">
+    <h2>3. Check-in / Check-out</h2>
+    <div class="grid2">
+      <div><label>Check-in vreme</label><input id="checkIn" placeholder="15:00–23:00"></div>
+      <div><label>Check-out vreme</label><input id="checkOut" placeholder="do 11:00"></div>
+    </div>
+    <label>Uputstvo za predaju ključeva</label>
+    <textarea id="checkinTip" placeholder="Prilikom check out-a ključeve ostavite u poštansko sanduče..."></textarea>
+  </section>
+
+  <!-- 4. Dobro je znati -->
+  <section class="block">
+    <h2>4. Dobro je znati</h2>
+    <p class="hint">Korisne sitnice: topla voda, tuš, zamračivanje, zaključavanje…</p>
+    <div id="goodToKnow"></div>
+    <button class="add-btn" onclick="addItem('goodToKnow')">+ Dodaj stavku</button>
+  </section>
+
+  <!-- 5. Aparati -->
+  <section class="block">
+    <h2>5. Aparati</h2>
+    <p class="hint">TV, klima, grejanje, veš mašina, aparat za kafu… Upozorenje počni sa „⚠️".</p>
+    <div id="appliances"></div>
+    <button class="add-btn" onclick="addItem('appliances')">+ Dodaj aparat</button>
+  </section>
+
+  <!-- 6. Parking -->
+  <section class="block">
+    <h2>6. Parking</h2>
+    <label>Opis zone / lokacija</label><input id="parkingZone" placeholder="Crvena zona (1) — ispred zgrade">
+    <div class="grid3">
+      <div><label>Radnim danima</label><input id="parkingWeekdays" placeholder="07:00 – 21:00"></div>
+      <div><label>Subotom</label><input id="parkingSaturday" placeholder="07:00 – 14:00"></div>
+      <div><label>Nedeljom/praznici</label><input id="parkingSunday" placeholder="Besplatno"></div>
+    </div>
+    <div class="subtitle" style="border:none;padding:0;margin:0.9rem 0 0.3rem;font-size:0.8rem;color:var(--muted)">Plaćanje SMS-om (opciono)</div>
+    <div id="parkingSms"></div>
+    <button class="add-btn" onclick="addSms()">+ Dodaj SMS opciju</button>
+    <label>Savet za goste — opciono</label>
+    <textarea id="parkingTip" placeholder="Posle 21:00 možete unapred platiti parking…"></textarea>
+  </section>
+
+  <!-- 7. Servisi -->
+  <section class="block">
+    <h2>7. Ako ti treba… (lokalni servisi)</h2>
+    <p class="hint">Za svaku karticu: naziv, udaljenost, opis, slika (fajl), Maps link, telefon. Prazna polja se preskaču.</p>
+    <div id="services"></div>
+  </section>
+
+  <!-- 8. Preporuke -->
+  <section class="block">
+    <h2>8. Lokalne preporuke</h2>
+    <p class="hint">Isti format kao servisi.</p>
+    <div id="recommendations"></div>
+  </section>
+
+  <!-- 9. Hitni brojevi -->
+  <section class="block">
+    <h2>9. Hitni telefoni</h2>
+    <div id="emergency"></div>
+  </section>
+</div>
+
+<footer class="bar">
+  <input type="file" id="loadFile" accept=".json" style="display:none" onchange="loadData(event)">
+  <button class="btn-ghost" onclick="document.getElementById('loadFile').click()">📂 Učitaj postojeći</button>
+  <button class="btn-main" onclick="download()">⬇️ Preuzmi data.json</button>
+</footer>
+
+<script>
+// ---- konfiguracija kategorija ----
+const SERVICE_CATS = [
+  ['taxi','🚕 Taxi službe'], ['delivery','🛵 Dostava hrane'], ['grocery','🛒 Prodavnice'],
+  ['pharmacy','💊 Apoteke'], ['exchange','💱 Menjačnice'], ['atm','🏧 Bankomati'],
+  ['gas','⛽ Benzinske pumpe'], ['railway','🚂 Železnička stanica'], ['bus','🚌 Autobuska stanica']
+];
+const RECO_CATS = [
+  ['restaurants','🍽️ Restorani i kafići'], ['attractions','🏛️ Znamenitosti'],
+  ['entertainment','🎭 Zabava'], ['sport','⚽ Sport']
+];
+const EMERGENCY_ROWS = [
+  ['police','Policija','192'], ['ambulance','Hitna pomoć','194'], ['fire','Vatrogasci','193'],
+  ['taxi','Alfa Taxi','19788'], ['host','Domaćin','+381631168024']
+];
+
+const $ = id => document.getElementById(id);
+const val = el => (el && el.value.trim()) || '';
+
+// ---- dinamički redovi ----
+function delBtn(){ const b=document.createElement('button'); b.className='del'; b.textContent='✕ obriši'; b.onclick=e=>e.target.closest('.row').remove(); return b; }
+
+function addRule(text=''){
+  const r=document.createElement('div'); r.className='row';
+  r.innerHTML=`<input class="rule-text" placeholder="🌙 Budite tiši u periodu 22:00–08:00">`;
+  r.querySelector('input').value=text; r.appendChild(delBtn()); $('houseRules').appendChild(r);
+}
+function addItem(cat, d={}){
+  const r=document.createElement('div'); r.className='row';
+  r.innerHTML=`<div class="grid2"><div><label>Ikonica (emoji)</label><input class="f-icon" placeholder="🌡️"></div>
+    <div><label>Naslov</label><input class="f-title" placeholder="Topla voda"></div></div>
+    <label>Objašnjenje</label><textarea class="f-text" placeholder="Bojler je stalno upaljen…"></textarea>`;
+  r.querySelector('.f-icon').value=d.icon||''; r.querySelector('.f-title').value=d.title||''; r.querySelector('.f-text').value=d.text||'';
+  r.appendChild(delBtn()); $(cat).appendChild(r);
+}
+function addSms(d={}){
+  const r=document.createElement('div'); r.className='row';
+  r.innerHTML=`<div class="grid3"><div><label>Naziv</label><input class="s-label" placeholder="Po satu"></div>
+    <div><label>SMS broj</label><input class="s-code" placeholder="9241"></div>
+    <div><label>Cena</label><input class="s-price" placeholder="70 din"></div></div>`;
+  r.querySelector('.s-label').value=d.label||''; r.querySelector('.s-code').value=d.code||''; r.querySelector('.s-price').value=d.price||'';
+  r.appendChild(delBtn()); $('parkingSms').appendChild(r);
+}
+function addCard(container, d={}){
+  const r=document.createElement('div'); r.className='row';
+  r.innerHTML=`<div class="grid2"><div><label>Naziv *</label><input class="c-name"></div>
+    <div><label>Udaljenost</label><input class="c-dist" placeholder="50 m / ⭐ 4.5"></div></div>
+    <label>Opis</label><textarea class="c-desc"></textarea>
+    <div class="grid3"><div><label>Slika (fajl)</label><input class="c-img" placeholder="boss.webp"></div>
+    <div><label>Google Maps link</label><input class="c-maps" placeholder="https://maps.google.com/?q=…"></div>
+    <div><label>Telefon</label><input class="c-phone" placeholder="0642015800"></div></div>
+    <div class="grid3"><div><label>Emoji (umesto slike)</label><input class="c-emoji" placeholder="🚕"></div>
+    <div><label>Link (red vožnje)</label><input class="c-link"></div>
+    <div><label>Naziv linka</label><input class="c-linkLabel" placeholder="Red vožnje"></div></div>`;
+  ['name','dist','desc','img','maps','phone','emoji','link','linkLabel'].forEach(k=>{ const el=r.querySelector('.c-'+k); if(el&&d[k]!=null) el.value=d[k]; });
+  r.appendChild(delBtn()); container.appendChild(r);
+}
+
+// izgradnja sekcija sa kategorijama
+function buildCatSections(hostId, cats){
+  const host=$(hostId);
+  cats.forEach(([key,label])=>{
+    const wrap=document.createElement('div'); wrap.className='sub';
+    wrap.innerHTML=`<div class="subtitle">${label}</div><div class="cards" data-cat="${key}"></div>`;
+    const btn=document.createElement('button'); btn.className='add-btn'; btn.textContent='+ Dodaj';
+    const cardsDiv=wrap.querySelector('.cards');
+    btn.onclick=()=>addCard(cardsDiv, key==='taxi'?{emoji:'🚕'}:{});
+    wrap.appendChild(btn); host.appendChild(wrap);
+  });
+}
+function buildEmergency(){
+  EMERGENCY_ROWS.forEach(([key,label,num])=>{
+    const r=document.createElement('div'); r.className='row'; r.dataset.key=key;
+    r.innerHTML=`<div class="grid2"><div><label>${key} — naziv</label><input class="e-label" value="${label}"></div>
+      <div><label>Broj</label><input class="e-number" value="${num}"></div></div>`;
+    $('emergency').appendChild(r);
+  });
+}
+
+// ---- prikupljanje podataka ----
+function collectCards(cardsDiv){
+  const out=[];
+  cardsDiv.querySelectorAll('.row').forEach(r=>{
+    const g=k=>val(r.querySelector('.c-'+k));
+    const name=g('name'); if(!name) return;
+    const c={name, dist:g('dist'), desc:g('desc')};
+    ['img','maps','phone','emoji','link','linkLabel'].forEach(k=>{ const v=g(k); if(v) c[k]=v; });
+    out.push(c);
+  });
+  return out;
+}
+function collectData(){
+  const d={ meta:{}, houseRules:[], checkin:{}, goodToKnow:[], appliances:[], parking:{}, services:{}, recommendations:{}, emergency:{} };
+  d.meta.apartmentName=val($('apartmentName'));
+  d.meta.baseLang=$('baseLang').value;
+  d.meta.wifiName=val($('wifiName'));
+  d.meta.wifiPassword=val($('wifiPassword'));
+  d.meta.host={ name:val($('hostName')), phone:val($('hostPhone')) };
+  const ac=val($('accentColor')); d.meta.brand={ accentColor:ac||'#C49A4A', favicon:'favicon.svg', appleTouchIcon:'apple-touch-icon.png' };
+
+  $('houseRules').querySelectorAll('.rule-text').forEach(i=>{ if(i.value.trim()) d.houseRules.push(i.value.trim()); });
+  d.checkin={ checkIn:val($('checkIn')), checkOut:val($('checkOut')), tip:val($('checkinTip')) };
+  ['goodToKnow','appliances'].forEach(cat=>{
+    $(cat).querySelectorAll('.row').forEach(r=>{
+      const title=val(r.querySelector('.f-title')); if(!title) return;
+      d[cat].push({ icon:val(r.querySelector('.f-icon')), title, text:val(r.querySelector('.f-text')) });
+    });
+  });
+  d.parking={ zoneLabel:val($('parkingZone')), weekdays:val($('parkingWeekdays')), saturday:val($('parkingSaturday')), sundayHolidays:val($('parkingSunday')), sms:[], tip:val($('parkingTip')) };
+  $('parkingSms').querySelectorAll('.row').forEach(r=>{
+    const label=val(r.querySelector('.s-label')); if(!label) return;
+    d.parking.sms.push({ label, code:val(r.querySelector('.s-code')), price:val(r.querySelector('.s-price')) });
+  });
+  document.querySelectorAll('#services .cards').forEach(c=>{ d.services[c.dataset.cat]=collectCards(c); });
+  document.querySelectorAll('#recommendations .cards').forEach(c=>{ d.recommendations[c.dataset.cat]=collectCards(c); });
+  $('emergency').querySelectorAll('.row').forEach(r=>{
+    d.emergency[r.dataset.key]={ label:val(r.querySelector('.e-label')), number:val(r.querySelector('.e-number')) };
+  });
+  return d;
+}
+
+function download(){
+  const d=collectData();
+  if(!d.meta.apartmentName){ alert('Unesi bar naziv apartmana.'); return; }
+  const blob=new Blob([JSON.stringify(d,null,2)], {type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
+}
+
+// ---- učitavanje postojećeg ----
+function loadData(ev){
+  const file=ev.target.files[0]; if(!file) return;
+  const rd=new FileReader();
+  rd.onload=()=>{ try{ populate(JSON.parse(rd.result)); alert('Učitano ✓'); }catch(e){ alert('Greška: nije validan JSON.'); } };
+  rd.readAsText(file); ev.target.value='';
+}
+function populate(d){
+  const m=d.meta||{};
+  $('apartmentName').value=m.apartmentName||''; $('baseLang').value=m.baseLang||'sr';
+  $('wifiName').value=m.wifiName||''; $('wifiPassword').value=m.wifiPassword||'';
+  $('hostName').value=(m.host&&m.host.name)||''; $('hostPhone').value=(m.host&&m.host.phone)||'';
+  $('accentColor').value=(m.brand&&m.brand.accentColor)||'';
+  $('houseRules').innerHTML=''; (d.houseRules||[]).forEach(addRule);
+  const c=d.checkin||{}; $('checkIn').value=c.checkIn||''; $('checkOut').value=c.checkOut||''; $('checkinTip').value=c.tip||'';
+  $('goodToKnow').innerHTML=''; (d.goodToKnow||[]).forEach(x=>addItem('goodToKnow',x));
+  $('appliances').innerHTML=''; (d.appliances||[]).forEach(x=>addItem('appliances',x));
+  const p=d.parking||{}; $('parkingZone').value=p.zoneLabel||''; $('parkingWeekdays').value=p.weekdays||'';
+  $('parkingSaturday').value=p.saturday||''; $('parkingSunday').value=p.sundayHolidays||''; $('parkingTip').value=p.tip||'';
+  $('parkingSms').innerHTML=''; (p.sms||[]).forEach(addSms);
+  document.querySelectorAll('#services .cards').forEach(cd=>{ cd.innerHTML=''; ((d.services||{})[cd.dataset.cat]||[]).forEach(x=>addCard(cd,x)); });
+  document.querySelectorAll('#recommendations .cards').forEach(cd=>{ cd.innerHTML=''; ((d.recommendations||{})[cd.dataset.cat]||[]).forEach(x=>addCard(cd,x)); });
+  $('emergency').querySelectorAll('.row').forEach(r=>{ const e=(d.emergency||{})[r.dataset.key]; if(e){ r.querySelector('.e-label').value=e.label||''; r.querySelector('.e-number').value=e.number||''; } });
+}
+
+// ---- init ----
+buildCatSections('services', SERVICE_CATS);
+buildCatSections('recommendations', RECO_CATS);
+buildEmergency();
+// počni sa po jednim praznim redom gde ima smisla
+addRule(); addItem('goodToKnow'); addItem('appliances');
+</script>
+</body>
+</html>

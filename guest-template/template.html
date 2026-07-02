@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3E2723" />
+  <meta name="robots" content="noindex" />
+  <title>Apartman Mirakul — Vodič za goste</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FBF6F1;
+      --surface: #ffffff;
+      --primary: #3E2723;
+      --accent: #8B5E3C;
+      --accent-light: #F5EBE0;
+      --border: #E2D0BF;
+      --muted: #9A7A6A;
+      --shadow: 0 2px 12px rgba(74,44,26,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
+    html { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); font-size: 16px; line-height: 1.5; }
+    body { min-height: 100vh; }
+    a { color: inherit; }
+
+    /* ── LANG SCREEN ── */
+    #lang-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem 3rem;
+    }
+    .lang-brand {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    .lang-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    .lang-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 420px;
+    }
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.1rem;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+      box-shadow: var(--shadow);
+    }
+    .lang-btn:hover, .lang-btn:active { background: var(--accent-light); border-color: var(--primary); }
+    .lang-flag { height: 1.15rem; width: auto; vertical-align: middle; border-radius: 2px; }
+    .lang-flag-sm { height: 0.95rem; width: auto; vertical-align: middle; border-radius: 1px; }
+
+    /* ── GUIDE ── */
+    #guide {
+      display: none;
+      flex-direction: column;
+      min-height: 100vh;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    #guide.visible { display: flex; }
+
+    .guide-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+    .guide-header-name { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
+    .lang-change-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .lang-change-btn:hover { background: rgba(255,255,255,0.22); }
+
+    .guide-content {
+      padding: 1.25rem 1.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+    }
+
+    /* ── WiFi — light card ── */
+    .wifi-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: var(--shadow);
+    }
+    .wifi-row { display: flex; align-items: center; gap: 0.9rem; }
+    .wifi-icon { font-size: 1.1rem; flex-shrink: 0; color: var(--primary); }
+    .wifi-info { flex: 1; min-width: 0; }
+    .wifi-label { font-size: 0.68rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.2rem; }
+    .wifi-value { font-size: 1.05rem; font-weight: 700; color: #2A1A0C; }
+    .copy-btn {
+      display: flex; align-items: center; gap: 0.4rem;
+      background: var(--primary); color: #fff; border: none;
+      border-radius: 8px; padding: 0.55rem 1rem;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer;
+      flex-shrink: 0; font-family: inherit; transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .copy-btn:active { opacity: 0.75; }
+
+    /* ── Accordion ── */
+    .acc-item {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s;
+    }
+    .acc-item.open { border-color: var(--primary); }
+    .acc-trigger {
+      width: 100%; display: flex; align-items: center; gap: 0.75rem;
+      padding: 1.15rem 1.25rem; background: none; border: none;
+      font-family: inherit; font-size: 1.02rem; font-weight: 700;
+      color: var(--primary); cursor: pointer; text-align: left;
+      letter-spacing: -0.01em;
+    }
+    .acc-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: var(--accent-light); border-radius: 8px; font-size: 1rem;
+    }
+    .acc-arrow {
+      margin-left: auto;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg); border-radius: 50%;
+      font-size: 0.65rem; color: var(--muted);
+      transition: transform 0.25s ease, background 0.2s;
+      flex-shrink: 0;
+    }
+    .acc-item.open .acc-arrow { transform: rotate(180deg); background: var(--accent-light); color: var(--primary); }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .acc-item.open .acc-body { max-height: 5000px; }
+    .acc-inner { padding: 1rem 1.25rem 1.35rem; border-top: 1.5px solid var(--border); }
+
+    /* ── Content inside accordion ── */
+    .item-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .item-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 1rem; }
+    .item-label { color: var(--muted); font-size: 0.85rem; min-width: 120px; flex-shrink: 0; font-weight: 500; }
+    .item-list a { color: var(--primary); font-weight: 800; text-decoration: none; font-size: 1.15rem; }
+
+    .bullet-list { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .bullet-list li { font-size: 1.03rem; line-height: 1.65; color: var(--primary); }
+
+    .checkin-row { display: flex; align-items: center; gap: 1.25rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
+    .checkin-row:last-of-type { border-bottom: none; }
+    .checkin-time { font-size: 2rem; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; }
+    .checkin-label { font-size: 0.72rem; color: var(--muted); margin-bottom: 0.15rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+
+    .guide-tip {
+      background: var(--accent-light);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1rem; font-size: 0.98rem;
+      color: #2A1A0C; margin-top: 0.85rem; line-height: 1.6;
+    }
+
+    .guide-item { display: flex; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .guide-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .guide-item-icon {
+      font-size: 1.1rem; flex-shrink: 0;
+      width: 38px; height: 38px;
+      background: var(--accent-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .guide-item-text strong { display: block; font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .guide-item-text span { font-size: 0.96rem; color: var(--muted); line-height: 1.55; }
+
+    .local-group-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); padding: 1rem 0 0.5rem; border-top: 1px solid var(--border); }
+    .local-group-title:first-child { border-top: none; padding-top: 0; }
+
+    /* ── Subgroup buttons — elegant ── */
+    .subgroup-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 1.15rem;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 0.6rem;
+      cursor: pointer; font-size: 0.97rem; font-weight: 600;
+      color: var(--primary); text-align: left;
+      transition: all 0.15s;
+      letter-spacing: -0.01em;
+    }
+    .subgroup-btn:hover { border-color: var(--primary); background: var(--accent-light); }
+    .subgroup-btn.open { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .subgroup-arrow { font-size: 0.65rem; transition: transform 0.25s; flex-shrink: 0; opacity: 0.45; }
+    .subgroup-btn.open .subgroup-arrow { transform: rotate(180deg); opacity: 0.8; }
+    .subgroup-panel { display: none; margin-bottom: 0.75rem; }
+    .subgroup-panel.open { display: block; }
+    .subgroup-html { padding: 0.25rem 0; }
+
+    /* ── Swipe cards — premium ── */
+    .swipe-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-radius: 14px; }
+    .swipe-carousel::-webkit-scrollbar { display: none; }
+    .swipe-card { flex: 0 0 100%; scroll-snap-align: start; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border); background: var(--surface); }
+    .swipe-card-img { width: 100%; height: 250px; background: linear-gradient(135deg, #e8ddd0, #d4c4b0); display: flex; align-items: center; justify-content: center; font-size: 5rem; overflow: hidden; }
+    .swipe-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .swipe-card-body { padding: 1.4rem 1.5rem 1.75rem; }
+    .swipe-card-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+    .swipe-card-dist {
+      display: inline-flex; align-items: center;
+      font-size: 0.72rem; color: var(--accent); font-weight: 700;
+      margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em;
+      background: var(--accent-light); border-radius: 999px; padding: 0.2rem 0.7rem;
+    }
+    .swipe-card-desc { font-size: 1.01rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.35rem; }
+    .swipe-card-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1.5px solid var(--primary); color: var(--primary);
+      padding: 0.65rem 1.3rem; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 700; text-decoration: none;
+      transition: all 0.15s;
+    }
+    .swipe-card-link:hover { background: var(--primary); color: #fff; }
+
+    /* ── Footer ── */
+    .guide-footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--border); margin-top: 0.5rem; }
+    .guide-footer .heart { color: var(--accent); font-size: 1.3rem; display: block; margin-bottom: 0.65rem; }
+    .guide-footer span { font-size: 1rem; color: var(--muted); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<!-- LANGUAGE SELECTION -->
+<div id="lang-screen">
+  <div style="text-align:center; margin-bottom: 2rem;">
+    <div style="font-size:2rem; margin-bottom:0.5rem;">🏠</div>
+    <div class="lang-brand">Apartman Mirakul</div>
+    <div class="lang-subtitle">Izaberite jezik · Choose language</div>
+  </div>
+  <div class="lang-grid">
+    <!--__LANG_BUTTONS__-->
+  </div>
+</div>
+
+<!-- GUIDE -->
+<div id="guide">
+  <div class="guide-header">
+    <div class="guide-header-name">Apartman Mirakul</div>
+    <button class="lang-change-btn" id="lang-btn" onclick="showLangScreen()"><img class="lang-flag-sm" src="https://flagcdn.com/w20/rs.png" alt=""> SR</button>
+  </div>
+  <div class="guide-content">
+    <div class="acc-item" id="wifi-acc">
+      <button class="acc-trigger" onclick="togWifi()">
+        <span class="acc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></span>
+        <span>WiFi</span>
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner" style="display:flex;flex-direction:column;gap:0.85rem;">
+          <div class="wifi-row">
+            <span class="wifi-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></span>
+            <div class="wifi-info">
+              <div class="wifi-label" id="wifi-net-lbl">Naziv mreže</div>
+              <div class="wifi-value">Apartman Mirakul 5G</div>
+            </div>
+          </div>
+          <div class="wifi-row">
+            <span class="wifi-icon">🔑</span>
+            <div class="wifi-info">
+              <div class="wifi-label" id="wifi-pass-lbl">Lozinka</div>
+              <div class="wifi-value">dobrodosli</div>
+            </div>
+            <button class="copy-btn" onclick="copyWifi()">📋 <span id="copy-lbl">Kopiraj</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="sections"></div>
+  </div>
+  <button id="feedback-fab" onclick="openFeedback()" hidden style="position:fixed;bottom:1.5rem;right:1.5rem;width:48px;height:48px;background:var(--primary);color:#fff;border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 16px rgba(42,26,12,0.3);display:flex;align-items:center;justify-content:center;z-index:100;transition:transform 0.2s;">💬</button>
+  <div id="feedback-modal" hidden style="position:fixed;inset:0;background:rgba(42,26,12,0.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;">
+    <div style="background:var(--surface);border-radius:20px 20px 0 0;padding:1.75rem 1.5rem 2.5rem;width:100%;max-width:640px;box-shadow:0 -4px 24px rgba(42,26,12,0.15);">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;"><div id="fb-title" style="font-size:1rem;font-weight:700;color:var(--primary);">Predlog za unapređenje</div><button onclick="closeFeedback()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted);padding:0;line-height:1;">✕</button></div>
+      <div id="fb-desc" style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;line-height:1.55;">Nedostaje vam neka informacija u vodiču? Napišite nam da dodamo.</div>
+      <form id="feedback-form" action="https://formspree.io/f/xaqvrzva" method="POST">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true" />
+        <input type="hidden" name="_subject" value="Feedback — Mirakul vodič za goste">
+        <textarea id="fb-textarea" name="message" rows="4" required style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.85rem 1rem;font-family:inherit;font-size:0.92rem;color:var(--primary);background:var(--bg);resize:none;outline:none;" placeholder="Vaš predlog ili komentar..."></textarea>
+        <button id="fb-btn" type="submit" style="margin-top:0.65rem;width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:0.85rem;font-family:inherit;font-size:0.95rem;font-weight:700;cursor:pointer;">Pošalji</button>
+      </form>
+      <div id="feedback-success" hidden style="text-align:center;padding:0.75rem 0 0;color:var(--accent);font-weight:700;"></div>
+    </div>
+  </div>
+  <div class="guide-footer">
+    <span class="heart">♥</span>
+    <span id="footer-txt"></span>
+  </div>
+</div>
+
+<script>
+//__GENERATED_DATA__
+let currentLang = 'sr';
+
+function wifiSubGroup(t) {
+  const svgW = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>`;
+  const svgBtn = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:0.4em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>`;
+  const inner = `<div style="display:flex;flex-direction:column;gap:0.85rem;"><div class="wifi-row"><span class="wifi-icon">${svgW}</span><div class="wifi-info"><div class="wifi-label">${t.wn}</div><div class="wifi-value">Apartman Mirakul 5G</div></div></div><div class="wifi-row"><span class="wifi-icon">🔑</span><div class="wifi-info"><div class="wifi-label">${t.wp}</div><div class="wifi-value">dobrodosli</div></div><button class="copy-btn" onclick="copyWifi(this)">📋 <span>${t.cp}</span></button></div></div>`;
+  return `<button class="subgroup-btn" onclick="togSub(this)"><span>${svgBtn}WiFi</span><span class="subgroup-arrow">▼</span></button><div class="subgroup-panel"><div class="subgroup-html">${inner}</div></div>`;
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('mirakul_lang', lang);
+  const t = T[lang];
+  const hasNewWifi = !!t.s[0]?.subs;
+  document.getElementById('wifi-acc').style.display = hasNewWifi ? 'none' : '';
+  if (!hasNewWifi) {
+    document.getElementById('wifi-net-lbl').textContent = t.wn;
+    document.getElementById('wifi-pass-lbl').textContent = t.wp;
+    document.getElementById('copy-lbl').textContent = t.cp;
+  }
+  document.getElementById('footer-txt').textContent = t.ft;
+  document.getElementById('lang-btn').innerHTML = FLAGS[lang] + ' ' + CODES[lang];
+  document.getElementById('sections').innerHTML = t.s.map((s,i) => {
+    const inner = s.subs
+      ? (i === 0 ? wifiSubGroup(t) : '') + s.subs.map(sub =>
+          `<button class="subgroup-btn" onclick="togSub(this)"><span>${sub.t}</span><span class="subgroup-arrow">▼</span></button>` +
+          `<div class="subgroup-panel">` +
+          (sub.cards
+            ? `<div class="swipe-carousel">${sub.cards.map(c =>
+                `<div class="swipe-card"><div class="swipe-card-img">${c.img ? `<img src="${c.img}" alt="${c.name}">` : c.emoji}</div><div class="swipe-card-body"><div class="swipe-card-name">${c.name}</div><div class="swipe-card-dist">${c.dist}</div><div class="swipe-card-desc">${c.desc}</div><div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center">${c.maps ? `<a href="${c.maps}" target="_blank" rel="noopener" class="swipe-card-link">📍 Google Maps</a>` : ''}${c.phone ? `<a href="tel:${c.phone}" class="swipe-card-link">📞 ${t.call || 'Pozovi'}</a>` : ''}${c.link ? `<a href="${c.link}" target="_blank" rel="noopener" class="swipe-card-link">🗓️ ${c.linkLabel || 'Red vožnje'}</a>` : ''}</div></div></div>`
+              ).join('')}</div>`
+            : `<div class="subgroup-html">${sub.h}</div>`) +
+          `</div>`
+        ).join('')
+      : s.h;
+    return `<div class="acc-item" id="a${i}"><button class="acc-trigger" onclick="tog(${i})"><span class="acc-icon">${s.i}</span><span>${s.t}</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-inner">${inner}</div></div></div>`;
+  }).join('');
+  document.getElementById('lang-screen').style.display = 'none';
+  const g = document.getElementById('guide');
+  g.style.display = 'flex';
+  document.getElementById('feedback-fab').removeAttribute('hidden');
+  const fb = FB[lang] || FB.sr;
+  document.getElementById('fb-title').textContent = fb.title;
+  document.getElementById('fb-desc').textContent = fb.desc;
+  document.getElementById('fb-textarea').placeholder = fb.ph;
+  document.getElementById('fb-btn').textContent = fb.btn;
+  document.getElementById('feedback-success').textContent = fb.ok;
+}
+
+function showLangScreen() {
+  document.getElementById('lang-screen').style.display = 'flex';
+  document.getElementById('guide').style.display = 'none';
+  document.getElementById('feedback-fab').setAttribute('hidden', '');
+  closeFeedback();
+}
+
+function tog(i) {
+  const el = document.getElementById('a' + i);
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.acc-item.open').forEach(e => e.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
+function togSub(btn) {
+  const panel = btn.nextElementSibling;
+  const wasOpen = btn.classList.contains('open');
+  btn.closest('.acc-inner').querySelectorAll('.subgroup-btn').forEach(b => b.classList.remove('open'));
+  btn.closest('.acc-inner').querySelectorAll('.subgroup-panel').forEach(p => p.classList.remove('open'));
+  if (!wasOpen) { btn.classList.add('open'); panel.classList.add('open'); }
+}
+
+function togWifi() {
+  document.getElementById('wifi-acc').classList.toggle('open');
+}
+
+function copyWifi(btn) {
+  const pw = 'dobrodosli';
+  const lbl = btn ? btn.querySelector('span') : document.getElementById('copy-lbl');
+  const done = () => { if(lbl){lbl.textContent=T[currentLang].cd; setTimeout(()=>{ if(lbl) lbl.textContent=T[currentLang].cp; },2000);} };
+  if (navigator.clipboard) { navigator.clipboard.writeText(pw).then(done); }
+  else { const el = document.createElement('textarea'); el.value = pw; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); done(); }
+}
+
+function openFeedback() {
+  document.getElementById('feedback-modal').removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
+}
+function closeFeedback() {
+  document.getElementById('feedback-modal').setAttribute('hidden', '');
+  document.body.style.overflow = '';
+}
+document.getElementById('feedback-modal')?.addEventListener('click', e => {
+  if (e.target === document.getElementById('feedback-modal')) closeFeedback();
+});
+document.getElementById('feedback-form')?.addEventListener('submit', e => {
+  e.preventDefault();
+  fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { Accept: 'application/json' } })
+    .then(r => {
+      if (r.ok) {
+        e.target.style.display = 'none';
+        document.getElementById('feedback-success').hidden = false;
+        setTimeout(() => { closeFeedback(); e.target.style.display = ''; document.getElementById('feedback-success').hidden = true; e.target.reset(); }, 2500);
+      }
+    });
+});
+
+const saved = localStorage.getItem('mirakul_lang');
+if (saved && T[saved]) setLang(saved);
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
+    .then(reg => reg.update());
+}
+</script>
+</body>
+</html>

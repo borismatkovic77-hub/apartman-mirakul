@@ -1,0 +1,19 @@
+{
+  "_comment": "Generički natpisi (UI + naslovi kategorija) — ISTI za svaki apartman, prevode se jednom pa se ponovo koriste. Za pun 16-jezični vodič ovde stoji po jedan blok za svaki jezik. Popunjen je osnovni (sr); ostali se dodaju istom strukturom.",
+
+  "sr": {
+    "langName": "Srpski",
+    "flag": "rs",
+    "code": "SR",
+    "ui": { "wn": "Naziv WiFi mreže", "wp": "Lozinka", "cp": "Kopiraj", "cd": "Kopirano!", "call": "Pozovi" },
+    "ftTemplate": "Drago nam je što ste izabrali {apartmentName}. Ugodan boravak!",
+    "sections": { "guide": "Uputstva za apartman", "services": "Ako ti treba...", "recommendations": "Lokalne preporuke", "emergency": "Bitni telefoni" },
+    "guideSubs": { "houseRules": "🏠 Kućni red", "checkin": "🕐 Check-in / Check-out", "goodToKnow": "ℹ️ Dobro je znati", "appliances": "⚙️ Aparati", "parking": "🅿️ Parking" },
+    "serviceSubs": { "taxi": "🚕 Taxi", "delivery": "🛵 Dostava hrane", "grocery": "🛒 Prodavnica", "pharmacy": "💊 Apoteka", "exchange": "💱 Menjačnica", "atm": "🏧 Bankomat", "gas": "⛽ Benzinska pumpa", "railway": "🚂 Železnička stanica", "bus": "🚌 Autobuska stanica" },
+    "recoSubs": { "restaurants": "🍽️ Restorani i kafići", "attractions": "🏛️ Znamenitosti", "entertainment": "🎭 Zabava", "sport": "⚽ Sport" },
+    "checkinLabels": { "checkIn": "Check-in", "checkOut": "Check-out" },
+    "parkingLabels": { "weekdays": "Radnim danima", "saturday": "Subotom", "sundayHolidays": "Nedeljom i praznicima", "payBySms": "Plaćanje SMS-om" },
+    "emergencyIcons": { "police": "🚔", "ambulance": "🚑", "fire": "🚒", "taxi": "🚕", "host": "📞" },
+    "suggest": { "title": "Predlog za unapređenje", "desc": "Nedostaje vam neka informacija u vodiču? Napišite nam da dodamo.", "ph": "Vaš predlog ili komentar...", "btn": "Pošalji", "ok": "✓ Hvala! Vaša poruka je primljena." }
+  }
+}

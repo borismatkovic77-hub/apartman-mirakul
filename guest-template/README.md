@@ -21,7 +21,9 @@ napravi za **bilo koji apartman** — bez pisanja koda i bez ručnog prevoda.
 
 ## Radni tok za novi apartman
 
-1. Klijent otvori **`form.html`** u browseru, popuni polja i klikne
+1. Klijent otvori **`form.html`** u browseru. Lokali i znamenitosti grada su
+   **već popunjeni** iz baze — samo koriguje udaljenosti, izbaci nepotrebno i
+   doda podatke svog apartmana (WiFi, kućni red, aparati, parking). Klikne
    „Preuzmi data.json" (+ pošalje slike).
 2. `data.json` se ubaci u folder (bez ručnog prepisivanja).
 3. Pokrene se generator → dobije se gotova stranica na 16 jezika.
@@ -65,6 +67,7 @@ Pročita `data.json` + `labels.json` (+ `template.html`) i napiše gotov
 | `template.html` | HTML kalup (dizajn) sa tokenima — ne dira se |
 | `generate.js` | Generator: podaci + kalup → `guest.html` |
 | `form.html` | **Forma za klijenta** — popuni u browseru → preuzme `data.json` |
+| `library.json` | Baza lokala grada (Subotica) — deljiva među apartmanima |
 | `FORMULAR.md` | Interna čeklista polja (za referencu) |
 
 ## Status

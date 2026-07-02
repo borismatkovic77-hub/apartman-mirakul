@@ -156,10 +156,18 @@
 <footer class="bar">
   <input type="file" id="loadFile" accept=".json" style="display:none" onchange="loadData(event)">
   <button class="btn-ghost" onclick="document.getElementById('loadFile').click()">📂 Otvori ranije sačuvano</button>
-  <button class="btn-main" onclick="download()">✅ Sačuvaj i pošalji</button>
+  <button class="btn-ghost" onclick="download()">💾 Sačuvaj kao fajl</button>
+  <button class="btn-main" onclick="submitForm()">📧 Pošalji</button>
 </footer>
 
 <script>
+// ================================================================
+// ONLINE SLANJE (email). Nalepi ovde ključ sa web3forms.com — dobija se
+// besplatno unosom email adrese na koju treba da stižu prijave.
+// Ako ostane prazno, dugme "Pošalji" samo preuzme fajl (lokalni režim).
+const WEB3FORMS_KEY = '';
+// ================================================================
+
 // ---- konfiguracija kategorija ----
 const SERVICE_CATS = [
   ['taxi','🚕 Taxi službe'], ['delivery','🛵 Dostava hrane'], ['grocery','🛒 Prodavnice'],
@@ -310,6 +318,30 @@ function download(){
   const blob=new Blob([JSON.stringify(d,null,2)], {type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
   setTimeout(()=>alert('Fajl „data.json" je preuzet (obično u folder Preuzimanja).\n\nPošaljite nam ga na WhatsApp ili email i mi pravimo vaš vodič. Hvala!'), 300);
+}
+
+// ---- online slanje (email preko Web3Forms) ----
+async function submitForm(){
+  const d=collectData();
+  if(!d.meta.apartmentName){ alert('Unesite bar naziv apartmana.'); return; }
+  if(!WEB3FORMS_KEY){ download(); return; } // bez ključa (lokalno) -> preuzmi fajl
+  const btn=document.querySelector('.btn-main'); const old=btn.textContent; btn.textContent='Šaljem…'; btn.disabled=true;
+  const payload={
+    access_key: WEB3FORMS_KEY,
+    subject: 'Novi vodič za goste — '+d.meta.apartmentName,
+    from_name: d.meta.apartmentName,
+    apartman: d.meta.apartmentName,
+    domacin: (d.meta.host&&d.meta.host.name)||'',
+    telefon: (d.meta.host&&d.meta.host.phone)||'',
+    data_json: JSON.stringify(d,null,2)
+  };
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)});
+    const j=await res.json();
+    if(j.success){ alert('Poslato ✓ Hvala! Javićemo se uskoro.\n\nNe zaboravite da nam pošaljete i fotografije apartmana.'); }
+    else { alert('Slanje nije uspelo. Pokušajte ponovo ili kliknite „Sačuvaj kao fajl" pa nam ga pošaljite ručno.'); }
+  }catch(e){ alert('Nema konekcije? Pokušajte ponovo ili kliknite „Sačuvaj kao fajl".'); }
+  btn.textContent=old; btn.disabled=false;
 }
 
 // ---- učitavanje postojećeg ----

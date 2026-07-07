@@ -329,6 +329,7 @@ async function submitForm(){
   const btn=document.querySelector('.btn-main'); const old=btn.textContent; btn.textContent='Šaljem…'; btn.disabled=true;
   const payload={
     access_key: WEB3FORMS_KEY,
+    botcheck: false,
     subject: 'Novi vodič za goste — '+d.meta.apartmentName,
     from_name: d.meta.apartmentName,
     apartman: d.meta.apartmentName,

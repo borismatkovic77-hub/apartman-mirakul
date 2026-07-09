@@ -271,6 +271,35 @@
     .guide-footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--border); margin-top: 0.5rem; }
     .guide-footer .heart { color: var(--accent); font-size: 1.3rem; display: block; margin-bottom: 0.65rem; }
     .guide-footer span { font-size: 1rem; color: var(--muted); line-height: 1.6; }
+    /* ── PRVI DOLAZAK kartica ── */
+    .arr-q { font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin:.1rem 0 .7rem; }
+    .arr-mode { margin-bottom:.55rem; }
+    .arr-choice { display:flex; align-items:center; gap:.6rem; width:100%; text-align:left; background:var(--accent-light); border:1.5px solid var(--border); border-radius:12px; padding:.8rem 1rem; font-size:1rem; font-weight:600; color:var(--primary); cursor:pointer; font-family:inherit; }
+    .arr-choice .arr-ce { font-size:1.2rem; }
+    .arr-choice .arr-ar { margin-left:auto; color:var(--muted); transition:transform .25s; }
+    .arr-mode.open .arr-choice { background:var(--accent); border-color:var(--accent); color:#fff; border-radius:12px 12px 0 0; }
+    .arr-mode.open .arr-choice .arr-ar { transform:rotate(180deg); color:#fff; }
+    .arr-panel { display:none; border:1.5px solid var(--accent); border-top:none; border-radius:0 0 12px 12px; padding:.9rem 1rem; background:var(--surface); }
+    .arr-mode.open .arr-panel { display:block; }
+    .arr-panel p { margin:0; }
+    .arr-row { display:flex; gap:.5rem; align-items:flex-start; margin:.6rem 0; font-size:.95rem; }
+    .arr-btn { display:inline-flex; align-items:center; gap:.4rem; background:var(--accent); color:#fff; border-radius:11px; padding:.7rem 1rem; font-size:.95rem; font-weight:700; text-decoration:none; margin:.6rem 0 0; }
+    .arr-btn.ghost { background:var(--surface); color:var(--primary); border:1.5px solid var(--border); }
+    .arr-checkin { margin-top:1rem; background:var(--accent-light); border:1px solid var(--border); border-radius:13px; padding:.9rem 1rem; }
+    .arr-checkin h4 { margin:0 0 .5rem; font-size:.95rem; color:var(--primary); }
+    .arr-mp { margin:.7rem 0; }
+    .arr-mp img { width:100%; border-radius:12px; border:1px solid var(--border); display:block; cursor:zoom-in; }
+    .arr-mp figcaption { font-size:.8rem; color:var(--muted); margin-top:.3rem; text-align:center; }
+    .arr-btns { display:flex; gap:.4rem; margin-top:.5rem; }
+    .arr-cbtn { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:.3rem; padding:.55rem .3rem; border-radius:10px; font-size:.8rem; font-weight:700; text-decoration:none; color:#fff; }
+    .arr-cbtn svg { width:15px; height:15px; fill:currentColor; flex-shrink:0; }
+    .arr-cbtn.wa { background:#25d366; } .arr-cbtn.vi { background:#7360f2; } .arr-cbtn.call { background:#5b6470; }
+    #arr-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:999; align-items:center; justify-content:center; padding:1.5rem; cursor:zoom-out; }
+    #arr-lightbox.open { display:flex; }
+    #arr-lightbox img { max-width:100%; max-height:100%; border-radius:10px; }
+    .review-btn { display: flex; width: max-content; flex-direction: column; align-items: center; gap: 0.3rem; margin: 1.1rem auto 0; background: var(--accent); border-radius: 12px; padding: 0.9rem 1.4rem; text-decoration: none; box-shadow: 0 2px 8px rgba(139,94,60,0.25); }
+    .review-btn .review-stars { font-size: 1.1rem; letter-spacing: 0.1rem; }
+    .review-btn #review-btn-text { color: #fff; font-weight: 700; font-size: 0.95rem; }
   </style>
 </head>
 <body>
@@ -339,6 +368,7 @@
   <div class="guide-footer">
     <span class="heart">♥</span>
     <span id="footer-txt"></span>
+    <a id="review-btn" class="review-btn" href="#" target="_blank" rel="noopener" hidden><span class="review-stars">⭐⭐⭐⭐⭐</span><span id="review-btn-text"></span></a>
   </div>
 </div>
 
@@ -353,11 +383,34 @@ function wifiSubGroup(t) {
   return `<button class="subgroup-btn" onclick="togSub(this)"><span>${svgBtn}WiFi</span><span class="subgroup-arrow">▼</span></button><div class="subgroup-panel"><div class="subgroup-html">${inner}</div></div>`;
 }
 
+function arrPick(m){
+  const el=document.getElementById('arr-'+m);
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.arr-mode').forEach(x=>x.classList.remove('open'));
+  const ci=document.getElementById('arr-checkin');
+  if(!wasOpen){ el.classList.add('open'); el.querySelector('.arr-panel').appendChild(ci); ci.style.display='block'; setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'nearest'}),60); }
+  else { ci.style.display='none'; }
+}
+
+function arrLightbox(src){
+  let lb = document.getElementById('arr-lightbox');
+  if (!lb) {
+    lb = document.createElement('div');
+    lb.id = 'arr-lightbox';
+    lb.innerHTML = '<img>';
+    lb.onclick = () => lb.classList.remove('open');
+    document.body.appendChild(lb);
+  }
+  lb.querySelector('img').src = src;
+  lb.classList.add('open');
+}
+
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('mirakul_lang', lang);
   const t = T[lang];
-  const hasNewWifi = !!t.s[0]?.subs;
+  const wifiIdx = t.s.findIndex(sec => sec.subs);
+  const hasNewWifi = wifiIdx !== -1;
   document.getElementById('wifi-acc').style.display = hasNewWifi ? 'none' : '';
   if (!hasNewWifi) {
     document.getElementById('wifi-net-lbl').textContent = t.wn;
@@ -366,9 +419,15 @@ function setLang(lang) {
   }
   document.getElementById('footer-txt').textContent = t.ft;
   document.getElementById('lang-btn').innerHTML = FLAGS[lang] + ' ' + CODES[lang];
+  const reviewBtn = document.getElementById('review-btn');
+  if (REVIEW_LINK) {
+    reviewBtn.href = REVIEW_LINK;
+    reviewBtn.hidden = false;
+    document.getElementById('review-btn-text').textContent = (REVIEW[lang] || {}).btn || '';
+  }
   document.getElementById('sections').innerHTML = t.s.map((s,i) => {
     const inner = s.subs
-      ? (i === 0 ? wifiSubGroup(t) : '') + s.subs.map(sub =>
+      ? (i === wifiIdx ? wifiSubGroup(t) : '') + s.subs.map(sub =>
           `<button class="subgroup-btn" onclick="togSub(this)"><span>${sub.t}</span><span class="subgroup-arrow">▼</span></button>` +
           `<div class="subgroup-panel">` +
           (sub.cards

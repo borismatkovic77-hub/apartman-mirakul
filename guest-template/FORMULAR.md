@@ -50,7 +50,18 @@ Primeri: TV, klima, grejanje, veš mašina, ketler, aparat za kafu, mikrotalasna
 - [ ] Način plaćanja (SMS broj + cena, ili drugo):
 - [ ] Savet za goste — opciono:
 
-## 7. Ako ti treba… (lokalni servisi)
+## 7. Prvi dolazak (opciono) 🟡
+Interaktivna kartica „Prvi put dolazite kod nas?" — ostavi prazno ako nije potrebna.
+- [ ] Tačka sastanka (naziv) — ako adresa nije lako dostupna autom:
+- [ ] Slika tačke sastanka 📷:
+- [ ] Google Maps link (Share → Copy link):
+- [ ] 🚗 Dolazak autom:
+- [ ] 🚆 Dolazak vozom:
+- [ ] 🚌 Dolazak autobusom:
+- [ ] Poruka za check-in:
+- [ ] Google link za ocenu (g.page/.../review) — opciono:
+
+## 8. Ako ti treba… (lokalni servisi)
 Za **svaku** karticu: naziv 🟢 + udaljenost 🟢 + kratak opis 🟡 + slika 📷 (ili emoji)
 + Google Maps link 🟢 + telefon 🟢 (ako ima) + link na red vožnje 🟢 (za stanice).
 
@@ -64,7 +75,7 @@ Za **svaku** karticu: naziv 🟢 + udaljenost 🟢 + kratak opis 🟡 + slika �
 - [ ] 🚂 Železnička stanica:
 - [ ] 🚌 Autobuska stanica:
 
-## 8. Lokalne preporuke
+## 9. Lokalne preporuke
 Isti format kao gore (naziv 🟢 + udaljenost 🟢 + opis 🟡 + slika 📷 + Maps 🟢).
 
 - [ ] 🍽️ Restorani i kafići:
@@ -72,7 +83,7 @@ Isti format kao gore (naziv 🟢 + udaljenost 🟢 + opis 🟡 + slika 📷 + Ma
 - [ ] 🎭 Zabava:
 - [ ] ⚽ Sport:
 
-## 9. Hitni telefoni 🟢
+## 10. Hitni telefoni 🟢
 - [ ] Policija:
 - [ ] Hitna pomoć:
 - [ ] Vatrogasci:

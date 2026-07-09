@@ -47,6 +47,20 @@ Klijent piše opise samo na **jednom** jeziku — ostalih 15 ide automatski.
 ## Jezici (trenutno 16)
 sr, en, de, hr, hu, ru, zh, bg, pl, it, es, mk, sl, ro, el, fr
 
+## „Prvi dolazak" kartica + Google recenzija (opciono)
+
+Ako popuniš polje **7. Prvi dolazak** u formi (bar jedan od: dolazak autom/
+vozom/autobusom), generator doda interaktivnu prvu karticu u vodič — gost
+bira kako stiže i dobija uputstvo + dugme za navigaciju + kontakt (WhatsApp/
+Viber/Poziv, iz telefona domaćina). Ako ostavi prazno, kartica se **ne
+prikazuje** — ništa se ne lomi.
+
+Isto tako, ako upišeš **Google link za ocenu** (`g.page/.../review` — dobija
+se iz Google Business Profile → „Zatraži recenzije"), na dnu vodiča se pojavi
+dugme „Ocenite nas na Google-u". Prazno polje = dugme se ne prikazuje.
+
+Oba su verifikovana da rade i sa i bez podataka (vidi `arrival` u `data.json`).
+
 ## Pokretanje
 
 ```bash

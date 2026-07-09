@@ -14,6 +14,17 @@
     "checkinLabels": { "checkIn": "Check-in", "checkOut": "Check-out" },
     "parkingLabels": { "weekdays": "Radnim danima", "saturday": "Subotom", "sundayHolidays": "Nedeljom i praznicima", "payBySms": "Plaćanje SMS-om" },
     "emergencyIcons": { "police": "🚔", "ambulance": "🚑", "fire": "🚒", "taxi": "🚕", "host": "📞" },
-    "suggest": { "title": "Predlog za unapređenje", "desc": "Nedostaje vam neka informacija u vodiču? Napišite nam da dodamo.", "ph": "Vaš predlog ili komentar...", "btn": "Pošalji", "ok": "✓ Hvala! Vaša poruka je primljena." }
+    "suggest": { "title": "Predlog za unapređenje", "desc": "Nedostaje vam neka informacija u vodiču? Napišite nam da dodamo.", "ph": "Vaš predlog ili komentar...", "btn": "Pošalji", "ok": "✓ Hvala! Vaša poruka je primljena." },
+    "arrival": {
+      "title": "Prvi put dolazite kod nas?",
+      "q": "Kako stižete do nas?",
+      "modes": { "auto": "Dolazim autom", "voz": "Dolazim vozom", "bus": "Dolazim autobusom" },
+      "navBtn": "Navigacija do",
+      "navBtnGeneric": "Navigacija do apartmana",
+      "checkinTitle": "Kada stignete — check-in",
+      "mpCaption": "Ovde vas čekamo —",
+      "contact": { "wa": "WhatsApp", "vi": "Viber", "call": "Pozovi" }
+    },
+    "reviewBtn": "Ocenite nas na Google-u"
   }
 }

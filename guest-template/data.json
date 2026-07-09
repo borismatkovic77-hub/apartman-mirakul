@@ -57,6 +57,18 @@
     "tip": "💡 Posle 21:00 možete unapred platiti parking za sutradan — pošaljite SMS i ujutro ste mirni."
   },
 
+  "arrival": {
+    "_comment": "Opciono — 'Prvi dolazak' interaktivna kartica. Ostavi prazno (ili obriši polje) da se ne prikazuje. navLink je Google Maps 'place' link (Share -> Copy link, NE 'Directions'), meetingPoint je tačka gde se gost i domaćin nalaze ako adresa nije lako dostupna autom.",
+    "navLink": "https://maps.app.goo.gl/yRAraWAAPCVccAYR9",
+    "meetingPointName": "Addiko banka",
+    "meetingPointImage": "images/Guests/meeting-point/addiko-banka.jpg",
+    "byCar": "⚠️ Adresa apartmana — <strong>Korzo 15</strong> — nalazi se u pešačkoj zoni, pa vas Google navigacija može odvesti pogrešnim putem do samog ulaza. 👉 Zato koristite navigaciju do <strong>Addiko banke</strong> — tu ćemo se naći kada stignete u grad.<br><br>Parking najčešće imate <strong>ispred same zgrade, iz ulice Đure Đakovića</strong> (Crvena zona) — odatle je i ulaz u zgradu. <strong>Plaćanje SMS-om</strong>: pošaljite SMS na <strong>9241</strong> — 70 din/sat, ili <strong>9245</strong> — 480 din/dan (dnevna karta). Može i kupovinom kartice na kiosku.<br><br>🕐 Naplata: radnim danima 07–21h · subotom 07–14h · nedeljom i praznicima <strong>besplatno</strong>",
+    "byTrain": "🚆 Naš apartman je <strong>jedan od najbližih železničkoj stanici</strong> — ne treba vam dodatni prevoz. Prolaskom kroz <strong>park Rajhla Ferenca</strong> dolazite do Addiko banke, gde ćemo se naći i zajedno otići do apartmana.",
+    "byBus": "🚌 Apartman je na oko <strong>800 metara</strong> od Glavne autobuske stanice. Taxi imate ispred same stanice. A ako ste raspoloženi za laganu šetnju, veoma lako dolazite do Addiko banke gde ćemo se naći i zajedno otići do apartmana.",
+    "checkinNote": "<strong>Da biste izbegli čekanje</strong>, javite nam vreme dolaska <strong>ranije</strong>. Sačekaćemo vas <strong>ispred Addiko banke</strong> i zajedno idemo do apartmana, gde vam predajemo ključeve.",
+    "reviewLink": "https://g.page/r/CQmP1BHaaBSgEAI/review"
+  },
+
   "services": {
     "taxi": [
       { "name": "Alfa Taxi", "dist": "⭐ 4.1", "desc": "Pouzdana taxi služba — dostupna 24/7. Đure Đakovića.", "emoji": "🚕", "phone": "0642015800" },

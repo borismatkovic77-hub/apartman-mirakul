@@ -52,6 +52,9 @@
   .ci-opt{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;font-size:.95rem}
   .ci-btns{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.3rem}
   .ci-btns .btn{margin:0}
+  .mp{margin:.8rem 0}
+  .mp img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+  .mp figcaption{font-size:.82rem;color:var(--muted);margin-top:.35rem;text-align:center}
 </style>
 </head>
 <body>
@@ -105,7 +108,8 @@
       <!-- CHECK-IN (zajednički) -->
       <div class="checkin" id="checkin" style="display:none">
         <h4>Kada stignete — check-in</h4>
-        <div class="ci-opt"><span>✅</span><span>Molimo da nam <strong>okvirno vreme dolaska javite ranije</strong> — sačekaćemo vas kod Addiko banke, zajedno do apartmana i predajemo ključeve.</span></div>
+        <div class="ci-opt"><span>⏰</span><span><strong>Važno:</strong> javite nam vreme dolaska <strong>unapred</strong> — a ne tek kada stignete. Tako stignemo da vas <strong>sačekamo ispred Addiko banke</strong> i zajedno odemo do apartmana i predamo ključeve.</span></div>
+        <figure class="mp"><img src="images/addiko-banka.webp" alt="Addiko banka — mesto susreta" loading="lazy" onerror="this.closest('.mp').style.display='none'"><figcaption>📍 Ovde vas čekamo — Addiko banka</figcaption></figure>
         <div class="ci-btns">
           <a class="btn wa" href="https://wa.me/381631168024" target="_blank" rel="noopener">💬 WhatsApp</a>
           <a class="btn ghost" href="tel:+381631168024">📞 Pozovi</a>

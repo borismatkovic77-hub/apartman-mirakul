@@ -22,6 +22,32 @@
       --muted: #9A7A6A;
       --shadow: 0 2px 12px rgba(74,44,26,0.08);
     }
+    /* ── PRVI DOLAZAK kartica ── */
+    .arr-q { font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin:.1rem 0 .7rem; }
+    .arr-mode { margin-bottom:.55rem; }
+    .arr-choice { display:flex; align-items:center; gap:.6rem; width:100%; text-align:left; background:var(--accent-light); border:1.5px solid var(--border); border-radius:12px; padding:.8rem 1rem; font-size:1rem; font-weight:600; color:var(--primary); cursor:pointer; font-family:inherit; }
+    .arr-choice .arr-ce { font-size:1.2rem; }
+    .arr-choice .arr-ar { margin-left:auto; color:var(--muted); transition:transform .25s; }
+    .arr-mode.open .arr-choice { background:var(--accent); border-color:var(--accent); color:#fff; border-radius:12px 12px 0 0; }
+    .arr-mode.open .arr-choice .arr-ar { transform:rotate(180deg); color:#fff; }
+    .arr-panel { display:none; border:1.5px solid var(--accent); border-top:none; border-radius:0 0 12px 12px; padding:.9rem 1rem; background:var(--surface); }
+    .arr-mode.open .arr-panel { display:block; }
+    .arr-panel p { margin:.5rem 0; }
+    .arr-panel p:first-child { margin-top:0; }
+    .arr-warn { background:#fff4e8; border:1px solid #f0d3a6; border-radius:10px; padding:.65rem .8rem; font-size:.92rem; }
+    .arr-row { display:flex; gap:.5rem; align-items:flex-start; margin:.6rem 0; font-size:.95rem; }
+    .arr-btn { display:inline-flex; align-items:center; gap:.4rem; background:var(--accent); color:#fff; border-radius:11px; padding:.7rem 1rem; font-size:.95rem; font-weight:700; text-decoration:none; margin:.4rem 0; }
+    .arr-btn.ghost { background:var(--surface); color:var(--primary); border:1.5px solid var(--border); }
+    .arr-hours { font-size:.85rem; color:var(--muted); margin-top:.35rem; }
+    .arr-checkin { margin-top:1rem; background:var(--accent-light); border:1px solid var(--border); border-radius:13px; padding:.9rem 1rem; }
+    .arr-checkin h4 { margin:0 0 .5rem; font-size:.95rem; color:var(--primary); }
+    .arr-mp { margin:.7rem 0; }
+    .arr-mp img { width:100%; border-radius:12px; border:1px solid var(--border); display:block; }
+    .arr-mp figcaption { font-size:.8rem; color:var(--muted); margin-top:.3rem; text-align:center; }
+    .arr-btns { display:flex; gap:.4rem; margin-top:.5rem; }
+    .arr-cbtn { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:.3rem; padding:.55rem .3rem; border-radius:10px; font-size:.8rem; font-weight:700; text-decoration:none; color:#fff; }
+    .arr-cbtn svg { width:15px; height:15px; fill:currentColor; flex-shrink:0; }
+    .arr-cbtn.wa { background:#25d366; } .arr-cbtn.vi { background:#7360f2; } .arr-cbtn.call { background:#5b6470; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     [hidden] { display: none !important; }
     html { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--primary); font-size: 16px; line-height: 1.5; }
@@ -399,11 +425,72 @@ const FB = {
   fr:{title:'Suggestions',desc:'Une information manque dans le guide ? Faites-le-nous savoir et nous l\'ajouterons.',ph:'Votre suggestion ou commentaire...',btn:'Envoyer',ok:'✓ Merci ! Votre message a bien été reçu.'}
 };
 
+// ── PRVI DOLAZAK (interaktivna kartica) ──
+const ARR_NAV = 'https://maps.app.goo.gl/yRAraWAAPCVccAYR9'; // meeting point (Addiko) — swap na jednom mestu
+const ARR_WA = '<svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.172.198-.296.298-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>';
+const ARR_VI = '<svg viewBox="0 0 24 24"><path d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.694 6.9.633 10.26c-.06 3.36-.129 9.657 5.938 11.365v2.61s-.04.94.58 1.132c.734.226 1.17-.492 1.882-1.312.42-.48.996-1.203 1.427-1.72 4.114.348 7.276-.443 7.634-.56.83-.27 5.535-.874 6.3-7.117.79-6.44-.38-10.51-2.487-12.35C21.176.75 18.7.02 13.06 0h-.001c-.35-.001-1.045-.001-1.66 0zm.061 1.7c.542 0 .877.017.877.017 4.494.006 6.643 1.354 7.15 1.815 1.723 1.516 2.68 5.152 2.028 10.505v.003c-.647 5.25-4.208 5.57-4.912 5.79-.298.093-3.121.789-6.669.55 0 0-2.643 3.19-3.469 4.019-.128.128-.28.18-.38.155-.14-.036-.18-.203-.178-.446l.024-4.318c-5.075-1.404-4.778-6.632-4.723-9.402.055-2.77.552-5.038 1.976-6.435 2.147-1.997 6.276-2.253 6.276-2.253z"/></svg>';
+const ARR_PH = '<svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>';
+
+const ARR = {
+  sr:{
+    title:'Prvi put dolazite kod nas?',
+    q:'Kako stižete do nas?',
+    auto:'Dolazim autom', voz:'Dolazim vozom', bus:'Dolazim autobusom',
+    autoWarn:'⚠️ <strong>Korzo je pešačka zona</strong> — Google navigacija često pokušava da vas dovede pogrešnim putem do same adrese.',
+    autoLead:'👉 Zato koristite navigaciju do <strong>Addiko banke</strong> — tu ćemo se naći kada stignete u grad.',
+    navBtn:'🧭 Navigacija do Addiko banke',
+    autoNote:'Ako vas navigacija povede ka pešačkoj zoni (Korzo), priđite iz ulice <strong>Đure Đakovića</strong> ili nas pozovite — dočekaćemo vas.',
+    autoParking:'Parking najčešće imate <strong>ispred same zgrade, iz ulice Đure Đakovića</strong> (Crvena zona) — odatle je i ulaz u zgradu.',
+    autoSms:'<strong>Plaćanje SMS-om</strong> (Crvena zona): pošaljite SMS na <strong>9241</strong> — 70 din/sat, ili <strong>9245</strong> — 480 din/dan (dnevna karta).',
+    autoHours:'🕐 Naplata: radnim danima 07–21h · subotom 07–14h · nedeljom i praznicima <strong>besplatno</strong>',
+    vozText:'🚆 Naš apartman je <strong>jedan od najbližih železničkoj stanici</strong> — ne treba vam dodatni prevoz.',
+    vozPark:'Prolaskom kroz <strong>park Rajhla Ferenca</strong> dolazite do Addiko banke, gde ćemo se naći i zajedno otići do apartmana.',
+    walkBtn:'🚶 Pešačka navigacija do Addiko banke',
+    busText:'🚌 Apartman je na oko <strong>850 metara</strong> od Glavne autobuske stanice.',
+    busTaxi:'Taxi imate <strong>ispred same stanice</strong>. A ako ste raspoloženi za laganu šetnju, veoma lako dolazite do Addiko banke gde ćemo se naći i zajedno otići do apartmana.',
+    ciTitle:'Kada stignete — check-in',
+    ciText:'<strong>Da biste izbegli čekanje</strong>, javite nam vreme dolaska <strong>ranije</strong> — ne tek kada stignete. Sačekaćemo vas <strong>ispred Addiko banke</strong> i zajedno idemo do apartmana, gde vam predajemo ključeve.',
+    mpCaption:'📍 Ovde vas čekamo — Addiko banka',
+    call:'Pozovi'
+  }
+};
+
+function arrivalCard(a){
+  const nav = (cls,label)=>`<a class="arr-btn ${cls}" href="${ARR_NAV}">${label}</a>`;
+  return `<div class="arr">
+    <div class="arr-q">${a.q}</div>
+    <div class="arr-mode" id="arr-auto"><button class="arr-choice" onclick="arrPick('auto')"><span class="arr-ce">🚗</span> ${a.auto} <span class="arr-ar">▾</span></button><div class="arr-panel">
+      <div class="arr-warn">${a.autoWarn}</div><p>${a.autoLead}</p>${nav('',a.navBtn)}
+      <div class="arr-row"><span>ℹ️</span><span>${a.autoNote}</span></div>
+      <div class="arr-row"><span>🅿️</span><span>${a.autoParking}</span></div>
+      <div class="arr-row"><span>💳</span><span>${a.autoSms}</span></div>
+      <div class="arr-hours">${a.autoHours}</div></div></div>
+    <div class="arr-mode" id="arr-voz"><button class="arr-choice" onclick="arrPick('voz')"><span class="arr-ce">🚆</span> ${a.voz} <span class="arr-ar">▾</span></button><div class="arr-panel">
+      <p>${a.vozText}</p><div class="arr-row"><span>🌳</span><span>${a.vozPark}</span></div>${nav('ghost',a.walkBtn)}</div></div>
+    <div class="arr-mode" id="arr-bus"><button class="arr-choice" onclick="arrPick('bus')"><span class="arr-ce">🚌</span> ${a.bus} <span class="arr-ar">▾</span></button><div class="arr-panel">
+      <p>${a.busText}</p><div class="arr-row"><span>🚕</span><span>${a.busTaxi}</span></div>${nav('ghost',a.walkBtn)}</div></div>
+    <div class="arr-checkin" id="arr-checkin" style="display:none"><h4>${a.ciTitle}</h4>
+      <div class="arr-row"><span>⏰</span><span>${a.ciText}</span></div>
+      <figure class="arr-mp"><img src="images/Guests/meeting-point/addiko-banka.jpg" alt="Addiko banka" loading="lazy" onerror="this.closest('.arr-mp').style.display='none'"><figcaption>${a.mpCaption}</figcaption></figure>
+      <div class="arr-btns"><a class="arr-cbtn wa" href="https://wa.me/381631168024">${ARR_WA} WhatsApp</a><a class="arr-cbtn vi" href="viber://chat?number=%2B381631168024">${ARR_VI} Viber</a><a class="arr-cbtn call" href="tel:+381631168024">${ARR_PH} ${a.call}</a></div></div>
+  </div>`;
+}
+
+function arrPick(m){
+  const el=document.getElementById('arr-'+m);
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.arr-mode').forEach(x=>x.classList.remove('open'));
+  const ci=document.getElementById('arr-checkin');
+  if(!wasOpen){ el.classList.add('open'); el.querySelector('.arr-panel').appendChild(ci); ci.style.display='block'; setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'nearest'}),60); }
+  else { ci.style.display='none'; }
+}
+
 const T = {
   sr: {
     wn:'Naziv WiFi mreže', wp:'Lozinka', cp:'Kopiraj', cd:'Kopirano!', call:'Pozovi',
     ft:'Drago nam je što ste izabrali Apartman Mirakul. Ugodan boravak!',
     s:[
+      {i:'🧳',t:ARR.sr.title,h:arrivalCard(ARR.sr)},
       {i:'💡',t:'Uputstva za apartman',subs:[
         {t:'🏠 Kućni red',h:`<ul class="bullet-list"><li>🏢 Poštujte mir stanara zgrade</li><li>🌙 Budite što tiši u periodu od <strong>22:00 do 08:00</strong></li><li>🥿 Zbog higijene vas molimo da se po apartmanu <strong>ne krećete u obući</strong> — preporučujemo nošenje papuča</li><li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px;flex-shrink:0"><circle cx="12" cy="12" r="10" fill="none" stroke="#e74c3c" stroke-width="2"/><rect x="4" y="10.5" width="13" height="3" rx="1.5" fill="#666"/><rect x="17" y="10.5" width="3.5" height="3" rx="1" fill="#d4b896"/><line x1="4" y1="4" x2="20" y2="20" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/></svg> Pušenje je <strong>strogo zabranjeno</strong> u apartmanu i zgradi</li><li>🐾 Kućni ljubimci <strong>nisu dozvoljeni</strong></li><li>👥 Maksimalan broj gostiju: <strong>4 osobe</strong></li><li>🚪 Kapija zgrade se zaključava posle <strong>22:00</strong> — ključ za kapiju ste dobili uz ključ od apartmana.</li><li>🧹 Molimo ostavite apartman urednim pri odlasku</li></ul>`},
         {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">do 11:00</div></div></div><div class="guide-tip">🔑 Prilikom check out-a ključeve ostavite u poštansko sanduče pored ulaznih vrata. Obavestite domaćina o planiranom vremenu odlaska.</div>`},
@@ -2095,7 +2182,8 @@ function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('mirakul_lang', lang);
   const t = T[lang];
-  const hasNewWifi = !!t.s[0]?.subs;
+  const wifiIdx = t.s.findIndex(sec => sec.subs);
+  const hasNewWifi = wifiIdx !== -1;
   document.getElementById('wifi-acc').style.display = hasNewWifi ? 'none' : '';
   if (!hasNewWifi) {
     document.getElementById('wifi-net-lbl').textContent = t.wn;
@@ -2106,7 +2194,7 @@ function setLang(lang) {
   document.getElementById('lang-btn').innerHTML = FLAGS[lang] + ' ' + CODES[lang];
   document.getElementById('sections').innerHTML = t.s.map((s,i) => {
     const inner = s.subs
-      ? (i === 0 ? wifiSubGroup(t) : '') + s.subs.map(sub =>
+      ? (i === wifiIdx ? wifiSubGroup(t) : '') + s.subs.map(sub =>
           `<button class="subgroup-btn" onclick="togSub(this)"><span>${sub.t}</span><span class="subgroup-arrow">▼</span></button>` +
           `<div class="subgroup-panel">` +
           (sub.cards

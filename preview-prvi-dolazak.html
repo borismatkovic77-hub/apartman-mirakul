@@ -108,7 +108,7 @@
       <!-- CHECK-IN (zajednički) -->
       <div class="checkin" id="checkin" style="display:none">
         <h4>Kada stignete — check-in</h4>
-        <div class="ci-opt"><span>⏰</span><span><strong>Važno:</strong> javite nam vreme dolaska <strong>unapred</strong> — a ne tek kada stignete. Tako stignemo da vas <strong>sačekamo ispred Addiko banke</strong> i zajedno odemo do apartmana i predamo ključeve.</span></div>
+        <div class="ci-opt"><span>⏰</span><span><strong>Da biste izbegli čekanje</strong>, javite nam vreme dolaska <strong>ranije</strong> — ne tek kada stignete. Sačekaćemo vas <strong>ispred Addiko banke</strong> i zajedno idemo do apartmana, gde vam predajemo ključeve.</span></div>
         <figure class="mp"><img src="images/Guests/Meeting point/Addiko banka.jpg" alt="Addiko banka — mesto susreta" loading="lazy" onerror="this.closest('.mp').style.display='none'"><figcaption>📍 Ovde vas čekamo — Addiko banka</figcaption></figure>
         <div class="ci-btns">
           <a class="btn wa" href="https://wa.me/381631168024" target="_blank" rel="noopener">💬 WhatsApp</a>
@@ -124,9 +124,14 @@ function toggleMode(m){
   const el=document.getElementById('m-'+m);
   const wasOpen=el.classList.contains('open');
   document.querySelectorAll('.mode').forEach(x=>x.classList.remove('open'));
-  if(!wasOpen){ el.classList.add('open'); }
-  const anyOpen=!!document.querySelector('.mode.open');
-  document.getElementById('checkin').style.display = anyOpen ? 'block' : 'none';
+  const ci=document.getElementById('checkin');
+  if(!wasOpen){
+    el.classList.add('open');
+    el.querySelector('.panel').appendChild(ci);  // check-in ide odmah ispod izabrane opcije
+    ci.style.display='block';
+  } else {
+    ci.style.display='none';
+  }
 }
 </script>
 </body>

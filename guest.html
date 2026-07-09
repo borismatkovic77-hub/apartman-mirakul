@@ -328,6 +328,8 @@
     <button class="lang-btn" onclick="setLang('zh')"><img class="lang-flag" src="https://flagcdn.com/w40/cn.png" alt=""> 中文</button>
     <button class="lang-btn" onclick="setLang('el')"><img class="lang-flag" src="https://flagcdn.com/w40/gr.png" alt=""> Ελληνικά</button>
     <button class="lang-btn" onclick="setLang('fr')"><img class="lang-flag" src="https://flagcdn.com/w40/fr.png" alt=""> Français</button>
+    <button class="lang-btn" onclick="setLang('lt')"><img class="lang-flag" src="https://flagcdn.com/w40/lt.png" alt=""> Lietuvių</button>
+    <button class="lang-btn" onclick="setLang('sv')"><img class="lang-flag" src="https://flagcdn.com/w40/se.png" alt=""> Svenska</button>
   </div>
 </div>
 
@@ -403,9 +405,11 @@ const FLAGS = {
   sl:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/si.png" alt="">',
   ro:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/ro.png" alt="">',
   el:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/gr.png" alt="">',
-  fr:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/fr.png" alt="">'
+  fr:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/fr.png" alt="">',
+  lt:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/lt.png" alt="">',
+  sv:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/se.png" alt="">'
 };
-const CODES = {sr:'SR',hr:'HR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO',el:'EL',fr:'FR'};
+const CODES = {sr:'SR',hr:'HR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO',el:'EL',fr:'FR',lt:'LT',sv:'SV'};
 
 const EMERGENCY = (p,a,f,h) => `<ul class="item-list"><li><span class="item-label">🚔 ${p}</span><a href="tel:192">192</a></li><li><span class="item-label">🚑 ${a}</span><a href="tel:194">194</a></li><li><span class="item-label">🚒 ${f}</span><a href="tel:193">193</a></li><li><span class="item-label">🚕 Alfa Taxi</span><a href="tel:19788">19788</a></li><li><span class="item-label">📞 ${h}</span><a href="tel:+381631168024">+381 63 116 8024</a></li></ul>`;
 
@@ -425,7 +429,9 @@ const FB = {
   sl:{title:'Predlogi',desc:'Manjka kaj v vodniku? Pišite nam in dodali bomo.',ph:'Vaš predlog ali komentar...',btn:'Pošlji',ok:'✓ Hvala! Vaše sporočilo je prejeto.'},
   ro:{title:'Sugestii',desc:'Lipsește ceva din ghid? Scrieți-ne și vom adăuga.',ph:'Sugestia sau comentariul dumneavoastră...',btn:'Trimite',ok:'✓ Mulțumim! Mesajul dvs. a fost primit.'},
   el:{title:'Προτάσεις',desc:'Λείπει κάτι από τον οδηγό; Ενημερώστε μας και θα το προσθέσουμε.',ph:'Η πρότασή ή το σχόλιό σας...',btn:'Αποστολή',ok:'✓ Ευχαριστούμε! Το μήνυμά σας ελήφθη.'},
-  fr:{title:'Suggestions',desc:'Une information manque dans le guide ? Faites-le-nous savoir et nous l\'ajouterons.',ph:'Votre suggestion ou commentaire...',btn:'Envoyer',ok:'✓ Merci ! Votre message a bien été reçu.'}
+  fr:{title:'Suggestions',desc:'Une information manque dans le guide ? Faites-le-nous savoir et nous l\'ajouterons.',ph:'Votre suggestion ou commentaire...',btn:'Envoyer',ok:'✓ Merci ! Votre message a bien été reçu.'},
+  lt:{title:'Pasiūlymai',desc:'Trūksta informacijos gide? Praneškite mums, ir mes ją pridėsime.',ph:'Jūsų pasiūlymas ar komentaras...',btn:'Siųsti',ok:'✓ Ačiū! Jūsų žinutė gauta.'},
+  sv:{title:'Förslag',desc:'Saknas något i guiden? Meddela oss så lägger vi till det.',ph:'Ditt förslag eller kommentar...',btn:'Skicka',ok:'✓ Tack! Ditt meddelande har mottagits.'}
 };
 
 // ── PRVI DOLAZAK (interaktivna kartica) ──
@@ -800,6 +806,52 @@ const ARR = {
     ciText:'<strong>Pour éviter l\'attente</strong>, merci de nous communiquer votre heure d\'arrivée <strong>à l\'avance</strong>. Nous vous attendrons <strong>devant la banque Addiko</strong> et marcherons ensemble jusqu\'à l\'appartement, où nous vous remettrons les clés.',
     mpCaption:'📍 C\'est ici que nous vous attendons — banque Addiko',
     call:'Appeler'
+  },
+  lt:{
+    title:'Pirmą kartą pas mus?',
+    q:'Kaip pas mus atvykstate?',
+    auto:'Atvykstu automobiliu',
+    voz:'Atvykstu traukiniu',
+    bus:'Atvykstu autobusu',
+    autoWarn:'⚠️ Buto adresas — <strong>Korzo 15</strong> — yra pėsčiųjų zonoje, todėl Google navigacija gali nuvesti jus neteisingu keliu iki pat įėjimo.',
+    autoLead:'👉 Todėl naudokite navigaciją iki <strong>Addiko banko</strong> — ten susitiksime, kai atvyksite į miestą.',
+    navBtn:'🧭 Navigacija iki Addiko banko',
+    autoParking:'Parkavimo vietą dažniausiai rasite <strong>tiesiai priešais pastatą, Đure Đakovića gatvėje</strong> (Raudonoji zona) — iš ten yra ir įėjimas į pastatą.',
+    autoSms:'<strong>Mokėjimas SMS žinute</strong> (Raudonoji zona): siųskite SMS į <strong>9241</strong> — 70 dinarų/val., arba į <strong>9245</strong> — 480 dinarų/dieną (dienos bilietas). Bilietą galima <strong>įsigyti ir kioske</strong>.',
+    autoHours:'🕐 Mokama: darbo dienomis 07–21 val. · šeštadieniais 07–14 val. · sekmadieniais ir švenčių dienomis <strong>nemokama</strong>',
+    vozText:'🚆 Mūsų butas yra <strong>vienas arčiausiai geležinkelio stoties esančių</strong> — papildomo transporto nereikės.',
+    vozPark:'Pereję per <strong>Rajhl Ferenc parką</strong>, pasieksite Addiko banką, kur susitiksime ir kartu eisime iki buto.',
+    walkBtn:'🧭 Navigacija iki Addiko banko',
+    busText:'🚌 Butas yra apie <strong>800 metrų</strong> nuo pagrindinės autobusų stoties.',
+    busTaxi:'Taksi galite rasti <strong>tiesiai prie stoties</strong>.',
+    busWalk:'O jei norite ramaus pasivaikščiojimo, labai lengvai pasieksite Addiko banką, kur susitiksime ir kartu eisime iki buto.',
+    ciTitle:'Kai atvyksite — įsiregistravimas',
+    ciText:'<strong>Kad išvengtumėte laukimo</strong>, praneškite mums atvykimo laiką <strong>iš anksto</strong>. Pasitiksime jus <strong>priešais Addiko banką</strong> ir kartu eisime iki buto, kur perduosime raktus.',
+    mpCaption:'📍 Čia jūsų lauksime — Addiko bankas',
+    call:'Skambinti'
+  },
+  sv:{
+    title:'Är det första gången ni besöker oss?',
+    q:'Hur tar ni er hit?',
+    auto:'Jag kommer med bil',
+    voz:'Jag kommer med tåg',
+    bus:'Jag kommer med buss',
+    autoWarn:'⚠️ Lägenhetens adress — <strong>Korzo 15</strong> — ligger i ett gångfartsområde, så Google Maps kan leda er fel väg ända fram till entrén.',
+    autoLead:'👉 Använd därför navigering till <strong>Addiko Bank</strong> — där möts vi när ni kommer till stan.',
+    navBtn:'🧭 Navigera till Addiko Bank',
+    autoParking:'Parkering finns oftast <strong>precis framför byggnaden, på Đure Đakovića-gatan</strong> (röd zon) — därifrån är det också entré till huset.',
+    autoSms:'<strong>Betala med SMS</strong> (röd zon): skicka SMS till <strong>9241</strong> — 70 dinarer/timme, eller <strong>9245</strong> — 480 dinarer/dygn (dagsbiljett). Ni kan även <strong>köpa biljett i en kiosk</strong>.',
+    autoHours:'🕐 Avgiftsbelagt: vardagar 07–21 · lördagar 07–14 · söndagar och helgdagar <strong>gratis</strong>',
+    vozText:'🚆 Vår lägenhet är <strong>en av de närmaste järnvägsstationen</strong> — ni behöver ingen extra transport.',
+    vozPark:'Genom att gå genom <strong>Rajhl Ferenc-parken</strong> kommer ni till Addiko Bank, där vi möts och går tillsammans till lägenheten.',
+    walkBtn:'🧭 Navigera till Addiko Bank',
+    busText:'🚌 Lägenheten ligger cirka <strong>800 meter</strong> från den stora bussterminalen.',
+    busTaxi:'Taxi finns <strong>precis utanför stationen</strong>.',
+    busWalk:'Och om ni är sugna på en skön promenad når ni mycket enkelt Addiko Bank, där vi möts och går tillsammans till lägenheten.',
+    ciTitle:'Vid ankomst — incheckning',
+    ciText:'<strong>För att undvika väntetid</strong>, meddela oss er ankomsttid <strong>i förväg</strong>. Vi möter er <strong>framför Addiko Bank</strong> och går tillsammans till lägenheten, där vi överlämnar nycklarna.',
+    mpCaption:'📍 Här väntar vi er — Addiko Bank',
+    call:'Ring'
   }
 };
 
@@ -2540,6 +2592,218 @@ const T = {
         ]}
       ]},
       {i:'📞',t:'Numéros importants',h:EMERGENCY('Police','Ambulance','Pompiers','Hôte Boris')}
+    ]
+  },
+  lt: {
+    wn:'WiFi tinklas', wp:'Slaptažodis', cp:'Kopijuoti', cd:'Nukopijuota!', call:'Skambinti',
+    ft:'Džiaugiamės, kad pasirinkote Apartman Mirakul. Malonaus poilsio!',
+    s:[
+      {i:'🧳',t:ARR.lt.title,h:arrivalCard(ARR.lt)},
+      {i:'💡',t:'Buto vadovas',subs:[
+        {t:'🏠 Namų taisyklės',h:`<ul class="bullet-list"><li>🏢 Prašome gerbti kitus pastato gyventojus</li><li>🌙 Tylos valandos: <strong>22:00–08:00</strong></li><li>🥿 Dėl higienos priežasčių prašome nevaikščioti po butą su lauko avalyne — rekomenduojame avėti šlepetes</li><li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px;flex-shrink:0"><circle cx="12" cy="12" r="10" fill="none" stroke="#e74c3c" stroke-width="2"/><rect x="4" y="10.5" width="13" height="3" rx="1.5" fill="#666"/><rect x="17" y="10.5" width="3.5" height="3" rx="1" fill="#d4b896"/><line x1="4" y1="4" x2="20" y2="20" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/></svg> Rūkyti <strong>griežtai draudžiama</strong> bute ir pastate</li><li>🐾 Naminiai gyvūnai <strong>neleidžiami</strong></li><li>👥 Maksimalus svečių skaičius: <strong>4 svečiai</strong></li><li>🚪 Pastato vartai užrakinami po <strong>22:00</strong> — vartų raktas pridedamas prie buto rakto</li><li>🧹 Prašome išvykstant palikti butą tvarkingą</li></ul>`},
+        {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">iki 11:00</div></div></div><div class="guide-tip">🔑 Išvykstant palikite raktus pašto dėžutėje šalia įėjimo durų. Prašome pranešti šeimininkui apytikslį išvykimo laiką.</div>`},
+        {t:'ℹ️ Verta žinoti',h:`<div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Karštas vanduo</strong><span>Boileris visada įjungtas — karštas vanduo prieinamas iš karto.</span></div></div><div class="guide-item"><span class="guide-item-icon">🚿</span><div class="guide-item-text"><strong>Vonios čiaupas ir dušas</strong><span>Įprastam dušui pastumkite vandens išleidimo angą į dešinę. Viršutiniam dušui patraukite čiaupo svirtelę.</span></div></div><div class="guide-item"><span class="guide-item-icon">🪟</span><div class="guide-item-text"><strong>Užtamsinimo žaliuzės</strong><span>Mediniai žaliuzės yra visuose kambariuose užtamsinimui.</span></div></div><div class="guide-item"><span class="guide-item-icon">🔐</span><div class="guide-item-text"><strong>Durų užraktas</strong><span>Norėdami užrakinti lauko duris, pirmiausia patraukite rankeną aukštyn, tada pasukite raktą.</span></div></div>`},
+        {t:'⚙️ Prietaisai',h:`<div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Philips TV 50"</strong><span>Paspauskite <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M3 12L12 3l9 9"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg> HOME, kad pasirinktumėte programėlę — Netflix, YouTube, Iris, Stremio, TiVimate.</span></div></div><div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Oro kondicionierius</strong><span>Nuotolinio valdymo pultas yra ant lentynos prie baro staliuko.<br>⚠️ Griežtai draudžiama laikyti langus atidarytus, kai veikia oro kondicionierius.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Grindinis šildymas</strong><span>Sezono metu nustatyta 23°C — jei reikia koregavimo, susisiekite su šeimininku.<br>⚠️ Griežtai draudžiama laikyti langus atidarytus šildymo sezono metu.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Skalbimo mašina ir džiovyklė</strong><span>Instrukcijos vonios kambario stalčiuje. Skalbimo priemonių butas neaprūpina.</span></div></div><div class="guide-item"><span class="guide-item-icon">💧</span><div class="guide-item-text"><strong>Virdulys</strong><span>Standartinis elektrinis vandens šildytuvas.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Gorenje kavos aparatas</strong><span>Skirtas išskirtinai kavai virti.<br>⚠️ Nedėkite metalinio šaukštelio ar kitų metalinių daiktų viduje, kol prietaisas veikia.</span></div></div><div class="guide-item"><span class="guide-item-icon">📡</span><div class="guide-item-text"><strong>Mikrobangų krosnelė</strong><span>Maksimali galia 900W.<br>⚠️ Niekada nedėkite metalinių daiktų viduje.</span></div></div>`},
+        {t:'🅿️ Automobilių stovėjimas',h:`<div style="display:inline-flex;align-items:center;gap:0.5rem;background:#fff1f0;border:1.5px solid #e74c3c;border-radius:8px;padding:0.4rem 0.85rem;margin-bottom:1rem;"><span style="color:#e74c3c;font-size:0.9rem;">●</span><span style="font-weight:700;font-size:0.9rem;color:#c0392b;">Raudona zona (1) — priešais pastatą</span></div><div class="checkin-row"><div><div class="checkin-label">Darbo dienomis</div><div class="checkin-time">07:00 – 21:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Šeštadienį</div><div class="checkin-time">07:00 – 14:00</div></div></div><div class="checkin-row" style="border-bottom:none;"><div><div class="checkin-label">Sekmadieniais ir švenčių dienomis</div><div style="font-size:1.55rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em;">Nemokama</div></div></div><div style="margin-top:1.1rem;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:0.6rem;">Mokėjimas SMS žinute</div><div style="display:flex;flex-direction:column;gap:0.5rem;"><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Valandinis</div><div style="font-size:1.1rem;font-weight:800;">9241</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">70 RSD</div></div><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Dienos bilietas</div><div style="font-size:1.1rem;font-weight:800;">9245</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">480 RSD</div></div></div></div><div class="guide-tip" style="margin-top:0.85rem;">💡 Po 21:00 galite iš anksto susimokėti už kitos dienos stovėjimą — išsiųskite SMS į <strong>9245</strong> ir rytas bus sutvarkytas.</div>`}
+      ]},
+      {i:'🛎️',t:'Jei jums reikia...',subs:[
+        {t:'🚕 Taksi',cards:[
+          {name:'Alfa Taxi',dist:'⭐ 4.1',desc:'Patikima taksi paslauga — veikia visą parą. Đure Đakovića.',phone:'0642015800',emoji:'🚕'},
+          {name:'Pink Taxi',dist:'⭐ 5.0',desc:'Taksi paslauga — Branislava Nušića bb.',phone:'0644685329',emoji:'🚕'},
+          {name:'Meče Taxi',dist:'⭐ 4.5',desc:'Taksi paslauga — Lajoša Joaneša.',phone:'0656806700',emoji:'🚕'},
+          {name:'Taxi 9',dist:'⭐ 4.3',desc:'Taksi paslauga — Vatroslava Lisinskog.',phone:'0659999560',emoji:'🚕'},
+          {name:'Prozivka Taxi',dist:'⭐ 4.2',desc:'Taksi paslauga — Nade Dimić.',phone:'0659765000',emoji:'🚕'},
+          {name:'Ekonomik Taxi',dist:'⭐ 4.2',desc:'Taksi paslauga — Matije Gupca 2.',phone:'0637440004',emoji:'🚕'},
+          {name:'Yu Taxi',dist:'⭐ 3.8',desc:'Taksi paslauga — dirba visą parą, Štrosmajerova.',phone:'0655559761',emoji:'🚕'},
+          {name:'Omega Taxi',dist:'⭐ 3.1',desc:'Taksi paslauga Suboticoje.',phone:'024559911',emoji:'🚕'}
+        ]},
+        {t:'🛵 Maisto pristatymas',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Maisto ir gėrimų pristatymas — dėl užsakymo kreipkitės tiesiogiai.',img:'images/Guests/Restorani/boss.webp',phone:'024551111'},
+          {name:'Renaissance',dist:'150 m',desc:'Italų ir vietinės virtuvės patiekalų pristatymas.',img:'images/Guests/Restorani/Renaissance.webp',phone:'024555001'},
+          {name:'Street Pica',dist:'',desc:'Picų pristatymas — greitai ir skaniai.',img:'images/Guests/Dostava/Street pica.webp',phone:'0640907040'},
+          {name:'Walter',dist:'',desc:'Maisto pristatymas — platus patiekalų pasirinkimas.',img:'images/Guests/Dostava/Walter.webp',phone:'0631011000'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Aukščiausios kokybės burgerių pristatymas — kokybiška mėsa, briošo bandelės ir namuose gaminti padažai.',img:'images/Guests/Dostava/fabrika.webp',phone:'0649593674'}
+        ]},
+        {t:'🛒 Parduotuvė',cards:[
+          {name:'Idea',dist:'',desc:'Prekybos centras — platus maisto ir buities prekių pasirinkimas.',img:'images/Guests/Prodavnica/Idea.png',maps:'https://maps.google.com/?q=Idea+Korzo+13+Subotica'},
+          {name:'Lidl',dist:'',desc:'Prekybos centras — kokybiški produktai prieinamomis kainomis.',img:'images/Guests/Prodavnica/lidl.avif',maps:'https://maps.google.com/?q=Lidl+Pala+Papa+1+Subotica'},
+          {name:'Maxi',dist:'',desc:'Prekybos centras — kasdieniniai apsipirkimai.',img:'images/Guests/Prodavnica/Maxi.jpg',maps:'https://maps.google.com/?q=Maxi+Trg+Cara+Jovana+Nenada+2+Subotica'},
+          {name:'DM',dist:'',desc:'Vaistinė / drogerija — kosmetika, higienos ir priežiūros priemonės.',img:'images/Guests/Prodavnica/DM.webp',maps:'https://maps.google.com/?q=DM+Korzo+10C+Subotica'}
+        ]},
+        {t:'💊 Vaistinė',cards:[
+          {name:'Benu Apoteka',dist:'',desc:'Vaistinė — vaistai, papildai, kosmetika. Korzo 15.',img:'images/Guests/Apoteka/benu.webp',maps:'https://maps.google.com/?q=Benu+apoteka+Korzo+15+Subotica',phone:'+38124533121'},
+          {name:'Apoteka Subotica No.1 — Centar',dist:'',desc:'Vaistinė — vaistai ir sveikatos produktai.',img:'images/Guests/Apoteka/Apoteka subotica.webp',maps:'https://maps.app.goo.gl/CdQUTjdNhviAKTww8'}
+        ]},
+        {t:'💱 Valiutos keitykla',cards:[
+          {name:'Box',dist:'',desc:'Valiutos keitykla — eurai, doleriai ir kitos valiutos.',img:'images/Guests/Menjacnica/Box.jpg',maps:'https://maps.google.com/?q=Box+menjacnica+Branislava+Nusica+Subotica'},
+          {name:'Euro',dist:'',desc:'Valiutos keitykla — eurai, doleriai ir kitos valiutos. Korzo 10b.',img:'images/Guests/Menjacnica/Euro menjačnica.webp',maps:'https://maps.google.com/?q=Euro+menjacnica+Korzo+10b+Subotica'}
+        ]},
+        {t:'🏧 Bankomatas',cards:[
+          {name:'Addiko Bank',dist:'',desc:'Bankomatas — nemokamas grynųjų išėmimas Addiko kortelėms.',img:'images/Guests/Bankomat/Addiko.webp',maps:'https://maps.google.com/?q=Addiko+bank+Korzo+15+Subotica'},
+          {name:'OTP Banka',dist:'',desc:'Bankomatas — veikia visą parą.',img:'images/Guests/Bankomat/otpbanka.webp',maps:'https://maps.google.com/?q=OTP+banka+Korzo+12+Subotica'},
+          {name:'NLB Banka',dist:'',desc:'Bankomatas — veikia visą parą.',img:'images/Guests/Bankomat/nlb.webp',maps:'https://maps.google.com/?q=NLB+banka+Korzo+10+Subotica'}
+        ]},
+        {t:'⛽ Degalinė',cards:[
+          {name:'NIS Petrol',dist:'',desc:'Degalinė — kuras, parduotuvė ir kavinė.',img:'images/Guests/Benzinska/NIS_Petrol_station.webp',maps:'https://maps.google.com/?q=NIS+Petrol+Puskinov+Trg+Subotica'},
+          {name:'MOL',dist:'',desc:'Degalinė — kuras ir papildomos paslaugos.',img:'images/Guests/Benzinska/MOL-BS.webp',maps:'https://maps.google.com/?q=MOL+Jovana+Mikica+Subotica'},
+          {name:'OMV',dist:'',desc:'Degalinė — kuras, parduotuvė ir užkandžiai.',img:'images/Guests/Benzinska/OMV-logo.webp',maps:'https://maps.google.com/?q=OMV+Beogradski+put+88+Subotica'},
+          {name:'EURO Petrol',dist:'',desc:'Degalinė — kuras ir papildomos paslaugos. Segedinski put 76.',img:'images/Guests/Benzinska/Euro petrol.webp',maps:'https://maps.google.com/?q=EURO+Petrol+Segedinski+put+76+Subotica'}
+        ]},
+        {t:'🚂 Geležinkelio stotis',cards:[
+          {name:'Railway Station Subotica',dist:'100 m',desc:'Geležinkelio stotis — susisiekimas su Belgradu, Novi Sadu ir tarptautinėmis linijomis.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA',link:'https://w3.srbvoz.rs/redvoznje',linkLabel:'Tvarkaraštis'}
+        ]},
+        {t:'🚌 Autobusų stotis',cards:[
+          {name:'Main Bus Station Subotica',dist:'850 m',desc:'Autobusų stotis — maršrutai į visą Serbiją ir tarptautines kryptis.',img:'images/Guests/Stanice/Autobuska-stanica.jpg',maps:'https://maps.google.com/?q=Autobuska+stanica+Subotica',link:'https://sutrans.rs/Polasci-i-dolasci.html',linkLabel:'Tvarkaraštis'}
+        ]},
+      ]},
+      {i:'📍',t:'Vietinės rekomendacijos',subs:[
+        {t:'🍽️ Restoranai ir kavinės',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Modernus Suboticos simbolis, mylimas visų kartų svečių — puikiai tinka pusryčiams, kavai ir pietums.',img:'images/Guests/Restorani/boss.webp',maps:'https://maps.google.com/?q=Boss+Caffe+Subotica'},
+          {name:'Stara picerija',dist:'100 m',desc:'Seniausia picerija Serbijoje, įkurta 1977 m. Turi jaukią vaikų žaidimų aikštelę — puikiai tinka šeimoms su vaikais.',img:'images/Guests/Restorani/stara-picerija.webp',maps:'https://maps.google.com/?q=Stara+picerija+Subotica'},
+          {name:'Renaissance',dist:'150 m',desc:'Modernus restoranas su gausiu italų ir vietinės virtuvės pasirinkimu.',img:'images/Guests/Restorani/Renaissance.webp',maps:'https://maps.google.com/?q=Renesansa+restoran+Subotica'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Aukščiausios kokybės burgeriai su kokybiška mėsa, briošo bandelėmis, rinktiniais sūriais ir namuose gaminamais padažais.',img:'images/Guests/Restorani/fabrika.webp',maps:'https://maps.google.com/?q=Fabrika+Subotica'},
+          {name:'Basch House 1887',dist:'800 m',desc:'Vieta, kur tradicija susitinka su naujove — puikus maistas, autentiški gėrimai ir platus amatininkų alaus pasirinkimas.',img:'images/Guests/Restorani/basch-house.webp',maps:'https://maps.google.com/?q=Basch+House+Cara+Lazara+Subotica'},
+          {name:'Bates',dist:'300 m',desc:'Tradicinė kavinė, sauganti tamburicos muzikos dvasią ir naminę vietos virtuvę.',img:'images/Guests/Restorani/bates.webp',maps:'https://maps.google.com/?q=Bates+Subotica'},
+          {name:'Kafe Priča',dist:'200 m',desc:'Sustokite, skirkite laiko sau ir draugams — pokalbiai šioje jaukioje kavinėje rezga savaime.',img:'images/Guests/Restorani/kafe-prica.webp',maps:'https://maps.google.com/?q=Kafe+Prica+Subotica'},
+          {name:'Mali trg',dist:'400 m',desc:'Žavus fine dining restoranas miesto centre — puikiai tinka ypatingoms akimirkoms.',img:'images/Guests/Restorani/mali-trg.webp',maps:'https://maps.google.com/?q=Mali+trg+Subotica'},
+          {name:'Vinarija Zvonko Bogdan',dist:'10 km',desc:'Ar Nuvo stiliaus vynuogynas prie Palićo ežero kranto — degustacija su gidu ir vaizdu į vynuogynus. Rekomenduojama rezervuoti.',img:'images/Guests/Restorani/vinarija-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Vinarija+Zvonko+Bogdan+Subotica'},
+          {name:'Salaš Zvonko Bogdan',dist:'15 km',desc:'Autentiška Vojvodinos sodyba prie Ludašo ežero — namų sriuba, lėtai gaminti patiekalai ir štrudelis kaimiškoje ramybėje.',img:'images/Guests/Restorani/salas-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Salas+Zvonko+Bogdan+Subotica'},
+          {name:'Plaža Bar',dist:'8 km',desc:'Atsipalaidavimo baras prie Palićo — puiki vieta gėrimui ir poilsiui prie ežero.',img:'images/Guests/Restorani/Plaža bar.webp',maps:'https://maps.app.goo.gl/VtGVUF8ceWY4r6xBA'},
+          {name:'Vinarija Petra',dist:'8 km',desc:'Vynuogynas prie Palićo — degustacija malonioje aplinkoje. 💡 Nuo Peščanos paplūdimio iki vynuogyno veda gražus takas, puikiai tinkantis pasivaikščiojimui.',img:'images/Guests/Restorani/Vinarija Petra.webp',maps:'https://maps.app.goo.gl/tnoKDWVaCCbiKByQ8'},
+          {name:'Terasa Muški Štrand',dist:'8 km',desc:'Terasa prie Palićo, netoli Muški štrand — maistas ir gėrimai su vaizdu į ežerą.',img:'images/Guests/Restorani/Terasa.webp',maps:'https://maps.app.goo.gl/XmGSrZ8D3xkEmt5M9'}
+        ]},
+        {t:'🏛️ Lankytinos vietos',cards:[
+          {name:'Rotušė',dist:'300 m',desc:'Suboticos simbolis — įspūdingas 1910 m. Ar Nuvo stiliaus pastatas, vietos architektūros šedevras.',img:'images/Guests/Znamenitosti/gradska-kuca.webp',maps:'https://maps.google.com/?q=Subotica+City+Hall'},
+          {name:'Rajhlio rūmai',dist:'30 m',desc:'Visai šalia buto — vienas gražiausių Suboticos Ar Nuvo paveldo perlų.',img:'images/Guests/Znamenitosti/rajhlova-palata.webp',maps:'https://maps.google.com/?q=Rajhlova+palata+Subotica'},
+          {name:'Miesto muziejus',dist:'600 m',desc:'Įkurtas 1892 m. prabangiuose Ar Nuvo rūmuose — saugo archeologines, istorines ir etnologines kolekcijas.',img:'images/Guests/Znamenitosti/gradski-muzej.webp',maps:'https://maps.google.com/?q=Gradski+muzej+Subotica'},
+          {name:'Porceliano muziejus',dist:'150 m',desc:'Unikalus muziejus Serbijoje su daugiau nei 2000 iki 200 metų senumo eksponatų — nuo vieniečių ir rusiško iki jugoslaviško porceliano.',img:'images/Guests/Znamenitosti/muzej-porcelana.webp',maps:'https://maps.google.com/?q=Muzej+porcelana+Subotica'},
+          {name:'Sinagoga',dist:'500 m',desc:'Viena gražiausių sinagogų Europoje, pastatyta 1902 m. Ar Nuvo stiliumi — tikras architektūros stebuklas.',img:'images/Guests/Znamenitosti/sinagoga.webp',maps:'https://maps.google.com/?q=Subotica+Synagogue'},
+          {name:'Senųjų amatų gatvė',dist:'100 m',desc:'Atidaryta 2025 m. — žavi gatvelė, atgaivinanti senosios Suboticos dvasią su siuvėjų, laikrodininkų vitrinomis ir Zvonko Bogdano skulptūra.',img:'images/Guests/Znamenitosti/ulica-starih-zanata.webp',maps:'https://maps.google.com/?q=Ulica+Starih+zanata+Subotica'},
+          {name:'Paminklas carui Jovanui Nenadui',dist:'400 m',desc:'Monumentalus 1927 m. bronzinis triptikas, skirtas save paskelbusiam carui, trumpai valdžiusiam Suboticą 1527 m.',img:'images/Guests/Znamenitosti/car-jovan-nenad.webp',maps:'https://maps.google.com/?q=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
+          {name:'Paminklas karaliui Petrui I',dist:'30 m',desc:'4,2 metro aukščio skulptorius Zorano Ivanovičiaus kūrinys, atidengtas 2021 m. karaliaus Petro I Karadžordževičiaus garbei.',img:'images/Guests/Znamenitosti/spomenik-kralj-petru.webp',maps:'https://maps.google.com/?q=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Palićo ežeras',dist:'8 km',desc:'Didžiausias natūralus ežeras Serbijoje — paplūdimiai, parkas, sporto įrenginiai ir gydomasis purvas. Puikiai tinka šeimos išvykai.',img:'images/Guests/Znamenitosti/palic.webp',maps:'https://maps.google.com/?q=Palic+Lake+Subotica'}
+        ]},
+        {t:'🎭 Pramogos',cards:[
+          {name:'Nacionalinis teatras',dist:'300 m',desc:'Atnaujintas 2013 m., su tradicijomis nuo 1854 m. — vienintelis teatras Serbijoje, kuriame po vienu stogu veikia serbų ir vengrų trupės. Suboticos kultūros simbolis.',img:'images/Guests/Zabava/Subotica Narodno pozoriste.webp',maps:'https://maps.google.com/?q=Narodno+pozoriste+Subotica'},
+          {name:'Vaikų teatras',dist:'400 m',desc:'Teatras, skirtas mažiausiems — spektakliai serbų ir vengrų kalbomis.',img:'images/Guests/Zabava/Decije-pozoriste-4-1170x781.webp',maps:'https://maps.google.com/?q=Decije+pozoriste+Subotica'},
+          {name:'EuroCinema',dist:'200 m',desc:'Modernus kino teatras centre — naujausi filmai dideliame ekrane.',img:'images/Guests/Zabava/EuroCinema.webp',maps:'https://maps.google.com/?q=EuroCinema+Subotica'},
+          {name:'Lifkos kino teatras',dist:'150 m',desc:'Legendinis 1913 m. atidarytas kino teatras — architektūrinis perlas ir Suboticos kultūros ikona.',img:'images/Guests/Zabava/bioskop lifka.webp',maps:'https://maps.google.com/?q=Bioskop+Lifka+Subotica'},
+          {name:'Palićo zoologijos sodas',dist:'8 km',desc:'Zoologijos sodas prie Palićo — daugybės gyvūnų rūšių namai, puikiai tinka šeimos išvykai.',img:'images/Guests/Zabava/Zoo vrt Palić.webp',maps:'https://maps.google.com/?q=Zooloski+vrt+Palic'}
+        ]},
+        {t:'⚽ Sportas',cards:[
+          {name:'Prozivkos baseinas',dist:'1.5 km',desc:'Sporto ir poilsio centras su dideliu ir mažu baseinu — Google įvertinimas 4.5. Darbo laikas priklauso nuo dienos, rekomenduojame patikrinti prieš apsilankymą.',img:'images/Guests/Sport/Bazen Prozivka.webp',maps:'https://maps.google.com/?q=Bazen+Prozivka+Subotica'},
+          {name:'Dudova šuma baseinas',dist:'2 km',desc:'Lauko baseinas Dudova šuma poilsio parke.',img:'images/Guests/Sport/Bazen Dudovasuma.webp',maps:'https://maps.google.com/?q=Bazen+Dudova+suma+Subotica'},
+          {name:'Aqua park Palić',dist:'8 km',desc:'Vandens parkas prie Palićo ežero kranto — čiuožyklos, baseinai ir pramogos visai šeimai.',img:'images/Guests/Sport/Aqua park Palić.webp',maps:'https://maps.google.com/?q=Aqua+park+Palic+Subotica'},
+          {name:'Dudova šuma sporto salė',dist:'2 km',desc:'Daugiafunkcinė sporto salė — krepšinis, tinklinis, tenisas ir kiti sportai.',img:'images/Guests/Sport/Hala Sportova.webp',maps:'https://maps.google.com/?q=Hala+sportova+Dudova+suma+Subotica'}
+        ]},
+      ]},
+      {i:'📞',t:'Svarbūs telefonai',h:EMERGENCY('Policija','Greitoji pagalba','Gaisrinė','Šeimininkas Boris')}
+    ]
+  },
+  sv: {
+    wn:'WiFi-nätverk', wp:'Lösenord', cp:'Kopiera', cd:'Kopierat!', call:'Ring',
+    ft:'Vi är glada att ni valde Apartman Mirakul. Trevlig vistelse!',
+    s:[
+      {i:'🧳',t:ARR.sv.title,h:arrivalCard(ARR.sv)},
+      {i:'💡',t:'Lägenhetsguide',subs:[
+        {t:'🏠 Husregler',h:`<ul class="bullet-list"><li>🏢 Visa hänsyn till husets övriga hyresgäster</li><li>🌙 Tysta timmar: <strong>22:00–08:00</strong></li><li>🥿 Av hygienskäl ber vi er att inte gå omkring i lägenheten med utomhusskor — vi rekommenderar tofflor</li><li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px;flex-shrink:0"><circle cx="12" cy="12" r="10" fill="none" stroke="#e74c3c" stroke-width="2"/><rect x="4" y="10.5" width="13" height="3" rx="1.5" fill="#666"/><rect x="17" y="10.5" width="3.5" height="3" rx="1" fill="#d4b896"/><line x1="4" y1="4" x2="20" y2="20" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/></svg> Rökning är <strong>strängt förbjudet</strong> inne i lägenheten och i huset</li><li>🐾 Husdjur <strong>är inte tillåtna</strong></li><li>👥 Max antal gäster: <strong>4 personer</strong></li><li>🚪 Portens grind låses efter <strong>22:00</strong> — nyckeln till grinden ingår med lägenhetsnyckeln</li><li>🧹 Lämna gärna lägenheten i ordning vid avresa</li></ul>`},
+        {t:'🕐 Incheckning / utcheckning',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">senast 11:00</div></div></div><div class="guide-tip">🔑 Vid utcheckning, lämna nycklarna i brevlådan bredvid entrédörren. Meddela värden er ungefärliga avresetid.</div>`},
+        {t:'ℹ️ Bra att veta',h:`<div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Varmvatten</strong><span>Varmvattenberedaren är alltid på — varmvatten finns direkt.</span></div></div><div class="guide-item"><span class="guide-item-icon">🚿</span><div class="guide-item-text"><strong>Kran och dusch i badkaret</strong><span>För vanlig dusch, dra vattenutloppet åt höger. För takdusch, dra spaken på kranen.</span></div></div><div class="guide-item"><span class="guide-item-icon">🪟</span><div class="guide-item-text"><strong>Mörkläggningsgardiner</strong><span>Träpersienner finns i alla rum för mörkläggning.</span></div></div><div class="guide-item"><span class="guide-item-icon">🔐</span><div class="guide-item-text"><strong>Dörrlås</strong><span>För att låsa ytterdörren, dra handtaget uppåt först och vrid sedan nyckeln.</span></div></div>`},
+        {t:'⚙️ Utrustning',h:`<div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Philips TV 50"</strong><span>Tryck på <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M3 12L12 3l9 9"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg> HOME för att välja app — Netflix, YouTube, Iris, Stremio, TiVimate.</span></div></div><div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Luftkonditionering</strong><span>Fjärrkontrollen finns på hyllan vid bardisken.<br>⚠️ Det är strängt förbjudet att ha fönstren öppna medan luftkonditioneringen är på.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Golvvärme</strong><span>Inställd på 23°C under säsongen — kontakta värden om justering behövs.<br>⚠️ Det är strängt förbjudet att ha fönstren öppna under värmesäsongen.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Tvättmaskin och torktumlare</strong><span>Instruktioner i badrumslådan. Tvättmedel tillhandahålls inte av lägenheten.</span></div></div><div class="guide-item"><span class="guide-item-icon">💧</span><div class="guide-item-text"><strong>Vattenkokare</strong><span>Standard elektrisk vattenkokare.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Gorenje kaffebryggare</strong><span>Endast avsedd för att brygga kaffe.<br>⚠️ Lägg inte i en metallsked eller andra metallföremål medan apparaten är på.</span></div></div><div class="guide-item"><span class="guide-item-icon">📡</span><div class="guide-item-text"><strong>Mikrovågsugn</strong><span>Max effekt 900W.<br>⚠️ Lägg aldrig i metallföremål.</span></div></div>`},
+        {t:'🅿️ Parkering',h:`<div style="display:inline-flex;align-items:center;gap:0.5rem;background:#fff1f0;border:1.5px solid #e74c3c;border-radius:8px;padding:0.4rem 0.85rem;margin-bottom:1rem;"><span style="color:#e74c3c;font-size:0.9rem;">●</span><span style="font-weight:700;font-size:0.9rem;color:#c0392b;">Röd zon (1) — framför byggnaden</span></div><div class="checkin-row"><div><div class="checkin-label">Vardagar</div><div class="checkin-time">07:00 – 21:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Lördag</div><div class="checkin-time">07:00 – 14:00</div></div></div><div class="checkin-row" style="border-bottom:none;"><div><div class="checkin-label">Söndagar och helgdagar</div><div style="font-size:1.55rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em;">Gratis</div></div></div><div style="margin-top:1.1rem;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:0.6rem;">Betala med SMS</div><div style="display:flex;flex-direction:column;gap:0.5rem;"><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Per timme</div><div style="font-size:1.1rem;font-weight:800;">9241</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">70 RSD</div></div><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Dagsbiljett</div><div style="font-size:1.1rem;font-weight:800;">9245</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">480 RSD</div></div></div></div><div class="guide-tip" style="margin-top:0.85rem;">💡 Efter 21:00 kan ni förbetala parkeringen för nästa dag — skicka SMS till <strong>9245</strong> så är morgonen ordnad.</div>`}
+      ]},
+      {i:'🛎️',t:'Om ni behöver...',subs:[
+        {t:'🚕 Taxi',cards:[
+          {name:'Alfa Taxi',dist:'⭐ 4.1',desc:'Pålitlig taxitjänst — tillgänglig dygnet runt. Đure Đakovića.',phone:'0642015800',emoji:'🚕'},
+          {name:'Pink Taxi',dist:'⭐ 5.0',desc:'Taxitjänst — Branislava Nušića bb.',phone:'0644685329',emoji:'🚕'},
+          {name:'Meče Taxi',dist:'⭐ 4.5',desc:'Taxitjänst — Lajoša Joaneša.',phone:'0656806700',emoji:'🚕'},
+          {name:'Taxi 9',dist:'⭐ 4.3',desc:'Taxitjänst — Vatroslava Lisinskog.',phone:'0659999560',emoji:'🚕'},
+          {name:'Prozivka Taxi',dist:'⭐ 4.2',desc:'Taxitjänst — Nade Dimić.',phone:'0659765000',emoji:'🚕'},
+          {name:'Ekonomik Taxi',dist:'⭐ 4.2',desc:'Taxitjänst — Matije Gupca 2.',phone:'0637440004',emoji:'🚕'},
+          {name:'Yu Taxi',dist:'⭐ 3.8',desc:'Taxitjänst — öppet dygnet runt, Štrosmajerova.',phone:'0655559761',emoji:'🚕'},
+          {name:'Omega Taxi',dist:'⭐ 3.1',desc:'Taxitjänst i Subotica.',phone:'024559911',emoji:'🚕'}
+        ]},
+        {t:'🛵 Matleverans',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Leverans av mat och dryck — kontakta direkt för beställning.',img:'images/Guests/Restorani/boss.webp',phone:'024551111'},
+          {name:'Renaissance',dist:'150 m',desc:'Leverans av italiensk och lokal mat.',img:'images/Guests/Restorani/Renaissance.webp',phone:'024555001'},
+          {name:'Street Pica',dist:'',desc:'Pizzaleverans — snabbt och gott.',img:'images/Guests/Dostava/Street pica.webp',phone:'0640907040'},
+          {name:'Walter',dist:'',desc:'Matleverans — stort utbud av rätter.',img:'images/Guests/Dostava/Walter.webp',phone:'0631011000'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Leverans av förstklassiga hamburgare — högkvalitativt kött, briochebröd och husgjorda såser.',img:'images/Guests/Dostava/fabrika.webp',phone:'0649593674'}
+        ]},
+        {t:'🛒 Livsmedelsbutik',cards:[
+          {name:'Idea',dist:'',desc:'Stormarknad — brett utbud av livsmedel och hushållsprodukter.',img:'images/Guests/Prodavnica/Idea.png',maps:'https://maps.google.com/?q=Idea+Korzo+13+Subotica'},
+          {name:'Lidl',dist:'',desc:'Stormarknad — bra produkter till bra pris.',img:'images/Guests/Prodavnica/lidl.avif',maps:'https://maps.google.com/?q=Lidl+Pala+Papa+1+Subotica'},
+          {name:'Maxi',dist:'',desc:'Stormarknad — dagliga matinköp.',img:'images/Guests/Prodavnica/Maxi.jpg',maps:'https://maps.google.com/?q=Maxi+Trg+Cara+Jovana+Nenada+2+Subotica'},
+          {name:'DM',dist:'',desc:'Hygienbutik — kosmetik, hygien- och hudvårdsprodukter.',img:'images/Guests/Prodavnica/DM.webp',maps:'https://maps.google.com/?q=DM+Korzo+10C+Subotica'}
+        ]},
+        {t:'💊 Apotek',cards:[
+          {name:'Benu Apoteka',dist:'',desc:'Apotek — mediciner, tillskott, kosmetik. Korzo 15.',img:'images/Guests/Apoteka/benu.webp',maps:'https://maps.google.com/?q=Benu+apoteka+Korzo+15+Subotica',phone:'+38124533121'},
+          {name:'Apoteka Subotica No.1 — Centar',dist:'',desc:'Apotek — mediciner och hälsoprodukter.',img:'images/Guests/Apoteka/Apoteka subotica.webp',maps:'https://maps.app.goo.gl/CdQUTjdNhviAKTww8'}
+        ]},
+        {t:'💱 Växlingskontor',cards:[
+          {name:'Box',dist:'',desc:'Växlingskontor — euro, dollar och andra valutor.',img:'images/Guests/Menjacnica/Box.jpg',maps:'https://maps.google.com/?q=Box+menjacnica+Branislava+Nusica+Subotica'},
+          {name:'Euro',dist:'',desc:'Växlingskontor — euro, dollar och andra valutor. Korzo 10b.',img:'images/Guests/Menjacnica/Euro menjačnica.webp',maps:'https://maps.google.com/?q=Euro+menjacnica+Korzo+10b+Subotica'}
+        ]},
+        {t:'🏧 Bankomat',cards:[
+          {name:'Addiko Bank',dist:'',desc:'Bankomat — gratis uttag för Addiko-kort.',img:'images/Guests/Bankomat/Addiko.webp',maps:'https://maps.google.com/?q=Addiko+bank+Korzo+15+Subotica'},
+          {name:'OTP Banka',dist:'',desc:'Bankomat — tillgänglig dygnet runt.',img:'images/Guests/Bankomat/otpbanka.webp',maps:'https://maps.google.com/?q=OTP+banka+Korzo+12+Subotica'},
+          {name:'NLB Banka',dist:'',desc:'Bankomat — tillgänglig dygnet runt.',img:'images/Guests/Bankomat/nlb.webp',maps:'https://maps.google.com/?q=NLB+banka+Korzo+10+Subotica'}
+        ]},
+        {t:'⛽ Bensinstation',cards:[
+          {name:'NIS Petrol',dist:'',desc:'Bensinstation — bränsle, butik och café.',img:'images/Guests/Benzinska/NIS_Petrol_station.webp',maps:'https://maps.google.com/?q=NIS+Petrol+Puskinov+Trg+Subotica'},
+          {name:'MOL',dist:'',desc:'Bensinstation — bränsle och service.',img:'images/Guests/Benzinska/MOL-BS.webp',maps:'https://maps.google.com/?q=MOL+Jovana+Mikica+Subotica'},
+          {name:'OMV',dist:'',desc:'Bensinstation — bränsle, butik och fika.',img:'images/Guests/Benzinska/OMV-logo.webp',maps:'https://maps.google.com/?q=OMV+Beogradski+put+88+Subotica'},
+          {name:'EURO Petrol',dist:'',desc:'Bensinstation — bränsle och service. Segedinski put 76.',img:'images/Guests/Benzinska/Euro petrol.webp',maps:'https://maps.google.com/?q=EURO+Petrol+Segedinski+put+76+Subotica'}
+        ]},
+        {t:'🚂 Järnvägsstation',cards:[
+          {name:'Railway Station Subotica',dist:'100 m',desc:'Järnvägsstation — förbindelser till Belgrad, Novi Sad och internationella linjer.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA',link:'https://w3.srbvoz.rs/redvoznje',linkLabel:'Tidtabell'}
+        ]},
+        {t:'🚌 Busstation',cards:[
+          {name:'Main Bus Station Subotica',dist:'850 m',desc:'Busstation — linjer till hela Serbien och internationella destinationer.',img:'images/Guests/Stanice/Autobuska-stanica.jpg',maps:'https://maps.google.com/?q=Autobuska+stanica+Subotica',link:'https://sutrans.rs/Polasci-i-dolasci.html',linkLabel:'Tidtabell'}
+        ]},
+      ]},
+      {i:'📍',t:'Lokala rekommendationer',subs:[
+        {t:'🍽️ Restauranger & kaféer',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Ett modernt landmärke i Subotica, älskat av gäster i alla åldrar — perfekt för frukost, kaffe och lunch.',img:'images/Guests/Restorani/boss.webp',maps:'https://maps.google.com/?q=Boss+Caffe+Subotica'},
+          {name:'Stara picerija',dist:'100 m',desc:'Serbiens äldsta pizzeria, grundad 1977. Har en fin lekplats — perfekt för barnfamiljer.',img:'images/Guests/Restorani/stara-picerija.webp',maps:'https://maps.google.com/?q=Stara+picerija+Subotica'},
+          {name:'Renaissance',dist:'150 m',desc:'Modern restaurang med ett rikt utbud av italiensk och lokal mat.',img:'images/Guests/Restorani/Renaissance.webp',maps:'https://maps.google.com/?q=Renesansa+restoran+Subotica'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Förstklassiga hamburgare med kött av toppkvalitet, briochebröd, fina ostar och husgjorda såser.',img:'images/Guests/Restorani/fabrika.webp',maps:'https://maps.google.com/?q=Fabrika+Subotica'},
+          {name:'Basch House 1887',dist:'800 m',desc:'Där tradition möter innovation — utsökt mat, äkta drycker och ett stort utbud av craft-öl.',img:'images/Guests/Restorani/basch-house.webp',maps:'https://maps.google.com/?q=Basch+House+Cara+Lazara+Subotica'},
+          {name:'Bates',dist:'300 m',desc:'En traditionell kafana som bevarar tamburica-musikens anda och hemlagad lokal mat.',img:'images/Guests/Restorani/bates.webp',maps:'https://maps.google.com/?q=Bates+Subotica'},
+          {name:'Kafe Priča',dist:'200 m',desc:'Ta en paus, unna er tid med er själva och era vänner — samtalen flyter lätt i detta charmiga café.',img:'images/Guests/Restorani/kafe-prica.webp',maps:'https://maps.google.com/?q=Kafe+Prica+Subotica'},
+          {name:'Mali trg',dist:'400 m',desc:'En charmig fine dining-restaurang i hjärtat av staden — perfekt för speciella stunder.',img:'images/Guests/Restorani/mali-trg.webp',maps:'https://maps.google.com/?q=Mali+trg+Subotica'},
+          {name:'Vinarija Zvonko Bogdan',dist:'10 km',desc:'Vingård i jugendstil vid Palićsjöns strand — guidad vinprovning med utsikt över vingårdarna. Bokning rekommenderas.',img:'images/Guests/Restorani/vinarija-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Vinarija+Zvonko+Bogdan+Subotica'},
+          {name:'Salaš Zvonko Bogdan',dist:'15 km',desc:'Autentisk Vojvodina-gård vid Ludašsjön — hemlagad soppa, långkokta rätter och strudel i lantlig ro.',img:'images/Guests/Restorani/salas-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Salas+Zvonko+Bogdan+Subotica'},
+          {name:'Plaža Bar',dist:'8 km',desc:'Avslappnad bar vid Palić — det perfekta stället för en drink och vila vid sjön.',img:'images/Guests/Restorani/Plaža bar.webp',maps:'https://maps.app.goo.gl/VtGVUF8ceWY4r6xBA'},
+          {name:'Vinarija Petra',dist:'8 km',desc:'Vingård vid Palić — vinprovning i trevlig miljö. 💡 En vacker gångstig leder från Peščana-stranden till vingården, perfekt för en promenad.',img:'images/Guests/Restorani/Vinarija Petra.webp',maps:'https://maps.app.goo.gl/tnoKDWVaCCbiKByQ8'},
+          {name:'Terasa Muški Štrand',dist:'8 km',desc:'Terrass vid Palić nära Muški štrand — mat och dryck med utsikt över sjön.',img:'images/Guests/Restorani/Terasa.webp',maps:'https://maps.app.goo.gl/XmGSrZ8D3xkEmt5M9'}
+        ]},
+        {t:'🏛️ Sevärdheter',cards:[
+          {name:'Stadshuset',dist:'300 m',desc:'Suboticas symbol — en imponerande jugendbyggnad från 1910, ett mästerverk av lokal arkitektur.',img:'images/Guests/Znamenitosti/gradska-kuca.webp',maps:'https://maps.google.com/?q=Subotica+City+Hall'},
+          {name:'Rajhl-palatset',dist:'30 m',desc:'Precis intill lägenheten — en av de finaste pärlorna i Suboticas jugendarv.',img:'images/Guests/Znamenitosti/rajhlova-palata.webp',maps:'https://maps.google.com/?q=Rajhlova+palata+Subotica'},
+          {name:'Stadsmuseet',dist:'600 m',desc:'Grundat 1892 i ett praktfullt jugendpalats — hyser arkeologiska, historiska och etnologiska samlingar.',img:'images/Guests/Znamenitosti/gradski-muzej.webp',maps:'https://maps.google.com/?q=Gradski+muzej+Subotica'},
+          {name:'Porslinsmuseet',dist:'150 m',desc:'Unikt museum i Serbien med över 2000 föremål upp till 200 år gamla — från wienskt och ryskt till jugoslaviskt porslin.',img:'images/Guests/Znamenitosti/muzej-porcelana.webp',maps:'https://maps.google.com/?q=Muzej+porcelana+Subotica'},
+          {name:'Synagogan',dist:'500 m',desc:'En av Europas vackraste synagogor, byggd 1902 i jugendstil — ett sant arkitektoniskt underverk.',img:'images/Guests/Znamenitosti/sinagoga.webp',maps:'https://maps.google.com/?q=Subotica+Synagogue'},
+          {name:'De gamla hantverkens gata',dist:'100 m',desc:'Öppnades 2025 — en charmig passage som återupplivar gamla Suboticas anda med skräddare, urmakare och en skulptur av Zvonko Bogdan.',img:'images/Guests/Znamenitosti/ulica-starih-zanata.webp',maps:'https://maps.google.com/?q=Ulica+Starih+zanata+Subotica'},
+          {name:'Monumentet över tsar Jovan Nenad',dist:'400 m',desc:'En monumental bronstriptyk från 1927, tillägnad den självutnämnde tsar som kortvarigt styrde Subotica 1527.',img:'images/Guests/Znamenitosti/car-jovan-nenad.webp',maps:'https://maps.google.com/?q=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
+          {name:'Monumentet över kung Petar I',dist:'30 m',desc:'En 4,2 meter hög skulptur av Zoran Ivanović, avtäckt 2021 till minne av kung Petar I Karađorđević.',img:'images/Guests/Znamenitosti/spomenik-kralj-petru.webp',maps:'https://maps.google.com/?q=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Palićsjön',dist:'8 km',desc:'Serbiens största naturliga sjö — stränder, park, sportanläggningar och läkande gyttja. Perfekt för en familjeutflykt.',img:'images/Guests/Znamenitosti/palic.webp',maps:'https://maps.google.com/?q=Palic+Lake+Subotica'}
+        ]},
+        {t:'🎭 Nöjen',cards:[
+          {name:'Nationalteatern',dist:'300 m',desc:'Renoverad 2013, med en tradition som går tillbaka till 1854 — den enda teatern i Serbien med serbisk och ungersk ensemble under samma tak. Ett kulturellt landmärke i Subotica.',img:'images/Guests/Zabava/Subotica Narodno pozoriste.webp',maps:'https://maps.google.com/?q=Narodno+pozoriste+Subotica'},
+          {name:'Barnteatern',dist:'400 m',desc:'Teater tillägnad de yngsta — föreställningar på serbiska och ungerska.',img:'images/Guests/Zabava/Decije-pozoriste-4-1170x781.webp',maps:'https://maps.google.com/?q=Decije+pozoriste+Subotica'},
+          {name:'EuroCinema',dist:'200 m',desc:'Modern biograf i centrum — de senaste filmerna på storbild.',img:'images/Guests/Zabava/EuroCinema.webp',maps:'https://maps.google.com/?q=EuroCinema+Subotica'},
+          {name:'Biograf Lifka',dist:'150 m',desc:'Legendarisk biograf öppnad 1913 — en arkitektonisk pärla och kulturell symbol för Subotica.',img:'images/Guests/Zabava/bioskop lifka.webp',maps:'https://maps.google.com/?q=Bioskop+Lifka+Subotica'},
+          {name:'Palić Zoo',dist:'8 km',desc:'Djurpark vid Palić — hem för många djurarter, perfekt för en familjeutflykt.',img:'images/Guests/Zabava/Zoo vrt Palić.webp',maps:'https://maps.google.com/?q=Zooloski+vrt+Palic'}
+        ]},
+        {t:'⚽ Sport',cards:[
+          {name:'Prozivka-bassängen',dist:'1.5 km',desc:'Sport- och rekreationscenter med stor och liten bassäng — betyg 4.5 på Google. Öppettiderna varierar per dag, vi rekommenderar att kolla innan besök.',img:'images/Guests/Sport/Bazen Prozivka.webp',maps:'https://maps.google.com/?q=Bazen+Prozivka+Subotica'},
+          {name:'Dudova šuma-bassängen',dist:'2 km',desc:'Utomhusbassäng i rekreationsparken Dudova šuma.',img:'images/Guests/Sport/Bazen Dudovasuma.webp',maps:'https://maps.google.com/?q=Bazen+Dudova+suma+Subotica'},
+          {name:'Aqua park Palić',dist:'8 km',desc:'Vattenpark vid Palićsjöns strand — rutschkanor, bassänger och nöje för hela familjen.',img:'images/Guests/Sport/Aqua park Palić.webp',maps:'https://maps.google.com/?q=Aqua+park+Palic+Subotica'},
+          {name:'Dudova šuma sporthall',dist:'2 km',desc:'Sporthall för flera ändamål — basket, volleyboll, tennis och andra sporter.',img:'images/Guests/Sport/Hala Sportova.webp',maps:'https://maps.google.com/?q=Hala+sportova+Dudova+suma+Subotica'}
+        ]},
+      ]},
+      {i:'📞',t:'Viktiga telefonnummer',h:EMERGENCY('Polis','Ambulans','Brandkår','Värd Boris')}
     ]
   }
 };

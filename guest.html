@@ -300,8 +300,7 @@
     .guide-footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--border); margin-top: 0.5rem; }
     .guide-footer .heart { color: var(--accent); font-size: 1.3rem; display: block; margin-bottom: 0.65rem; }
     .guide-footer span { font-size: 1rem; color: var(--muted); line-height: 1.6; }
-    #review-lead { font-size: 0.88rem; color: var(--muted); margin-top: 1rem; line-height: 1.5; }
-    .review-btn { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.85rem; background: var(--accent); color: #fff; border-radius: 12px; padding: 0.8rem 1.4rem; font-weight: 700; font-size: 0.95rem; text-decoration: none; box-shadow: 0 2px 8px rgba(139,94,60,0.25); }
+    .review-btn { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.1rem; background: var(--accent); color: #fff; border-radius: 12px; padding: 0.8rem 1.4rem; font-weight: 700; font-size: 0.95rem; text-decoration: none; box-shadow: 0 2px 8px rgba(139,94,60,0.25); }
   </style>
 </head>
 <body>
@@ -387,8 +386,7 @@
   <div class="guide-footer">
     <span class="heart">♥</span>
     <span id="footer-txt"></span>
-    <div id="review-lead"></div>
-    <a id="review-btn" class="review-btn" href="https://g.page/r/CQmP1BHaaBSgEAI/review" target="_blank" rel="noopener">⭐ <span id="review-btn-text"></span></a>
+    <a id="review-btn" class="review-btn" href="https://g.page/r/CQmP1BHaaBSgEAI/review" target="_blank" rel="noopener">⭐⭐⭐⭐⭐ <span id="review-btn-text"></span></a>
   </div>
 </div>
 
@@ -439,24 +437,24 @@ const FB = {
 };
 
 const REVIEW = {
-  sr:{text:'Ako vam se dopao boravak, biće nam drago za kratku ocenu na Google-u!',btn:'Oceni nas na Google-u'},
-  en:{text:'If you enjoyed your stay, we\'d love a quick rating on Google!',btn:'Rate us on Google'},
-  de:{text:'Wenn Ihnen der Aufenthalt gefallen hat, würden wir uns über eine kurze Bewertung auf Google freuen!',btn:'Bei Google bewerten'},
-  it:{text:'Se avete apprezzato il soggiorno, saremmo felici di una breve recensione su Google!',btn:'Valutaci su Google'},
-  ru:{text:'Если вам понравилось проживание, будем рады короткому отзыву в Google!',btn:'Оцените нас в Google'},
-  hr:{text:'Ako vam se svidio boravak, bit će nam drago za kratku ocjenu na Googleu!',btn:'Ocijenite nas na Googleu'},
-  hu:{text:'Ha elégedett volt a tartózkodásával, örülnénk egy rövid Google-értékelésnek!',btn:'Értékeljen minket a Google-on'},
-  zh:{text:'如果您喜欢这次入住，欢迎在谷歌上给我们简短评价！',btn:'在谷歌上给我们评分'},
-  bg:{text:'Ако сте доволни от престоя си, ще се радваме на кратка оценка в Google!',btn:'Оценете ни в Google'},
-  pl:{text:'Jeśli podobał się Wam pobyt, będzie nam miło o krótką ocenę na Google!',btn:'Oceń nas na Google'},
-  es:{text:'Si ha disfrutado su estancia, ¡nos encantaría recibir una breve reseña en Google!',btn:'Califícanos en Google'},
-  mk:{text:'Ако сте задоволни од престојот, ќе ни биде мило за кратка оценка на Google!',btn:'Оценете нè на Google'},
-  sl:{text:'Če vam je bilo pri nas všeč, bomo veseli kratke ocene na Googlu!',btn:'Ocenite nas na Googlu'},
-  ro:{text:'Dacă v-a plăcut șederea, ne-ar face plăcere o scurtă recenzie pe Google!',btn:'Evaluați-ne pe Google'},
-  el:{text:'Αν σας άρεσε η διαμονή σας, θα χαρούμε για μια σύντομη αξιολόγηση στο Google!',btn:'Αξιολογήστε μας στο Google'},
-  fr:{text:'Si vous avez apprécié votre séjour, nous serions ravis d\'un petit avis sur Google !',btn:'Évaluez-nous sur Google'},
-  lt:{text:'Jei jums patiko viešnagė, būtume dėkingi už trumpą įvertinimą Google!',btn:'Įvertinkite mus Google'},
-  sv:{text:'Om ni trivdes hos oss uppskattar vi ett kort omdöme på Google!',btn:'Betygsätt oss på Google'}
+  sr:{btn:'Oceni nas na Google-u'},
+  en:{btn:'Rate us on Google'},
+  de:{btn:'Bei Google bewerten'},
+  it:{btn:'Valutaci su Google'},
+  ru:{btn:'Оцените нас в Google'},
+  hr:{btn:'Ocijenite nas na Googleu'},
+  hu:{btn:'Értékeljen minket a Google-on'},
+  zh:{btn:'在谷歌上给我们评分'},
+  bg:{btn:'Оценете ни в Google'},
+  pl:{btn:'Oceń nas na Google'},
+  es:{btn:'Califícanos en Google'},
+  mk:{btn:'Оценете нè на Google'},
+  sl:{btn:'Ocenite nas na Googlu'},
+  ro:{btn:'Evaluați-ne pe Google'},
+  el:{btn:'Αξιολογήστε μας στο Google'},
+  fr:{btn:'Évaluez-nous sur Google'},
+  lt:{btn:'Įvertinkite mus Google'},
+  sv:{btn:'Betygsätt oss på Google'}
 };
 
 // ── PRVI DOLAZAK (interaktivna kartica) ──
@@ -2856,7 +2854,6 @@ function setLang(lang) {
   }
   document.getElementById('footer-txt').textContent = t.ft;
   const rv = REVIEW[lang] || REVIEW.sr;
-  document.getElementById('review-lead').textContent = rv.text;
   document.getElementById('review-btn-text').textContent = rv.btn;
   document.getElementById('lang-btn').innerHTML = FLAGS[lang] + ' ' + CODES[lang];
   document.getElementById('sections').innerHTML = t.s.map((s,i) => {

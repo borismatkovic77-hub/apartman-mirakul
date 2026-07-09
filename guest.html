@@ -439,7 +439,6 @@ const ARR = {
     autoWarn:'⚠️ Adresa apartmana — <strong>Korzo 15</strong> — nalazi se u pešačkoj zoni, pa vas Google navigacija može odvesti pogrešnim putem do samog ulaza.',
     autoLead:'👉 Zato koristite navigaciju do <strong>Addiko banke</strong> — tu ćemo se naći kada stignete u grad.',
     navBtn:'🧭 Navigacija do Addiko banke',
-    autoNote:'Ako vas navigacija povede ka pešačkoj zoni (Korzo), priđite iz ulice <strong>Đure Đakovića</strong> ili nas pozovite — dočekaćemo vas.',
     autoParking:'Parking najčešće imate <strong>ispred same zgrade, iz ulice Đure Đakovića</strong> (Crvena zona) — odatle je i ulaz u zgradu.',
     autoSms:'<strong>Plaćanje SMS-om</strong> (Crvena zona): pošaljite SMS na <strong>9241</strong> — 70 din/sat, ili <strong>9245</strong> — 480 din/dan (dnevna karta).',
     autoHours:'🕐 Naplata: radnim danima 07–21h · subotom 07–14h · nedeljom i praznicima <strong>besplatno</strong>',
@@ -461,7 +460,6 @@ function arrivalCard(a){
     <div class="arr-q">${a.q}</div>
     <div class="arr-mode" id="arr-auto"><button class="arr-choice" onclick="arrPick('auto')"><span class="arr-ce">🚗</span> ${a.auto} <span class="arr-ar">▾</span></button><div class="arr-panel">
       <div class="arr-warn">${a.autoWarn}</div><p>${a.autoLead}</p>${nav('',a.navBtn)}
-      <div class="arr-row"><span>ℹ️</span><span>${a.autoNote}</span></div>
       <div class="arr-row"><span>🅿️</span><span>${a.autoParking}</span></div>
       <div class="arr-row"><span>💳</span><span>${a.autoSms}</span></div>
       <div class="arr-hours">${a.autoHours}</div></div></div>

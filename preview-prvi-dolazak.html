@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prototip — Prvi dolazak</title>
+<style>
+  :root{ --bg:#f4efe6; --card:#fff; --ink:#2b2118; --muted:#8a7d6b; --accent:#c49a4a; --accent-d:#a97f33; --line:#e7ddcb; --dark:#2a1a0c; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.55;padding:0 0 3rem}
+  header{background:var(--dark);color:#fff;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:.6rem}
+  header .logo{width:30px;height:30px;border-radius:7px;background:var(--accent);color:var(--dark);display:flex;align-items:center;justify-content:center;font-weight:800}
+  header b{font-size:1.05rem;letter-spacing:.01em}
+  .wrap{max-width:640px;margin:1.25rem auto;padding:0 1rem}
+  .note{font-size:.75rem;color:var(--muted);text-align:center;margin:.2rem 0 1rem}
+
+  .acc{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .acc-head{display:flex;align-items:center;gap:.7rem;padding:1.05rem 1.15rem;cursor:pointer;user-select:none}
+  .acc-head .ic{font-size:1.4rem}
+  .acc-head .t{font-weight:700;font-size:1.05rem;flex:1}
+  .acc-head .ar{color:var(--muted);transition:transform .25s}
+  .acc.open .acc-head .ar{transform:rotate(180deg)}
+  .acc-body{display:none;padding:0 1.15rem 1.15rem}
+  .acc.open .acc-body{display:block}
+
+  .q{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:.4rem 0 .7rem}
+  .choices{display:flex;flex-direction:column;gap:.6rem}
+  .choice{display:flex;align-items:center;gap:.7rem;width:100%;text-align:left;background:#fbf7ef;border:1.5px solid var(--line);border-radius:12px;padding:.85rem 1rem;font-size:1rem;font-weight:600;color:var(--ink);cursor:pointer;transition:.15s}
+  .choice:hover{border-color:var(--accent)}
+  .choice.active{background:var(--accent);border-color:var(--accent);color:#fff}
+  .choice .ce{font-size:1.25rem}
+
+  .panel{display:none;margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--line);animation:fade .2s ease}
+  .panel.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .panel p{margin:.55rem 0}
+  .warn{background:#fff4e8;border:1px solid #f0d3a6;border-radius:10px;padding:.7rem .85rem;font-size:.92rem}
+  .row{display:flex;gap:.55rem;align-items:flex-start;margin:.6rem 0;font-size:.95rem}
+  .row .e{flex-shrink:0}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:.75rem 1.1rem;font-size:.95rem;font-weight:700;text-decoration:none;margin:.4rem 0;box-shadow:0 2px 6px rgba(196,154,74,.35)}
+  .btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+  .btn.wa{background:#25d366;box-shadow:0 2px 6px rgba(37,211,102,.35)}
+
+  .checkin{margin-top:1.15rem;background:#fbf7ef;border:1px solid var(--line);border-radius:13px;padding:1rem 1.05rem}
+  .checkin h4{margin:0 0 .5rem;font-size:.95rem}
+  .ci-opt{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;font-size:.95rem}
+  .ci-opt.soon{color:var(--muted)}
+  .tag{font-size:.68rem;font-weight:700;background:var(--line);color:var(--muted);padding:.1rem .45rem;border-radius:20px;margin-left:auto}
+  .price{font-size:.85rem;color:var(--muted);margin-top:.35rem}
+</style>
+</head>
+<body>
+<header><span class="logo">M</span><b>Apartman Mirakul</b></header>
+
+<div class="wrap">
+  <p class="note">🔧 Prototip za testiranje — samo srpski. Klikni karticu pa izaberi način dolaska.</p>
+
+  <div class="acc" id="acc">
+    <div class="acc-head" onclick="document.getElementById('acc').classList.toggle('open')">
+      <span class="ic">🧳</span>
+      <span class="t">Prvi put dolazite kod nas?</span>
+      <span class="ar">▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="q">Kako stižete do nas?</div>
+      <div class="choices">
+        <button class="choice" data-m="auto" onclick="pick('auto')"><span class="ce">🚗</span> Dolazim autom</button>
+        <button class="choice" data-m="voz" onclick="pick('voz')"><span class="ce">🚆</span> Dolazim vozom</button>
+        <button class="choice" data-m="bus" onclick="pick('bus')"><span class="ce">🚌</span> Dolazim autobusom</button>
+      </div>
+
+      <!-- AUTO -->
+      <div class="panel" id="p-auto">
+        <div class="warn">⚠️ <strong>Korzo je pešačka zona</strong> — Google navigacija često pokušava da vas dovede pogrešnim putem do same adrese.</div>
+        <p>👉 Zato koristite navigaciju do <strong>Addiko banke</strong> — tu se nalazimo kada stignete u grad.</p>
+        <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=driving" target="_blank" rel="noopener">🧭 Navigacija do Addiko banke</a>
+        <div class="row"><span class="e">🅿️</span><span>Parking najčešće imate <strong>ispred same zgrade, iz ulice Đure Đakovića</strong> (Crvena zona) — odatle je i ulaz u zgradu.</span></div>
+        <div class="price">💳 Plaćanje: radnim danima 07–21h · subotom 07–14h · nedeljom i praznicima <strong>besplatno</strong></div>
+      </div>
+
+      <!-- VOZ -->
+      <div class="panel" id="p-voz">
+        <p>🚆 Naš apartman je <strong>jedan od najbližih železničkoj stanici</strong> — ne treba vam dodatni prevoz.</p>
+        <div class="row"><span class="e">🌳</span><span>Prolaskom kroz <strong>park Rajhla Ferenca</strong> dolazite do Addiko banke, gde ćemo se naći i zajedno otići do apartmana.</span></div>
+        <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=walking" target="_blank" rel="noopener">🚶 Pešačka navigacija do Addiko banke</a>
+      </div>
+
+      <!-- BUS -->
+      <div class="panel" id="p-bus">
+        <p>🚌 Apartman je na oko <strong>850 metara</strong> od Glavne autobuske stanice.</p>
+        <div class="row"><span class="e">🚕</span><span>Taxi imate <strong>ispred same stanice</strong>. A ako ste raspoloženi za laganu šetnju, veoma lako dolazite do Addiko banke gde ćemo se naći i zajedno otići do apartmana.</span></div>
+        <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=walking" target="_blank" rel="noopener">🚶 Pešačka navigacija do Addiko banke</a>
+      </div>
+
+      <!-- CHECK-IN (zajednički) -->
+      <div class="checkin" id="checkin" style="display:none">
+        <h4>Kada stignete — check-in</h4>
+        <div class="ci-opt"><span>✅</span><span>Javite nam <strong>okvirno vreme dolaska</strong> na WhatsApp — sačekaćemo vas kod Addiko banke, zajedno do apartmana i predajemo ključeve.</span></div>
+        <a class="btn wa" href="https://wa.me/381631168024" target="_blank" rel="noopener">💬 WhatsApp domaćinu</a>
+        <div class="ci-opt soon"><span>🔑</span><span>Self check-in (samostalni ulazak)</span><span class="tag">USKORO</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function pick(m){
+  document.querySelectorAll('.choice').forEach(c=>c.classList.toggle('active', c.dataset.m===m));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('show'));
+  document.getElementById('p-'+m).classList.add('show');
+  document.getElementById('checkin').style.display='block';
+  document.getElementById('checkin').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+</script>
+</body>
+</html>

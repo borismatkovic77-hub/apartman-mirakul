@@ -42,8 +42,11 @@
     .arr-checkin { margin-top:1rem; background:var(--accent-light); border:1px solid var(--border); border-radius:13px; padding:.9rem 1rem; }
     .arr-checkin h4 { margin:0 0 .5rem; font-size:.95rem; color:var(--primary); }
     .arr-mp { margin:.7rem 0; }
-    .arr-mp img { width:100%; border-radius:12px; border:1px solid var(--border); display:block; }
+    .arr-mp img { width:100%; border-radius:12px; border:1px solid var(--border); display:block; cursor:zoom-in; }
     .arr-mp figcaption { font-size:.8rem; color:var(--muted); margin-top:.3rem; text-align:center; }
+    #arr-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:999; align-items:center; justify-content:center; padding:1.5rem; cursor:zoom-out; }
+    #arr-lightbox.open { display:flex; }
+    #arr-lightbox img { max-width:100%; max-height:100%; border-radius:10px; }
     .arr-btns { display:flex; gap:.4rem; margin-top:.5rem; }
     .arr-cbtn { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:.3rem; padding:.55rem .3rem; border-radius:10px; font-size:.8rem; font-weight:700; text-decoration:none; color:#fff; }
     .arr-cbtn svg { width:15px; height:15px; fill:currentColor; flex-shrink:0; }
@@ -469,7 +472,7 @@ function arrivalCard(a){
       <p>${a.busText}</p><div class="arr-row"><span>🚕</span><span>${a.busTaxi}</span></div>${nav('ghost',a.walkBtn)}</div></div>
     <div class="arr-checkin" id="arr-checkin" style="display:none"><h4>${a.ciTitle}</h4>
       <div class="arr-row"><span>⏰</span><span>${a.ciText}</span></div>
-      <figure class="arr-mp"><img src="images/Guests/meeting-point/addiko-banka.jpg" alt="Addiko banka" loading="lazy" onerror="this.closest('.arr-mp').style.display='none'"><figcaption>${a.mpCaption}</figcaption></figure>
+      <figure class="arr-mp"><img src="images/Guests/meeting-point/addiko-banka.jpg" alt="Addiko banka" loading="lazy" onclick="arrLightbox(this.src)" onerror="this.closest('.arr-mp').style.display='none'"><figcaption>${a.mpCaption}</figcaption></figure>
       <div class="arr-btns"><a class="arr-cbtn wa" href="https://wa.me/381631168024">${ARR_WA} WhatsApp</a><a class="arr-cbtn vi" href="viber://chat?number=%2B381631168024">${ARR_VI} Viber</a><a class="arr-cbtn call" href="tel:+381631168024">${ARR_PH} ${a.call}</a></div></div>
   </div>`;
 }
@@ -481,6 +484,19 @@ function arrPick(m){
   const ci=document.getElementById('arr-checkin');
   if(!wasOpen){ el.classList.add('open'); el.querySelector('.arr-panel').appendChild(ci); ci.style.display='block'; setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'nearest'}),60); }
   else { ci.style.display='none'; }
+}
+
+function arrLightbox(src){
+  let lb = document.getElementById('arr-lightbox');
+  if (!lb) {
+    lb = document.createElement('div');
+    lb.id = 'arr-lightbox';
+    lb.innerHTML = '<img>';
+    lb.onclick = () => lb.classList.remove('open');
+    document.body.appendChild(lb);
+  }
+  lb.querySelector('img').src = src;
+  lb.classList.add('open');
 }
 
 const T = {

@@ -300,7 +300,9 @@
     .guide-footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--border); margin-top: 0.5rem; }
     .guide-footer .heart { color: var(--accent); font-size: 1.3rem; display: block; margin-bottom: 0.65rem; }
     .guide-footer span { font-size: 1rem; color: var(--muted); line-height: 1.6; }
-    .review-btn { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.1rem; background: var(--accent); color: #fff; border-radius: 12px; padding: 0.8rem 1.4rem; font-weight: 700; font-size: 0.95rem; text-decoration: none; box-shadow: 0 2px 8px rgba(139,94,60,0.25); }
+    .review-btn { display: inline-flex; flex-direction: column; align-items: center; gap: 0.3rem; margin-top: 1.1rem; background: var(--accent); border-radius: 12px; padding: 0.9rem 1.4rem; text-decoration: none; box-shadow: 0 2px 8px rgba(139,94,60,0.25); }
+    .review-btn .review-stars { font-size: 1.1rem; letter-spacing: 0.1rem; }
+    .review-btn #review-btn-text { color: #fff; font-weight: 700; font-size: 0.95rem; }
   </style>
 </head>
 <body>
@@ -386,7 +388,7 @@
   <div class="guide-footer">
     <span class="heart">♥</span>
     <span id="footer-txt"></span>
-    <a id="review-btn" class="review-btn" href="https://g.page/r/CQmP1BHaaBSgEAI/review" target="_blank" rel="noopener">⭐⭐⭐⭐⭐ <span id="review-btn-text"></span></a>
+    <a id="review-btn" class="review-btn" href="https://g.page/r/CQmP1BHaaBSgEAI/review" target="_blank" rel="noopener"><span class="review-stars">⭐⭐⭐⭐⭐</span><span id="review-btn-text"></span></a>
   </div>
 </div>
 

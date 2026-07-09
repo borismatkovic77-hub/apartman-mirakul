@@ -24,29 +24,34 @@
   .acc.open .acc-body{display:block}
 
   .q{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:.4rem 0 .7rem}
-  .choices{display:flex;flex-direction:column;gap:.6rem}
+
+  /* svaki način = svoj akordeon; panel se otvara tačno ispod dugmeta */
+  .mode{margin-bottom:.6rem}
   .choice{display:flex;align-items:center;gap:.7rem;width:100%;text-align:left;background:#fbf7ef;border:1.5px solid var(--line);border-radius:12px;padding:.85rem 1rem;font-size:1rem;font-weight:600;color:var(--ink);cursor:pointer;transition:.15s}
   .choice:hover{border-color:var(--accent)}
-  .choice.active{background:var(--accent);border-color:var(--accent);color:#fff}
   .choice .ce{font-size:1.25rem}
+  .choice .mar{margin-left:auto;color:var(--muted);transition:transform .25s}
+  .mode.open .choice{background:var(--accent);border-color:var(--accent);color:#fff;border-bottom-left-radius:0;border-bottom-right-radius:0}
+  .mode.open .choice .mar{transform:rotate(180deg);color:#fff}
 
-  .panel{display:none;margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--line);animation:fade .2s ease}
-  .panel.show{display:block}
-  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .panel{display:none;border:1.5px solid var(--accent);border-top:none;border-radius:0 0 12px 12px;padding:1rem 1rem 1.05rem;background:#fffdf9;animation:fade .2s ease}
+  .mode.open .panel{display:block}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
   .panel p{margin:.55rem 0}
+  .panel p:first-child{margin-top:0}
   .warn{background:#fff4e8;border:1px solid #f0d3a6;border-radius:10px;padding:.7rem .85rem;font-size:.92rem}
-  .row{display:flex;gap:.55rem;align-items:flex-start;margin:.6rem 0;font-size:.95rem}
-  .row .e{flex-shrink:0}
+  .rowi{display:flex;gap:.55rem;align-items:flex-start;margin:.65rem 0;font-size:.95rem}
+  .rowi .e{flex-shrink:0}
   .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:.75rem 1.1rem;font-size:.95rem;font-weight:700;text-decoration:none;margin:.4rem 0;box-shadow:0 2px 6px rgba(196,154,74,.35)}
   .btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
   .btn.wa{background:#25d366;box-shadow:0 2px 6px rgba(37,211,102,.35)}
+  .price{font-size:.85rem;color:var(--muted);margin-top:.35rem}
 
   .checkin{margin-top:1.15rem;background:#fbf7ef;border:1px solid var(--line);border-radius:13px;padding:1rem 1.05rem}
   .checkin h4{margin:0 0 .5rem;font-size:.95rem}
   .ci-opt{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;font-size:.95rem}
   .ci-opt.soon{color:var(--muted)}
   .tag{font-size:.68rem;font-weight:700;background:var(--line);color:var(--muted);padding:.1rem .45rem;border-radius:20px;margin-left:auto}
-  .price{font-size:.85rem;color:var(--muted);margin-top:.35rem}
 </style>
 </head>
 <body>
@@ -63,33 +68,37 @@
     </div>
     <div class="acc-body">
       <div class="q">Kako stižete do nas?</div>
-      <div class="choices">
-        <button class="choice" data-m="auto" onclick="pick('auto')"><span class="ce">🚗</span> Dolazim autom</button>
-        <button class="choice" data-m="voz" onclick="pick('voz')"><span class="ce">🚆</span> Dolazim vozom</button>
-        <button class="choice" data-m="bus" onclick="pick('bus')"><span class="ce">🚌</span> Dolazim autobusom</button>
-      </div>
 
       <!-- AUTO -->
-      <div class="panel" id="p-auto">
-        <div class="warn">⚠️ <strong>Korzo je pešačka zona</strong> — Google navigacija često pokušava da vas dovede pogrešnim putem do same adrese.</div>
-        <p>👉 Zato koristite navigaciju do <strong>Addiko banke</strong> — tu se nalazimo kada stignete u grad.</p>
-        <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=driving" target="_blank" rel="noopener">🧭 Navigacija do Addiko banke</a>
-        <div class="row"><span class="e">🅿️</span><span>Parking najčešće imate <strong>ispred same zgrade, iz ulice Đure Đakovića</strong> (Crvena zona) — odatle je i ulaz u zgradu.</span></div>
-        <div class="price">💳 Plaćanje: radnim danima 07–21h · subotom 07–14h · nedeljom i praznicima <strong>besplatno</strong></div>
+      <div class="mode" id="m-auto">
+        <button class="choice" onclick="toggleMode('auto')"><span class="ce">🚗</span> Dolazim autom <span class="mar">▾</span></button>
+        <div class="panel">
+          <div class="warn">⚠️ <strong>Korzo je pešačka zona</strong> — Google navigacija često pokušava da vas dovede pogrešnim putem do same adrese.</div>
+          <p>👉 Zato koristite navigaciju do <strong>Addiko banke</strong> — tu se nalazimo kada stignete u grad.</p>
+          <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=driving" target="_blank" rel="noopener">🧭 Navigacija do Addiko banke</a>
+          <div class="rowi"><span class="e">🅿️</span><span>Parking najčešće imate <strong>ispred same zgrade, iz ulice Đure Đakovića</strong> (Crvena zona) — odatle je i ulaz u zgradu.</span></div>
+          <div class="price">💳 Plaćanje: radnim danima 07–21h · subotom 07–14h · nedeljom i praznicima <strong>besplatno</strong></div>
+        </div>
       </div>
 
       <!-- VOZ -->
-      <div class="panel" id="p-voz">
-        <p>🚆 Naš apartman je <strong>jedan od najbližih železničkoj stanici</strong> — ne treba vam dodatni prevoz.</p>
-        <div class="row"><span class="e">🌳</span><span>Prolaskom kroz <strong>park Rajhla Ferenca</strong> dolazite do Addiko banke, gde ćemo se naći i zajedno otići do apartmana.</span></div>
-        <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=walking" target="_blank" rel="noopener">🚶 Pešačka navigacija do Addiko banke</a>
+      <div class="mode" id="m-voz">
+        <button class="choice" onclick="toggleMode('voz')"><span class="ce">🚆</span> Dolazim vozom <span class="mar">▾</span></button>
+        <div class="panel">
+          <p>🚆 Naš apartman je <strong>jedan od najbližih železničkoj stanici</strong> — ne treba vam dodatni prevoz.</p>
+          <div class="rowi"><span class="e">🌳</span><span>Prolaskom kroz <strong>park Rajhla Ferenca</strong> dolazite do Addiko banke, gde ćemo se naći i zajedno otići do apartmana.</span></div>
+          <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=walking" target="_blank" rel="noopener">🚶 Pešačka navigacija do Addiko banke</a>
+        </div>
       </div>
 
       <!-- BUS -->
-      <div class="panel" id="p-bus">
-        <p>🚌 Apartman je na oko <strong>850 metara</strong> od Glavne autobuske stanice.</p>
-        <div class="row"><span class="e">🚕</span><span>Taxi imate <strong>ispred same stanice</strong>. A ako ste raspoloženi za laganu šetnju, veoma lako dolazite do Addiko banke gde ćemo se naći i zajedno otići do apartmana.</span></div>
-        <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=walking" target="_blank" rel="noopener">🚶 Pešačka navigacija do Addiko banke</a>
+      <div class="mode" id="m-bus">
+        <button class="choice" onclick="toggleMode('bus')"><span class="ce">🚌</span> Dolazim autobusom <span class="mar">▾</span></button>
+        <div class="panel">
+          <p>🚌 Apartman je na oko <strong>850 metara</strong> od Glavne autobuske stanice.</p>
+          <div class="rowi"><span class="e">🚕</span><span>Taxi imate <strong>ispred same stanice</strong>. A ako ste raspoloženi za laganu šetnju, veoma lako dolazite do Addiko banke gde ćemo se naći i zajedno otići do apartmana.</span></div>
+          <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=walking" target="_blank" rel="noopener">🚶 Pešačka navigacija do Addiko banke</a>
+        </div>
       </div>
 
       <!-- CHECK-IN (zajednički) -->
@@ -104,12 +113,13 @@
 </div>
 
 <script>
-function pick(m){
-  document.querySelectorAll('.choice').forEach(c=>c.classList.toggle('active', c.dataset.m===m));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('show'));
-  document.getElementById('p-'+m).classList.add('show');
-  document.getElementById('checkin').style.display='block';
-  document.getElementById('checkin').scrollIntoView({behavior:'smooth',block:'nearest'});
+function toggleMode(m){
+  const el=document.getElementById('m-'+m);
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.mode').forEach(x=>x.classList.remove('open'));
+  if(!wasOpen){ el.classList.add('open'); }
+  const anyOpen=!!document.querySelector('.mode.open');
+  document.getElementById('checkin').style.display = anyOpen ? 'block' : 'none';
 }
 </script>
 </body>

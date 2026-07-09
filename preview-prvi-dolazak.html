@@ -50,8 +50,8 @@
   .checkin{margin-top:1.15rem;background:#fbf7ef;border:1px solid var(--line);border-radius:13px;padding:1rem 1.05rem}
   .checkin h4{margin:0 0 .5rem;font-size:.95rem}
   .ci-opt{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;font-size:.95rem}
-  .ci-opt.soon{color:var(--muted)}
-  .tag{font-size:.68rem;font-weight:700;background:var(--line);color:var(--muted);padding:.1rem .45rem;border-radius:20px;margin-left:auto}
+  .ci-btns{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.3rem}
+  .ci-btns .btn{margin:0}
 </style>
 </head>
 <body>
@@ -105,9 +105,11 @@
       <!-- CHECK-IN (zajednički) -->
       <div class="checkin" id="checkin" style="display:none">
         <h4>Kada stignete — check-in</h4>
-        <div class="ci-opt"><span>✅</span><span>Javite nam <strong>okvirno vreme dolaska</strong> na WhatsApp — sačekaćemo vas kod Addiko banke, zajedno do apartmana i predajemo ključeve.</span></div>
-        <a class="btn wa" href="https://wa.me/381631168024" target="_blank" rel="noopener">💬 WhatsApp domaćinu</a>
-        <div class="ci-opt soon"><span>🔑</span><span>Self check-in (samostalni ulazak)</span><span class="tag">USKORO</span></div>
+        <div class="ci-opt"><span>✅</span><span>Molimo da nam <strong>okvirno vreme dolaska javite ranije</strong> — sačekaćemo vas kod Addiko banke, zajedno do apartmana i predajemo ključeve.</span></div>
+        <div class="ci-btns">
+          <a class="btn wa" href="https://wa.me/381631168024" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a class="btn ghost" href="tel:+381631168024">📞 Pozovi</a>
+        </div>
       </div>
     </div>
   </div>

@@ -449,7 +449,8 @@ const ARR = {
     vozPark:'Prolaskom kroz <strong>park Rajhla Ferenca</strong> dolazite do Addiko banke, gde ćemo se naći i zajedno otići do apartmana.',
     walkBtn:'🧭 Navigacija do Addiko banke',
     busText:'🚌 Apartman je na oko <strong>800 metara</strong> od Glavne autobuske stanice.',
-    busTaxi:'Taxi imate <strong>ispred same stanice</strong>. A ako ste raspoloženi za laganu šetnju, veoma lako dolazite do Addiko banke gde ćemo se naći i zajedno otići do apartmana.',
+    busTaxi:'Taxi imate <strong>ispred same stanice</strong>.',
+    busWalk:'A ako ste raspoloženi za laganu šetnju, veoma lako dolazite do Addiko banke gde ćemo se naći i zajedno otići do apartmana.',
     ciTitle:'Kada stignete — check-in',
     ciText:'<strong>Da biste izbegli čekanje</strong>, javite nam vreme dolaska <strong>ranije</strong>. Sačekaćemo vas <strong>ispred Addiko banke</strong> i zajedno idemo do apartmana, gde vam predajemo ključeve.',
     mpCaption:'📍 Ovde vas čekamo — Addiko banka',
@@ -469,7 +470,7 @@ function arrivalCard(a){
     <div class="arr-mode" id="arr-voz"><button class="arr-choice" onclick="arrPick('voz')"><span class="arr-ce">🚆</span> ${a.voz} <span class="arr-ar">▾</span></button><div class="arr-panel">
       <p>${a.vozText}</p><div class="arr-row"><span>🌳</span><span>${a.vozPark}</span></div>${nav('ghost',a.walkBtn)}</div></div>
     <div class="arr-mode" id="arr-bus"><button class="arr-choice" onclick="arrPick('bus')"><span class="arr-ce">🚌</span> ${a.bus} <span class="arr-ar">▾</span></button><div class="arr-panel">
-      <p>${a.busText}</p><div class="arr-row"><span>🚕</span><span>${a.busTaxi}</span></div>${nav('ghost',a.walkBtn)}</div></div>
+      <p>${a.busText}</p><div class="arr-row"><span>🚕</span><span>${a.busTaxi}</span></div><div class="arr-row"><span>🚶</span><span>${a.busWalk}</span></div>${nav('ghost',a.walkBtn)}</div></div>
     <div class="arr-checkin" id="arr-checkin" style="display:none"><h4>${a.ciTitle}</h4>
       <div class="arr-row"><span>⏰</span><span>${a.ciText}</span></div>
       <figure class="arr-mp"><img src="images/Guests/meeting-point/addiko-banka.jpg" alt="Addiko banka" loading="lazy" onclick="arrLightbox(this.src)" onerror="this.closest('.arr-mp').style.display='none'"><figcaption>${a.mpCaption}</figcaption></figure>

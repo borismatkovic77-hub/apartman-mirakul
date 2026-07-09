@@ -78,7 +78,7 @@
         <div class="panel">
           <div class="warn">⚠️ <strong>Korzo je pešačka zona</strong> — Google navigacija često pokušava da vas dovede pogrešnim putem do same adrese.</div>
           <p>👉 Zato koristite navigaciju do <strong>Addiko banke</strong> — tu ćemo se naći kada stignete u grad.</p>
-          <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=driving" target="_blank" rel="noopener">🧭 Navigacija do Addiko banke</a>
+          <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Addiko+bank+Korzo+15+Subotica&travelmode=driving" target="_blank" rel="noopener">🧭 Navigacija do Addiko banke</a>
           <div class="rowi"><span class="e">🅿️</span><span>Parking najčešće imate <strong>ispred same zgrade, iz ulice Đure Đakovića</strong> (Crvena zona) — odatle je i ulaz u zgradu.</span></div>
           <div class="rowi"><span class="e">💳</span><span><strong>Plaćanje SMS-om</strong> (Crvena zona): pošaljite SMS na <strong>9241</strong> — 70 din/sat, ili <strong>9245</strong> — 480 din/dan (dnevna karta).</span></div>
           <div class="price">🕐 Naplata: radnim danima 07–21h · subotom 07–14h · nedeljom i praznicima <strong>besplatno</strong></div>
@@ -91,7 +91,7 @@
         <div class="panel">
           <p>🚆 Naš apartman je <strong>jedan od najbližih železničkoj stanici</strong> — ne treba vam dodatni prevoz.</p>
           <div class="rowi"><span class="e">🌳</span><span>Prolaskom kroz <strong>park Rajhla Ferenca</strong> dolazite do Addiko banke, gde ćemo se naći i zajedno otići do apartmana.</span></div>
-          <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=walking" target="_blank" rel="noopener">🚶 Pešačka navigacija do Addiko banke</a>
+          <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=Addiko+bank+Korzo+15+Subotica&travelmode=walking" target="_blank" rel="noopener">🚶 Pešačka navigacija do Addiko banke</a>
         </div>
       </div>
 
@@ -101,7 +101,7 @@
         <div class="panel">
           <p>🚌 Apartman je na oko <strong>850 metara</strong> od Glavne autobuske stanice.</p>
           <div class="rowi"><span class="e">🚕</span><span>Taxi imate <strong>ispred same stanice</strong>. A ako ste raspoloženi za laganu šetnju, veoma lako dolazite do Addiko banke gde ćemo se naći i zajedno otići do apartmana.</span></div>
-          <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=4M29%2B9H%20Subotica&travelmode=walking" target="_blank" rel="noopener">🚶 Pešačka navigacija do Addiko banke</a>
+          <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=Addiko+bank+Korzo+15+Subotica&travelmode=walking" target="_blank" rel="noopener">🚶 Pešačka navigacija do Addiko banke</a>
         </div>
       </div>
 
@@ -129,6 +129,7 @@ function toggleMode(m){
     el.classList.add('open');
     el.querySelector('.panel').appendChild(ci);  // check-in ide odmah ispod izabrane opcije
     ci.style.display='block';
+    setTimeout(()=>el.scrollIntoView({behavior:'smooth', block:'start'}), 50); // skroluj na vrh otvorene kartice
   } else {
     ci.style.display='none';
   }

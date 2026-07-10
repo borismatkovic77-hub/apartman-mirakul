@@ -327,7 +327,7 @@
     <button class="lang-btn" onclick="setLang('ro')"><img class="lang-flag" src="https://flagcdn.com/w40/ro.png" alt=""> Română</button>
     <button class="lang-btn" onclick="setLang('bg')"><img class="lang-flag" src="https://flagcdn.com/w40/bg.png" alt=""> Български</button>
     <button class="lang-btn" onclick="setLang('el')"><img class="lang-flag" src="https://flagcdn.com/w40/gr.png" alt=""> Ελληνικά</button>
-    <button class="lang-btn" onclick="setLang('hr')"><img class="lang-flag" src="https://flagcdn.com/w40/hr.png" alt=""> Hrvatski</button>
+    <button class="lang-btn" onclick="setLang('tr')"><img class="lang-flag" src="https://flagcdn.com/w40/tr.png" alt=""> Türkçe</button>
     <button class="lang-btn" onclick="setLang('es')"><img class="lang-flag" src="https://flagcdn.com/w40/es.png" alt=""> Español</button>
     <button class="lang-btn" onclick="setLang('mk')"><img class="lang-flag" src="https://flagcdn.com/w40/mk.png" alt=""> Македонски</button>
     <button class="lang-btn" onclick="setLang('sl')"><img class="lang-flag" src="https://flagcdn.com/w40/si.png" alt=""> Slovenščina</button>
@@ -395,7 +395,7 @@
 <script>
 const FLAGS = {
   sr:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/rs.png" alt="">',
-  hr:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/hr.png" alt="">',
+  tr:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/tr.png" alt="">',
   hu:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/hu.png" alt="">',
   en:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/gb.png" alt="">',
   de:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/de.png" alt="">',
@@ -413,7 +413,7 @@ const FLAGS = {
   lt:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/lt.png" alt="">',
   sv:'<img class="lang-flag-sm" src="https://flagcdn.com/w20/se.png" alt="">'
 };
-const CODES = {sr:'SR',hr:'HR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO',el:'EL',fr:'FR',lt:'LT',sv:'SV'};
+const CODES = {sr:'SR',tr:'TR',hu:'HU',en:'EN',de:'DE',ru:'RU',zh:'ZH',bg:'BG',pl:'PL',it:'IT',es:'ES',mk:'MK',sl:'SL',ro:'RO',el:'EL',fr:'FR',lt:'LT',sv:'SV'};
 
 const EMERGENCY = (p,a,f,h) => `<ul class="item-list"><li><span class="item-label">🚔 ${p}</span><a href="tel:192">192</a></li><li><span class="item-label">🚑 ${a}</span><a href="tel:194">194</a></li><li><span class="item-label">🚒 ${f}</span><a href="tel:193">193</a></li><li><span class="item-label">🚕 Alfa Taxi</span><a href="tel:19788">19788</a></li><li><span class="item-label">📞 ${h}</span><a href="tel:+381631168024">+381 63 116 8024</a></li></ul>`;
 
@@ -423,7 +423,7 @@ const FB = {
   de:{title:'Verbesserungsvorschläge',desc:'Fehlt etwas im Reiseführer? Schreiben Sie uns und wir ergänzen es.',ph:'Ihr Vorschlag oder Kommentar...',btn:'Senden',ok:'✓ Danke! Ihre Nachricht wurde empfangen.'},
   it:{title:'Suggerimenti',desc:'Manca qualcosa nella guida? Fatemelo sapere e lo aggiungeremo.',ph:'Il tuo suggerimento o commento...',btn:'Invia',ok:'✓ Grazie! Il tuo messaggio è stato ricevuto.'},
   ru:{title:'Предложения',desc:'Не хватает информации в путеводителе? Напишите нам, и мы добавим.',ph:'Ваше предложение или комментарий...',btn:'Отправить',ok:'✓ Спасибо! Ваше сообщение получено.'},
-  hr:{title:'Prijedlozi za poboljšanje',desc:'Nedostaje li vam neka informacija u vodiču? Napišite nam da dodamo.',ph:'Vaš prijedlog ili komentar...',btn:'Pošalji',ok:'✓ Hvala! Vaša poruka je primljena.'},
+  tr:{title:'Öneriler',desc:'Rehberde eksik bir bilgi mi var? Bize bildirin, ekleyelim.',ph:'Öneriniz veya yorumunuz...',btn:'Gönder',ok:'✓ Teşekkürler! Mesajınız alındı.'},
   hu:{title:'Javaslatok',desc:'Hiányzik valami az útmutatóból? Írjon nekünk, és hozzáadjuk.',ph:'Javaslata vagy megjegyzése...',btn:'Küldés',ok:'✓ Köszönöm! Üzenete megérkezett.'},
   zh:{title:'建议',desc:'指南中缺少什么信息？请告诉我们，我们会添加。',ph:'您的建议或评论...',btn:'发送',ok:'✓ 谢谢！您的消息已收到。'},
   bg:{title:'Предложения',desc:'Липсва ли нещо в наръчника? Пишете ни и ще добавим.',ph:'Вашето предложение или коментар...',btn:'Изпрати',ok:'✓ Благодарим! Вашето съобщение е получено.'},
@@ -444,7 +444,7 @@ const REVIEW = {
   de:{btn:'Bei Google bewerten'},
   it:{btn:'Valutateci su Google'},
   ru:{btn:'Оцените нас в Google'},
-  hr:{btn:'Ocijenite nas na Googleu'},
+  tr:{btn:'Bizi Google\'da değerlendirin'},
   hu:{btn:'Értékeljen minket a Google-on'},
   zh:{btn:'在谷歌上给我们评分'},
   bg:{btn:'Оценете ни в Google'},
@@ -533,28 +533,28 @@ const ARR = {
     mpCaption:'📍 Hier erwarten wir Sie — Addiko Bank',
     call:'Anrufen'
   },
-  hr:{
-    title:'Prvi put dolazite k nama?',
-    q:'Kako dolazite do nas?',
-    auto:'Dolazim autom',
-    voz:'Dolazim vlakom',
-    bus:'Dolazim autobusom',
-    autoWarn:'⚠️ Adresa apartmana — <strong>Korzo 15</strong> — nalazi se u pješačkoj zoni, pa vas Google navigacija može odvesti pogrešnim putem do samog ulaza.',
-    autoLead:'👉 Zato koristite navigaciju do <strong>Addiko banke</strong> — tu ćemo se naći kada stignete u grad.',
-    navBtn:'🧭 Navigacija do Addiko banke',
-    autoParking:'Parking najčešće imate <strong>ispred same zgrade, u ulici Đure Đakovića</strong> (Crvena zona) — odatle je i ulaz u zgradu.',
-    autoSms:'<strong>Plaćanje SMS-om</strong> (Crvena zona): pošaljite SMS na <strong>9241</strong> — 70 din/sat, ili <strong>9245</strong> — 480 din/dan (dnevna karta). Možete i <strong>kupiti kartu na kiosku</strong>.',
-    autoHours:'🕐 Naplata: radnim danima 07–21h · subotom 07–14h · nedjeljom i praznicima <strong>besplatno</strong>',
-    vozText:'🚆 Naš apartman je <strong>jedan od najbližih željezničkom kolodvoru</strong> — ne treba vam dodatni prijevoz.',
-    vozPark:'Prolaskom kroz <strong>park Rajhla Ferenca</strong> dolazite do Addiko banke, gdje ćemo se naći i zajedno otići do apartmana.',
-    walkBtn:'🧭 Navigacija do Addiko banke',
-    busText:'🚌 Apartman je udaljen oko <strong>800 metara</strong> od Glavnog autobusnog kolodvora.',
-    busTaxi:'Taksi imate <strong>ispred samog kolodvora</strong>.',
-    busWalk:'A ako ste raspoloženi za laganu šetnju, vrlo lako dolazite do Addiko banke gdje ćemo se naći i zajedno otići do apartmana.',
-    ciTitle:'Kada stignete — check-in',
-    ciText:'<strong>Kako biste izbjegli čekanje</strong>, javite nam vrijeme dolaska <strong>unaprijed</strong>. Sačekat ćemo vas <strong>ispred Addiko banke</strong> i zajedno ići do apartmana, gdje vam predajemo ključeve.',
-    mpCaption:'📍 Ovdje vas čekamo — Addiko banka',
-    call:'Nazovi'
+  tr:{
+    title:'Bize ilk kez mi geliyorsunuz?',
+    q:'Bize nasıl geliyorsunuz?',
+    auto:'Arabayla geliyorum',
+    voz:'Trenle geliyorum',
+    bus:'Otobüsle geliyorum',
+    autoWarn:'⚠️ Dairenin adresi — <strong>Korzo 15</strong> — yaya bölgesinde bulunuyor, bu nedenle Google Haritalar sizi girişe yanlış yoldan yönlendirebilir.',
+    autoLead:'👉 Bu yüzden <strong>Addiko Bank\'a</strong> kadar navigasyon kullanın — şehre vardığınızda orada buluşacağız.',
+    navBtn:'🧭 Addiko Bank\'a navigasyon',
+    autoParking:'Otopark genellikle <strong>binanın hemen önünde, Đure Đakovića caddesinde</strong> bulunur (Kırmızı bölge) — bina girişi de oradan.',
+    autoSms:'<strong>SMS ile ödeme</strong> (Kırmızı bölge): <strong>9241</strong> numarasına SMS gönderin — saatlik 70 dinar, veya <strong>9245</strong> — günlük 480 dinar (günlük bilet). Kiosktan bilet de satın alabilirsiniz.',
+    autoHours:'🕐 Ücretli: hafta içi 07–21 · cumartesi 07–14 · pazar ve tatil günleri <strong>ücretsiz</strong>',
+    vozText:'🚆 Dairemiz <strong>tren istasyonuna en yakın dairelerden biri</strong> — ek ulaşıma ihtiyacınız olmayacak.',
+    vozPark:'<strong>Rajhl Ferenc parkından</strong> geçerek Addiko Bank\'a ulaşırsınız, orada buluşup birlikte daireye gideriz.',
+    walkBtn:'🧭 Addiko Bank\'a navigasyon',
+    busText:'🚌 Daire, Ana Otobüs Terminali\'nden yaklaşık <strong>800 metre</strong> uzaklıkta.',
+    busTaxi:'İstasyonun hemen önünde taksi bulabilirsiniz.',
+    busWalk:'Rahat bir yürüyüş yapmak isterseniz, Addiko Bank\'a çok kolay ulaşabilirsiniz, orada buluşup birlikte daireye gideriz.',
+    ciTitle:'Vardığınızda — check-in',
+    ciText:'<strong>Beklemeyi önlemek için</strong>, lütfen varış saatinizi <strong>önceden</strong> bildirin. Sizi <strong>Addiko Bank önünde</strong> karşılayacağız ve birlikte daireye gidip anahtarları teslim edeceğiz.',
+    mpCaption:'📍 Sizi burada bekliyoruz — Addiko Bank',
+    call:'Ara'
   },
   hu:{
     title:'Először jár nálunk?',
@@ -1241,110 +1241,110 @@ const T = {
       {i:'📞',t:'Wichtige Telefonnummern',h:EMERGENCY('Polizei','Notruf / Rettung','Feuerwehr','Gastgeber Boris')}
     ]
   },
-  hr: {
-    wn:'Naziv WiFi mreže', wp:'Lozinka', cp:'Kopiraj', cd:'Kopirano!', call:'Nazovi',
-    ft:'Drago nam je što ste odabrali Apartman Mirakul. Ugodan boravak!',
+  tr: {
+    wn:'WiFi Ağı', wp:'Şifre', cp:'Kopyala', cd:'Kopyalandı!', call:'Ara',
+    ft:'Apartman Mirakul\'u seçtiğiniz için memnunuz. İyi tatiller dileriz!',
     s:[
-      {i:'🧳',t:ARR.hr.title,h:arrivalCard(ARR.hr)},
-      {i:'💡',t:'Vodič kroz apartman',subs:[
-        {t:'🏠 Kućni red',h:`<ul class="bullet-list"><li>🏢 Molimo poštujte mir stanara zgrade</li><li>🌙 Tišina od <strong>22:00 do 08:00</strong></li><li>🥿 Iz higijenskih razloga molimo vas da se po apartmanu <strong>ne krećete u obući</strong> — preporučujemo nošenje papuča</li><li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px;flex-shrink:0"><circle cx="12" cy="12" r="10" fill="none" stroke="#e74c3c" stroke-width="2"/><rect x="4" y="10.5" width="13" height="3" rx="1.5" fill="#666"/><rect x="17" y="10.5" width="3.5" height="3" rx="1" fill="#d4b896"/><line x1="4" y1="4" x2="20" y2="20" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/></svg> Pušenje je <strong>strogo zabranjeno</strong> u apartmanu i zgradi</li><li>🐾 Kućni ljubimci <strong>nisu dozvoljeni</strong></li><li>👥 Maksimalan broj gostiju: <strong>4 osobe</strong></li><li>🚪 Kapija zgrade se zaključava nakon <strong>22:00</strong> — ključ za kapiju priložen je uz ključ od apartmana</li><li>🧹 Molimo ostavite apartman urednim pri odlasku</li></ul>`},
-        {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">do 11:00</div></div></div><div class="guide-tip">🔑 Pri odlasku ostavite ključeve u poštanski sandučić pored ulaznih vrata. Molimo obavijestite domaćina o planiranom vremenu odlaska.</div>`},
-        {t:'ℹ️ Korisno je znati',h:`<div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Topla voda</strong><span>Bojler je uvijek upaljen — topla voda dostupna je odmah.</span></div></div><div class="guide-item"><span class="guide-item-icon">🚿</span><div class="guide-item-text"><strong>Slavina i tuš u kadi</strong><span>Za običan tuš pomerite izlaz za vodu u desnu stranu, a za veliku ružu povucite ručicu na slavini.</span></div></div><div class="guide-item"><span class="guide-item-icon">🪟</span><div class="guide-item-text"><strong>Zamračivanje</strong><span>Pored tamnih zavesa u svim prostorijama se nalaze drvene žaluzine za zamračivanje prostora.</span></div></div><div class="guide-item"><span class="guide-item-icon">🔐</span><div class="guide-item-text"><strong>Zaključavanje vrata</strong><span>Da biste zaključali ulazna vrata, povucite kvaku prema gore pa tek tada okrenite ključ.</span></div></div>`},
-        {t:'⚙️ Uređaji',h:`<div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Philips TV 50"</strong><span>Pritisnite taster <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M3 12L12 3l9 9"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg> HOME za odabir aplikacija — Netflix, YouTube, Iris, Stremio, TiVimate.</span></div></div><div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Klima uređaj</strong><span>Daljinski upravljač nalazi se na polici kod šank stola.<br>⚠️ Strogo je zabranjeno da se prozori drže otvoreni dok je klima uređaj uključen.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Podno grijanje</strong><span>U sezoni uvijek podešeno na 23°C — javljate domaćinu ukoliko je potrebna korekcija.<br>⚠️ Strogo je zabranjeno da se prozori drže otvoreni dok je grejna sezona aktualna.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Perilica rublja i sušilica</strong><span>Upute se nalaze u fioci umivaonika. Deterdžent nije osiguran od strane apartmana.</span></div></div><div class="guide-item"><span class="guide-item-icon">💧</span><div class="guide-item-text"><strong>Ketler</strong><span>Standardno kuvalo za zagrijavanje vode.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Kuvalo za kavu Gorenje</strong><span>Isključivo namijenjeno za kuhanje kave.<br>⚠️ Nemojte stavljati metalnu žličicu ili metalne predmete unutra dok je uređaj uključen.</span></div></div><div class="guide-item"><span class="guide-item-icon">📡</span><div class="guide-item-text"><strong>Mikrovalovna</strong><span>Maksimalna snaga 900W.<br>⚠️ Nikada ne stavljajte metalne predmete unutra.</span></div></div>`},
-        {t:'🅿️ Parkiranje',h:`<div style="display:inline-flex;align-items:center;gap:0.5rem;background:#fff1f0;border:1.5px solid #e74c3c;border-radius:8px;padding:0.4rem 0.85rem;margin-bottom:1rem;"><span style="color:#e74c3c;font-size:0.9rem;">●</span><span style="font-weight:700;font-size:0.9rem;color:#c0392b;">Crvena zona (1) — ispred zgrade</span></div><div class="checkin-row"><div><div class="checkin-label">Radnim danima</div><div class="checkin-time">07:00 – 21:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Subotom</div><div class="checkin-time">07:00 – 14:00</div></div></div><div class="checkin-row" style="border-bottom:none;"><div><div class="checkin-label">Nedjeljom i praznicima</div><div style="font-size:1.55rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em;">Besplatno</div></div></div><div style="margin-top:1.1rem;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:0.6rem;">Plaćanje SMS-om</div><div style="display:flex;flex-direction:column;gap:0.5rem;"><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Po satu</div><div style="font-size:1.1rem;font-weight:800;">9241</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">70 din</div></div><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Dnevna karta</div><div style="font-size:1.1rem;font-weight:800;">9245</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">480 din</div></div></div></div><div class="guide-tip" style="margin-top:0.85rem;">💡 Nakon 21:00 možete unaprijed platiti parkiranje za sutradan — pošaljite SMS na <strong>9245</strong> i jutro je mirno.</div>`}
+      {i:'🧳',t:ARR.tr.title,h:arrivalCard(ARR.tr)},
+      {i:'💡',t:'Daire Rehberi',subs:[
+        {t:'🏠 Ev Kuralları',h:`<ul class="bullet-list"><li>🏢 Lütfen binadaki diğer sakinlere saygı gösterin</li><li>🌙 Sessiz saatler: <strong>22:00–08:00</strong></li><li>🥿 Hijyen nedeniyle, lütfen dairede dış mekan ayakkabılarıyla dolaşmayın — terlik giymenizi öneririz</li><li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px;flex-shrink:0"><circle cx="12" cy="12" r="10" fill="none" stroke="#e74c3c" stroke-width="2"/><rect x="4" y="10.5" width="13" height="3" rx="1.5" fill="#666"/><rect x="17" y="10.5" width="3.5" height="3" rx="1" fill="#d4b896"/><line x1="4" y1="4" x2="20" y2="20" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/></svg> Dairede ve binada sigara içmek <strong>kesinlikle yasaktır</strong></li><li>🐾 Evcil hayvan <strong>kabul edilmez</strong></li><li>👥 Maksimum kapasite: <strong>4 misafir</strong></li><li>🚪 Bina kapısı <strong>22:00</strong>'den sonra kilitlenir — kapı anahtarı, daire anahtarınızla birlikte verilir</li><li>🧹 Ayrılırken lütfen daireyi düzenli bırakın</li></ul>`},
+        {t:'🕐 Check-in / Check-out',h:`<div class="checkin-row"><div><div class="checkin-label">Check-in</div><div class="checkin-time">15:00–23:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Check-out</div><div class="checkin-time">11:00'e kadar</div></div></div><div class="guide-tip">🔑 Check-out sırasında anahtarları giriş kapısının yanındaki posta kutusuna bırakın. Tahmini ayrılış saatinizi ev sahibine bildirin.</div>`},
+        {t:'ℹ️ Bilmekte fayda var',h:`<div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Sıcak su</strong><span>Kombi her zaman açıktır — sıcak su hemen kullanılabilir.</span></div></div><div class="guide-item"><span class="guide-item-icon">🚿</span><div class="guide-item-text"><strong>Küvet musluğu ve duş</strong><span>Normal duş için su çıkışını sağa kaydırın. Tepe duşu için musluktaki kolu çekin.</span></div></div><div class="guide-item"><span class="guide-item-icon">🪟</span><div class="guide-item-text"><strong>Karartma perdeleri</strong><span>Tüm odalarda karartma için ahşap panjurlar bulunmaktadır.</span></div></div><div class="guide-item"><span class="guide-item-icon">🔐</span><div class="guide-item-text"><strong>Kapı kilidi</strong><span>Giriş kapısını kilitlemek için önce kolu yukarı çekin, ardından anahtarı çevirin.</span></div></div>`},
+        {t:'⚙️ Cihazlar',h:`<div class="guide-item"><span class="guide-item-icon">📺</span><div class="guide-item-text"><strong>Philips TV 50"</strong><span>Uygulama seçmek için <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M3 12L12 3l9 9"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg> HOME'a basın — Netflix, YouTube, Iris, Stremio, TiVimate.</span></div></div><div class="guide-item"><span class="guide-item-icon">❄️</span><div class="guide-item-text"><strong>Klima</strong><span>Uzaktan kumanda bar masasının yanındaki rafta.<br>⚠️ Klima çalışırken pencerelerin açık tutulması kesinlikle yasaktır.</span></div></div><div class="guide-item"><span class="guide-item-icon">🌡️</span><div class="guide-item-text"><strong>Yerden ısıtma</strong><span>Sezon boyunca 23°C'ye ayarlıdır — ayar gerekirse ev sahibiyle iletişime geçin.<br>⚠️ Isıtma sezonunda pencerelerin açık tutulması kesinlikle yasaktır.</span></div></div><div class="guide-item"><span class="guide-item-icon">🧺</span><div class="guide-item-text"><strong>Çamaşır makinesi ve kurutucu</strong><span>Talimatlar banyo çekmecesinde. Deterjan daire tarafından sağlanmaz.</span></div></div><div class="guide-item"><span class="guide-item-icon">💧</span><div class="guide-item-text"><strong>Su ısıtıcısı</strong><span>Standart elektrikli su ısıtıcısı.</span></div></div><div class="guide-item"><span class="guide-item-icon">☕</span><div class="guide-item-text"><strong>Gorenje kahve makinesi</strong><span>Yalnızca kahve pişirmek için.<br>⚠️ Cihaz çalışırken içine metal kaşık veya metal cisim koymayın.</span></div></div><div class="guide-item"><span class="guide-item-icon">📡</span><div class="guide-item-text"><strong>Mikrodalga</strong><span>Maksimum güç 900W.<br>⚠️ İçine asla metal cisim koymayın.</span></div></div>`},
+        {t:'🅿️ Otopark',h:`<div style="display:inline-flex;align-items:center;gap:0.5rem;background:#fff1f0;border:1.5px solid #e74c3c;border-radius:8px;padding:0.4rem 0.85rem;margin-bottom:1rem;"><span style="color:#e74c3c;font-size:0.9rem;">●</span><span style="font-weight:700;font-size:0.9rem;color:#c0392b;">Kırmızı bölge (1) — binanın önünde</span></div><div class="checkin-row"><div><div class="checkin-label">Hafta içi</div><div class="checkin-time">07:00 – 21:00</div></div></div><div class="checkin-row"><div><div class="checkin-label">Cumartesi</div><div class="checkin-time">07:00 – 14:00</div></div></div><div class="checkin-row" style="border-bottom:none;"><div><div class="checkin-label">Pazar ve tatil günleri</div><div style="font-size:1.55rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em;">Ücretsiz</div></div></div><div style="margin-top:1.1rem;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:0.6rem;">SMS ile ödeme</div><div style="display:flex;flex-direction:column;gap:0.5rem;"><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Saatlik</div><div style="font-size:1.1rem;font-weight:800;">9241</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">70 RSD</div></div><div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.1rem;">Günlük bilet</div><div style="font-size:1.1rem;font-weight:800;">9245</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--accent);">480 RSD</div></div></div></div><div class="guide-tip" style="margin-top:0.85rem;">💡 21:00'den sonra ertesi günün otoparkını önceden ödeyebilirsiniz — <strong>9245</strong> numarasına SMS gönderin, sabahınız hazır olsun.</div>`}
       ]},
-      {i:'🛎️',t:'Ako vam treba...',subs:[
+      {i:'🛎️',t:'İhtiyacınız olursa...',subs:[
         {t:'🚕 Taksi',cards:[
-          {name:'Alfa Taxi',dist:'⭐ 4.1',desc:'Pouzdana taksi služba — dostupna 24/7. Đure Đakovića.',emoji:'🚕',phone:'0642015800'},
-          {name:'Pink Taxi',dist:'⭐ 5.0',desc:'Taksi služba — Branislava Nušića bb.',emoji:'🚕',phone:'0644685329'},
-          {name:'Meče Taxi',dist:'⭐ 4.5',desc:'Taksi služba — Lajoša Joaneša.',emoji:'🚕',phone:'0656806700'},
-          {name:'Taxi 9',dist:'⭐ 4.3',desc:'Taksi služba — Vatroslava Lisinskog.',emoji:'🚕',phone:'0659999560'},
-          {name:'Prozivka Taxi',dist:'⭐ 4.2',desc:'Taksi služba — Nade Dimić.',emoji:'🚕',phone:'0659765000'},
-          {name:'Ekonomik Taxi',dist:'⭐ 4.2',desc:'Taksi služba — Matije Gupca 2.',emoji:'🚕',phone:'0637440004'},
-          {name:'Yu Taxi',dist:'⭐ 3.8',desc:'Taksi služba — radi 24h, Štrosmajerova.',emoji:'🚕',phone:'0655559761'},
-          {name:'Omega Taxi',dist:'⭐ 3.1',desc:'Taksi služba Subotica.',emoji:'🚕',phone:'024559911'}
+          {name:'Alfa Taxi',dist:'⭐ 4.1',desc:'Güvenilir taksi hizmeti — 7/24 hizmet vermektedir. Đure Đakovića.',phone:'0642015800',emoji:'🚕'},
+          {name:'Pink Taxi',dist:'⭐ 5.0',desc:'Taksi hizmeti — Branislava Nušića bb.',phone:'0644685329',emoji:'🚕'},
+          {name:'Meče Taxi',dist:'⭐ 4.5',desc:'Taksi hizmeti — Lajoša Joaneša.',phone:'0656806700',emoji:'🚕'},
+          {name:'Taxi 9',dist:'⭐ 4.3',desc:'Taksi hizmeti — Vatroslava Lisinskog.',phone:'0659999560',emoji:'🚕'},
+          {name:'Prozivka Taxi',dist:'⭐ 4.2',desc:'Taksi hizmeti — Nade Dimić.',phone:'0659765000',emoji:'🚕'},
+          {name:'Ekonomik Taxi',dist:'⭐ 4.2',desc:'Taksi hizmeti — Matije Gupca 2.',phone:'0637440004',emoji:'🚕'},
+          {name:'Yu Taxi',dist:'⭐ 3.8',desc:'Taksi hizmeti — 24 saat açık, Štrosmajerova.',phone:'0655559761',emoji:'🚕'},
+          {name:'Omega Taxi',dist:'⭐ 3.1',desc:'Subotica taksi hizmeti.',phone:'024559911',emoji:'🚕'}
         ]},
-        {t:'🛵 Dostava hrane',cards:[
-          {name:'Boss Caffe',dist:'50 m',desc:'Dostava hrane i pića — kontaktirajte izravno za narudžbu.',img:'images/Guests/Restorani/boss.webp',phone:'024551111'},
-          {name:'Renaissance',dist:'150 m',desc:'Dostava talijanske i domaće kuhinje.',img:'images/Guests/Restorani/Renaissance.webp',phone:'024555001'},
-          {name:'Street Pica',dist:'',desc:'Dostava pizze — brzo i ukusno.',img:'images/Guests/Dostava/Street pica.webp',phone:'0640907040'},
-          {name:'Walter',dist:'',desc:'Dostava hrane — raznolika ponuda jela.',img:'images/Guests/Dostava/Walter.webp',phone:'0631011000'},
-          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Dostava vrhunskih burgera — premium meso, brioche pecivo i domaći umaci.',img:'images/Guests/Dostava/fabrika.webp',phone:'0649593674'}
+        {t:'🛵 Yemek teslimatı',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Yemek ve içecek teslimatı — sipariş için doğrudan iletişime geçin.',img:'images/Guests/Restorani/boss.webp',phone:'024551111'},
+          {name:'Renaissance',dist:'150 m',desc:'İtalyan ve yerel mutfak teslimatı.',img:'images/Guests/Restorani/Renaissance.webp',phone:'024555001'},
+          {name:'Street Pica',dist:'',desc:'Pizza teslimatı — hızlı ve lezzetli.',img:'images/Guests/Dostava/Street pica.webp',phone:'0640907040'},
+          {name:'Walter',dist:'',desc:'Yemek teslimatı — geniş yemek çeşitleri.',img:'images/Guests/Dostava/Walter.webp',phone:'0631011000'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Premium burger teslimatı — kaliteli et, brioche ekmek ve ev yapımı soslar.',img:'images/Guests/Dostava/fabrika.webp',phone:'0649593674'}
         ]},
-        {t:'🛒 Trgovina',cards:[
-          {name:'Idea',dist:'',desc:'Supermarket — bogata ponuda prehrambenih i neprehrambenih proizvoda.',img:'images/Guests/Prodavnica/Idea.png',maps:'https://maps.google.com/?q=Idea+Korzo+13+Subotica'},
-          {name:'Lidl',dist:'',desc:'Supermarket — kvalitetni proizvodi po pristupačnim cijenama.',img:'images/Guests/Prodavnica/lidl.avif',maps:'https://maps.google.com/?q=Lidl+Pala+Papa+1+Subotica'},
-          {name:'Maxi',dist:'',desc:'Supermarket — svakodnevna nabava namirnica.',img:'images/Guests/Prodavnica/Maxi.jpg',maps:'https://maps.google.com/?q=Maxi+Trg+Cara+Jovana+Nenada+2+Subotica'},
-          {name:'DM',dist:'',desc:'Drogerija — kozmetika, higijena i proizvodi za njegu.',img:'images/Guests/Prodavnica/DM.webp',maps:'https://maps.google.com/?q=DM+Korzo+10C+Subotica'}
+        {t:'🛒 Market',cards:[
+          {name:'Idea',dist:'',desc:'Süpermarket — geniş gıda ve ev ürünleri yelpazesi.',img:'images/Guests/Prodavnica/Idea.png',maps:'https://maps.google.com/?q=Idea+Korzo+13+Subotica'},
+          {name:'Lidl',dist:'',desc:'Süpermarket — uygun fiyatlarla kaliteli ürünler.',img:'images/Guests/Prodavnica/lidl.avif',maps:'https://maps.google.com/?q=Lidl+Pala+Papa+1+Subotica'},
+          {name:'Maxi',dist:'',desc:'Süpermarket — günlük market alışverişi.',img:'images/Guests/Prodavnica/Maxi.jpg',maps:'https://maps.google.com/?q=Maxi+Trg+Cara+Jovana+Nenada+2+Subotica'},
+          {name:'DM',dist:'',desc:'Drogeri — kozmetik, hijyen ve bakım ürünleri.',img:'images/Guests/Prodavnica/DM.webp',maps:'https://maps.google.com/?q=DM+Korzo+10C+Subotica'}
         ]},
-        {t:'💊 Ljekarna',cards:[
-          {name:'Benu Apoteka',dist:'',desc:'Ljekarna — lijekovi, dodaci prehrani, kozmetika. Korzo 15.',img:'images/Guests/Apoteka/benu.webp',maps:'https://maps.google.com/?q=Benu+apoteka+Korzo+15+Subotica',phone:'+38124533121'},
-          {name:'Apoteka Subotica No.1 — Centar',dist:'',desc:'Ljekarna — lijekovi i zdravstveni proizvodi.',img:'images/Guests/Apoteka/Apoteka subotica.webp',maps:'https://maps.app.goo.gl/CdQUTjdNhviAKTww8'}
+        {t:'💊 Eczane',cards:[
+          {name:'Benu Apoteka',dist:'',desc:'Eczane — ilaç, takviye, kozmetik. Korzo 15.',img:'images/Guests/Apoteka/benu.webp',maps:'https://maps.google.com/?q=Benu+apoteka+Korzo+15+Subotica',phone:'+38124533121'},
+          {name:'Apoteka Subotica No.1 — Centar',dist:'',desc:'Eczane — ilaç ve sağlık ürünleri.',img:'images/Guests/Apoteka/Apoteka subotica.webp',maps:'https://maps.app.goo.gl/CdQUTjdNhviAKTww8'}
         ]},
-        {t:'💱 Mjenjačnica',cards:[
-          {name:'Box',dist:'',desc:'Mjenjačnica — euri, dolari i ostale valute.',img:'images/Guests/Menjacnica/Box.jpg',maps:'https://maps.google.com/?q=Box+menjacnica+Branislava+Nusica+Subotica'},
-          {name:'Euro',dist:'',desc:'Mjenjačnica — euri, dolari i ostale valute. Korzo 10b.',img:'images/Guests/Menjacnica/Euro menjačnica.webp',maps:'https://maps.google.com/?q=Euro+menjacnica+Korzo+10b+Subotica'}
+        {t:'💱 Döviz bürosu',cards:[
+          {name:'Box',dist:'',desc:'Döviz bürosu — euro, dolar ve diğer para birimleri.',img:'images/Guests/Menjacnica/Box.jpg',maps:'https://maps.google.com/?q=Box+menjacnica+Branislava+Nusica+Subotica'},
+          {name:'Euro',dist:'',desc:'Döviz bürosu — euro, dolar ve diğer para birimleri. Korzo 10b.',img:'images/Guests/Menjacnica/Euro menjačnica.webp',maps:'https://maps.google.com/?q=Euro+menjacnica+Korzo+10b+Subotica'}
         ]},
-        {t:'🏧 Bankomat',cards:[
-          {name:'Addiko Bank',dist:'',desc:'Bankomat — podizanje gotovine bez naknade za Addiko kartice.',img:'images/Guests/Bankomat/Addiko.webp',maps:'https://maps.google.com/?q=Addiko+bank+Korzo+15+Subotica'},
-          {name:'OTP Banka',dist:'',desc:'Bankomat — dostupan 24/7.',img:'images/Guests/Bankomat/otpbanka.webp',maps:'https://maps.google.com/?q=OTP+banka+Korzo+12+Subotica'},
-          {name:'NLB Banka',dist:'',desc:'Bankomat — dostupan 24/7.',img:'images/Guests/Bankomat/nlb.webp',maps:'https://maps.google.com/?q=NLB+banka+Korzo+10+Subotica'}
+        {t:'🏧 ATM',cards:[
+          {name:'Addiko Bank',dist:'',desc:'ATM — Addiko kartları için ücretsiz para çekme.',img:'images/Guests/Bankomat/Addiko.webp',maps:'https://maps.google.com/?q=Addiko+bank+Korzo+15+Subotica'},
+          {name:'OTP Banka',dist:'',desc:'ATM — 7/24 kullanılabilir.',img:'images/Guests/Bankomat/otpbanka.webp',maps:'https://maps.google.com/?q=OTP+banka+Korzo+12+Subotica'},
+          {name:'NLB Banka',dist:'',desc:'ATM — 7/24 kullanılabilir.',img:'images/Guests/Bankomat/nlb.webp',maps:'https://maps.google.com/?q=NLB+banka+Korzo+10+Subotica'}
         ]},
-        {t:'⛽ Benzinska postaja',cards:[
-          {name:'NIS Petrol',dist:'',desc:'Benzinska postaja — gorivo, trgovina i kafić.',img:'images/Guests/Benzinska/NIS_Petrol_station.webp',maps:'https://maps.google.com/?q=NIS+Petrol+Puskinov+Trg+Subotica'},
-          {name:'MOL',dist:'',desc:'Benzinska postaja — gorivo i prateći sadržaji.',img:'images/Guests/Benzinska/MOL-BS.webp',maps:'https://maps.google.com/?q=MOL+Jovana+Mikica+Subotica'},
-          {name:'OMV',dist:'',desc:'Benzinska postaja — gorivo, trgovina i okrepa.',img:'images/Guests/Benzinska/OMV-logo.webp',maps:'https://maps.google.com/?q=OMV+Beogradski+put+88+Subotica'},
-          {name:'EURO Petrol',dist:'',desc:'Benzinska postaja — gorivo i prateći sadržaji. Segedinski put 76.',img:'images/Guests/Benzinska/Euro petrol.webp',maps:'https://maps.google.com/?q=EURO+Petrol+Segedinski+put+76+Subotica'}
+        {t:'⛽ Benzin istasyonu',cards:[
+          {name:'NIS Petrol',dist:'',desc:'Benzin istasyonu — yakıt, market ve kafe.',img:'images/Guests/Benzinska/NIS_Petrol_station.webp',maps:'https://maps.google.com/?q=NIS+Petrol+Puskinov+Trg+Subotica'},
+          {name:'MOL',dist:'',desc:'Benzin istasyonu — yakıt ve olanaklar.',img:'images/Guests/Benzinska/MOL-BS.webp',maps:'https://maps.google.com/?q=MOL+Jovana+Mikica+Subotica'},
+          {name:'OMV',dist:'',desc:'Benzin istasyonu — yakıt, market ve atıştırmalıklar.',img:'images/Guests/Benzinska/OMV-logo.webp',maps:'https://maps.google.com/?q=OMV+Beogradski+put+88+Subotica'},
+          {name:'EURO Petrol',dist:'',desc:'Benzin istasyonu — yakıt ve olanaklar. Segedinski put 76.',img:'images/Guests/Benzinska/Euro petrol.webp',maps:'https://maps.google.com/?q=EURO+Petrol+Segedinski+put+76+Subotica'}
         ]},
-        {t:'🚂 Željeznički kolodvor',cards:[
-          {name:'Željeznički kolodvor Subotica',dist:'100 m',desc:'Željeznički kolodvor — veze za Beograd, Novi Sad i međunarodne linije.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA',link:'https://w3.srbvoz.rs/redvoznje',linkLabel:'Vozni red'}
+        {t:'🚂 Tren istasyonu',cards:[
+          {name:'Železnička stanica Subotica',dist:'100 m',desc:'Tren istasyonu — Belgrad, Novi Sad ve uluslararası hatlara bağlantılar.',img:'images/Guests/Stanice/Zeleznicka stanica.webp',maps:'https://maps.app.goo.gl/HLV5CKc4NRJgSp1QA',link:'https://w3.srbvoz.rs/redvoznje',linkLabel:'Tarife'}
         ]},
-        {t:'🚌 Autobusni kolodvor',cards:[
-          {name:'Glavni autobusni kolodvor Subotica',dist:'850 m',desc:'Autobusni kolodvor — linije za cijelu Srbiju i međunarodne destinacije.',img:'images/Guests/Stanice/Autobuska-stanica.jpg',maps:'https://maps.google.com/?q=Autobuska+stanica+Subotica',link:'https://sutrans.rs/Polasci-i-dolasci.html',linkLabel:'Vozni red'}
+        {t:'🚌 Otobüs terminali',cards:[
+          {name:'Glavna Autobuska stanica Subotica',dist:'850 m',desc:'Otobüs terminali — tüm Sırbistan ve uluslararası hatlara seferler.',img:'images/Guests/Stanice/Autobuska-stanica.jpg',maps:'https://maps.google.com/?q=Autobuska+stanica+Subotica',link:'https://sutrans.rs/Polasci-i-dolasci.html',linkLabel:'Tarife'}
         ]}
       ]},
-      {i:'📍',t:'Lokalne preporuke',subs:[
-        {t:'🍽️ Restorani i kafići',cards:[
-          {name:'Boss Caffe',dist:'50 m',desc:'Moderna institucija Subotice, omiljena kod gostiju svih generacija — odlično za doručak, kavu i ručak.',img:'images/Guests/Restorani/boss.webp',maps:'https://maps.google.com/?q=Boss+Caffe+Subotica'},
-          {name:'Stara picerija',dist:'100 m',desc:'Najstarija pizzeria u Srbiji, osnovana 1977. godine. Ima prelijepo dječje igralište — savršeno za obitelji s djecom.',img:'images/Guests/Restorani/stara-picerija.webp',maps:'https://maps.google.com/?q=Stara+picerija+Subotica'},
-          {name:'Renaissance',dist:'150 m',desc:'Moderan restoran s bogatom ponudom talijanske i domaće kuhinje.',img:'images/Guests/Restorani/Renaissance.webp',maps:'https://maps.google.com/?q=Renesansa+restoran+Subotica'},
-          {name:'Fabrika Burger Bar',dist:'30 m',desc:'Burgeri su prava gastronomska kreacija — vrhunski komadi mesa, brioche pecivo, odabrani sirevi i domaći umaci.',img:'images/Guests/Restorani/fabrika.webp',maps:'https://maps.google.com/?q=Fabrika+Subotica'},
-          {name:'Basch House 1887',dist:'800 m',desc:'Mjesto gdje se tradicija susreće s inovacijom — izvrsna hrana, autentična pića i bogat izbor craft piva.',img:'images/Guests/Restorani/basch-house.webp',maps:'https://maps.google.com/?q=Basch+House+Cara+Lazara+Subotica'},
-          {name:'Bates',dist:'300 m',desc:'Kafana koja čuva uspomene na tamburaše i domaću lokalnu kuhinju.',img:'images/Guests/Restorani/bates.webp',maps:'https://maps.google.com/?q=Bates+Subotica'},
-          {name:'Kafe Priča',dist:'200 m',desc:'Zastanite, odvojite malo vremena za sebe i prijatelje — razgovor teče lako u ovom lijepom lokalu.',img:'images/Guests/Restorani/kafe-prica.webp',maps:'https://maps.google.com/?q=Kafe+Prica+Subotica'},
-          {name:'Mali trg',dist:'400 m',desc:'Simpatičan fine dining restoran u srcu Subotice — savršeno za posebne trenutke.',img:'images/Guests/Restorani/mali-trg.webp',maps:'https://maps.google.com/?q=Mali+trg+Subotica'},
-          {name:'Vinarija Zvonko Bogdan',dist:'10 km',desc:'Vinarija na obali Palićkog jezera u secesijskom stilu — degustacija vina uz stručnog vodiča i pogled na vinograde. Preporučuje se rezervacija.',img:'images/Guests/Restorani/vinarija-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Vinarija+Zvonko+Bogdan+Subotica'},
-          {name:'Salaš Zvonko Bogdan',dist:'15 km',desc:'Autentični vojvođanski salaš na obali jezera Ludaš — domaća juha, jela iz pećnice i štrukle u tišini.',img:'images/Guests/Restorani/salas-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Salas+Zvonko+Bogdan+Subotica'},
-          {name:'Plaža Bar',dist:'8 km',desc:'Opušten bar na Paliću — savršeno mjesto za piće i odmor uz jezero.',img:'images/Guests/Restorani/Plaža bar.webp',maps:'https://maps.app.goo.gl/VtGVUF8ceWY4r6xBA'},
-          {name:'Vinarija Petra',dist:'8 km',desc:'Vinarija na Paliću — degustacija vina u ugodnom ambijentu. 💡 Od Pješčane plaže do vinarije vodi lijepa pješačka staza, idealna za šetnju.',img:'images/Guests/Restorani/Vinarija Petra.webp',maps:'https://maps.app.goo.gl/tnoKDWVaCCbiKByQ8'},
-          {name:'Terasa Muški Štrand',dist:'8 km',desc:'Terasa na Paliću kod Muškog štranda — hrana i piće uz pogled na jezero.',img:'images/Guests/Restorani/Terasa.webp',maps:'https://maps.app.goo.gl/XmGSrZ8D3xkEmt5M9'}
+      {i:'📍',t:'Yerel Öneriler',subs:[
+        {t:'🍽️ Restoranlar ve kafeler',cards:[
+          {name:'Boss Caffe',dist:'50 m',desc:'Subotica\'nın modern simgesi, her yaştan misafirin sevgisini kazanmış — kahvaltı, kahve ve öğle yemeği için ideal.',img:'images/Guests/Restorani/boss.webp',maps:'https://maps.google.com/?q=Boss+Caffe+Subotica'},
+          {name:'Stara picerija',dist:'100 m',desc:'Sırbistan\'ın en eski pizzacısı, 1977\'de kuruldu. Güzel bir çocuk oyun alanı var — çocuklu aileler için mükemmel.',img:'images/Guests/Restorani/stara-picerija.webp',maps:'https://maps.google.com/?q=Stara+picerija+Subotica'},
+          {name:'Renaissance',dist:'150 m',desc:'Zengin İtalyan ve yerel mutfak seçenekleri sunan modern restoran.',img:'images/Guests/Restorani/Renaissance.webp',maps:'https://maps.google.com/?q=Renesansa+restoran+Subotica'},
+          {name:'Fabrika Burger Bar',dist:'30 m',desc:'En kaliteli etler, brioche ekmek, seçkin peynirler ve ev yapımı soslarla premium burgerler.',img:'images/Guests/Restorani/fabrika.webp',maps:'https://maps.google.com/?q=Fabrika+Subotica'},
+          {name:'Basch House 1887',dist:'800 m',desc:'Geleneğin yenilikle buluştuğu yer — mükemmel yemekler, otantik içecekler ve zengin craft bira seçkisi.',img:'images/Guests/Restorani/basch-house.webp',maps:'https://maps.google.com/?q=Basch+House+Cara+Lazara+Subotica'},
+          {name:'Bates',dist:'300 m',desc:'Tamburica müziğinin ve yöresel ev yemeklerinin ruhunu koruyan geleneksel bir kafana.',img:'images/Guests/Restorani/bates.webp',maps:'https://maps.google.com/?q=Bates+Subotica'},
+          {name:'Kafe Priča',dist:'200 m',desc:'Bir mola verin, kendinize ve arkadaşlarınıza zaman ayırın — bu şirin kafede sohbetler kolayca akar.',img:'images/Guests/Restorani/kafe-prica.webp',maps:'https://maps.google.com/?q=Kafe+Prica+Subotica'},
+          {name:'Mali trg',dist:'400 m',desc:'Şehrin kalbinde büyüleyici bir fine dining restoranı — özel anlar için mükemmel.',img:'images/Guests/Restorani/mali-trg.webp',maps:'https://maps.google.com/?q=Mali+trg+Subotica'},
+          {name:'Vinarija Zvonko Bogdan',dist:'10 km',desc:'Palić gölü kıyısında Art Nouveau tarzı şaraphane — bağlara bakan manzarayla rehberli şarap tadımı. Rezervasyon önerilir.',img:'images/Guests/Restorani/vinarija-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Vinarija+Zvonko+Bogdan+Subotica'},
+          {name:'Salaš Zvonko Bogdan',dist:'15 km',desc:'Ludaš Gölü kıyısında otantik Voyvodina çiftliği — ev yapımı çorba, ağır ateşte pişmiş yemekler ve kırsal huzurda strudel.',img:'images/Guests/Restorani/salas-zvonko-bogdan.webp',maps:'https://maps.google.com/?q=Salas+Zvonko+Bogdan+Subotica'},
+          {name:'Plaža Bar',dist:'8 km',desc:'Palić\'te rahat bir bar — göl kenarında bir içki ve dinlenme için mükemmel yer.',img:'images/Guests/Restorani/Plaža bar.webp',maps:'https://maps.app.goo.gl/VtGVUF8ceWY4r6xBA'},
+          {name:'Vinarija Petra',dist:'8 km',desc:'Palić\'te şaraphane — keyifli bir ortamda şarap tadımı. 💡 Peščana plajından şaraphaneye güzel bir yürüyüş yolu uzanır, yürüyüş için ideal.',img:'images/Guests/Restorani/Vinarija Petra.webp',maps:'https://maps.app.goo.gl/tnoKDWVaCCbiKByQ8'},
+          {name:'Terasa Muški Štrand',dist:'8 km',desc:'Palić\'te Muški štrand yakınında teras — göl manzaralı yemek ve içecek.',img:'images/Guests/Restorani/Terasa.webp',maps:'https://maps.app.goo.gl/XmGSrZ8D3xkEmt5M9'}
         ]},
-        {t:'🏛️ Znamenitosti',cards:[
-          {name:'Gradska kuća',dist:'300 m',desc:'Simbol Subotice — impozantna secesijska zgrada iz 1910., remek-djelo lokalne arhitekture.',img:'images/Guests/Znamenitosti/gradska-kuca.webp',maps:'https://maps.google.com/?q=Subotica+City+Hall'},
-          {name:'Rajhlova palača',dist:'30 m',desc:'Odmah pored apartmana — jedan od najljepših bisera subotičke secesijske arhitekture.',img:'images/Guests/Znamenitosti/rajhlova-palata.webp',maps:'https://maps.google.com/?q=Rajhlova+palata+Subotica'},
-          {name:'Gradski muzej',dist:'600 m',desc:'Osnovan 1892. u raskošnoj secesijskoj palači braće Vagó — čuva arheološke, povijesne i etnološke zbirke.',img:'images/Guests/Znamenitosti/gradski-muzej.webp',maps:'https://maps.google.com/?q=Gradski+muzej+Subotica'},
-          {name:'Muzej porculana',dist:'150 m',desc:'Jedinstveni muzej u Srbiji s više od 2000 eksponata starih do 200 godina — od bečkog i ruskog do jugoslavenskog porculana.',img:'images/Guests/Znamenitosti/muzej-porcelana.webp',maps:'https://maps.google.com/?q=Muzej+porcelana+Subotica'},
-          {name:'Sinagoga',dist:'500 m',desc:'Jedna od najljepših sinagoga u Europi, izgrađena 1902. u secesijskom stilu — pravo arhitektonsko čudo.',img:'images/Guests/Znamenitosti/sinagoga.webp',maps:'https://maps.google.com/?q=Subotica+Synagogue'},
-          {name:'Ulica starih zanata',dist:'100 m',desc:'Otvorena 2025. — šarmantni prolaz koji oživljava duh nekadašnje Subotice s krojačima, urarima i skulpturom Zvonka Bogdana.',img:'images/Guests/Znamenitosti/ulica-starih-zanata.webp',maps:'https://maps.google.com/?q=Ulica+Starih+zanata+Subotica'},
-          {name:'Spomenik Caru Jovanu Nenadu',dist:'400 m',desc:'Monumentalni brončani triptih iz 1927. posvećen samoproglašenom caru koji je kratko vladao Suboticom 1527. godine.',img:'images/Guests/Znamenitosti/car-jovan-nenad.webp',maps:'https://maps.google.com/?q=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
-          {name:'Spomenik Kralju Petru I.',dist:'30 m',desc:'Skulptura visoka 4,2 metra vajara Zorana Ivanovića, otkrivena 2021. u čast kralja Petra I. Karađorđevića.',img:'images/Guests/Znamenitosti/spomenik-kralj-petru.webp',maps:'https://maps.google.com/?q=Spomenik+Kralju+Petru+I+Subotica'},
-          {name:'Palićko jezero',dist:'8 km',desc:'Najveće prirodno jezero u Srbiji — plaže, park, sportski sadržaji i ljekovito blato. Idealno za obiteljski izlet.',img:'images/Guests/Znamenitosti/palic.webp',maps:'https://maps.google.com/?q=Palic+Lake+Subotica'}
+        {t:'🏛️ Gezilecek yerler',cards:[
+          {name:'Gradska kuća',dist:'300 m',desc:'Subotica\'nın simgesi — 1910\'dan kalma etkileyici bir Art Nouveau binası, yerel mimarinin başyapıtı.',img:'images/Guests/Znamenitosti/gradska-kuca.webp',maps:'https://maps.google.com/?q=Subotica+City+Hall'},
+          {name:'Rajhlova palata',dist:'30 m',desc:'Dairenin hemen yanında — Subotica\'nın Art Nouveau mirasının en güzel incilerinden biri.',img:'images/Guests/Znamenitosti/rajhlova-palata.webp',maps:'https://maps.google.com/?q=Rajhlova+palata+Subotica'},
+          {name:'Gradski muzej',dist:'600 m',desc:'1892\'de görkemli bir Art Nouveau sarayında kuruldu — arkeolojik, tarihi ve etnolojik koleksiyonlara ev sahipliği yapıyor.',img:'images/Guests/Znamenitosti/gradski-muzej.webp',maps:'https://maps.google.com/?q=Gradski+muzej+Subotica'},
+          {name:'Muzej porcelana',dist:'150 m',desc:'Sırbistan\'da 200 yıla kadar eski 2.000\'den fazla eserin bulunduğu eşsiz bir müze — Viyana ve Rus porseleninden Yugoslav porselenine kadar.',img:'images/Guests/Znamenitosti/muzej-porcelana.webp',maps:'https://maps.google.com/?q=Muzej+porcelana+Subotica'},
+          {name:'Sinagoga',dist:'500 m',desc:'1902\'de Art Nouveau tarzında inşa edilmiş, Avrupa\'nın en güzel sinagoglarından biri — gerçek bir mimari harika.',img:'images/Guests/Znamenitosti/sinagoga.webp',maps:'https://maps.google.com/?q=Subotica+Synagogue'},
+          {name:'Ulica Starih zanata',dist:'100 m',desc:'2025\'te açıldı — terziler, saatçiler ve bir Zvonko Bogdan heykeliyle eski Subotica\'nın ruhunu canlandıran büyüleyici bir geçit.',img:'images/Guests/Znamenitosti/ulica-starih-zanata.webp',maps:'https://maps.google.com/?q=Ulica+Starih+zanata+Subotica'},
+          {name:'Spomenik Caru Jovanu Nenadu',dist:'400 m',desc:'1527\'de kısa süreliğine Subotica\'yı yöneten kendini ilan etmiş çara adanmış, 1927\'den kalma anıtsal bronz bir triptik.',img:'images/Guests/Znamenitosti/car-jovan-nenad.webp',maps:'https://maps.google.com/?q=Spomenik+Caru+Jovanu+Nenadu+Subotica'},
+          {name:'Spomenik Kralju Petru I',dist:'30 m',desc:'Zoran Ivanović\'in yaptığı, 2021\'de Kral I. Petar Karađorđević onuruna açılan 4,2 metrelik heykel.',img:'images/Guests/Znamenitosti/spomenik-kralj-petru.webp',maps:'https://maps.google.com/?q=Spomenik+Kralju+Petru+I+Subotica'},
+          {name:'Palić jezero',dist:'8 km',desc:'Sırbistan\'ın en büyük doğal gölü — plajlar, park, spor tesisleri ve şifalı çamur. Aile gezisi için mükemmel.',img:'images/Guests/Znamenitosti/palic.webp',maps:'https://maps.google.com/?q=Palic+Lake+Subotica'}
         ]},
-        {t:'🎭 Zabava',cards:[
-          {name:'Narodno kazalište',dist:'300 m',desc:'Obnovljeno 2013., s tradicijom od 1854. — jedino kazalište u Srbiji sa srpskim i mađarskim ansamblom pod istim krovom. Kulturni simbol Subotice.',img:'images/Guests/Zabava/Subotica Narodno pozoriste.webp',maps:'https://maps.google.com/?q=Narodno+pozoriste+Subotica'},
-          {name:'Dječje kazalište',dist:'400 m',desc:'Kazalište posvećeno najmlađima — predstave na srpskom i mađarskom jeziku.',img:'images/Guests/Zabava/Decije-pozoriste-4-1170x781.webp',maps:'https://maps.google.com/?q=Decije+pozoriste+Subotica'},
-          {name:'EuroCinema',dist:'200 m',desc:'Moderni kino u centru — najnoviji filmski naslovi na velikom platnu.',img:'images/Guests/Zabava/EuroCinema.webp',maps:'https://maps.google.com/?q=EuroCinema+Subotica'},
-          {name:'Kino Lifka',dist:'150 m',desc:'Legendarna kinodvorana otvorena 1913. — arhitektonski dragulj i kulturna ikona Subotice.',img:'images/Guests/Zabava/bioskop lifka.webp',maps:'https://maps.google.com/?q=Bioskop+Lifka+Subotica'},
-          {name:'Zoološki vrt Palić',dist:'8 km',desc:'Zoološki vrt na Paliću — dom brojnih životinjskih vrsta, idealan za obiteljski izlet.',img:'images/Guests/Zabava/Zoo vrt Palić.webp',maps:'https://maps.google.com/?q=Zooloski+vrt+Palic'}
+        {t:'🎭 Eğlence',cards:[
+          {name:'Narodno pozorište',dist:'300 m',desc:'2013\'te yenilendi, 1854\'e dayanan bir gelenekle — aynı çatı altında Sırp ve Macar topluluklarına sahip Sırbistan\'daki tek tiyatro. Subotica\'nın kültürel simgesi.',img:'images/Guests/Zabava/Subotica Narodno pozoriste.webp',maps:'https://maps.google.com/?q=Narodno+pozoriste+Subotica'},
+          {name:'Dečije pozorište',dist:'400 m',desc:'En küçüklere adanmış tiyatro — Sırpça ve Macarca gösteriler.',img:'images/Guests/Zabava/Decije-pozoriste-4-1170x781.webp',maps:'https://maps.google.com/?q=Decije+pozoriste+Subotica'},
+          {name:'EuroCinema',dist:'200 m',desc:'Merkezdeki modern sinema — büyük ekranda en yeni filmler.',img:'images/Guests/Zabava/EuroCinema.webp',maps:'https://maps.google.com/?q=EuroCinema+Subotica'},
+          {name:'Bioskop Lifka',dist:'150 m',desc:'1913\'te açılan efsanevi sinema — mimari bir mücevher ve Subotica\'nın kültürel ikonu.',img:'images/Guests/Zabava/bioskop lifka.webp',maps:'https://maps.google.com/?q=Bioskop+Lifka+Subotica'},
+          {name:'Zoološki vrt Palić',dist:'8 km',desc:'Palić\'te hayvanat bahçesi — birçok hayvan türüne ev sahipliği yapıyor, aile gezisi için ideal.',img:'images/Guests/Zabava/Zoo vrt Palić.webp',maps:'https://maps.google.com/?q=Zooloski+vrt+Palic'}
         ]},
-        {t:'⚽ Sport',cards:[
-          {name:'Bazen Prozivka',dist:'1,5 km',desc:'Sportsko-rekreativni centar s velikim i malim bazenom — ocjena 4,5 na Google-u. Radno vrijeme mijenja se po danima, preporučujemo provjeru prije posjeta.',img:'images/Guests/Sport/Bazen Prozivka.webp',maps:'https://maps.google.com/?q=Bazen+Prozivka+Subotica'},
-          {name:'Bazen Dudova šuma',dist:'2 km',desc:'Otvoreni bazen u okviru rekreativnog parka Dudova šuma.',img:'images/Guests/Sport/Bazen Dudovasuma.webp',maps:'https://maps.google.com/?q=Bazen+Dudova+suma+Subotica'},
-          {name:'Aqua park Palić',dist:'8 km',desc:'Vodeni park na obali Palićkog jezera — tobogani, bazeni i zabava za cijelu obitelj.',img:'images/Guests/Sport/Aqua park Palić.webp',maps:'https://maps.google.com/?q=Aqua+park+Palic+Subotica'},
-          {name:'Sportska dvorana Dudova šuma',dist:'2 km',desc:'Višenamenska sportska dvorana — košarka, odbojka, tenis i ostali sportovi.',img:'images/Guests/Sport/Hala Sportova.webp',maps:'https://maps.google.com/?q=Hala+sportova+Dudova+suma+Subotica'}
+        {t:'⚽ Spor',cards:[
+          {name:'Bazen Prozivka',dist:'1.5 km',desc:'Büyük ve küçük havuzu olan spor ve rekreasyon merkezi — Google\'da 4.5 puan. Çalışma saatleri güne göre değişir, ziyaretten önce kontrol etmenizi öneririz.',img:'images/Guests/Sport/Bazen Prozivka.webp',maps:'https://maps.google.com/?q=Bazen+Prozivka+Subotica'},
+          {name:'Bazen Dudova šuma',dist:'2 km',desc:'Dudova šuma rekreasyon parkında açık hava havuzu.',img:'images/Guests/Sport/Bazen Dudovasuma.webp',maps:'https://maps.google.com/?q=Bazen+Dudova+suma+Subotica'},
+          {name:'Aqua park Palić',dist:'8 km',desc:'Palić Gölü kıyısında su parkı — kaydıraklar, havuzlar ve tüm aile için eğlence.',img:'images/Guests/Sport/Aqua park Palić.webp',maps:'https://maps.google.com/?q=Aqua+park+Palic+Subotica'},
+          {name:'Hala sportova Dudova šuma',dist:'2 km',desc:'Çok amaçlı spor salonu — basketbol, voleybol, tenis ve diğer sporlar.',img:'images/Guests/Sport/Hala Sportova.webp',maps:'https://maps.google.com/?q=Hala+sportova+Dudova+suma+Subotica'}
         ]}
       ]},
-      {i:'📞',t:'Važni telefoni',h:EMERGENCY('Policija','Hitna pomoć','Vatrogasci','Domaćin Boris')}
+      {i:'📞',t:'Önemli Telefonlar',h:EMERGENCY('Polis','Ambulans','İtfaiye','Ev sahibi Boris')}
     ]
   },
   hu: {

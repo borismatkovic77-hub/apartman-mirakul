@@ -56,8 +56,7 @@
     #payment-modal .pm-label { color:var(--muted); font-weight:600; }
     #payment-modal .pm-val { text-align:right; font-weight:700; color:var(--primary); }
     #payment-modal .pm-close { margin-top:1rem; width:100%; background:var(--accent); color:#fff; border:none; border-radius:10px; padding:0.7rem; font-weight:700; font-size:0.9rem; cursor:pointer; font-family:inherit; }
-    #payment-modal .pm-val-copy { display:flex; align-items:center; gap:0.4rem; }
-    #payment-modal .pm-copy-btn { background:var(--accent-light); border:none; border-radius:6px; padding:0.2rem 0.4rem; font-size:0.85rem; line-height:1; cursor:pointer; flex-shrink:0; }
+    #payment-modal .pm-copy-btn { display:flex; align-items:center; gap:0.4rem; width:100%; justify-content:center; margin:0.4rem 0 0.6rem; background:var(--primary); color:#fff; border:none; border-radius:8px; padding:0.5rem 1rem; font-size:0.85rem; font-weight:700; cursor:pointer; font-family:inherit; }
     .arr-btns { display:flex; gap:.4rem; margin-top:.5rem; }
     .arr-cbtn { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:.3rem; padding:.55rem .3rem; border-radius:10px; font-size:.8rem; font-weight:700; text-decoration:none; color:#fff; }
     .arr-cbtn svg { width:15px; height:15px; fill:currentColor; flex-shrink:0; }
@@ -928,7 +927,8 @@ function showPaymentInfo(){
     m.innerHTML = '<div class="pm-box"><h4>\uD83D\uDCB3 Podaci za uplatu</h4>' +
       '<div class="pm-row"><span class="pm-label">Primalac</span><span class="pm-val">Boris Matković</span></div>' +
       '<div class="pm-row"><span class="pm-label">Mesto</span><span class="pm-val">Subotica</span></div>' +
-      '<div class="pm-row"><span class="pm-label">Broj ŽR</span><span class="pm-val-copy"><span class="pm-val">325-9300500411980-66</span><button class="pm-copy-btn" onclick="copyAccount(this)">📋</button></span></div>' +
+      '<div class="pm-row" style="flex-wrap:wrap;"><span class="pm-label">Broj ŽR</span><span class="pm-val">325-9300500411980-66</span></div>' +
+      '<button class="pm-copy-btn" onclick="copyAccount(this)">📋 <span>Kopiraj broj</span></button>' +
       '<div class="pm-row"><span class="pm-label">Svrha uplate</span><span class="pm-val">Smeštaj u apartmanu</span></div>' +
       '<button class="pm-close" onclick="document.getElementById(\'payment-modal\').classList.remove(\'open\')">Zatvori</button></div>';
     m.onclick = (e) => { if (e.target === m) m.classList.remove('open'); };
@@ -939,7 +939,8 @@ function showPaymentInfo(){
 
 function copyAccount(btn){
   const num = '325-9300500411980-66';
-  const done = () => { const old = btn.textContent; btn.textContent = '✓'; setTimeout(() => { btn.textContent = old; }, 1500); };
+  const lbl = btn.querySelector('span');
+  const done = () => { if (lbl) { lbl.textContent = 'Kopirano!'; setTimeout(() => { lbl.textContent = 'Kopiraj broj'; }, 1500); } };
   if (navigator.clipboard) { navigator.clipboard.writeText(num).then(done); }
   else { const el = document.createElement('textarea'); el.value = num; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); done(); }
 }

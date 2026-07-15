@@ -707,6 +707,28 @@ button, a { font: inherit; }
   font-weight: 700;
 }
 
+.ideal-for-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.ideal-for-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--muted);
+}
+
+.ideal-for-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .feature-icon {
   font-size: 1.6rem;
   margin-bottom: 0.85rem;

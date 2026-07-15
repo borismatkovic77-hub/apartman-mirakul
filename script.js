@@ -410,3 +410,73 @@ document.querySelector('.inquiry-form')?.addEventListener('submit', (e) => {
       });
   }
 });
+
+// Dinamika: scroll-reveal, animirani brojevi, paralaks
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+  // Scroll-reveal (fade + slide-in) za kartice i redove
+  const revealEls = document.querySelectorAll(
+    '.feature-cards .card, .location-list li, .reviews-score-card, .review-card'
+  );
+  revealEls.forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = `${(i % 4) * 80}ms`;
+  });
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Animirano punjenje ocena (Booking recenzije)
+  const scoreCard = document.querySelector('.reviews-score-card');
+  if (scoreCard) {
+    const bars = scoreCard.querySelectorAll('.bar-fill');
+    const targetWidths = Array.from(bars).map(b => b.style.width);
+    bars.forEach(b => { b.style.width = '0%'; });
+
+    const scoreBig = scoreCard.querySelector('.score-big');
+    const scoreTarget = scoreBig ? parseFloat(scoreBig.textContent) : null;
+    if (scoreBig) scoreBig.textContent = '0.0';
+
+    const scoreObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        bars.forEach((b, i) => { b.style.width = targetWidths[i]; });
+        if (scoreBig && scoreTarget !== null) {
+          const start = performance.now();
+          const duration = 1200;
+          const tick = (now) => {
+            const p = Math.min((now - start) / duration, 1);
+            scoreBig.textContent = (scoreTarget * p).toFixed(1);
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+        scoreObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+    scoreObserver.observe(scoreCard);
+  }
+}
+
+// Suptilan paralaks na hero pozadini
+const heroBackdrop = document.querySelector('.hero-backdrop');
+if (heroBackdrop && !prefersReducedMotion) {
+  let parallaxTicking = false;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight) return;
+    if (!parallaxTicking) {
+      requestAnimationFrame(() => {
+        heroBackdrop.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+        parallaxTicking = false;
+      });
+      parallaxTicking = true;
+    }
+  }, { passive: true });
+}

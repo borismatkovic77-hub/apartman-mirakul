@@ -358,6 +358,10 @@ document.getElementById('track-wa-contact')?.addEventListener('click', () =>
   track('whatsapp_click', { location: 'contact' }));
 document.getElementById('track-viber-contact')?.addEventListener('click', () =>
   track('viber_click', { location: 'contact' }));
+document.getElementById('track-wa-header')?.addEventListener('click', () =>
+  track('whatsapp_click', { location: 'header' }));
+document.getElementById('track-viber-header')?.addEventListener('click', () =>
+  track('viber_click', { location: 'header' }));
 
 // Social media
 document.getElementById('track-fb')?.addEventListener('click', () =>

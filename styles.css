@@ -1681,6 +1681,15 @@ button, a { font: inherit; }
   color: #fff;
 }
 
+.site-header.scrolled .lang-switch a {
+  color: var(--muted);
+}
+
+.site-header.scrolled .lang-switch a:hover,
+.site-header.scrolled .lang-switch .lang-active {
+  color: var(--primary);
+}
+
 .host-card {
   display: flex;
   flex-direction: column;

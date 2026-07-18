@@ -1682,7 +1682,7 @@ button, a { font: inherit; }
 }
 
 .site-header.scrolled .lang-switch a {
-  color: var(--muted);
+  color: #B5A896;
 }
 
 .site-header.scrolled .lang-switch a:hover,

@@ -338,6 +338,8 @@ document.getElementById('track-phone-contact')?.addEventListener('click', () =>
   track('phone_click', { location: 'contact' }));
 document.getElementById('track-phone-footer')?.addEventListener('click', () =>
   track('phone_click', { location: 'footer' }));
+document.getElementById('track-phone-header-icon')?.addEventListener('click', () =>
+  track('phone_click', { location: 'header_mobile' }));
 
 // Email clicks
 document.getElementById('track-email-contact')?.addEventListener('click', () =>

@@ -125,6 +125,10 @@ button, a { font: inherit; }
   gap: 0.5rem;
 }
 
+.header-phone-icon {
+  display: none;
+}
+
 .site-header:not(.scrolled) .brand,
 .site-header:not(.scrolled) .nav-toggle {
   color: #fff;
@@ -1770,20 +1774,32 @@ button, a { font: inherit; }
 
 @media (max-width: 820px) {
   .header-inner {
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto auto auto;
   }
 
   .header-cta {
     display: none;
   }
 
-  .lang-switch {
+  .header-phone-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
     order: 1;
+  }
+
+  .lang-switch {
+    order: 2;
   }
 
   .nav-toggle {
     display: inline-flex;
-    order: 2;
+    order: 3;
   }
 
   .nav-list {

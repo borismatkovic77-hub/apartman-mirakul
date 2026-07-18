@@ -29,6 +29,12 @@ if (navToggle && navList) {
       updateToggleState(false);
     });
   });
+  window.addEventListener('scroll', () => {
+    if (navList.classList.contains('open')) {
+      navList.classList.remove('open');
+      updateToggleState(false);
+    }
+  }, { passive: true });
 }
 
 if (header) {

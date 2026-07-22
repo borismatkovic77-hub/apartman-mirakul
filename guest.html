@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2HG1VDQZF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V2HG1VDQZF');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#3E2723" />
@@ -924,11 +932,12 @@ function arrPick(m){
   const wasOpen=el.classList.contains('open');
   document.querySelectorAll('.arr-mode').forEach(x=>x.classList.remove('open'));
   const ci=document.getElementById('arr-checkin');
-  if(!wasOpen){ el.classList.add('open'); el.querySelector('.arr-panel').appendChild(ci); ci.style.display='block'; setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'nearest'}),60); }
+  if(!wasOpen){ el.classList.add('open'); el.querySelector('.arr-panel').appendChild(ci); ci.style.display='block'; setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'nearest'}),60); track('arrival_mode_select', { mode: m }); }
   else { ci.style.display='none'; }
 }
 
 function showPaymentInfo(){
+  track('payment_info_open', {});
   let m = document.getElementById('payment-modal');
   if (!m) {
     m = document.createElement('div');
@@ -947,6 +956,7 @@ function showPaymentInfo(){
 }
 
 function copyAccount(btn){
+  track('account_copy', {});
   const num = '325-9300500411980-66';
   const lbl = btn.querySelector('span');
   const done = () => { if (lbl) { lbl.textContent = 'Kopirano!'; setTimeout(() => { lbl.textContent = 'Kopiraj broj'; }, 1500); } };
@@ -2887,9 +2897,14 @@ function wifiSubGroup(t) {
   return `<button class="subgroup-btn" onclick="togSub(this)"><span>${svgBtn}WiFi</span><span class="subgroup-arrow">▼</span></button><div class="subgroup-panel"><div class="subgroup-html">${inner}</div></div>`;
 }
 
+function track(event_name, params) {
+  if (typeof gtag === 'function') gtag('event', event_name, params);
+}
+
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('mirakul_lang', lang);
+  track('language_select', { language: lang });
   const t = T[lang];
   const wifiIdx = t.s.findIndex(sec => sec.subs);
   const hasNewWifi = wifiIdx !== -1;
@@ -2957,6 +2972,7 @@ function togWifi() {
 }
 
 function copyWifi(btn) {
+  track('wifi_copy', {});
   const pw = 'dobrodosli';
   const lbl = btn ? btn.querySelector('span') : document.getElementById('copy-lbl');
   const done = () => { if(lbl){lbl.textContent=T[currentLang].cd; setTimeout(()=>{ if(lbl) lbl.textContent=T[currentLang].cp; },2000);} };
@@ -2980,11 +2996,23 @@ document.getElementById('feedback-form')?.addEventListener('submit', e => {
   fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { Accept: 'application/json' } })
     .then(r => {
       if (r.ok) {
+        track('guest_feedback_submit', { language: currentLang });
         e.target.style.display = 'none';
         document.getElementById('feedback-success').hidden = false;
         setTimeout(() => { closeFeedback(); e.target.style.display = ''; document.getElementById('feedback-success').hidden = true; e.target.reset(); }, 2500);
       }
     });
+});
+
+document.getElementById('review-btn')?.addEventListener('click', () =>
+  track('review_click', { language: currentLang }));
+
+document.getElementById('sections')?.addEventListener('click', e => {
+  const link = e.target.closest('.swipe-card-link');
+  if (!link) return;
+  const cardName = link.closest('.swipe-card')?.querySelector('.swipe-card-name')?.textContent || '';
+  const category = link.closest('.subgroup-panel')?.previousElementSibling?.querySelector('span')?.textContent || '';
+  track('guide_card_click', { category, name: cardName, language: currentLang });
 });
 
 const saved = localStorage.getItem('mirakul_lang');

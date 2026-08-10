@@ -1,6 +1,6 @@
-const CACHE = 'mirakul-v13';
+const CACHE = 'mirakul-v14';
 const ASSETS = [
-  './guest.html',
+  './guest-guide.html',
   './favicon.svg',
   './images/Guests/Znamenitosti/rajhlova-palata.webp',
   './images/Guests/Znamenitosti/ulica-starih-zanata.webp',

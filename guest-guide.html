@@ -327,6 +327,7 @@
     .guide-footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--border); margin-top: 0.5rem; }
     .guide-footer .heart { color: var(--accent); font-size: 1.3rem; display: block; margin-bottom: 0.65rem; }
     .guide-footer span { font-size: 1rem; color: var(--muted); line-height: 1.6; }
+    .guide-footer a.footer-site-link { color: inherit; text-decoration: underline; font-weight: 600; white-space: nowrap; }
     .review-btn { display: flex; width: max-content; flex-direction: column; align-items: center; gap: 0.3rem; margin: 1.1rem auto 0; background: var(--accent); border-radius: 12px; padding: 0.9rem 1.4rem; text-decoration: none; box-shadow: 0 2px 8px rgba(139,94,60,0.25); }
     .review-btn .review-stars { font-size: 1.1rem; letter-spacing: 0.1rem; }
     .review-btn #review-btn-text { color: #fff; font-weight: 700; font-size: 0.95rem; }
@@ -980,7 +981,7 @@ function arrLightbox(src){
 const T = {
   sr: {
     wn:'Naziv WiFi mreže', wp:'Lozinka', cp:'Kopiraj', cd:'Kopirano!', call:'Pozovi',
-    ft:'Drago nam je što ste izabrali Apartman Mirakul. Ugodan boravak!',
+    ft:'Drago nam je što ste izabrali <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Ugodan boravak!',
     s:[
       {i:'🧳',t:ARR.sr.title,h:arrivalCard(ARR.sr)},
       {i:'💡',t:'Uputstva za apartman',subs:[
@@ -1086,7 +1087,7 @@ const T = {
   },
   en: {
     wn:'WiFi Network', wp:'Password', cp:'Copy', cd:'Copied!', call:'Call',
-    ft:'We\'re glad you chose Apartman Mirakul. Enjoy your stay!',
+    ft:'We\'re glad you chose <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Enjoy your stay!',
     s:[
       {i:'🧳',t:ARR.en.title,h:arrivalCard(ARR.en)},
       {i:'💡',t:'Apartment Guide',subs:[
@@ -1192,7 +1193,7 @@ const T = {
   },
   de: {
     wn:'WLAN-Name', wp:'Passwort', cp:'Kopieren', cd:'Kopiert!', call:'Anrufen',
-    ft:'Wir freuen uns, dass Sie Apartman Mirakul gewählt haben. Einen angenehmen Aufenthalt!',
+    ft:'Wir freuen uns, dass Sie <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a> gewählt haben. Einen angenehmen Aufenthalt!',
     s:[
       {i:'🧳',t:ARR.de.title,h:arrivalCard(ARR.de)},
       {i:'💡',t:'Wohnungsführer',subs:[
@@ -1298,7 +1299,7 @@ const T = {
   },
   tr: {
     wn:'WiFi Ağı', wp:'Şifre', cp:'Kopyala', cd:'Kopyalandı!', call:'Ara',
-    ft:'Apartman Mirakul\'u seçtiğiniz için memnunuz. İyi tatiller dileriz!',
+    ft:'<a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul\'u</a> seçtiğiniz için memnunuz. İyi tatiller dileriz!',
     s:[
       {i:'🧳',t:ARR.tr.title,h:arrivalCard(ARR.tr)},
       {i:'💡',t:'Daire Rehberi',subs:[
@@ -1404,7 +1405,7 @@ const T = {
   },
   hu: {
     wn:'WiFi hálózat neve', wp:'Jelszó', cp:'Másolás', cd:'Másolva!', call:'Hívás',
-    ft:'Köszönjük, hogy az Apartman Mirakult választotta. Kellemes tartózkodást!',
+    ft:'Köszönjük, hogy az <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakult</a> választotta. Kellemes tartózkodást!',
     s:[
       {i:'🧳',t:ARR.hu.title,h:arrivalCard(ARR.hu)},
       {i:'💡',t:'Apartman útmutató',subs:[
@@ -1510,7 +1511,7 @@ const T = {
   },
   ru: {
     wn:'Название WiFi', wp:'Пароль', cp:'Копировать', cd:'Скопировано!', call:'Позвонить',
-    ft:'Мы рады, что вы выбрали Apartman Mirakul. Приятного пребывания!',
+    ft:'Мы рады, что вы выбрали <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Приятного пребывания!',
     s:[
       {i:'🧳',t:ARR.ru.title,h:arrivalCard(ARR.ru)},
       {i:'💡',t:'Путеводитель по квартире',subs:[
@@ -1616,7 +1617,7 @@ const T = {
   },
   zh: {
     wn:'WiFi 名称', wp:'密码', cp:'复制', cd:'已复制！', call:'拨打',
-    ft:'感谢您选择 Apartman Mirakul，祝您住宿愉快！',
+    ft:'感谢您选择 <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>，祝您住宿愉快！',
     s:[
       {i:'🧳',t:ARR.zh.title,h:arrivalCard(ARR.zh)},
       {i:'💡',t:'公寓指南',subs:[
@@ -1722,7 +1723,7 @@ const T = {
   },
   bg: {
     wn:'WiFi мрежа', wp:'Парола', cp:'Копирай', cd:'Копирано!', call:'Обади се',
-    ft:'Радваме се, че избрахте Apartman Mirakul. Приятен престой!',
+    ft:'Радваме се, че избрахте <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Приятен престой!',
     s:[
       {i:'🧳',t:ARR.bg.title,h:arrivalCard(ARR.bg)},
       {i:'💡',t:'Наръчник на апартамента',subs:[
@@ -1828,7 +1829,7 @@ const T = {
   },
   pl: {
     wn:'Nazwa sieci WiFi', wp:'Hasło', cp:'Kopiuj', cd:'Skopiowano!', call:'Zadzwoń',
-    ft:'Cieszymy się, że wybrałeś Apartman Mirakul. Miłego pobytu!',
+    ft:'Cieszymy się, że wybrałeś <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Miłego pobytu!',
     s:[
       {i:'🧳',t:ARR.pl.title,h:arrivalCard(ARR.pl)},
       {i:'💡',t:'Przewodnik po apartamencie',subs:[
@@ -1934,7 +1935,7 @@ const T = {
   },
   it: {
     wn:'Nome rete WiFi', wp:'Password', cp:'Copia', cd:'Copiato!', call:'Chiama',
-    ft:'Siamo felici che abbiate scelto Apartman Mirakul. Buon soggiorno!',
+    ft:'Siamo felici che abbiate scelto <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Buon soggiorno!',
     s:[
       {i:'🧳',t:ARR.it.title,h:arrivalCard(ARR.it)},
       {i:'💡',t:'Guida all\'appartamento',subs:[
@@ -2040,7 +2041,7 @@ const T = {
   },
   es: {
     wn:'Nombre de red WiFi', wp:'Contraseña', cp:'Copiar', cd:'¡Copiado!', call:'Llamar',
-    ft:'Nos alegra que haya elegido Apartman Mirakul. ¡Que disfrute su estancia!',
+    ft:'Nos alegra que haya elegido <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. ¡Que disfrute su estancia!',
     s:[
       {i:'🧳',t:ARR.es.title,h:arrivalCard(ARR.es)},
       {i:'💡',t:'Guía del apartamento',subs:[
@@ -2146,7 +2147,7 @@ const T = {
   },
   mk: {
     wn:'Назив на WiFi мрежа', wp:'Лозинка', cp:'Копирај', cd:'Копирано!', call:'Јави се',
-    ft:'Ни е мило што го избравте Apartman Mirakul. Пријатен престој!',
+    ft:'Ни е мило што го избравте <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Пријатен престој!',
     s:[
       {i:'🧳',t:ARR.mk.title,h:arrivalCard(ARR.mk)},
       {i:'💡',t:'Упатство за апартманот',subs:[
@@ -2252,7 +2253,7 @@ const T = {
   },
   sl: {
     wn:'Ime WiFi omrežja', wp:'Geslo', cp:'Kopiraj', cd:'Kopirano!', call:'Pokliči',
-    ft:'Veseli nas, da ste izbrali Apartman Mirakul. Prijeten bivanje!',
+    ft:'Veseli nas, da ste izbrali <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Prijeten bivanje!',
     s:[
       {i:'🧳',t:ARR.sl.title,h:arrivalCard(ARR.sl)},
       {i:'💡',t:'Navodila za apartma',subs:[
@@ -2358,7 +2359,7 @@ const T = {
   },
   ro: {
     wn:'Numele rețelei WiFi', wp:'Parolă', cp:'Copiază', cd:'Copiat!', call:'Sună',
-    ft:'Ne bucurăm că ați ales Apartman Mirakul. Ședere plăcută!',
+    ft:'Ne bucurăm că ați ales <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Ședere plăcută!',
     s:[
       {i:'🧳',t:ARR.ro.title,h:arrivalCard(ARR.ro)},
       {i:'💡',t:'Ghidul apartamentului',subs:[
@@ -2464,7 +2465,7 @@ const T = {
   },
   el: {
     wn:'Δίκτυο WiFi', wp:'Κωδικός', cp:'Αντιγραφή', cd:'Αντιγράφηκε!', call:'Κλήση',
-    ft:'Χαρούμενοι που επιλέξατε το Apartman Mirakul. Καλή διαμονή!',
+    ft:'Χαρούμενοι που επιλέξατε το <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Καλή διαμονή!',
     s:[
       {i:'🧳',t:ARR.el.title,h:arrivalCard(ARR.el)},
       {i:'💡',t:'Οδηγός διαμερίσματος',subs:[
@@ -2570,7 +2571,7 @@ const T = {
   },
   fr: {
     wn:'Réseau WiFi', wp:'Mot de passe', cp:'Copier', cd:'Copié !', call:'Appeler',
-    ft:'Nous sommes ravis que vous ayez choisi l\'Apartman Mirakul. Bon séjour !',
+    ft:'Nous sommes ravis que vous ayez choisi l\'<a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Bon séjour !',
     s:[
       {i:'🧳',t:ARR.fr.title,h:arrivalCard(ARR.fr)},
       {i:'💡',t:'Guide de l\'appartement',subs:[
@@ -2676,7 +2677,7 @@ const T = {
   },
   lt: {
     wn:'WiFi tinklas', wp:'Slaptažodis', cp:'Kopijuoti', cd:'Nukopijuota!', call:'Skambinti',
-    ft:'Džiaugiamės, kad pasirinkote Apartman Mirakul. Malonaus poilsio!',
+    ft:'Džiaugiamės, kad pasirinkote <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Malonaus poilsio!',
     s:[
       {i:'🧳',t:ARR.lt.title,h:arrivalCard(ARR.lt)},
       {i:'💡',t:'Buto vadovas',subs:[
@@ -2782,7 +2783,7 @@ const T = {
   },
   sv: {
     wn:'WiFi-nätverk', wp:'Lösenord', cp:'Kopiera', cd:'Kopierat!', call:'Ring',
-    ft:'Vi är glada att ni valde Apartman Mirakul. Trevlig vistelse!',
+    ft:'Vi är glada att ni valde <a href="https://apartmanmirakul.rs/" target="_blank" rel="noopener" class="footer-site-link">Apartman Mirakul</a>. Trevlig vistelse!',
     s:[
       {i:'🧳',t:ARR.sv.title,h:arrivalCard(ARR.sv)},
       {i:'💡',t:'Lägenhetsguide',subs:[
@@ -2914,7 +2915,7 @@ function setLang(lang) {
     document.getElementById('wifi-pass-lbl').textContent = t.wp;
     document.getElementById('copy-lbl').textContent = t.cp;
   }
-  document.getElementById('footer-txt').textContent = t.ft;
+  document.getElementById('footer-txt').innerHTML = t.ft;
   const rv = REVIEW[lang] || REVIEW.sr;
   document.getElementById('review-btn-text').textContent = rv.btn;
   document.getElementById('lang-btn').innerHTML = FLAGS[lang] + ' ' + CODES[lang];
@@ -3006,6 +3007,10 @@ document.getElementById('feedback-form')?.addEventListener('submit', e => {
 
 document.getElementById('review-btn')?.addEventListener('click', () =>
   track('review_click', { language: currentLang }));
+
+document.getElementById('footer-txt')?.addEventListener('click', e => {
+  if (e.target.closest('.footer-site-link')) track('website_link_click', { language: currentLang });
+});
 
 document.getElementById('sections')?.addEventListener('click', e => {
   const link = e.target.closest('.swipe-card-link');

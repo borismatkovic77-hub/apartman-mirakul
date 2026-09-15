@@ -113,8 +113,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preload" as="image" href="images/DV778820-Pano.webp" fetchpriority="high" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <link rel="stylesheet" href="styles.css" /></head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -266,6 +265,9 @@
         </div>
         <div class="gallery-toggle-wrap">
           <button class="btn btn-secondary gallery-toggle" id="galleryToggle">Show all photos</button>
+        </div>
+        <div class="tour360-wrap">
+          <button class="btn btn-ghost-dark" id="tour360Btn">🔄 View 360° virtual tour</button>
         </div>
       </div>
     </section>
@@ -718,6 +720,12 @@
       <img id="lightbox-img" src="" alt="Apartman Mirakul" />
     </div>
   </div>
+
+  <div id="tour360Modal" class="tour360-modal" role="dialog" aria-modal="true" hidden>
+    <button class="tour360-close" id="tour360Close" aria-label="Close">&#x2715;</button>
+    <iframe id="tour-embedded" title="Apartman Mirakul — 360° virtual tour" data-src="https://tour.panoee.net/iframe/6aa85d6cfe661213c769c5ed?embedFullscreen=1&amp;embedVr=1&amp;embedGyro=1" frameborder="0" scrolling="no" allow="autoplay; accelerometer; gyroscope; fullscreen; xr-spatial-tracking" allowfullscreen></iframe>
+  </div>
+  <script>(function(){var i="tour-embedded",o="https://tour.panoee.net",r=false;function s(v,a){if(!v)return null;var x={};a.forEach(function(k){x[k]=typeof v[k]==="number"?v[k]:null});return x}function ready(f){try{var h=f.contentWindow.location.href;if(h&&h!=="about:blank")r=true}catch(e){r=true}}function send(payload){var el=document.getElementById(i);if(!el||!el.contentWindow)return;try{el.contentWindow.postMessage(payload,o)}catch(t){}}var f=document.getElementById(i);if(f){f.addEventListener("load",function(){r=true});ready(f)}window.addEventListener("message",function(ev){if(!r||!ev.data||ev.data.type!=="devicemotion")return;if(ev.source!==window.parent)return;send(ev.data)},false);window.addEventListener("devicemotion",function(e){if(!r)return;send({type:"devicemotion",deviceMotionEvent:{acceleration:s(e.acceleration,["x","y","z"]),accelerationIncludingGravity:s(e.accelerationIncludingGravity,["x","y","z"]),rotationRate:s(e.rotationRate,["alpha","beta","gamma"]),interval:typeof e.interval==="number"?e.interval:0,timeStamp:e.timeStamp}})},{passive:true})})();</script>
 
   <script src="script.js"></script>
 </body>

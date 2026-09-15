@@ -59,6 +59,33 @@ galleryToggle?.addEventListener('click', () => {
   }
 });
 
+// 360 tura (lazy-load — panorama se učitava tek na klik)
+const tour360Btn = document.getElementById('tour360Btn');
+const tour360Modal = document.getElementById('tour360Modal');
+const tour360Close = document.getElementById('tour360Close');
+const tour360Iframe = document.getElementById('tour-embedded');
+
+tour360Btn?.addEventListener('click', () => {
+  tour360Modal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  if (tour360Iframe && !tour360Iframe.src && tour360Iframe.dataset.src) {
+    tour360Iframe.src = tour360Iframe.dataset.src;
+  }
+  track('tour360_open', {});
+});
+
+tour360Close?.addEventListener('click', () => {
+  tour360Modal.hidden = true;
+  document.body.style.overflow = '';
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && tour360Modal && !tour360Modal.hidden) {
+    tour360Modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+});
+
 // Modal
 const inquiryModal = document.getElementById('inquiry-modal');
 const openModalBtn = document.getElementById('openInquiryModal');

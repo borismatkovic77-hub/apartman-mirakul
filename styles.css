@@ -707,6 +707,51 @@ button, a { font: inherit; }
 .lightbox-prev { left: 1.25rem; }
 .lightbox-next { right: 1.25rem; }
 
+.tour360-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.tour360-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #000;
+}
+
+.tour360-modal[hidden] { display: none; }
+
+#tour-embedded {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.tour360-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 201;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tour360-close:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
 .card,
 .feature-item,
 .nearby-card {

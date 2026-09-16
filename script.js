@@ -64,14 +64,29 @@ const tour360Btn = document.getElementById('tour360Btn');
 const tour360Modal = document.getElementById('tour360Modal');
 const tour360Close = document.getElementById('tour360Close');
 const tour360Iframe = document.getElementById('tour-embedded');
+const tour360SwitchBtns = document.querySelectorAll('.tour360-switch-btn');
+
+function loadTour360(btn) {
+  if (!btn) return;
+  const url = btn.dataset.tourSrc;
+  if (tour360Iframe && tour360Iframe.src !== url) tour360Iframe.src = url;
+  tour360SwitchBtns.forEach(b => b.classList.toggle('active', b === btn));
+}
 
 tour360Btn?.addEventListener('click', () => {
   tour360Modal.hidden = false;
   document.body.style.overflow = 'hidden';
-  if (tour360Iframe && !tour360Iframe.src && tour360Iframe.dataset.src) {
-    tour360Iframe.src = tour360Iframe.dataset.src;
+  if (tour360Iframe && !tour360Iframe.src) {
+    loadTour360(tour360SwitchBtns[0]);
   }
   track('tour360_open', {});
+});
+
+tour360SwitchBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    loadTour360(btn);
+    track('tour360_switch', { variant: btn.textContent.trim() });
+  });
 });
 
 tour360Close?.addEventListener('click', () => {

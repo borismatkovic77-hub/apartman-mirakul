@@ -154,6 +154,22 @@
       padding: 1rem 1.5rem;
     }
     .guide-header-name { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
+    .guide-header-actions { display: flex; align-items: center; gap: 0.5rem; }
+    .guide-share-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .guide-share-btn:hover { background: rgba(255,255,255,0.22); }
     .lang-change-btn {
       display: flex;
       align-items: center;
@@ -370,7 +386,12 @@
 <div id="guide">
   <div class="guide-header">
     <div class="guide-header-name">Apartman Mirakul</div>
-    <button class="lang-change-btn" id="lang-btn" onclick="showLangScreen()"><img class="lang-flag-sm" src="https://flagcdn.com/w20/rs.png" alt=""> SR</button>
+    <div class="guide-header-actions">
+      <button class="guide-share-btn" id="guideShareBtn" onclick="shareGuide()" hidden aria-label="Podeli">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </button>
+      <button class="lang-change-btn" id="lang-btn" onclick="showLangScreen()"><img class="lang-flag-sm" src="https://flagcdn.com/w20/rs.png" alt=""> SR</button>
+    </div>
   </div>
   <div class="guide-content">
     <div class="acc-item" id="wifi-acc">
@@ -3168,6 +3189,18 @@ function wifiSubGroup(t) {
 
 function track(event_name, params) {
   if (typeof gtag === 'function') gtag('event', event_name, params);
+}
+
+const guideShareBtn = document.getElementById('guideShareBtn');
+if (guideShareBtn && navigator.share) {
+  guideShareBtn.hidden = false;
+}
+function shareGuide() {
+  if (!navigator.share) return;
+  navigator.share({
+    title: 'Apartman Mirakul — Vodič za goste',
+    url: window.location.href,
+  }).then(() => track('guide_share', { language: currentLang })).catch(() => {});
 }
 
 function setLang(lang) {

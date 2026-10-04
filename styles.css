@@ -371,6 +371,15 @@ button, a { font: inherit; }
   filter: saturate(1.08);
 }
 
+@media (max-width: 767px) {
+  .hero-backdrop {
+    background-image:
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0) 16%),
+      linear-gradient(160deg, rgba(6, 14, 30, 0.10) 0%, rgba(6, 14, 30, 0.40) 100%),
+      url('images/DV778820-Pano mob.webp');
+  }
+}
+
 .hero-content {
   position: relative;
   display: flex;
